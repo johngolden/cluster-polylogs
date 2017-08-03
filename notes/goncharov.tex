@@ -1,0 +1,346 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+
+\oddsidemargin -0.04cm 
+\evensidemargin -0.04cm
+\topmargin -0.25cm 
+\textwidth 16.59cm 
+\textheight 20.5cm 
+\headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Questions and Comments from Sasha Goncharov}}
+
+With comments from Marcus Spradlin (MS) and Miguel Paulos (MP).
+
+\begin{enumerate}
+
+\item The motivic function $L_{2,2}(x,y)$ coincides with the
+motivic  function $\kappa(x,y)$ introduced in formula 4.5 in
+``Polylogarithms and motivic Galois group" paper modulo $\Li_4$'s, up to
+$\Li_4(-y/x)$ term.
+
+Is it better to have $\Li_4(-y/x)$ summand?
+
+\item What geometry responsible for linear relations between $A_2$ and $A_3$ functions?
+
+\item So we have a ``function"
+
+pentagons on the cluster polytope $\longmapsto B_2 \wedge B_2$
+
+Let us try to find ANY linear combinations of pentagons on the
+cluster polytope such that the resulting $B_2 \wedge B_2$ function vanishes.
+
+Any such linear combination is of huge interest.
+
+For example -- what is the $B_2 \wedge B_2$ component of the sum of pentagon functions related to $A_2 \times A_1$ -- this must be trivial, but yet ...
+
+Then: we end up with a ``function" which assigns
+to 3d faces of the cluster polyhedron these $B_2 \wedge B_2$ invariants.
+
+\item Observe that cluster polytope for 7 points is a polytope, that is
+topologically trivial.
+
+Take the sum of (geometric) pentagons of the cluster poytope
+which make the 7-point amplitude.
+
+Take its ``differential", that is the sum of their boundary 1-segments.
+
+It follows that the $B_2\wedge B_2$ content of the amplitude
+depends only on this chain.
+
+Q: what is this 1-chain?
+
+This mean: are there pentagons in the formula which
+share a common side with different orientations? I guess plenty, so
+is there any simpler way to describe the 1-dim boundary then just
+saying it is a boundary
+of those pentagons? 
+
+Before we described it as some ``Poisson commuting" pairs, that is
+rectangles in the cluster polytope.
+
+(This might be silly: taking the boundary of the sum of
+pentagons we get the naked $B_2\wedge B_2$ term:
+
+$\{x\}_2 \wedge \{y\}_2$ means the edge $(x,y)$.)
+
+\item What does one get if you take alternating sum of
+7 6-point functions, i.e. start from 7 points on $P^1$, forget them one
+by one, and take the alternating sum of the obtained 6 point amplitudes?
+
+Although it is clear that pentagon function is a
+``primary" or ``atomic" object of the story,
+it is not 100\% clear to me what are the ``quarks"
+in which even the 6 point amplitude is decomposed.
+
+So far it looks that these ``quarks" are the 6 pentagons,
+
+Notice however that the boundary of the 3d Stasheff polytope has
+not only 6 pentagons, but also 3 squares, and these squares
+sort of match the 2+2+2 terms in the 9 term formula.
+
+\item \underline{Comment from MS}
+
+You often speculated that some role might be played by functions whose $B_2 \wedge B_2$ component *is*
+the Poisson bracket, as in
+$$
+\sum_{i \in~\text{clusters}} \qquad \sum_{\text{coordinates}~x, y~\text{in cluster}~i} \{x,y\} {x}_2
+\wedge {y}_2
+$$
+where $\{x,y\}$ is the Poisson bracket.  We have not found a role for
+things like this to play in the amplitude story, but it might be
+interesting to note that the $A_2$ and $A_3$ cluster functions seem to have
+$B_3 \otimes C^*$ component which is the Poisson bracket, that means it
+can be written as
+$$
+\sum_{i \in~\text{clusters}} \qquad \sum_{\text{coordinates}~x, y~\text{in cluster}~i} \{x,y\}
+\{x\}_3 \otimes y
+$$
+In particular, there is a sense in which they have $B_3 \otimes C^*$
+components $\{a\}_3 \otimes b$ which are purely antisymmetric under
+exchange of $a$ and $b$.  (Though I don't know how to make this property
+well-defined because to rewrite the $C^*$ component using multiplicative
+identities which $B_3$ doesn't have).
+
+Goncharov replies:  I do not know how to formulate a Poisson property of ${a}_3 \otimes b$
+since $\{a\}_3 = \{a^{-1}\}_3$. 
+
+In fact, one reason of talking about Poisson properties before was a
+a  way to express / formalize  the idea that
+the terms which appear in $B_2 \wedge B_2$ should not be ``far away" in
+the cluster polytope. Similar hope, of course, for $B_3 \otimes C^*$.
+
+\item The main question I have is this:
+
+Q. What are all relations between the $B_2 \wedge B_2$ parts of the
+pentagon functions?
+
+Precisely:
+
+Q1) Are there any ``non-trivial", (and also, just any) relations
+between $B_2 \wedge B_2$ parts of the pentagon functions? ``Non-trivial"
+means the proof
+involves the 5-term identities: the cancellation holds for the sum in
+$B_2 \wedge B_2$, but not on in $Z[P^1]$, or just assuming $\{x\}_2 = -
+\{x^{-1}\}_2$.
+
+I imagine there are some ``basic" relations from which any other should follow.
+The question is well posed for any cluster variety:
+Take all pentagons one can find there, and study linear relations between
+$B_2 \wedge B_2$ parts of the pentagon functions of those pentagons.
+It is a finite problem for finite type, but well posed problem even in general.
+
+WHY IMPORTANT:
+
+1) Any linear relation for
+$B_2 \wedge B_2$ parts of the pentagon functions must be upgraded then
+to an identity
+
+sum of the actual pentagon functions is a sum of $\Li_4$'s of some variables.
+
+It would be terrific if this variables of $\Li_4$ can be taken cluster
+variables --
+so in finite cases, like $D_4$, $E_6$ one can just ask computer.
+
+So the question is, do we have any non-trivial identity?
+
+2) In the next step (I skip explanations) one gets functional
+equations for 4-logs.
+They will be ``Buld on" functional equations for 3-logs, presumably the
+40 term ones.
+
+I hope that all questions have answers understood via
+geometry of the cluster polytope.
+
+\item Although for the amplitude $A_3$ function may be much better,
+the pentagon functions are probably more fundamental.
+
+We were looking for a loong time for a simple 2-variable
+weight 4 function with simple coproduct (testing versions of
+Omega-functions of Dixon)
+but now it is clear that it is the pentagon function.
+
+\item \underline{Comment from MP}
+
+- In $A_3$ there are no relations between pentagon functions. 
+
+- In $A_4$ there are no relations between pentagon functions except ``trivial ones": there are 28 pentagonal faces but only 21 distinct $A_2$ subalgebras because there are things like $A_1 \times A_2$ in the polytope. These 21 $A_2$s lead to 21 independent pentagon functions.
+
+- In $D_4$ there are \emph{a priori} 36 pentagon functions, but only 34 of them are independent. These two relations depend non-trivially on 5 term identities among $B_2$ elements on the $B_2 \wedge B_2$ part; and on the 40 term $\Li_3$ identity on the $B_3 \otimes C^*$ part. Similarly there are 12 independent $A_3$ subalgebras, and corresponding 12 $A_3$ functions - of which only 9 are independent. These three relations surely follow from the relations among pentagons but I haven't worked out the details.
+
+- Regarding identities between $A_3$ functions: the two identities between the 36 pentagon functions involve 24 pentagons each. One can understand the origin of these identities quite beautifully in terms of the $A_3$ functions. As said before there are 12 $A_3$ functions, but only 9 independent. Each of the 3 identities involves 4 $A_3$ functions - and since each $A_3$ has 6 pentagons one gets the 24. These identities are quite pretty geometrically: each $A_3$ has three squares, so visualize each of them as a triangle with squares at the vertices. Then we can get an identity by taking four $A_3$s and gluing them together by their squares in such a way as to get a tetrahedron. 
+
+Algebraically, the $B_2 \wedge B_2$ components of the 4 $A_3$ functions share terms pairwise, and adding them up with the right sign they all cancel. 
+
+I have checked that the 3 $A_3$ identities generate the 2 independent pentagon identities. The fact that there are 2, not 3 identities then means that the three tetrahedra must be also glued up somehow by their pentagons.
+
+The conclusion is that the seemingly non-trivial identities among pentagon functions are better understood as simple geometric consequences of gluing up $A_3$'s, where they become trivial.
+
+\item How to see geometrically the 4 $A_3$ polytopes which produce a relation?
+
+Means: $D_4$ means a configuration of 6 points on $P^2$. 
+
+Each $A_3$ polytope corresponds to certain configuration of 6 points on $P^1$. 
+So a relation corresponds to cerrtain way to produce FOUR configurations of 
+6 points on $P^1$ from configurations of 6 points on $P^2$.
+How to describe it geomtrically, in terms of the projective geometry?
+(Like take two lines formed by the two pairs of points, find their intersection etc.) 
+
+This relations in $D_4$ should lead to CLUSTER  functional equations for $\Li_4$. 
+One way is probably to take the amplitude for 7 points, it has several presentations. 
+They are equal and thus the sum of the corresponding $A_3$ functions should be equal, 
+modulo $\Li_4$'s entering the game. This means a CLUSTER relation for $\Li_4$ - 
+EXTREMELY VALUABLE. 
+
+\item \underline{Comment from MS}
+
+(1) Sasha has a proposal for
+how to write down ``pentagon" (or $A_3$) functions for weight $> 4$.  Let
+$f_4(x,y)$ be your favorite weight 4 function, then we consider the
+following recursive way to build up ``cluster polylogarithm" functions
+at weight $> 4$, which we call $f_k$.  The idea is just to make the
+following ansatz for the coproduct
+$$
+\delta f_k(x,y) = f_{k-1}(x,y) \otimes x/y + ~\text{stuff}
+$$
+where ``stuff" is to be determined by imposing the condition that
+$\delta$ should annihilate the right-hand side.  The natural ansatz,
+given the cluster structure, is that
+$$
+\text{stuff}~ = \sum_{i,j,m} {x_i}_m \wedge {x_j}_{k-m}
+$$
+The sum is somewhat schematic:  $i,j$ run over the cluster coordinates,
+and m runs from 2 to $k-2$.  The sum just indicates all possible terms
+which could possibly appear there.  The idea is to make an ansatz (put
+a free coefficient in front of each term) and see what works; that is,
+solve that $\delta$ should kill the right-hand side.  This might give a
+recursive way to define cluster polylogarithms for all higher weight!
+
+(2) Sasha remains interested in finding
+non-trivial $\Li_4$ cluster identities.  Right now we don't know any.
+One reason we need to understand all possible identities is that in
+doing calculations like the one above, $\delta$ can only annihilate the
+right-hand side due to nontrivial identities.  So first we should
+understand what kinds of identities exist!
+
+(3) An earlier discussion wish Sasha reminded us that we really need
+to start looking at collinear limits.  Presumably only very special $A_3$
+functions will be well-defined under collinear limits; random ones
+won't be.
+
+(4) It might also be possible, more conjecturally, to naturally assign
+functions to higher algebras using a recursive method like the one
+described in (1) above.  For example, if you wanted to assign a weight
+5 function to an $A_4$ algebra, that means you would have to propose an
+element of $L_4 \otimes C^*$ and an element of $B_3 \otimes B_2$, which
+satisfy the integrability.  You could try some kind of ansatz where
+the $L_4$ is given by some sum of pentagon functions, and for the $B_3
+\otimes B_2$ maybe some kind of $A_2$ and $A_1$ subalgebras.  Well I'm not
+being very clear but the idea is maybe to recursively define higher
+weight functions based on geometric data, in terms of lower weight
+functions associated to subalgebras.
+
+\item Here is a question on cluster nature of the funct eq. for 3-log.
+
+Observe that: 
+
+1. Cluster $\mathcal{A}$-coordinates are assigned to the top dimensional faces of the cluster polytope. 
+
+2. Cluster $\mathcal{X}$-coordinates are assigned to the oriented edges of the cluster polytope. 
+
+In the $D_4$ case the codimension one cells are $A_3$ polytopes or $A_2 \times A_1$ polytopes. 
+The best way to think about them geometrically - as of cluster $\mathcal{A}$-coordinates.
+
+So the 40-term funct. eq. means that we have a sum 
+$$
+(\text{Pentagon}_i) \otimes A_3~\text{polytope}_i
+\quad or \quad A_2 \otimes A_1~\text{polytope}_i
+$$
+
+Question: what the coproduct of that 40 term identity looks like this way? 
+
+In our paper, I wrote it in the Appendix explicitly as 
+Pentagon $\otimes$ $\mathcal{A}$-coordinate expression - so
+what it means geometrically? 
+
+\item \underline{Comment from MP}
+
+$D_4$ contains no $A_2\times A_1$ but it does contain four cubes $A_1 \times A_1 \times A_1$ and 12 $A_3$'s. As you say, to each of these objects there corresponds a unique $\mathcal{A}$-coordinate - but these are reflected in the multiplicatively independent $\mathcal{X}$-coordinates, of which there are indeed 16. So, I investigated the coproduct of the 40 term identity and one gets a sum of terms of the form
+$$
+\sum \text{pentagon} * \text{multiplicative~independent}~\mathcal{X}\text{-coordinate}
+$$
+However, not all possible $\mathcal{X}$-coordinates appear! Out of the 16 only 12 appear, which leads me to conjecture that the desired expression is
+$$
+\sum \text{pentagon} \otimes A_3
+$$
+It is not clear to me however how the association goes: which pentagon(s) go with which $A_3$? To see this I'll have to write the $\mathcal{X}$-coordinates in terms of the $\mathcal{A}$-coordinates to make the map precise.
+
+\item I mean try to understand contributions of the ${\mathcal{A}}$-coordinates, since they are multiplicatively independent. A set of independent $\mathcal{X}$-coordinates is not quite well defined.
+
+\item Let us take the pentagon functions assigned to all pentagons on
+the cluster polytope of type $E_7$, that is $\Conf_7(P^3)$.
+
+Let us skewsymmetrise each of these pentagon functions.
+
+1) How many different skewsymmetric functions on $\Conf_7(P^3)$ we get
+this way?
+
+2) If not that many, can one list them?
+
+To clarify:
+
+Take 7 points in $P^3$, so far cyclically ordered.
+The space of such cyclically ordered 7-tuples has $E_7$ type cluster structure.
+
+So there are plenty pentagons on its Stasheff polytope. Take one of them.
+This means that given 7 points in $P^3$, $(z_1, ..., z_7)$
+we created a configuration of 5 points on $P^1$, say described by two
+cluster coordinates
+
+$$
+X(z_1, ..., z_7), Y(z_1, ..., z_7)
+$$
+
+Now make pentagon "function" meaning element in
+
+$$
+B_3 \otimes C^* + B_2 \wedge B_2
+$$
+-- depending on those $(z_1, ..., z_7)$.
+
+Skew symmetrise it means apply 7! permutations to $(z_1, ..., z_7)$, for
+each of them
+calculate the
+$B_3 \otimes C^* + B_2 \wedge B_2$ invariant, and take sum with signs.
+
+In practice most of them immediately die, so we get zero.
+
+So some of these pentagon are distinguished by surviving skew symmetrization.
+
+\end{enumerate}
+
+\end{document}
