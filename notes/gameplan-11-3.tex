@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{parskip} 
+\usepackage{hyperref}
+
+\DeclareMathOperator{\Li}{Li}
+
+\newcommand*\checked{\item[\checkmark]}
+
+\oddsidemargin -0.04cm 
+\evensidemargin -0.04cm
+\topmargin -0.25cm 
+\textwidth 16.59cm 
+\textheight 20.5cm
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+\fancyhf{}
+
+\lhead{\textbf{Cluster Polylogarithms Gameplan} \hfill \today}
+
+\underline{Progress so far}
+\begin{itemize}
+	\checked Generated subalgebras of finite cluster algebras: $A_2, A_3, A_4, D_4, A_5, D_5, E_6$.
+	\checked Catalogued identities between $f_{A_2}$ and $f_{A_3}$ across subalgebras.
+	\checked Found larger subalgebras with ``unique'' functions by applying \emph{cluster automorphisms}. Other criteria, such as collinear limits, branch cuts (first-entry, Steinmann), and Poisson bracket structure were not helpful.
+	\checked Using new $f_{D_5}$, found new representation $R^{(2)}_7=\sum \pm f_{D_5}$, where the sum includes all $D_5$ subalgebras of $E_6$
+	\checked Understood Steinmann conditions for 8-particle kinematics and generated corresponding BDS-like ansatz. \\
+\end{itemize}
+
+\underline{Next steps}\\ \\
+BDS-like remainder functions:
+\begin{itemize}
+	\item Get BDS-like symbol for 7 and 8 pts.
+
+	\item Fit $R^{(2)}_8$ to at least $D_5$ and hopefully $E_6$ functions.
+
+	\item Find classical completion for $R^{(2)}_8$.
+
+	\item Fit $R^{(2)}_7$ (full symbol, BDS-like subtracted) using algebras of different types, e.g. $D_5 + A_3$'s + \emph{etc}. (Don't forget to look at $A_3\times A_2$-type algebras, particularly at classical/product level.)\\
+\end{itemize}
+Cluster automorphisms:
+\begin{itemize}
+	\item Write note on cluster automorphisms, $D_5$ function, and how $D_4$ and $A_4$ fail to have relevant cluster functions.
+
+	\item Understand more deeply what sign choices to take for cluster automorphisms.
+
+	\item Fix remaining free parameters in $D_5$ function.\\
+\end{itemize}
+Cluster adjacency (see \url{https://arxiv.org/pdf/1710.10953.pdf}):
+\begin{itemize}
+	\item Is cluster adjacency precisely Steinmann? We can probe this at eight points by seeing if cluster adjacency breaks down in precise correspondence with how the Steinmann relations are broken in a given BDS-like normalization.
+
+	\item What is the dimension of the symbol space with coproduct equal to the ``known" $A_2$ function and satsifying cluster adjacency (either at the level of $\mathcal{A}$-coords or some equivalent/stronger/weaker condition on adjacent $\mathcal{X}$-coords)? What about higher algebras? This condition + cluster automorphisms should fix MANY degrees of freedom at the symbol level -- the question is whether this will be useful for writing down amplitudes. 
+
+	\item Despite explicitly working in terms of 42 $\mathcal{X}$-coordinates chosen on Gr(4,7), all of the claims James makes are related to $\mathcal{A}$-coordinates -- why is this? What precisely is the statement at the level of $\mathcal{X}$-coords? To study this, generate conversion from $\mathcal{X}$-coords to $\mathcal{A}$-coords for all algebras and then use $\mathcal{X}\to\mathcal{A}$ map to impose cluster adjacency at level of symbol for generic $A_2$ (and higher) symbol.
+
+	\item How does the adjacency condition at symbol-level connect with the ``locality" condition at coproduct level? It is likely that symbol adjacency $\to$ coproduct locality. 
+	
+	\item Is there a version of the first-entry condition for non-Gr(4,n) algebras?
+
+	\item What (superposition of) cluster mutation paths corresponds to the amplitude? (Can we identify a cluster or subalgebra within Gr(4,6) on which the symbol of the amplitude `starts' and from which we can think of the symbol simply being a set of parallel mutation paths?)
+\end{itemize}
+\end{document}

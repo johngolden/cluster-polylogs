@@ -1,5 +1,63 @@
 (* ::Package:: *)
 
+(*code for generating algebras*)
+
+(*B-matrix mutation rules*)
+bb[B_][k_][i_,j_]:=Which[Or[i==k,j==k],-B[[i,j]],B[[i,k]]B[[k,j]]<=0,B[[i,j]],And[B[[i,k]]>0,B[[k,j]]>0],B[[i,j]]+B[[i,k]]B[[k,j]],And[B[[i,k]]<0,B[[k,j]]<0],B[[i,j]]-B[[i,k]]B[[k,j]]];
+
+(*mutate a given cluster at node k -- valid for X-coordinates*)
+mutate[k_][cluster__]:=Module[{x,xp,B,Bp,ap,ans},
+x[i_]:=cluster[[1,i]];
+B=cluster[[2]];
+Bp=Table[bb[B][k][i,j],{i,Length[B]},{j,Length[B]}];
+xp[i_]:=If[i==k,1/x[k],Together[x[i](1+x[k]^Sign[B[[i,k]]])^B[[i,k]]]];
+Return[{xp/@Range[Length[cluster[[1]]]],Bp}]];
+
+(*mutate a given cluster at node k -- valid for A-coordinates*)
+mutateA[k_][cluster__]:=Module[{a,ap,B,Bp,ans},
+a[i_]:=cluster[[1,i]];
+B=cluster[[2]];
+Bp=Table[bb[B][k][i,j],{i,Length[B]},{j,Length[B]}];
+ap[i_]:=FullSimplify[1/a[i] (Product[a[j]^If[B[[i,j]]>0,B[[i,j]],0],{j,Length[B]}]+Product[a[j]^If[B[[i,j]]<0,-B[[i,j]],0],{j,Length[B]}])];
+Return[{Insert[Delete[a/@Range[Length[cluster[[1]]]],k],ap[k],k],Bp}]];
+
+(*sequences of multiple mutations*)
+mutation[i___][cluster_]:=ComposeList[mutate/@{i},cluster][[-1]]
+mutationA[i___][cluster_]:=ComposeList[mutateA/@{i},cluster][[-1]]
+
+(*generates X-coordinates for a cluster given in A-coordinates *)
+xCoords[cluster_]:=
+FullSimplify[Table[Product[cluster[[1,j]]^cluster[[2,i,j]],{j,Length[cluster[[2]]]}],{i,Length[cluster[[1]]]}]];
+
+(*beginning with initial `seed` cluster, mutates on progressively longer sequences until no new clusters generated.
+returns a list of clusters of the form {{x-coords},{b-matrix},coord}. all relevant finite cluster algebras have depth<12, but for larger algebras can increase this parameter*)
+generateAlgebra[seed_,depthToTry_:15]:=Module[{rank,doMutation,mutationList,knownClusters,boundary,newMutations,newMutationsGood,duplicates,newMutationsGoodReduce,ret,a2Subs},
+rank=Length[seed[[1]]];
+doMutation[x___]:=doMutation[x]=Sort[mutation[x][seed][[1]]];
+mutationList=Prepend[{#}&/@Range[rank],{}];
+knownClusters=doMutation@@@mutationList;
+Do[boundary=Select[mutationList,Length[#]==depth-1&];
+newMutations=DeleteCases[Flatten[Table[Append[boundary[[i]],#]&/@Range[rank],{i,Length[boundary]}],1],{a___,b_,b_}];
+newMutationsGood=Select[newMutations,!MemberQ[knownClusters,doMutation@@#]&];
+duplicates=Gather[newMutationsGood,(doMutation@@#1)==(doMutation@@#2)&];
+newMutationsGoodReduce=#[[1]]&/@duplicates;
+If[Length[newMutationsGood]==0,Break[]];
+mutationList=Join[mutationList,newMutationsGoodReduce];
+knownClusters=Union[doMutation@@@mutationList],{depth,2,depthToTry}];
+ret=Table[Append[(f@@mutationList[[i]])/.f[a___]:>Together[mutation[a][seed]],mutationList[[i]]],{i,Length[mutationList]}];
+Return[ret]];
+
+(*calculate poisson bracket between two given x-coordinates inside a given algebra*)
+pb[alg_][x_,y_]:=Module[{posX,posY,intersect},
+posX=Position[alg,{___,x,___}];
+posY=Position[alg,{___,y,___}];
+intersect=Intersection[posX,posY];
+If[Length[intersect]==0,Return[I]];
+posX=Select[Position[alg[[intersect[[1,1]],1]],x],Length[#]==1&][[1,1]];
+posY=Select[Position[alg[[intersect[[1,1]],1]],y],Length[#]==1&][[1,1]];
+Return[alg[[intersect[[1,1]],2,posX,posY]]];]
+
+
 (*seeds for relevant finite cluster algebras*)
 a1Seed = {{x1},{{0}}};
 a2Seed={{x1,x2},{{0,1},{-1,0}}};
@@ -107,3 +165,26 @@ a3a1a1Xs[x1_,x2_,x3_,x4_,x5_]:={1/x1,x1,1/x2,(1+x1)/(x1 x2),x2,(x1 x2)/(1+x1),1/
 a2a2a1Xs[x1_,x2_,x3_,x4_,x5_]:={1/x1,x1,1/x2,(1+x1)/(x1 x2),x2,(x1 x2)/(1+x1),1/(x1 (1+x2)),x1 (1+x2),x2/(1+x1+x1 x2),(1+x1+x1 x2)/x2,1/x3,x3,1/x4,(1+x3)/(x3 x4),x4,(x3 x4)/(1+x3),1/(x3 (1+x4)),x3 (1+x4),x4/(1+x3+x3 x4),(1+x3+x3 x4)/x4,1/x5,x5};
 a2a1a1a1Xs[x1_,x2_,x3_,x4_,x5_]:={1/x1,x1,1/x2,(1+x1)/(x1 x2),x2,(x1 x2)/(1+x1),1/(x1 (1+x2)),x1 (1+x2),x2/(1+x1+x1 x2),(1+x1+x1 x2)/x2,1/x3,x3,1/x4,x4,1/x5,x5};
 a1a1a1a1a1Xs[x1_,x2_,x3_,x4_,x5_]:={1/x1,x1,1/x2,x2,1/x3,x3,1/x4,x4,1/x5,x5};
+
+a2Xs[]=a2Xs[x1,x2];
+a3Xs[]=a3Xs[x1,x2,x3];
+a4Xs[]=a4Xs[x1,x2,x3,x4];
+a5Xs[]=a5Xs[x1,x2,x3,x4,x5];
+d4Xs[]=d4Xs[x1,x2,x3,x4];
+d5Xs[]=d5Xs[x1,x2,x3,x4,x5];
+e6Xs[]=e6Xs[x1,x2,x3,x4,x5,x6];
+
+a1a1Xs[]=a1a1Xs[x1,x2];
+a2a1Xs[]=a2a1Xs[x1,x2,x3];
+a1a1a1Xs[]=a1a1a1Xs[x1,x2,x3];
+a3a1Xs[]=a3a1Xs[x1,x2,x3,x4];
+a2a2Xs[]=a2a2Xs[x1,x2,x3,x4];
+a2a1a1Xs[]=a2a1a1Xs[x1,x2,x3,x4];
+a1a1a1a1Xs[]=a1a1a1a1Xs[x1,x2,x3,x4];
+d4a1Xs[]=d4a1Xs[x1,x2,x3,x4,x5];
+a4a1Xs[]=a4a1Xs[x1,x2,x3,x4,x5];
+a3a2Xs[]=a3a2Xs[x1,x2,x3,x4,x5];
+a3a1a1Xs[]=a3a1a1Xs[x1,x2,x3,x4,x5];
+a2a2a1Xs[]=a2a2a1Xs[x1,x2,x3,x4,x5];
+a2a1a1a1Xs[]=a2a1a1a1Xs[x1,x2,x3,x4,x5];
+a1a1a1a1a1Xs[]=a1a1a1a1a1Xs[x1,x2,x3,x4,x5];

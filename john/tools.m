@@ -3,7 +3,7 @@
 SetDirectory[NotebookDirectory[]<>"/packages"];
 
 
-Get/@FileNames["*.m"]
+Get/@DeleteCases[FileNames["*.m"],"polylogs_clean.m"]
 
 
 SetDirectory[NotebookDirectory[]];
