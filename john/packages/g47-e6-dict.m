@@ -19,4 +19,4 @@ g47e6Reps = {(br[1,2,3,6] br[1,2,4,5])/(br[1,2,3,4] br[1,2,5,6])->(1+x1)/(x1 x2 
 e6ify[x_]:=x/.g47e6Reps;
 
 (*takes an e6 xcoord and turns it in to a g47 one*)
-g47ify[x_]:=cleanXcoord[7][x/.e6g47Reps];
+g47ify[x_]:=g47ify[x]=clean[7][x/.Thread[{x1,x2,x3,x4,x5,x6}->g47Seed]];

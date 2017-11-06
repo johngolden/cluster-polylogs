@@ -70,3 +70,47 @@ Return[(Sort[Sort/@(#/.a_String[x__]:>(With[{tmp=clusters[[#]]},Append[tmp[[3]],
 (*finally we have what we came for*)
 subpoly[clusters_][type_]:=Flatten[fullSubStructure[clusters][type],1];
 subalg[clusters_][type_]:=#[[1]]&/@fullSubStructure[clusters][type];
+
+
+(*returns the coordinates of all clusters in `algebra` containing all of 'listOfCoords'.
+`listOfCoords` can be given as: a list of x-coords, a list of x-coords and b-matrix, or some 
+mutation sequence (e.g. {2,3,4}). *)
+coord[algebra_][listOfCoords_]:=Module[{cluster},
+cluster=If[Length[listOfCoords]>1\[And]Length[Variables[listOfCoords]]>0,If[Length[Variables[listOfCoords[[2]]]]==0,listOfCoords[[1]],listOfCoords],listOfCoords];
+If[Length[Variables[cluster]]>0,If[Length[algebra[[1]]]==3,With[{pos=Position[Length[Intersection[#[[1]],cluster]]&/@algebra,Length[cluster]]},Which[Length[pos]==1,algebra[[pos[[1,1]],3]],Length[pos]==0,0,Length[pos]>1,algebra[[#[[1]],3]]&/@pos]],coord[generateAlgebra[algebra[[1]]]][cluster]],coord2[algebra][(f@@cluster)/.f[a___]:>mutation[a][algebra[[1,1;;2]]]]]];
+
+
+(*given some coordinate, returns the full cluster with x-coords, b-matrix
+and "correct" coordinate (in case some generic mutation sequence has been 
+given as a coordinate*)
+cluster[algebra_][Coord_]:=With[{tmpCluster=(f@@Coord)/.f[a___]:>mutation[a][algebra[[1,1;;2]]]},Append[tmpCluster,coord[algebra][tmpCluster]]];
+
+
+(*given a `subalgebra` in the format {3,2,4,"a4"[1,5,2,3]}, returns a list of 
+coordinates in `algebra` that correspond to the clusters in `subalgebra`*)
+
+subalgCoords[algebra_][{bbase___,ttype_[nnodes__]}]:=subalgCoords[algebra][{bbase,ttype[nnodes]}]=Module[{base,type,nodes,mutations,coords},
+base={bbase};
+nodes={nnodes};
+type=ToExpression[ttype];
+mutations=(#[[-1]]&/@type[])/.Thread[Range[Length[nodes]]->nodes];
+coords=#[[-1]]&/@(cluster[algebra]/@(Join[base,#]&/@mutations));
+Return[coords];];
+
+
+(*given a `subalgebra` in the format {3,2,4,"a4"[1,5,2,3]}, returns the generating
+seed of `subalgebra` in terms of coordinates in `algebra`*)
+
+subalgSeed[algebra_][{bbase___,ttype_[nnodes__]}]:=Module[{base,nodes,type},
+base={bbase};
+nodes={nnodes};
+type=ToExpression[ttype];
+Return[cluster[algebra][base][[1,nodes]]];];
+
+(*given a `subalgebra` in the format {3,2,4,"a4"[1,5,2,3]}, returns the full subalgebra*)
+
+fullSub[algebra_][{bbase___,ttype_[nnodes__]}]:=Module[{base,type,nodes,mutations,coords},
+base={bbase};
+nodes={nnodes};
+type=ToExpression[ttype];
+Return[type@@subalgSeed[algebra][{bbase,ttype[nnodes]}]];];

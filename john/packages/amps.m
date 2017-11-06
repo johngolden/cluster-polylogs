@@ -5,9 +5,11 @@ oldDir=Directory[];
 SetDirectory[Directory[]<>"/data"];
 <<ratios.mx
 <<xcoords.mx
+<<symbols.mx
 <<schoutens.mx
 <<conjRules.mx
 <<m1Rules.mx
+<<poissonData.m
 SetDirectory[oldDir];
 
 
@@ -23,6 +25,12 @@ xcoords[7]=ALLXCOORDS[[2]];
 xcoords[8]=ALLXCOORDS[[3]];
 xcoords[9]=ALLXCOORDS[[4]];
 Clear[ALLXCOORDS];
+
+symbol[6]=ALLSYMBOLS[[1]];
+symbol[7]=ALLSYMBOLS[[2]];
+symbol[8]=ALLSYMBOLS[[3]];
+symbol[9]=ALLSYMBOLS[[4]];
+Clear[ALLSYMBOLS];
 
 schoutens[6]=ALLSCHOUTENS[[1]];
 schoutens[7]=ALLSCHOUTENS[[2]];
@@ -191,10 +199,6 @@ Return[k]];
 numRatios[n_]:=numRatios[n]=allRatios[n]//num[n];
 numXcoords[n_]:=numXcoords[n]=xcoords[n]//num[n];
 
-(*avoid lots of schoutenizing to simplify a complicated expression that you know is an xcoord*)
-
-cleanXcoord[n_][x_]:=xcoords[n][[Position[num[n][xcoords[n]],num[n][x]][[1,1]]]];
-
 
 (*the length of the multiplicative basis of a given set of cross-ratios*)
 
@@ -270,12 +274,14 @@ tensorVars[x_]:=Union[Cases[Variables[x],tensor[__]]//.tensor[a__]:>a];
 
 (*motivic projectors*)
 
-cleanWedge[x_]:=((((x//.wedge[a_,a_]:>0)//.cb2[a_]:>If[Position[Sort[{a,1/a}],a]=={{1}},cb2[a],-cb2[1/a]])//.wedge[a___,-b_,c___]:>-wedge[a,b,c])/.wedge[cb2[a_],cb2[b_]]:>If[Position[Sort[{a,b}],a]=={{1}},wedge[cb2[a],cb2[b]],-wedge[cb2[b],cb2[a]]])/.wedge[cb2[a_],cb2[b_]]:>wedge[cb2[1/a],cb2[1/b]];
-delta[n_][x_]:=tensorExpand[((x/.{tensor[a_,b_,c_,d_]:>tensor[a,b,c,d]-tensor[a,b,d,c]-tensor[b,a,c,d]+tensor[b,a,d,c]-tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,c,a,b]-tensor[d,c,b,a]})//.{wedge[cb2[a_],cb2[b_]]:>tensor[cb2[a],m1[n][b],b]-tensor[cb2[a],b,m1[n][b]]-tensor[cb2[b],m1[n][a],a]+tensor[cb2[b],a,m1[n][a]],tensor[cb3[a_],b_]:>tensor[cb2[a],a,b]-tensor[cb2[a],b,a], tensor[cb2[a_],wedge[b_,c_]]:>tensor[cb2[a],b,c]-tensor[cb2[a],c,b]})//.tensor[cb2[a_],b__]:>tensor[m1[n][a],a,b]-tensor[a,m1[n][a],b]];
+cleanCoproducts[x_]:=(x//.{cb2[a_]:>cb2[Together[a]],cb3[a_]:>cb3[Together[a]]})//.tensor[a_,b_]:>tensor[a,Together[b]];
+cleanWedge[x_]:=((((cleanCoproducts[x]//.wedge[a_,a_]:>0)//.cb2[a_]:>If[Position[Sort[{a,1/a}],a]=={{1}},cb2[a],-cb2[1/a]])//.wedge[a___,-b_,c___]:>-wedge[a,b,c])/.wedge[cb2[a_],cb2[b_]]:>If[Position[Sort[{a,b}],a]=={{1}},wedge[cb2[a],cb2[b]],-wedge[cb2[b],cb2[a]]])/.wedge[cb2[a_],cb2[b_]]:>wedge[cb2[1/a],cb2[1/b]];
 
-b2b2[n_][x_]:=tensorExpand[(x/.wedge[cb2[a_],cb2[b_]]:>tensor[m1[n][a],a,m1[n][b],b])/.{tensor[a_,b_,c_,d_]:>tensor[a,b,c,d]-tensor[a,b,d,c]-tensor[b,a,c,d]+tensor[b,a,d,c]-tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,c,a,b]-tensor[d,c,b,a]}];
+delta[n_][x_]:=tensorExpand[((x/.{tensor[a_,b_,c_,d_]:>tensor[a,b,c,d]-tensor[a,b,d,c]-tensor[b,a,c,d]+tensor[b,a,d,c]-tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,c,a,b]-tensor[d,c,b,a]})//.{wedge[cb2[a_],cb2[b_]]:>-tensor[cb2[a],m1[n][b],b]+tensor[cb2[a],b,m1[n][b]]+tensor[cb2[b],m1[n][a],a]-tensor[cb2[b],a,m1[n][a]],tensor[cb3[a_],b_]:>tensor[cb2[a],a,b]-tensor[cb2[a],b,a], tensor[cb2[a_],wedge[b_,c_]]:>tensor[cb2[a],b,c]-tensor[cb2[a],c,b]})//.tensor[cb2[a_],b__]:>tensor[m1[n][a],a,b]-tensor[a,m1[n][a],b]];
 
-b3c[n_][x_]:=(x//.{tensor[a_,b_,c_,d_]:>Expand[(Tensor[a,b,c,d]-Tensor[b,a,c,d]-Tensor[b,c,a,d]+Tensor[c,b,a,d]) -
+b2b2[n_][x_]:=tensorExpand[((x/.tensor[cb3[_],_]:>0)/.wedge[cb2[a_],cb2[b_]]:>tensor[m1[n][a],a,m1[n][b],b])/.{tensor[a_,b_,c_,d_]:>tensor[a,b,c,d]-tensor[a,b,d,c]-tensor[b,a,c,d]+tensor[b,a,d,c]-tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,c,a,b]-tensor[d,c,b,a]}];
+
+b3c[n_][x_]:=((x/.wedge[__]:>0)//.{tensor[a_,b_,c_,d_]:>Expand[(Tensor[a,b,c,d]-Tensor[b,a,c,d]-Tensor[b,c,a,d]+Tensor[c,b,a,d]) -
 	(Tensor[b,c,d,a]-Tensor[c,b,d,a]-Tensor[c,d,b,a]+Tensor[d,c,b,a]) ],tensor[cb3[a_],b_]:>Tensor[m1[n][a],a,a,b]-Tensor[a,m1[n][a],a,b]})//.Tensor:>tensor;
 
 
@@ -355,7 +361,7 @@ Return[base]];
 
 (*first, clean up ratios*)
 
-clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],bad[R]]];
+clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],Print["bad ratio encountered"];Abort[];]];
 
 a2Vars[n_][{x1_,x2_}]:=Module[{x,answer},
 x[1]=x1;
@@ -415,3 +421,20 @@ ijkVals[n_]:=ijkVals[n]=Union[Flatten[Table[NestList[Mod[#+1,n,1]&/@#&,{i,j,k},n
 
 (*find conformal weight of an object*)
 confWeight[a_]:=Sort[Flatten[Variables[a]//.{br[x__]:>{x},ccap[x__]:>{x},ccap1[x_,y__]:>{x,x,y},tup[x__]:>{x}}]];
+
+
+(*the b2b2 formula*)
+
+b2b2Base[7]=-wedge[cb2[V[1,4]],cb2[Z[1,5]]]-wedge[cb2[V[1,3,5]],cb2[Zm[1,3,5]]]-wedge[cb2[V[1,3,5]],cb2[Zm[6,1,3]]];
+b2b2Full[7]=Expand[1/2addSym[7][b2b2Base[7]/.cExp[7]]];
+
+
+(* load clean tools, without knowledge of amplitudes or Gr(4,n)*)
+
+cleanTools:=Module[{},
+Clear[a2B2b2,a2B3c,a2Vars,addConj,addCyclic,addDihedral,addFlip,addSym,allRatios,b2b2,b3c,brNum,brNumPartial,brPrint,cap,cap1,capAlt,cBasis,cBasisSym,ccap1Print,ccapPrint,cExp,clean,cleanWedge,collinear,collinearLimit,confWeight,conjRules,conjugate,cycle,delta,dFast,expand,findMaxSoln,fit,fitBlind,fixCCAP,flip,genEqs,genEqsFull,goodBrs,goodCap1s,goodCaps,goodFirst,goodLast,goodLetters,ijkVals,length,listSym,m1,mod,MOD,multBasis,multLength,multSolveFull,nice,num,numPG,numRand,numRatios,numXcoords,print,rangeV,rangeZ,rangeZm,ratios,schoutens,sklyanin,sklyaninZ,sklyaninZPartial,solve,sort,sortInverse,sortMinus,sym,symbol,symRules,Tensor,Tensor1,Tensor2,Tensor3,Tensor4,tensorClean,tensorExpand,tensorExpandFull,tensorVars,vars,vP1,vP1s,vs,vSym,xcoords,z,Z,zm,Zm,zmP1,zp,Zp,zP1,zP1s,zpP1,zs,zSym];
+oldDir=Directory[];
+SetDirectory[Directory[]<>"/packages"];
+<<polylogs_clean.m;
+SetDirectory[oldDir]];
+
