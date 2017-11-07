@@ -1,0 +1,186 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+
+\newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
+
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Conventions for $n$-particle Letters and Ratios} \hfill \today}
+
+\subsection*{Letters}
+The letters appearing at two-loop MHV are generically of the form
+\begin{equation}\label{def:lettersGeneric}
+\ket{i\,j\,k\,l}, \qquad
+\ket{i\,j\,(klm)\cap(nop)},\qquad
+\ket{i\,(jk)\,(lm)\,(no)},
+\end{equation}
+where 
+\begin{align}
+\begin{split}
+	\ket{i(jk)(lm)(no)} &\equiv \ket{ijlm}\ket{ikno} - \ket{ijno} \ket{iklm},\\
+	\ket{ij\overline{k} \cap \overline{l}} &\equiv \ket{i\overline{k}}\ket{j\overline{l}} - \ket{j\overline{k}}\ket{i\overline{l}}.
+\end{split}
+\end{align} 
+Furthermore only a subset of these letters actually appear, they are
+\begin{align}\label{def:letters}
+\begin{split}
+\ket{i\,\,i{+}1\,\,jk},& \quad 
+\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}, \\ 
+\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}},& \quad
+\ket{i(i{-}2\,\,i{-}1)(i{+}1\,\,i{+}2)(j\,\,j{+}1)}.
+\end{split}
+\end{align}
+These letters have the following action under parity:
+\begin{align}\label{eq:conjRules}
+\begin{split}
+&\hspace{-1cm}\ket{i\,\,i{+}1\,\,jk}\quad\to\quad\,\,\ket{i^+}\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}}\\
+&\hspace{-1cm}\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}}\,\,\,\to\,\,\,\,\ket{j^{-}}\ket{j^{+}}\ket{k^{-}}\ket{k^{+}}\ket{i^{+}}\ket{i\,\,i{+}1\,\,jk}\\
+&\hspace{-1cm}\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}\to\\&\qquad\qquad\qquad\ket{i^+}\ket{i^-}\ket{j^+}\ket{k^+}\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}\\
+&\hspace{-1cm}\ket{i(i{-}2\,\,i{-}1)(i{+}1\,\,i{+}2)(j\,\,j{+}1)}\to\\&\qquad\qquad\qquad\ket{i{-}1^-}\ket{i{-}1^+}\ket{i{+}1^-}\ket{i{+}1^+}\ket{j^+}\ket{j\,\,j{+}1\,\,i{-}1\,\,i{+}1}
+\end{split}
+\end{align}
+where we have used the notational shorthand
+\begin{align}
+\begin{split}
+\ket{i^{\pm}}&=\pm\ket{i-1\,\,i\,\,i+1\,\,i\pm2}\\
+\bar{j}&=(j-1\,j\,j+1).
+\end{split}
+\end{align}
+
+\subsection*{Ratios}
+
+Note: basically all conjectures in this section are based on explicit calculation through $n=9$.
+
+\begin{definition} 
+A \textbf{good cross-ratio} $r$ as a DCI product of integer powers of letters in (\ref{def:letters}) such that $-1-r$ is also a product of integer powers of letters. 
+\end{definition}
+
+From now on when I refer to ``cross-ratio'' I am refering to this definition, and the ``$-1-r$'' criteria may seem a bit funny but the reason behind it is so that the following conjecture holds:
+\begin{conjecture}
+Given a cross-ratio $r$, exactly one of $\{r,1/r,-1/(1+r)\}$ will be positive when evaluated on any kinematic point in the positive grassmannian. This is then a cluster $\mathcal{X}$-coordinates on $\Gr(4,n)$.
+\end{conjecture}
+We can extend this slightly by defining
+\begin{definition}
+The \textbf{family} of a cross-ratio $r$ is the set
+\begin{equation}
+\{ r, -1 - r, -1 - 1/r, 1/r, -1/(1+r), -1/(1+1/r) \}.
+\end{equation}
+\end{definition}
+Note that each cross-ratio belongs to only one family, so the number of cross-ratios is always a multiple of 6. Then, out of this set, exactly two elements (that are multiplicative inverses of each other) will be cluster $\mathcal{X}$-coordinates on $\Gr(4,n)$. 
+
+When working at the level of the symbol one often desires a multiplicatively independent set of cross-ratios to express the symbol in terms of (or, in other words, a set of linearly independent ratios when taken as the arguments of $\log$'s). Therefore we care about: 
+\begin{conjecture}
+The total number of multiplicatively independent cross-ratios for $n$ particles is $\frac{3}{2}n(n-5)^2$. 
+\end{conjecture}
+Of course we also care about the number of \emph{algebraically} independent cross-ratios, which is understood to be $3n-15$ (this is just the number of unfrozen seeds in the cluster for $\Gr(4,n)$). But for now we will focus on multiplicative independence, which we catalog here:
+\begin{table}[h]
+\begin{center}
+    \begin{tabular}{ c|c|c|c|}
+        \cline{1-4}
+    \multicolumn{1}{|c|}{$n=$} & Total \# of letters & Total \# of ratios & Mult. basis  \\ \hline
+    \multicolumn{1}{|c|}{6}& 15 & 90 & 9   \\ \hline 
+    \multicolumn{1}{|c|}{7}& 49 & 2310 & 42 \\ \hline
+    \multicolumn{1}{|c|}{8}& 116 & 9528 & 108   \\ \hline
+        \multicolumn{1}{|c|}{9}& 225 & 23436 & 216   \\ \hline
+    \end{tabular}
+\end{center}
+\end{table}
+
+
+\subsection*{The $\{v,z\}$ basis}
+
+The first-entry condition states that the first entry of the symbol must be drawn from the set of cross-ratios given by
+\begin{equation}
+u_{ij} = \frac{\ket{i\,i{+}1\,j{+}1\,j{+}2} \ket{i{+}1\,i{+}2\,j\,j{+}1}}
+{\ket{i\,i{+}1\,j\,j{+}1} \ket{i{+}1\,i{+}2\,j{+}1\,j{+}2}}.
+\end{equation}
+(Note that the $u_{ij}$ are not technically good cross-ratios per our definition, instead $-u_{ij}$ are ``correct'', but let's ignore that for now!). Interestingly, none of the $u_{ij}$ are cluster $\mathcal{X}$-coordinates. Instead we consider the closely related quantities
+\begin{equation}
+v_{ijk} = \frac{1}{\prod_{a=j}^{k-1} u_{ia}}-1
+=-\frac{\langle i{+}1 (i\,i{+}2)(j\,j{+}1)(k\,k{+}1) \rangle}{\langle i\,i{+}1\,k\,k{+}1\rangle \langle i{+}1\,i{+}2\,j\,j{+}1\rangle}.
+\end{equation}
+$v_{ijk}$ is a $\mathcal{X}$-coordinates as long as $i<j<k$ (mod $n$). There are $\frac{1}{2}n(n-5)^2$ of these at each $n$. We can phrase the familiar first-entry condition in terms of these unfamiliar variables by saying that only the quantities $1+v_{ijk}$ are allowed in the first entry of the symbol of any function with physical branch cuts.
+
+The last-entry condition states that the last entry of the symbol of any MHV amplitude must, as a consequence of extended supersymmetry, be drawn from the set of Plu\"cker coordinates of the form $\ket{\overline{i}\,j} \equiv \ket{i{-}1\,i\,i{+}1\,j}$.
+We therefore might like to include ratios built purely out of these objects in our ansatz, such as
+\begin{equation}
+-\frac{\ket{i\,\overline{j}}\ket{i{+}1\,\overline{k}}}{\ket{i\,\overline{k}}\ket{i{+}1\,\overline{j}}},
+\qquad -\frac{\ket{\overline{i}\,j}\ket{\overline{i{+}1}\,k}}{\ket{\overline{i}\,k}\ket{\overline{i{+}1}\,j}}.
+\end{equation}
+As was the case with the $u_{ij}$ of the first-entry condition, none of these are $\mathcal{X}$-coordinates. Instead we consider the cross-ratios
+\begin{equation}
+z^+_{ijk} =\frac{\ket{i\,i{+}1\,\overline{j}\cap\overline{k}}}{\ket{i\,\overline{k}}\ket{i{+}1\,\overline{j}}},
+\qquad
+z^-_{ijk}=\frac{\langle i\,i{+}1\,j\,k\rangle \langle \overline{i}\,i{+}2\rangle}{\langle \overline{i}\,k \rangle \langle \overline{i{+}1} \,j\rangle}.
+\end{equation}
+The $z^{\pm}_{ijk}$ are all cluster $\mathcal{X}$-coordinates for $\Gr(4,n)$ as long as $i<j<k$ (mod $n$), and as suggested by the notation, $z^\pm_{ijk}$ are parity conjugates of each other. There are $n(n-5)^2$ such variables for each $n$. These are connected to the final-entry condition via
+\begin{equation}
+-1-z^+_{ijk} = \frac{\ket{i\,\overline{j}}\ket{i{+}1\,\overline{k}}}{\ket{i\,\overline{k}}\ket{i{+}1\,\overline{j}}},
+\qquad
+-1-z^-_{ijk} = \frac{\ket{\overline{i}\,j}\ket{\overline{i{+}1}\,k}}{\ket{\overline{i}\,k}\ket{\overline{i{+}1}\,j}}.
+\nonumber
+\end{equation}
+It is useful to define certain boundary cases of the above cross-ratios with overlapping indices:
+\begin{equation}
+v_{ij} = v_{i\,j\,j{+}1}, \qquad z_{ij} = z^-_{i\,j\,j{+}1},
+\end{equation}
+where parity takes $z_{ij}\to z_{ji}$.
+Similar to what was done in the previous paragraph, we may express the familiar last-entry
+condition in terms of these unfamiliar variables by saying that only the quantities $1+z_{ijk}^\pm$
+are allowed in the final entry of the symbol of any MHV amplitude.
+
+Note that the total number of $v-$ and $z-$type variables at each $n$ is $\frac{3}{2}n(n-5)^2$ -- precisely the same as the (conjectured) dimension of the space of multiplicatively independent cross-ratios. This leads us to conjecture that 
+\begin{conjecture}
+The set of $\{v,z\}$ ratios forms a multiplicately independent basis that spans the space of all cross-ratios for any \textbf{odd} n.
+\end{conjecture}
+For even $n$ the story is a bit more complicated, as it turns out that the $\{v,z\}$-basis is not multiplicatively independent for even $n$:\\
+\pagebreak\\
+\begin{table}[h!]
+\begin{center}
+    \begin{tabular}{ c|c|c|c|}
+        \cline{1-3}
+    \multicolumn{1}{|c|}{$n=$} & $\{v,z\}$-basis size & \# of mult. relations  \\ \hline
+    \multicolumn{1}{|c|}{6}& 9 & 2   \\ \hline 
+    \multicolumn{1}{|c|}{7}& 42 & 0 \\ \hline
+    \multicolumn{1}{|c|}{8}& 108 & 9   \\ \hline
+    \multicolumn{1}{|c|}{9}& 216 & 0  \\ \hline
+    \multicolumn{1}{|c|}{10}& 375 & 4  \\ \hline
+    \multicolumn{1}{|c|}{11}& 594 & 0  \\ \hline
+    \multicolumn{1}{|c|}{12}& 882 & 15  \\ \hline
+    \end{tabular}
+\end{center}
+\end{table}\\
+This raises the question of what ratios to actually express symbols and integrated amplitudes in terms of for even $n$. And here we arrive at a point I had not previously appreciated: the published form of $R^{(2)}_6$ only involves $\Li_k(-x)$ where $x\in\{v,z\}$ for $n=6$, however the \emph{symbol} of $R^{(2)}_6$ cannot be written in terms of the same $x$'s (for example, $1-z_{ij}$ cannot be written in terms of a product of $v$'s and $z$'s, so there would need to be some magic to happen at the level of the full symbol for the $\{v,z\}$-basis to be sufficient). Perhaps the symbol for the Steinmann-adjusted $R^{(2)}_6$ is expressible in only these $\mathcal{X}$-coordinates? I'm sure some expert in 6-particle kinematics will illuminate this trivial point for me\ldots
+
+A similar issue arises at $n=8$, so it will be helpful to understand the story at $n=6$ before settling on a choice of ratios that we want the final answer to be in terms of for $n=8$. 
+
+\end{document}
