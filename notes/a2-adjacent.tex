@@ -1,0 +1,87 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+\def\a{\mathcal{A}}
+\def\x{\mathcal{X}}
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{$A_2$-adjacent functions} \hfill \today}
+
+\noindent In this note we describe the space of weight-4 polylogarithm functions which depend on $\mathcal{X}$-coordinates of the $A_2$ cluster algebra. Taking our seed cluster as $x_1\to x_2$, we define our $\x$-coordinates:\\
+\begin{equation}\label{def:xcoords}
+	\x_1 = \frac{1}{x_1}, ~~~\x_2 = x_2,~~~ \x_3 = x_1 (1 + x_2),~~~ \x_4=\frac{1+x_1+x_1 x_2}{x_2},~~~ \x_5 = \frac{1+x_1}{x_1 x_2}.
+\end{equation}\\
+These satisfy $1+\x_i = \x_{i-1}\x_{i+1}$, and $\{1/\x_i, \x_{i+1}\}$ form the 5 clusters. Of course you can also work in the $\Gr(2,5)$ language, where we have the $\a$-coordinates $\ket{ij}$ and the $\x$-coordinates\\
+\begin{equation}
+	\x_1 = \frac{\ket{14}\ket{23}}{\ket{12}\ket{34}}, ~~~\x_2 = \frac{\ket{13}\ket{45}}{\ket{15}\ket{34}},~~~ \x_3 = \frac{\ket{12}\ket{35}}{\ket{15}\ket{23}},~~~ \x_4=\frac{\ket{25}\ket{34}}{\ket{23}\ket{45}},~~~ \x_5 = \frac{\ket{15}\ket{24}}{\ket{12}\ket{45}}.
+\end{equation}\\
+This makes it easy to define cluster $\a$-adjacency: the allowed pairs are $\{\ket{13},\ket{14}\}$, $\{\ket{14},\ket{24}\}$, $\{\ket{24},\ket{25}\}$, $\{\ket{25},\ket{35}\}$, $\{\ket{35},\ket{13}\}$ (along with all of the frozen nodes, $\ket{i~i+1}$). 
+
+\subsubsection*{Integrable Symbol}		
+Imposing integrability on a generic symbol of weight 4 with arguments drawn from (\ref{def:xcoords}) leaves us with 211 free parameters. 
+
+\subsubsection*{$\a$-adjacency vs. $\x$-adjacency}
+The two criteria we consider are:
+\begin{itemize}
+	\item cluster $\a$-adjacency (only $\{\ket{i~i+2},\ket{i~i+3}\}$+frozen can appear),
+	\item cluster $\x$-adjacency (only $\{\x_i,\x_{i+1}\}$ can appear).
+\end{itemize}
+For weight-4 integrable symbols on $A_2$, these criteria turn out to be equivalent (this is not surprising since there are an equal number of $\a$- and $\x$-coordinates). In both cases, 130 parameters are fit by cluster adjacency, leaving us with 81.
+
+\subsubsection*{Imposing cluster-y coproduct}
+Now that we have a symbol which is cluster adjacent, let us also impose that the coproduct be cluster-y as well. Based on experience we know that imposing full cluster adjacency at the level of the coproduct is not possible for $A_2$ (we have to wait for $A_3$ for that property), but we can at least impose that the $B_2\wedge B_2$ and $B_3 \otimes \mathbb{C}^*$ take only $\{\x\}_k$ as arguments. \\
+
+\noindent Interestingly, cluster adjacency at symbol level already imposes a cluster-y coproduct at the level of $B_2\wedge B_2$. Imposing this for $B_3 \otimes \mathbb{C}^*$ fixes 15 parameters (I think this is killing off terms like $\Li_4(-1-\x)$ and $\Li_4(-1-1/\x)$), leaving us with 66.
+
+\subsubsection*{Imposing symmetries}
+
+We now impose that the function respect the automorphisms of $A_2$. $A_2$ has a cyclic symmetry, $\sigma: \x_i\to \x_{i+1}$, and a flip symmetry $\tau: \x_i \to \x_{6-i}$. For each symmetry, we consider the case where $f_{A_2}$ is either invariant or ``covariant'' -- i.e. $\sigma(f_{A_2}) = f_{A_2}$ or $\sigma(f_{A_2}) = -f_{A_2}$. We will now tabulate how many free parameters remain for each of the 4 possible sign choices:
+\begin{center}
+\begin{tabular}{ rcccc }
+\multicolumn{1}{r}{}
+ & \multicolumn{1}{c}{$\sigma^+\tau^+$}
+ & \multicolumn{1}{c}{$\sigma^+\tau^-$}
+ & \multicolumn{1}{c}{$\sigma^-\tau^+$}
+ & \multicolumn{1}{c}{$\sigma^-\tau^-$} \\
+\cline{2-5}
+$f_{A_2}$: & 9 & 5 & 0 & 0 \\
+\end{tabular}
+\end{center}
+We'll refer to these functions by their behavior under $\sigma$ and $\tau$: $f_{A_2}^{++}$ and $f_{A_2}^{+-}$. Note that only $f_{A_2}^{+-}$ has non-zero $B_2\wedge B_2$ -- this is what we have traditionally called ``the $A_2$ function'' (at coproduct level).
+
+\subsubsection*{Poisson Structure and Mutation Interpretation}
+It would be nice to have an understanding of the Poisson structure in adjacent symbol entries for these functions -- in particular, can we fit the remaining parameters in order to bring out a nice Poisson structure? A dream scenario would be to have an interpretation of these symbol terms as a mutation sequence. \\
+
+\noindent Unfortunately at this point I don't seen any obvious interpretation, but this is worth returning to!
+
+\subsubsection*{Summary}
+
+We have determined two weight-4 functions of interested related to the $A_2$ cluster algebra: $f_{A_2}^{++}$ and $f_{A_2}^{+-}$. They have 9,5 free parameters (respectively), and $f_{A_2}^{+-}$ has non-zero $B_2\wedge B_2$. The next step is to evaluate these functions across $A_3$, impose the $++$ automorphism sign choice, and see how close we get to $\mathcal{E}^{(2)}_6$!
+
+\end{document}

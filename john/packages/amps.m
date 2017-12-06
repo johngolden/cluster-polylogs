@@ -237,6 +237,24 @@ If[Length[sol]>0,Return[(((Times@@(((cBasisSym[n])^(y/@Range[Length[X]]))//.sol[
 
 (*Tensor expand rules*)
 
+Tensor[a___,b_*c_,d___]:=Tensor[a,b,d]+Tensor[a,c,d];
+Tensor[a___,b_^c_,d___]:=c Tensor[a,b,d];
+Tensor[a___,b_/c_,d___]:=Tensor[a,b,d]-Tensor[a,c,d];
+Tensor[a___,b_?NumberQ,c___]:=0;
+
+tensorExpand[x_]:=(x/.tensor:>Tensor)/.Tensor:>tensor;
+
+collectTensors[x_]:=Module[{vars,array},
+vars=Cases[Variables[x],tensor[__]];
+array=CoefficientArrays[x,vars];
+Return[array[[1]]+vars.Normal[Expand[array[[2]]]]];];
+
+collectPs[x_]:=Module[{vars,array},
+vars=Cases[Variables[x],p[_]];
+array=CoefficientArrays[x,vars];
+Return[array[[1]]+vars.Normal[Expand[array[[2]]]]];];
+
+(*remove since Expand[] is broken
 (*slow but works for any length tensor*)
 
 Tensor[a___,b_*c_,d___]:=Tensor[a,b,d]+Tensor[a,c,d];
@@ -268,8 +286,9 @@ Tensor4[b_?NumberQ,c__]:=0;
 tensorExpand[x_]:=Expand[Expand[Expand[Expand[x/.tensor:>Tensor1]/.Tensor1:>Tensor2]/.Tensor2:>Tensor3]/.Tensor3:>Tensor4]/.Tensor4:>tensor;
 
 tensorClean[x_]:=Expand[tensorExpand[((x)//.tensor[a__]:>tensor@@(Together/@{a}))//.tensor[a__]:>tensor@@(Factor/@{a})]//.tensor[a__]:>tensor@@(Sort[{#,-#}][[-1]]&/@{a})];
-
+*)
 tensorVars[x_]:=Union[Cases[Variables[x],tensor[__]]//.tensor[a__]:>a];
+tensorClean[x_]:=tensorExpand[((x)//.tensor[a__]:>tensor@@(Together/@{a}))//.tensor[a__]:>tensor@@(Factor/@{a})]//.tensor[a__]:>tensor@@(Sort[{#,-#}][[-1]]&/@{a});
 
 
 (*motivic projectors*)
@@ -289,7 +308,9 @@ b3c[n_][x_]:=((x/.wedge[__]:>0)//.{tensor[a_,b_,c_,d_]:>Expand[(Tensor[a,b,c,d]-
 
 solve[eqs_]:=Module[{x,m,b,mat,matSolve,soln,isSolnGood},
 x=Variables[eqs];
+If[Length[x]==0,Return[{0->0}]];
 m=CoefficientArrays[eqs,x][[2]];
+If[Union[Flatten[Normal[m]]]=={0},Return[{0->0}]];
 b=-eqs/.p[_]:>0;
 mat=Transpose[Append[Transpose[m],b]];
 matSolve=Rationalize[Chop[DeleteCases[RowReduce[N[mat]],Table[0,{i,Length[mat[[1]]]}]]],.0000001];
@@ -302,6 +323,7 @@ genEqs[0]=0;
 genEqs[x_]:=With[{vars=DeleteCases[Variables[x],p[__]]},eqs=sortMinus[Normal[CoefficientArrays[x,vars]][[2]]]];
 genEqsFull[x_]:=With[{vars=DeleteCases[Variables[x],p[__]]},eqs=Normal[CoefficientArrays[x,vars]][[2]]];
 fit[base_]:=Module[{eqs,soln},
+If[base===0,Return[{0->0}]];
 eqs=DeleteCases[genEqs[base],0];
 soln=If[MemberQ[Union[NumberQ/@ eqs],True],{},solve[eqs]];
 Return[soln];];
@@ -344,6 +366,13 @@ tensor[a___]dLog[b_]:>tensor[a,b]};
 sym[n_][x_]:=tensorExpand[(x//.Pi:>0)//.symRules[n]];
 
 
+li22Part[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[a,b,d,c]-ttensor[b,a,c,d]+ttensor[b,a,d,c]-ttensor[c,d,a,b]+ttensor[c,d,b,a]+ttensor[d,c,a,b]-ttensor[d,c,b,a])//.ttensor:>tensor;
+li4Part[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[b,a,c,d]-ttensor[b,c,a,d]-ttensor[b,c,d,a]+ttensor[c,b,a,d]+ttensor[c,b,d,a]+ttensor[c,d,b,a]-ttensor[d,c,b,a])//.ttensor:>tensor;
+li2li2Part[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[a,b,d,c]-ttensor[b,a,c,d]+ttensor[b,a,d,c]+ttensor[c,d,a,b]-ttensor[c,d,b,a]-ttensor[d,c,a,b]+ttensor[d,c,b,a])//.ttensor:>tensor;
+li2loglogPart[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[a,b,d,c])//.ttensor:>tensor;
+li3logPart[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[b,a,c,d])//.ttensor:>tensor;
+
+
 (*calculate the poisson bracket of two cluster x-coordinate*)
 
 sklyaninZ[n_]:=sklyaninZ[n]=Transpose[RowReduce[Transpose[Z[n]]]];
@@ -361,7 +390,7 @@ Return[base]];
 
 (*first, clean up ratios*)
 
-clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],Print["bad ratio encountered"];Abort[];]];
+clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],0]];
 
 a2Vars[n_][{x1_,x2_}]:=Module[{x,answer},
 x[1]=x1;
@@ -438,3 +467,31 @@ SetDirectory[Directory[]<>"/packages"];
 <<polylogs_clean.m;
 SetDirectory[oldDir]];
 
+
+
+(*define ratios for n=6*)
+
+Vv1=(br[1, 2, 4, 6] br[1, 3, 4, 5])/(br[1, 2, 3, 4] br[1, 4, 5, 6]); 
+Vv2=(br[1, 2, 3, 5] br[2, 4, 5, 6])/(br[1, 2, 5, 6] br[2, 3, 4, 5]);
+Vv3=(br[1, 3, 5, 6] br[2, 3, 4, 6])/(br[1, 2, 3, 6] br[3, 4, 5, 6]);
+Ee1=(br[1, 2, 4, 6] br[3, 4, 5, 6])/(br[1, 4, 5, 6] br[2, 3, 4, 6]);
+Ee2=(br[1, 2, 3, 5] br[1, 4, 5, 6])/(br[1, 2, 5, 6] br[1, 3, 4, 5]);
+Ee3=(br[1, 2, 5, 6] br[2, 3, 4, 6])/(br[1, 2, 3, 6] br[2, 4, 5, 6]);
+Ee4=(br[1, 2, 3, 6] br[1, 3, 4, 5])/(br[1, 2, 3, 4] br[1, 3, 5, 6]);
+Ee5=(br[1, 2, 3, 4] br[2, 4, 5, 6])/(br[1, 2, 4, 6] br[2, 3, 4, 5]);
+Ee6=(br[1, 3, 5, 6] br[2, 3, 4, 5])/(br[1, 2, 3, 5] br[3, 4, 5, 6]);
+Xx1p=(br[1, 4, 5, 6] br[2, 3, 5, 6])/(br[1, 2, 5, 6] br[3, 4, 5, 6]);
+Xx1m=(br[1, 2, 3, 4] br[2, 3, 5, 6])/(br[1, 2, 3, 6] br[2, 3, 4, 5]);
+Xx2p=(br[1, 3, 4, 6] br[2, 3, 4, 5])/(br[1, 2, 3, 4] br[3, 4, 5, 6]);
+Xx2m=(br[1, 2, 5, 6] br[1, 3, 4, 6])/(br[1, 2, 3, 6] br[1, 4, 5, 6]);
+Xx3p=(br[1, 2, 3, 6] br[1, 2, 4, 5])/(br[1, 2, 3, 4] br[1, 2, 5, 6]);
+Xx3m=(br[1, 2, 4, 5] br[3, 4, 5, 6])/(br[1, 4, 5, 6] br[2, 3, 4, 5]);
+
+
+(*the amplitude for n=6*)\[AliasDelimiter]
+
+Ll[i_]:=1/384 Pp[i]^4+Sum[(-1)^m/(2m)!! Pp[i]^m (ll[4-m][xp[i]]+ll[4-m][xm[i]]),{m,0,3}];
+Pp[i_]:=2Li[1,v[i]]-Sum[Li[1,v[j]],{j,1,3}];
+Jj=Sum[ll[1][xp[i]]-ll[1][xm[i]],{i,1,3}];
+ll[n_][x_]:=(1/2)(Li[n,-x]-(-1)^n Li[n,-1/x]);
+gsvv=Sum[Ll[i]-(1/2)Li[4,v[i]],{i,1,3}]-(1/8)Sum[Li[2,v[i]],{i,3}]^2+Jj^4/24+\[Pi]^2 Jj^2/12+\[Pi]^4/72;
