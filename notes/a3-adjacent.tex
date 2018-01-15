@@ -1,0 +1,173 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+\def\x{\mathcal{X}}
+\def\a{\mathcal{A}}
+
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{$A_3$-adjacent functions} \hfill \today}
+
+In this note we explore the space of cluster adjacent functions on $A_3$. We would particularly like to understand how much of this space is spanned by $f_{A_2}^{++}$ and $f_{A_2}^{+-}$ evaluated on the 6 $A_2$ subalgebras of $A_3$, and if there is a natural cluster algebraic way to express $\mathcal{E}^{(2)}_6$. 
+
+\subsubsection*{Cluster definitions}
+
+Our generic $A_3$ seed will be $x_1\to x_2\to x_3$. Then we will define our $\x$-coordinates as
+\begin{alignat}{3}\label{def:A3coords}
+	x_{1,1} &= 1/x_1  &\quad 
+	x_{1,2} &= x_3 &\quad 
+	v_1 &=\frac{(1+x_2) (1+x_1+x_1 x_2+x_1 x_2 x_3)}{x_2 x_3} \nonumber \\ 
+	x_{2,1} &= \frac{1+x_1+x_1 x_2}{x_1 x_2 x_3} & 
+	x_{2,2} &= \frac{1+x_1+x_1 x_2}{x_2} & 
+	v_2 &= x_2 (1+x_3) \nonumber\\
+	x_{3,1} &= \frac{1+x_2+x_2 x_3}{x_3} & 
+	x_{3,2} &= x_1 (1+x_2+x_2 x_3) & 
+	v_3 &= \frac{1+x_1}{x_1 x_2} \\
+	e_1 &= \frac{1+x_1+x_1 x_2+x_1 x_2 x_3}{(1+x_1) x_3} & 
+	e_2 &= \frac{x_2 x_3}{1+x_2} & 
+	e_3 &= \frac{1+x_1}{x_1 x_2 (1+x_3)}\nonumber\\
+	e_4 &= x_1 (1+x_2) & 
+	e_5 &= \frac{x_2 (1+x_3)}{1+x_1+x_1 x_2+x_1 x_2 x_3} & 
+	e_6 &= 1/x_2.\nonumber
+\end{alignat}
+
+Note that these definitions are different from 1401.6446 (the map is: starting with the expressions in 1401.6446, take $x_i\to 1/x_i$, and then an overall inversion (i.e. $v_i\to1/v_i$, etc)). This is the result of having a different convention for converting $\a$ to $\x$-coordinates, and is a minor but annoying change to make.\\
+
+In $\Gr(4,6)$ langauge, we take 
+\begin{equation}
+	x_1 = \frac{\ket{1236}\ket{2345}}{\ket{1234}\ket{2356}}, \qquad x_2 = \frac{\ket{1235}\ket{3456}}{\ket{1356}\ket{2345}}, \qquad x_3 = \frac{\ket{1456}\ket{2356}}{\ket{1256}\ket{3456}},
+\end{equation}
+and then the $\x$-coordinates are
+\begin{alignat}{3}\label{eq:G46coords}
+	x_{1,1} &= \frac{\ket{1234}\ket{2356}}{\ket{1236}\ket{2345}} &\hspace{2cm}
+	x_{1,2} &= \frac{\ket{1456}\ket{2356}}{\ket{1256}\ket{3456}} &\hspace{2cm}
+	v_1 &= \frac{\ket{1246}\ket{1345}}{\ket{1234}\ket{1456}} \nonumber \\ 
+	x_{2,1} &= \frac{\ket{1256}\ket{1346}}{\ket{1236}\ket{1456}} &
+	x_{2,2} &= \frac{\ket{1346}\ket{2345}}{\ket{1234}\ket{3456}} &
+	v_2 &= \frac{\ket{1235}\ket{2456}}{\ket{1256}\ket{2345}} \nonumber \\ 
+	x_{3,1} &= \frac{\ket{1245}\ket{3456}}{\ket{1456}\ket{2345}}  &
+	x_{3,2} &= \frac{\ket{1236}\ket{1245}}{\ket{1234}\ket{1256}} &
+	v_3 &= \frac{\ket{1356}\ket{2346}}{\ket{1236}\ket{3456}} \\ 
+	e_1 &= \frac{\ket{1246}\ket{3456}}{\ket{1456}\ket{2346}} &
+	e_2 &= \frac{\ket{1235}\ket{1456}}{\ket{1256}\ket{1345}} &
+	e_3 &= \frac{\ket{1256}\ket{2346}}{\ket{1236}\ket{2456}} \nonumber \\
+	e_4 &= \frac{\ket{1236}\ket{1345}}{\ket{1234}\ket{1356}} &
+	e_5 &= \frac{\ket{1234}\ket{2456}}{\ket{1246}\ket{2345}} &
+	e_6 &= \frac{\ket{1356}\ket{2345}}{\ket{1235}\ket{3456}}.\nonumber
+\end{alignat}
+
+These are now the same as 1401.6446.
+
+%The clusters are labeled by the three faces that meet to define a vertex:
+%\begin{alignat}{3}
+%s_1p_{12}p_{21} &= \{1/x_{11},v_3,1/x_{12}\}, \quad &s_1p_{21}p_{13} &= \{x_{11},e_6,1/x_{12}\}, \quad &s_1p_{13}p_{31} &= \{x_{11},1/v_2,x_{12}\},  \nonumber\\
+%s_1p_{12}p_{31} &= \{1/x_{11},e_3,x_{12}\}, \quad &s_2p_{12}p_{21} &= \{x_{22},1/v_3,x_{21}\}, \quad &s_2p_{12}p_{31} &= \{x_{22},e_1,1/x_{21}\}, \nonumber \\
+%s_2p_{23}p_{32} &= \{1/x_{22},v_1,1/x_{21}\}, \quad &s_2p_{21}p_{32} &= \{1/x_{22},e_4,x_{21}\}, \quad &s_3p_{31}p_{23} &= \{x_{32},e_5,1/x_{31}\}, \nonumber \\
+%s_3p_{13}p_{31} &= \{1/x_{32},v_2,1/x_{31}\}, \quad &s_3p_{23}p_{32} &= \{x_{32},1/v_1,x_{31}\}, \quad &s_3p_{13}p_{32} &= \{1/x_{32},e_2,x_{31}\}, \nonumber \\
+%p_{12}p_{23}p_{31} &= \{1/e_5,1/e_3,1/e_1\}, \quad &p_{13}p_{32}p_{21} &= \{1/e_4,1/e_6,1/e_2\}. \quad &\phantom{s_3p_{31}p_{23}} &\phantom{= \{x_{32},e_5,1/x_{31}\},} \nonumber \\
+%\end{alignat}
+
+\subsubsection*{Symmetries}
+
+$A_3$ has a six-fold cyclic symmetry, which we denote by $\sigma$:
+\begin{equation}
+	\sigma:~ 
+		x_1\mapsto \frac{x_2}{1+x_1+x_1 x_2},\quad
+		x_2\mapsto \frac{\left(1+x_1\right) x_3}{1+x_1+x_1 x_2+x_1 x_2x_3}, \quad 
+		x_3\mapsto \frac{1+x_1+x_1 x_2}{x_1 x_2 x_3},
+\end{equation}
+and which permutes the $\x$-coordinates by 
+\begin{equation}
+	\sigma:~ 
+		x_{i,j} \mapsto x_{i+1,j+1}, \quad 
+		v_i \mapsto v_{i+1}, \quad 
+		e_i \mapsto e_{i+1}
+\end{equation}
+(where all of the indices are understood to be mod \{2,3,6\} where it makes sense). In $\Gr(4,6)$ language, $\sigma$ is the standard $i\mapsto i+1$ cyclic symmetry.\\
+
+$A_3$ also has a two-fold flip symmetry, which we denote by $\tau$:
+\begin{equation}
+	\tau:~ 
+		x_1\mapsto \frac{1}{x_3},\quad
+		x_2\mapsto \frac{1}{x_2}, \quad 
+		x_3\mapsto \frac{1}{x_1},
+\end{equation}
+and which permutes the $\x$-coordinates by
+\begin{align}
+	\tau:~&
+		x_{1,j} \leftrightarrow x_{1,j+1}, \qquad
+		x_{2,j} \leftrightarrow x_{3,j+1}, \qquad
+		v_2 \leftrightarrow v_{3}, \nonumber \\
+		&e_1 \leftrightarrow 1/e_{5},\qquad
+		e_2 \leftrightarrow 1/e_{4},\qquad
+		e_3 \leftrightarrow 1/e_{3},\qquad
+		e_6 \leftrightarrow 1/e_{6}.
+\end{align}
+The $\Gr(4,6)$ flip is traditionally written as $i\to7-i$, which in the $A_3$ language is equivalent to $\tau\sigma^{-1}$.\\
+
+Strictly speaking, $\tau$ is an automorphism only on the space of $\x$-coordinates, not on the full cluster algebra. To elevate $\tau$ to an automorphism on the full cluster algebra: take a cluster with coordinates $\{\x_1,\x_2,\x_3\}$, map them to $\{1/\tau(\x_1), 1/\tau(\x_2), 1/\tau(\x_3)\}$ and then swap the direction of all of the arrows in the cluster (i.e. take $b_{ij}\to-b_{ij}$). The result will now again be a cluster in $A_3$. This is easiest to see in the seed cluster, which is invariant under $\tau$:
+\begin{equation}
+	\{x_1\to x_2\to x_3\} \quad \mapsto \quad \{1/\tau(x_1)\leftarrow 1/\tau(x_2) \leftarrow 1/\tau(x_3)\}\quad = \quad\{ x_3 \leftarrow x_2 \leftarrow x_1\}.
+\end{equation}
+The reason for this weirdness is that cluster automorphisms are only defined at the level of $\a$-coordinates. But since we want to deal with actual functions/Bloch-group elements, it makes more sense to list the ``automorphisms'' w.r.t. $\x$-coordinates and accept that there is this slight funny business. 
+
+\subsubsection*{Integrable Symbol}		
+Imposing integrability on a generic symbol of weight 4 with arguments drawn from (\ref{def:A3coords}) leaves us with 1351 free parameters. 
+
+\subsubsection*{$\a$-adjacency vs. $\x$-adjacency}
+The two criteria we consider are:
+\begin{itemize}
+	\item cluster $\a$-adjacency (only $\{\ket{i~i+2},\ket{i~i+3}\}$+frozen can appear),
+	\item cluster $\x$-adjacency (only $\{\x_i,\x_{i+1}\}$ can appear).
+\end{itemize}
+Cluster $\a$-adjacency fixes 919 parameters, leaving us with 432. I haven't checked cluster $\x$-adjacency yet. 
+
+\subsubsection*{Imposing cluster-y coproduct}
+As was the case for $A_2$, cluster $\a$-adjacency at symbol level already imposes a cluster-y coproduct at the level of $B_2\wedge B_2$. Imposing this for $B_3 \otimes \mathbb{C}^*$ fixes 60 parameters, leaving us with 372.
+
+\subsubsection*{Imposing symmetries}
+
+We now impose that the function respect the automorphisms of $A_3$, as discussed above. We will now tabulate how many free parameters remain for each of the 4 possible sign choices:
+\begin{center}
+\begin{tabular}{ rcccc }
+\multicolumn{1}{r}{}
+ & \multicolumn{1}{c}{$\sigma^+\tau^+$}
+ & \multicolumn{1}{c}{$\sigma^+\tau^-$}
+ & \multicolumn{1}{c}{$\sigma^-\tau^+$}
+ & \multicolumn{1}{c}{$\sigma^-\tau^-$} \\
+\cline{2-5}
+$f_{A_3}$: & 42 & 25 & 21 & 36 \\
+\end{tabular}
+\end{center}
+
+\subsubsection*{Local Coproduct}
+Only $f_{A_3}^{+-}$ and $f_{A_3}^{--}$ have non-zero $B_2\wedge B_2$, and they have 6 and 2 free parameters in this space, respectively. Requiring that these take a local form fixes all of these parameters, killing off the $B_2\wedge B_2$ for $f_{A_3}^{+-}$ and leaving us with the ``traditional'' $f_{A_3}$ for $\{--\}$, which has $B_2\wedge B_2 = \sum_i\{x_{i,1}\}_2 \wedge \{x_{i,2}\}_2$. 
+
+\end{document}
