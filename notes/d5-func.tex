@@ -65,15 +65,15 @@ We'll be working with the following $\d5$ seed cluster:
 \begin{equation}
 \begin{gathered}
 \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
-(0,25) *+{x_1} ="0",
-(50,25) *+{x_2} ="1",
-(100,25) *+{x_3} ="2",
-(150,0) *+{x_4} ="3",
-(150,50) *+{x_5} ="4",
-"0", {\ar"1"},
-"1", {\ar"2"},
-"2", {\ar"3"},
-"2", {\ar"4"},
+	(0,25) *+{x_1} ="1",
+	(50,25) *+{x_2} ="2",
+	(100,25) *+{x_3} ="3",
+	(150,0) *+{x_4} ="4",
+	(150,50) *+{x_5} ="5",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"3", {\ar"5"},
 \end{xy}
 \end{gathered}
 \end{equation}
@@ -86,45 +86,150 @@ It would be nice to find a property that fixes some of these parameters that doe
 
 Because of the 1 degree of freedom, it is difficult to describe in detail the properties of $\fd5$ until we have set this value. Furthermore, we likely want to keep this parameter free so that we have some freedom when we try to express $\r27$ in terms of $\fd5$. \\
 
-The piece that does not cancel in the full $\e6$ sum can be represented in terms of 13 $\a3$'s (maybe less, I haven't done an exhaustive check). The following 8 enter with coefficient $+1/2$:
+The piece that does not cancel in the full $\e6$ sum can be represented in terms of 13 $\a3$'s (maybe less, I haven't done an exhaustive check). First, let us define some notation:
+\begin{equation}
+	x_{i_1\ldots i_k} = \sum_{a=1}^k \prod_{b=1}^a x_{i_b} = x_{i_1}+x_{i_1}x_{i_2} + \ldots + x_{i_1}\cdots x_{i_k}
+\end{equation}
+The following 8 enter with coefficient $+1/2$:
 \begin{gather*}
-	x_1\to x_2\to x_3 \left(1+x_5\right),\quad x_2\to x_3\to x_5,\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_4,\quad x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_4\right)}{1+x_2}\to x_5,\\ \\
-	\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5,\quad \frac{1+x_3}{x_3x_4}\to x_2 \left(1+x_3+x_3 x_4\right)\to \frac{x_3x_5}{1+x_3},\\ \\
-	\frac{1+x_2+x_2 x_3}{x_2 x_3 x_4}\to x_1\left(1+x_2+x_2 x_3+x_2 x_3 x_4\right)\to \frac{x_2x_3 x_5}{1+x_2+x_2 x_3},\\ \\
-	\frac{x_1 x_2 x_3x_5}{1+x_1+x_1 x_2+x_1 x_2 x_3}\to\frac{\left(1+x_1\right) x_3 x_4}{\left(1+x_3\right)\left(1+x_1+x_1 x_2+x_1 x_2 x_3+x_1 x_2 x_3x_4\right)}\to \frac{1+x_1+x_1 x_2+x_1 x_2x_3}{\left(1+x_1\right) x_3},\\
+	x_2\to x_3\to x_5,\quad x_1\to x_2\to x_3 \left(1+x_5\right),\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_4,\quad x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_4\right)}{1+x_2}\to x_5,\\ \\
+	\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5,\quad \frac{1+x_3}{x_3x_4}\to x_2 (1+x_{34})\to \frac{x_3x_5}{1+x_3},\\ \\
+	\frac{1+x_{23}}{x_2 x_3 x_4}\to x_1(1+x_{234})\to \frac{x_2x_3 x_5}{1+x_{23}},\quad
+	\frac{x_1 x_2 x_3x_5}{1+x_{123}}\to\frac{\left(1+x_1\right) x_3 x_4}{\left(1+x_3\right)\left(1+x_{1234}\right)}\to \frac{1+x_{123}}{\left(1+x_1\right) x_3},\\
 \end{gather*}
 and these 5 enter with coefficient $-1/2$:
 \begin{gather*}
-	x_1\to x_2\to x_3 \left(1+x_4\right),\quad x_2\to x_3\to x_4,\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_5,\quad x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_5\right)}{1+x_2}\to x_4,\\ \\
-	\frac{x_1 x_2 x_3x_4}{1+x_1+x_1 x_2+x_1 x_2 x_3}\to\frac{\left(1+x_1\right) x_3 x_5}{\left(1+x_3\right)\left(1+x_1+x_1 x_2+x_1 x_2 x_3+x_1 x_2 x_3x_5\right)}\to \frac{1+x_1+x_1 x_2+x_1 x_2x_3}{\left(1+x_1\right) x_3}.
+	x_2\to x_3\to x_4,\quad x_1\to x_2\to x_3 \left(1+x_4\right),\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_5,\\ \\ x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_5\right)}{1+x_2}\to x_4,\quad
+	\frac{x_1 x_2 x_3x_4}{1+x_{123}}\to\frac{\left(1+x_1\right) x_3 x_5}{\left(1+x_3\right)\left(1+x_{1235}\right)}\to \frac{1+x_{123}}{\left(1+x_1\right) x_3}.
 \end{gather*}
+There is not any magical cancellation of terms at the level of $\bb2$ for this sum of functions. It would be exciting to find a representation for $\fd5$ which relied on very few $\bb2$ terms, but of course some relatively large number of terms will be necessary in order to full capture the $\d5$ symmetries. \\
 
 I don't have a nice representation of the piece of the function that cancels in the full $\e6$ sum. The shortest representation I have involves 17 $\a3$'s. 
 
 \subsubsection*{Representing $\r27$ in terms of $\fd5$}
 
-Next step: write down the first $\d5$ and then show how $\sigma, \tau,$ and $\mathbb{Z}_2$ $\e6$ symmetries create the other 13 $\d5$'s. Use this as a way to better express:
-
+First, I'll describe $\e6$: the seed cluster can be written as:
 \begin{equation}
-	\r27 = \sum_{i=1}^{14} \pm \fd5^{(i)}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(0,25) *+{x_1} ="1",
+	(50,25) *+{x_2} ="2",
+	(100,25) *+{x_3} ="3",
+	(100,0) *+{x_4} ="4",
+	(150,25) *+{x_5} ="5",
+	(200,25) *+{x_6} ="6",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"5", {\ar"3"},
+	"6", {\ar"5"},
+\end{xy}
+\end{gathered}
 \end{equation}
-where $i$ indexes the 14 $\d5$'s in $\e6$, and the $\pm$ is to get the symmetries to work out right -- half of the $\fd5$'s have $+$ and half have $-$. This needs sharper restatement. 
+In $\Gr(4,7)$ language this seed is
+\begin{equation}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(0,50) *+{\frac{\langle 1234\rangle  \langle 1267\rangle }{\langle
+   		1237\rangle  \langle 1246\rangle }} ="1",
+	(100,50) *+{-\frac{\langle 1247\rangle  \langle 3456\rangle
+ 	  	}{\langle 4(12)(35)(67)\rangle }} ="2",
+	(200,50) *+{\frac{\langle 1246\rangle  \langle 5(12)(34)(67)\rangle
+ 	  	}{\langle 1245\rangle  \langle 1267\rangle  \langle
+   		3456\rangle }} ="3",
+	(200,0) *+{-\frac{\langle 4(12)(35)(67)\rangle }{\langle
+   		1234\rangle  \langle 4567\rangle }} ="4",
+	(300,50) *+{-\frac{\langle 1267\rangle  \langle 1345\rangle  \langle
+   		4567\rangle }{\langle 1567\rangle  \langle
+   		4(12)(35)(67)\rangle }} ="5",
+	(400,50) *+{\frac{\langle 1567\rangle  \langle 2345\rangle }{\langle
+   		5(12)(34)(67)\rangle }} ="6",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"5", {\ar"3"},
+	"6", {\ar"5"},
+\end{xy}
+\end{gathered}
+\end{equation}
+The symmetries are $\sigma$ (period 7), $\tau$, and $\mathbb{Z}_2$ (both period 2) and can be represented as:
+\begin{align*}
+	\sigma:\quad &x_1\mapsto \frac{1}{x_6
+   \left(1+x_{534}\right)}, \quad x_2\mapsto \frac{1+x_{6534}}{x_5
+   \left(1+x_{34}\right)}, \quad x_3\mapsto
+   \frac{\left(1+x_{234}\right)
+   \left(1+x_{534}\right)}{x_3
+   \left(1+x_4\right)},\\ \\ 
+   &x_4\mapsto
+   \frac{1+x_{34}}{x_4}, \quad x_5\mapsto \frac{1+x_{1234}}{x_2
+   \left(1+x_{34}\right)}, \quad x_6\mapsto \frac{1}{x_1
+   \left(1+x_{234}\right)},\\ \\
+   \tau: \quad&x_1\mapsto \frac{x_5}{1+x_{65}},\quad x_2\mapsto
+   \left(1+x_5\right) x_6,\quad x_3\mapsto
+   \frac{\left(1+x_{12}\right)
+   \left(1+x_{65}\right)}{x_1 x_2 x_3 \left(1+x_4\right)
+   x_5 x_6},\\ \\ 
+   &x_4\mapsto x_4,\quad x_5\mapsto x_1
+   \left(1+x_2\right),\quad x_6\mapsto
+   \frac{x_2}{1+x_{12}},\\ \\
+   \mathbb{Z}_2:\quad &x_1 \leftrightarrow x_6, \quad x_2 \leftrightarrow x_5
+\end{align*}
+These are directly equivalent to $\Gr(4,7)$ cycle$^2$, flip, and parity ($\sigma = $ cycle$^2$ because the map for just a single cycle was too cumbersome to print).\\ 
+
+The simplest $\d5$ subalgebra of $\e6$ is obtained by freezing the $x_6$ node and then mutating once on $x_5$, at which point we have the seed cluster
+\begin{equation}\label{eq:d5ine6}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(0,25) *+{x_1} ="1",
+	(50,25) *+{x_2} ="2",
+	(100,25) *+{\frac{x_3 x_5}{1+x_5}} ="3",
+	(150,0) *+{x_4} ="4",
+	(150,50) *+{\frac{1}{x_5}} ="5",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"3", {\ar"5"},
+\end{xy}
+\end{gathered}
+\end{equation}
+We'll refer to the cluster algebra generated by (\ref{eq:d5ine6}) as $\d5^{(0,0)}$. The remaining 13 $\d5$'s in $\e6$ are generated by applying $\sigma$ and $\tau$. We can now label each $\d5$ via the number of $\sigma$'s and $\tau$'s applied to $\d5^{(0,0)}$:
+\begin{equation}
+	\d5^{(i,j)} = \sigma^{i}\tau^j(\d5^{(0,0)})
+\end{equation}
+We do not have to consider $\mathbb{Z}_2$ because 
+\begin{equation}
+	\mathbb{Z}_2(\d5^{(0,0)}) = \d5^{(5,1)}.
+\end{equation}
+Note that by this I do not mean that $\sigma^5\tau$ acting on the cluster (\ref{eq:d5ine6}) equals $\mathbb{Z}_2$ acting on (\ref{eq:d5ine6}). I mean that $\mathbb{Z}_2$ acting on the complete $D_5$ algebra \emph{generated by} (\ref{eq:d5ine6}) is equal to $\sigma^5\tau$ acting on the same algebra. 
+
+With this notation in place we can say that 
+\begin{equation}
+	\r27 = \sum_{i=0}^{6}\sum_{j=0}^{1} f_{D_5^{(i,j)}}.
+\end{equation}
+While this is the most technically correct way to phrase things, it is of course much more evocative to write
+\begin{equation}
+	\r27 = \sum_{\d5\subset\e6} f_{D_5},
+\end{equation}
+which is ill-defined up to the sign in front of each $\fd5$. 
+
 
 \subsubsection*{Constraining the remaining parameter}
 
 In the $7\to6$ collinear limit, the 14 $\fd5$'s have the following behavior:
 
 \begin{itemize}
-	\item $\{1,4,5,7,10,11,12,14\}$ vanish identically
-	\item $\{2,3,8,9\}$ are non-zero, $2=-3$ and $8=-9$
-	\item $\{6,13\}$ each vanish if you set the remaining parameter to 1, and otherwise $6=-13$
+	\item $\{(0, 0), (1, 0), (1, 1), (2, 1), (3, 0), (4, 0), (4, 1), (5, 1)\}$ vanish identically
+	\item $\{(0, 1), (5, 0), (6, 0), (6, 1)\}$ are non-zero, $(0, 1)=-(5, 0)$ and $(6, 0)=-(6, 1)$
+	\item $\{(2, 0), (3, 1)\}$ each vanish if you set the remaining parameter to 1, and otherwise $(2, 0)=-(3, 1)$
 \end{itemize}
-(where $\{1,\ldots,14\}$ label the 14 $\d5$'s in the arbitrary way my code decided to do things. I'll clean this up tomorrow.)\\ 
+This provides some motivation (though not 100\% clear-cut) for determining this parameter. \\
 
-This provides some motivation (though not 100\% clear-cut) for determining this parameter. 
+Also, it is interesting to note that $(0, 1)=-(5, 0)$ are related by $\mathbb{Z}_2$, $(6, 0)=-(6, 1)$ are related by $\tau$, and $(2, 0)=-(3, 1)$ are related by $\sigma\tau$. However these relationships only hold after taking the collinear limit (in other words, I was hoping that, at least in the case of $(2, 0)$ and $(3, 1)$, the function multiplying the free parameter would cancel between the two before taking the collinear limit, but it does not. In fact one needs all 14 of the free parameter functions in order to get them to cancel out).\\
 
 \subsubsection*{A brief idea for $\Gr(4,8)$}
 
 Are there $\e6$'s in $\Gr(4,8)$ which have $\{v,z\}$ squares? What if I try the 42-term $\{v,z\}$ expression for $\r27 \sim f_{E_6}$ and see if that evaluates to ``good'' things on (at least some of) the $\e6$'s I've found in $\Gr(4,8)$.
+
+
 
 \end{document}
