@@ -17,7 +17,11 @@
 \DeclareMathOperator{\Lie}{Lie}
 
 \def\x{\mathcal{X}}
+\def\xcoords{$\mathcal{X}$-coordinates}
 \def\a{\mathcal{A}}
+\def\acoords{$\mathcal{A}$-coordinates}
+
+\def\bb2{$B_2\wedge B_2$}
 
 \def\ket#1{\langle #1 \rangle}
 
@@ -25,6 +29,7 @@
 \makeindex
 \oddsidemargin -0.04cm \evensidemargin -0.04cm
 \topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
 
 \begin{document}
 
@@ -36,49 +41,33 @@
 
 \lhead{\textbf{Cluster Automorphisms} \hfill \today}
 
-In this note we describe cluster automorphisms for the finite cluster algebras $A_2, A_3, A_4, D_4, A_5, D_5, E_6$. We then describe ways of defining non-classical weight-4 cluster polylogarithms which respect these automorphisms.\\
+%In this note we describe cluster automorphisms for the finite cluster algebras $A_2, A_3, A_4, D_4, A_5, D_5, E_6$. We then describe ways of defining non-classical weight-4 cluster polylogarithms which respect these automorphisms.
 
-{\Huge\underline{\(A_2\)}}  $\simeq\Gr(2,5)$ \quad clusters: 5 \qquad $a$-coordinates: 5 \qquad $x$-coordinates: 10 \\ \\
-$\x$-coordinate seed: $x_1 \to x_2$\\ \\
-$\a$-coordinate seed, with frozen coordinates, in both $\Gr(2,5)$ as well as generic coordinates: 
-\begin{equation}
-\begin{gathered}
-\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
-(25,25) *+{\langle 13\rangle} ="0",
-(75,25) *+{\langle 14\rangle} ="1",
-(125,25) *+{\framebox[5ex]{$\langle 15\rangle$}} ="2",
-(125,75) *+{\framebox[5ex]{$\langle 45\rangle$}} ="3",
-(75,75) *+{\framebox[5ex]{$\langle 34\rangle$}} ="4",
-(25,75) *+{\framebox[5ex]{$\langle 23\rangle$}} ="5",
-(0,0) *+{\framebox[5ex]{$\langle 12\rangle$}} ="6",
-(145,75) *+{},
-"0", {\ar"1"},
-"4", {\ar"0"},
-"0", {\ar"5"},
-"6", {\ar"0"},
-"1", {\ar"2"},
-"3", {\ar"1"},
-"1", {\ar"4"},
-\end{xy}\quad\Leftrightarrow\quad
-\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
-(25,25) *+{a_1} ="0",
-(75,25) *+{a_2} ="1",
-(125,25) *+{\framebox[5ex]{$f_5$}} ="2",
-(125,75) *+{\framebox[5ex]{$f_4$}} ="3",
-(75,75) *+{\framebox[5ex]{$f_3$}} ="4",
-(25,75) *+{\framebox[5ex]{$f_2$}} ="5",
-(0,0) *+{\framebox[5ex]{$f_1$}} ="6",
-(145,75) *+{},
-"0", {\ar"1"},
-"4", {\ar"0"},
-"0", {\ar"5"},
-"6", {\ar"0"},
-"1", {\ar"2"},
-"3", {\ar"1"},
-"1", {\ar"4"},
-\end{xy}
-\end{gathered}
-\end{equation}
-$\Rightarrow x_1 = \frac{f_1 f_3}{f_2 a_2}, x_2 = \frac{a_1 f_4}{f_3 f_5}$ 
+Cluster algebras can be viewed as the ``gluing together'' of a bunch of smaller cluster algebras. Our goal here is to create new cluster polylogarithms by ``gluing together'' smaller cluster polylogarithms. More specifically, the problem we are trying to solve is: given some algebra $H$, define a function $f_H$ which respects the automorphisms of $H$ and is built out of terms which themselves respect automorphisms of subgroups of $H$.
+
+In practice, we find these functions via a bootstrap procedure, starting simply and building into progressively more complicated algebras. Heuristically, the method is:
+
+\begin{enumerate}
+	\item Begin with an algebra $G$ and a function which respects the automorphisms of that algebra, $f_G$. 
+	\item Take a larger algebra $H$ which contains $G$ as a subalgebra. Generically there will be many distinct instantiations of $G$ across $H$, we'll label them $G^{(1)},\ldots,G^{(n)}$.
+	\item Define an ansatz $f_H = \sum_{i=1}^n c_i f_{G^{(i)}}$ for some unknown constants $c_i$.
+	\item Fix the parameters by requiring that $f_H$ respects the automorphisms of $H$.
+\end{enumerate}
+
+We'll see that in some cases, for a given $H$ and $G$, there are no choices of the $c_i$ parameters which satisfy the automorphisms of $H$. And in many cases there will be multiple free parameters left, which we will aim to fix by other means. 
+
+Of course it is useful to keep in mind that the overall goal here is to define cluster polylogarithms which will be useful in writing down amplitudes. To that end, our target is $R^{(2)}_7$, which we can think of as living on the $\Gr(4,7) \simeq E_6$ cluster algebra. $E_6$ has the subalgebras $A_2, A_3, A_4, D_4, A_5, D_5$, so we will start with $G = A_2$ and try to bootstrap our way up to $E_6$. And while there are many cases in which these Dynkin-type cluster algebras are isomorphic to $\Gr(n,k)$ algebras, we will ignore that connection until we get to $E_6$. It is better to think of the intermediary algebras in terms of abstract coordinates ($a_i$ and $x_i$ for \acoords and \xcoords, respectively), which we can port over to Grassmannian coordinates (Pluckers and cross-ratios, respectively) when the time comes. 
+
+Furthermore, for the time being we will only be defining these functions at the level of their $B_2\wedge B_2$ coproduct. We leave more complete definitions -- up to the level of the symbol, for example -- for future work.
+
+\subsubsection*{$A_2$ function}
+
+Taking our seed cluster as $x_1\to x_2$, we generate clusters of the form $\{1/\x_i, \x_{i+1}\}$ where the $\x$-coordinates are\\
+\begin{equation}\label{def:xcoords}
+	\x_1 = \frac{1}{x_1}, ~~~\x_2 = x_2,~~~ \x_3 = x_1 (1 + x_2),~~~ \x_4=\frac{1+x_1+x_1 x_2}{x_2},~~~ \x_5 = \frac{1+x_1}{x_1 x_2}.
+\end{equation}\\
+These satisfy the exchange relation $1+\x_i = \x_{i-1}\x_{i+1}$ and Abel's identity $\sum \{\x_i\}_2 = 0$. As for symmetries, $A_2$ has a cyclic symmetry, $\sigma: \x_i\to \x_{i+1}$, and a flip symmetry $\tau: \x_i \to \x_{6-i}$. 
+
+To define a function on $A_2$, we begin with an ansatz $f_{A_2} = \sum c_{ij} \{\x_i\}_2 \wedge \{\x_j\}_2$. Only 6 out the 10 terms are linearly independent thanks to Abel's identity. Remarkably, imposing integrability (see old work for details) fixes all of the degrees of freedom (up to an overall constant, of course). And fortunately, the solution is invariant under $\sigma$ and flips a sign under $\tau$. 
 
 \end{document}

@@ -390,7 +390,7 @@ Return[base]];
 
 (*first, clean up ratios*)
 
-clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],0]];
+clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],With[{y=Position[numRatios[n],num[n][-R]]},If[Length[y]==1,-allRatios[n][[y[[1,1]]]],0]]]];
 
 a2Vars[n_][{x1_,x2_}]:=Module[{x,answer},
 x[1]=x1;
@@ -463,7 +463,7 @@ b2b2Full[7]=Expand[1/2addSym[7][b2b2Base[7]/.cExp[7]]];
 cleanTools:=Module[{},
 Clear[a2B2b2,a2B3c,a2Vars,addConj,addCyclic,addDihedral,addFlip,addSym,allRatios,b2b2,b3c,brNum,brNumPartial,brPrint,cap,cap1,capAlt,cBasis,cBasisSym,ccap1Print,ccapPrint,cExp,clean,cleanWedge,collinear,collinearLimit,confWeight,conjRules,conjugate,cycle,delta,dFast,expand,findMaxSoln,fit,fitBlind,fixCCAP,flip,genEqs,genEqsFull,goodBrs,goodCap1s,goodCaps,goodFirst,goodLast,goodLetters,ijkVals,length,listSym,m1,mod,MOD,multBasis,multLength,multSolveFull,nice,num,numPG,numRand,numRatios,numXcoords,print,rangeV,rangeZ,rangeZm,ratios,schoutens,sklyanin,sklyaninZ,sklyaninZPartial,solve,sort,sortInverse,sortMinus,sym,symbol,symRules,Tensor,Tensor1,Tensor2,Tensor3,Tensor4,tensorClean,tensorExpand,tensorExpandFull,tensorVars,vars,vP1,vP1s,vs,vSym,xcoords,z,Z,zm,Zm,zmP1,zp,Zp,zP1,zP1s,zpP1,zs,zSym];
 oldDir=Directory[];
-SetDirectory[Directory[]<>"/packages"];
+SetDirectory[NotebookDirectory[]<>"/packages"];
 <<polylogs_clean.m;
 SetDirectory[oldDir]];
 

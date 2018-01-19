@@ -1,5 +1,21 @@
 (* ::Package:: *)
 
+collectTensors[x_]:=Module[{vars,array},
+vars=Cases[Variables[x],tensor[__]];
+array=CoefficientArrays[x,vars];
+Return[array[[1]]+vars.Normal[Expand[array[[2]]]]];];
+
+collectPs[x_]:=Module[{vars,array},
+vars=Cases[Variables[x],p[_]];
+array=CoefficientArrays[x,vars];
+Return[array[[1]]+vars.Normal[Expand[array[[2]]]]];];
+
+expPt[x_]:=collectTensors[x]/.a_*tensor[b__]:>collectPs[a]tensor[b];
+expTp[x_]:=collectPs[x]/.a_*p[b_]:>collectTensors[a]p[b];
+
+
+
+
 imposeBase[ansatz_,zero_]:=Module[{soln,tmp},
 soln=fit[zero];
 If[soln==={0->0},Print["already satisfied"];Return[ansatz]];If[soln==={},Print["no solutions"];Return[{}]];
