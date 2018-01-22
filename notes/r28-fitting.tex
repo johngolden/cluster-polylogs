@@ -1,0 +1,60 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Fitting $R^{(2)}_8$ with Cluster Polylogarithms} \hfill \today}
+
+In this note we explore different attempts at expressing the $B_2\wedge B_2$ component of $R^{(2)}_8$ with cluster polylogarithms.
+
+First let us define ``good'' $\mathcal{X}$-coordinates: an $\mathcal{X}$-coordinate $R$ is good if $R$ and $1+R$ can be expressed as ratios of $\mathcal{A}$-coordinates of the form
+\begin{align}\label{def:letters}
+\begin{split}
+\ket{i\,\,i{+}1\,\,jk},& \quad 
+\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}, \\ 
+\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}},& \quad
+\ket{i(i{-}2\,\,i{-}1)(i{+}1\,\,i{+}2)(j\,\,j{+}1)}.
+\end{split}
+\end{align}
+An algebra is good if it contains only good $\mathcal{X}$-coordinates. 
+
+\subsubsection*{Fitting with $A_3$'s}
+
+There are 1600 good $A_3$'s in $\Gr(4,8)$, with only 513 actual degrees of freedom in $B_2\wedge B_2$. An ansatz of these functions can be fit to $R^{(2)}_8$. A zero-thought choice of free parameters leaves us with an expression involving 223 $A_3$'s.
+
+\subsubsection*{Fitting with $D_5$'s}
+
+There are NO good $D_5$'s in $\Gr(4,8)$ (this is a deeply surprising fact to me). Furthermore, NO $D_5$ contains enough good $A_3$'s to allow us to tune the free parameters in $f_{D_5}$ in order to have only good $A_3$'s appear in $f_{D_5}$. In other words, any representation of $R^{(2)}_8$ in terms of $f_{D_5}$ will necessarily involve ``bad'' ratios inside the $f_{D_5}$'s which must cancel in the full sum. This is an aesthetically upsetting fact to me!
+
+\subsubsection*{Fitting with $E_6$'s}
+
+Are there $E_6$'s in $\Gr(4,8)$ which have $\{v,z\}$ squares? What if I try the 42-term $\{v,z\}$ expression for $R^{(2)}_7 \sim f_{E_6}$ and see if that evaluates to ``good'' things on (at least some of) the $E_6$'s I've found in $\Gr(4,8)$.
+
+\end{document}
