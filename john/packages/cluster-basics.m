@@ -17,8 +17,8 @@ Return[{xp/@Range[Length[cluster[[1]]]],Bp}]];
 mutateA[k_][cluster__]:=Module[{a,ap,B,Bp,ans},
 a[i_]:=cluster[[1,i]];
 B=cluster[[2]];
-Bp=Table[bb[B][k][i,j],{i,Length[B]},{j,Length[B]}];
-ap[i_]:=FullSimplify[1/a[i] (Product[a[j]^If[B[[i,j]]>0,B[[i,j]],0],{j,Length[B]}]+Product[a[j]^If[B[[i,j]]<0,-B[[i,j]],0],{j,Length[B]}])];
+Bp=Table[bb[B][k][i,j],{i,Length[B]},{j,Length[B[[1]]]}];
+ap[i_]:=FullSimplify[1/a[i] (Product[a[j]^If[B[[i,j]]>0,B[[i,j]],0],{j,Length[B[[1]]]}]+Product[a[j]^If[B[[i,j]]<0,-B[[i,j]],0],{j,Length[B[[1]]]}])];
 Return[{Insert[Delete[a/@Range[Length[cluster[[1]]]],k],ap[k],k],Bp}]];
 
 (*sequences of multiple mutations*)
