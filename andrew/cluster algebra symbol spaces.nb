@@ -1,0 +1,3317 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    129422,       3309]
+NotebookOptionsPosition[    122523,       3207]
+NotebookOutlinePosition[    122882,       3223]
+CellTagsIndexPosition[    122839,       3220]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData["Quit"], "Input",
+ CellChangeTimes->{{3.727015410851656*^9, 
+  3.7270154117143917`*^9}},ExpressionUUID->"bfa2a028-3985-40c7-bf73-\
+bd226e4c87c9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "<<", "\"\</Users/thatscottishkid/Google \
+Drive/NBIA/cluster-polylogs/andrew/cluster_algebras.m\>\""}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.727015275891652*^9, 3.727015309550149*^9}, {
+  3.727015382265896*^9, 
+  3.727015399828808*^9}},ExpressionUUID->"f44a9872-013f-4e64-9d77-\
+1fbe90fa6208"],
+
+Cell[BoxData[{
+ RowBox[{"<<", "coproduct.m"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mapleSolverID", "=", "1"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.727015270206341*^9, 3.7270152720952463`*^9}, {
+  3.72701568787728*^9, 
+  3.727015691830768*^9}},ExpressionUUID->"d8fa0e0d-61da-4916-bd32-\
+26e425177d12"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"adjacentWeightFourAnsatzX", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.727015512516295*^9, 3.727015557102227*^9}, {
+  3.727015797387886*^9, 
+  3.727015797772726*^9}},ExpressionUUID->"fa4cbd5f-9412-43d7-8f93-\
+5b0974e6dfc7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "2", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "3", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinD", "[", "4", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "4", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinD", "[", "5", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "5", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinE", "[", "6", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinD", "[", "5", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "5", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "3", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allSubalgebras", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+      RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwd0F1Ik2EAxfF3mahlInPWhDLNFLXUQAxNR1shRqbOUelyYcxFWVQjGIlB
+EmhfJCkoMjXxC5sXdWNQTolWvY0uooucVBRlaJjeLKu3ORXa/7k4/C7P4SRb
+L5lOr5MkKT0UzLS7/E9eLRqa9q8tYdu2Pf/Qb1VHPg05//eMBruHPMLwMXkr
+9lTX70Tro7cZ+PJ6TB5Oj9QZ0Dv9UXho5n4x/lnJLUHf5lOlWOvUH8EYfdgx
+7G/QVaPyXlOP/sEOoeqk1Y4nHpx34LmchEZ8/LCmCft62++JnhvznWixeJ14
+x5fSg1nLXVOonxwQ5o9v+YTlM+4vWBFnnsXmdvUctlw4voCX11oXMejK/IXP
+TbuXMPa2ThF7vvkDqJMbpHF6binCwPLPKNxXUBaHH7TaBFztHdqOKs+bFHTJ
+mw7jgYiIcrR7rlWiEllZNBHSlnjVgNHukWK8G2uoQlm1y4Jphak2PJqX3YJt
+z4qE62ejWzEq7bPQF6/uwL1JDid+L4kfwB/vAqO4mv7ah4rxylc0G+Ugljkm
+VlA7ZZIm+cNYEIZz9nA17ghu1ODZnLpEdGcNJqHmoiMDG3O92dh383chLtQ2
+H8Th/Bc1uKHKbMP/Xr5sHA==
+  
+  "],ExpressionUUID->"b4567fd1-0a15-4d5e-9d23-7da8fa703b03"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"allAlgebras", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "5", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "5", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "3", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinD", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "4", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "3", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "2", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], ",", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.727025027839963*^9, 3.7270250751135397`*^9}, {
+  3.7270252376037416`*^9, 3.727025341779151*^9}, {3.727025380471937*^9, 
+  3.727025385011126*^9}},ExpressionUUID->"1f126873-666c-4c54-9dee-\
+cae686f73057"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"allAlgebras", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "[", 
+    RowBox[{"[", "0", "]"}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7270255799416523`*^9, 
+  3.727025597093055*^9}},ExpressionUUID->"b562b659-6d80-4613-97e6-\
+853f3ed2e4e6"],
+
+Cell[BoxData["6"], "Output",
+ CellChangeTimes->{{3.727025580690111*^9, 
+  3.7270255974049997`*^9}},ExpressionUUID->"7e228cb8-cf12-40ed-a675-\
+751a286d6f3d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"allAlgebras", "[", 
+  RowBox[{"[", 
+   RowBox[{"{", 
+    RowBox[{
+    "24", ",", "26", ",", "29", ",", "30", ",", "31", ",", "32", ",", "33", 
+     ",", "34", ",", "35"}], "}"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7270261262068233`*^9, 3.727026141644228*^9}, 
+   3.7270264540472803`*^9},ExpressionUUID->"e3d96efd-2372-4361-9562-\
+a952c2ab24aa"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2", ",", "a3", ",", "a4"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3", ",", "x4"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+   
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2", ",", "a3", ",", "a4"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3", ",", "x4"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], 
+   ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2", ",", "a3", ",", "a4"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3", ",", "x4"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], 
+   ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2", ",", "a3"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "0", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}], ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2", ",", "a3"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2", ",", "a3"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "a2"}], "}"}], "]"}], "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2"}], "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", 
+      RowBox[{"{", "a1", "}"}], "]"}], "[", 
+     RowBox[{"{", "x1", "}"}], "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{"{", "0", "}"}], "}"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.727026447639802*^9, 
+  3.727026454469522*^9}},ExpressionUUID->"06da5f6a-730b-43d6-bce0-\
+144bd5991674"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"cluster", "=", 
+   RowBox[{"generateSeed", "[", 
+    RowBox[{"dynkinE", "[", "6", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Flatten", "[", 
+  RowBox[{"Position", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "0", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[GreaterEqual]", 
+         RowBox[{"Length", "[", 
+          RowBox[{
+           RowBox[{"cluster", "[", 
+            RowBox[{"[", "0", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", "0", ",", 
+        RowBox[{"Length", "[", 
+         RowBox[{"findSubalgebras", "[", 
+          RowBox[{"cluster", ",", "#"}], "]"}], "]"}]}], "]"}], "&"}], "/@", 
+     "allAlgebras"}], ",", 
+    RowBox[{"_Integer", "?", "Positive"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.727021163693729*^9, 3.72702116532098*^9}, 
+   3.7270234863865232`*^9, {3.727025395109634*^9, 3.727025414608375*^9}, {
+   3.7270254546731787`*^9, 3.7270254904367447`*^9}, {3.727025528746462*^9, 
+   3.7270255340338593`*^9}, {3.7270256027272997`*^9, 3.727025770238922*^9}, {
+   3.7270258164945908`*^9, 3.727025821476725*^9}, {3.7270264375838842`*^9, 
+   3.72702644346243*^9}, 3.727026874099628*^9, {3.727026936149394*^9, 
+   3.727026992435194*^9}, {3.7270270603232718`*^9, 3.727027109951371*^9}, 
+   3.727027690514677*^9, {3.7270278068705378`*^9, 3.7270279364076433`*^9}, {
+   3.7270279701573563`*^9, 3.727027995022307*^9}, {3.727028050279092*^9, 
+   3.727028081964405*^9}},ExpressionUUID->"edd9893c-9369-4f7e-b15b-\
+3aac032941e4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "15", ",", "16", ",", "18", ",", "21", ",", "24", ",", "25", ",", "26", ",",
+    "27", ",", "28", ",", "30", ",", "31", ",", "32", ",", "33", ",", "34", 
+   ",", "35"}], "}"}]], "Output",
+ CellChangeTimes->{{3.727025487972761*^9, 3.727025502055771*^9}, {
+   3.727025666107761*^9, 3.7270257707476397`*^9}, {3.727026433291301*^9, 
+   3.7270264439198713`*^9}, 3.727026876820306*^9, {3.727026936977522*^9, 
+   3.727026993319858*^9}, {3.7270270610020227`*^9, 3.72702710231428*^9}, 
+   3.7270272289259043`*^9, {3.727027783310835*^9, 3.727027937098647*^9}, {
+   3.7270279707464437`*^9, 3.727027995409564*^9}, {3.72702805066792*^9, 
+   3.727028066576599*^9}, 
+   3.7270385664862556`*^9},ExpressionUUID->"a477befd-8670-4dd2-b303-\
+844585e59148"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", "a__", "]"}], "[", "x__", "]"}], "[", 
+    RowBox[{"B_", "?", "SquareMatrixQ"}], "]"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", "]"}], "]"}], 
+   "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Array", "[", 
+       RowBox[{"c4", ",", 
+        RowBox[{"Length", "[", "#", "]"}]}], "]"}], ".", "#"}], "&"}], "@", 
+    RowBox[{"coeffArrayN", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", "]"}], 
+        "]"}], "/.", 
+       RowBox[{"Association", "@@", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"reduce", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"CoefficientArrays", "[", 
+              RowBox[{
+               RowBox[{"coeffArrayN", "[", 
+                RowBox[{
+                 RowBox[{"Sum", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"weightFourSubalgAnsatzXexpanded", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"allSubalgebras", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], "]"}], "[", 
+                    RowBox[{"[", "ss", "]"}], "]"}]}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"c4subalg", "[", "tt__", "]"}], "\[RuleDelayed]", 
+                    
+                    RowBox[{"c4subalg", "[", 
+                    RowBox[{"ss", ",", "tt"}], "]"}]}]}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"ss", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"allSubalgebras", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", "c4subalg"}], 
+                "]"}], ",", 
+               RowBox[{"termsHead", "[", 
+                RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                  "]"}], "]"}], "]"}]}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ".", 
+            RowBox[{"coeffArrayN", "[", 
+             RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+               "]"}], "]"}], "]"}]}], "]"}], "/.", 
+          RowBox[{
+           RowBox[{"Rule", "[", 
+            RowBox[{"p_", ",", "q_"}], "]"}], "\[RuleDelayed]", 
+           RowBox[{"Rule", "[", 
+            RowBox[{"p", ",", "0"}], "]"}]}]}], ")"}]}]}], ",", "c4"}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{
+  3.727009790704755*^9, {3.727009885827039*^9, 3.727009886502408*^9}, {
+   3.7270294769986877`*^9, 3.727029523393005*^9}, {3.72703016299317*^9, 
+   3.727030165713627*^9}},ExpressionUUID->"a18e03ee-2001-4c4e-9fbb-\
+3be2cc979603"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"cl", "[", "aAlg__", "]"}], "[", "xAlg__", "]"}], "[", 
+     RowBox[{"Balg_", "?", "SquareMatrixQ"}], "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"cl", "[", "aSubalg__", "]"}], "[", "xSubalg__", "]"}], "[", 
+     RowBox[{"Bsubalg_", "?", "SquareMatrixQ"}], "]"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"cl", "[", "aAlg", "]"}], "[", "xAlg", "]"}], "[", "Balg", 
+      "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"cl", "[", "aSubalg", "]"}], "[", "xSubalg", "]"}], "[", 
+      "Bsubalg", "]"}]}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"cl", "[", "aSubalg", "]"}], "[", "xSubalg", "]"}], "[", 
+          "Bsubalg", "]"}], "]"}], "/.", 
+        RowBox[{"AssociationThread", "[", 
+         RowBox[{"xSubalg", ",", "vars"}], "]"}]}], "/.", 
+       RowBox[{
+        RowBox[{"c4", "[", "ii_", "]"}], "\[RuleDelayed]", 
+        RowBox[{"c4subalg", "[", 
+         RowBox[{"ii", ",", "vars", ",", "Bsubalg"}], "]"}]}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"vars", ",", 
+        RowBox[{
+         RowBox[{"findSubalgebras", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"cl", "[", "aAlg", "]"}], "[", "xAlg", "]"}], "[", 
+            "Balg", "]"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cl", "[", "aSubalg", "]"}], "[", "xSubalg", "]"}], "[", 
+            "Bsubalg", "]"}]}], "]"}], "/.", 
+         RowBox[{
+          RowBox[{"subalg", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"cl", "[", "a_", "]"}], "[", "x_", "]"}], "[", "B_", 
+             "]"}], ",", 
+            RowBox[{"path", "[", "___", "]"}], ",", 
+            RowBox[{"coord", "[", "__", "]"}], ",", "vars_"}], "]"}], 
+          "\[RuleDelayed]", "x"}]}]}], "}"}]}], "]"}], "/.", 
+    RowBox[{
+     RowBox[{"Log", "[", "arg_", "]"}], "\[RuleDelayed]", 
+     RowBox[{"Log", "[", 
+      RowBox[{"Factor", "[", "arg", "]"}], "]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.727031048547243*^9, 
+  3.727031067380414*^9}},ExpressionUUID->"9835f7c9-9204-46ee-af65-\
+8df94ae6bf3c"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", " "}]], "Input",
+ CellChangeTimes->{{3.727037694955324*^9, 3.727037695810337*^9}, 
+   3.727039167344223*^9},ExpressionUUID->"8f73381d-ae97-4443-954b-\
+5bd4ffce894d"],
+
+Cell[BoxData["Quit"], "Input",
+ CellChangeTimes->{{3.727015410851656*^9, 
+  3.7270154117143917`*^9}},ExpressionUUID->"6ac289f0-9432-40f5-9fff-\
+5018e2939319"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "<<", "\"\</Users/thatscottishkid/Google \
+Drive/NBIA/cluster-polylogs/andrew/cluster_algebras.m\>\""}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.727015275891652*^9, 3.727015309550149*^9}, {
+  3.727015382265896*^9, 
+  3.727015399828808*^9}},ExpressionUUID->"7b9bca74-edcd-402b-a12c-\
+93a0f14d0276"],
+
+Cell[BoxData[{
+ RowBox[{"<<", "coproduct.m"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mapleSolverID", "=", "1"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.727015270206341*^9, 3.7270152720952463`*^9}, {
+  3.72701568787728*^9, 
+  3.727015691830768*^9}},ExpressionUUID->"5afbd574-171d-42e6-889c-\
+066f67c358b8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "]"}], "=", 
+   RowBox[{"adjacentWeightFourAnsatzX", "[", 
+    RowBox[{"generateSeed", "[", 
+     RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "]"}]}], ";"}]], "Input",Expre\
+ssionUUID->"9296fce1-2dd2-45f0-887d-edced8b1d608"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cl", "[", "a__", "]"}], "[", "x__", "]"}], "[", 
+    RowBox[{"B_", "?", "SquareMatrixQ"}], "]"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", "]"}], "]"}], 
+   "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Array", "[", 
+       RowBox[{"c4", ",", 
+        RowBox[{"Length", "[", "#", "]"}]}], "]"}], ".", "#"}], "&"}], "@", 
+    RowBox[{"coeffArrayN", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", "]"}], 
+        "]"}], "/.", 
+       RowBox[{"Association", "@@", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Rule", "[", 
+            RowBox[{"#", ",", "0"}], "]"}], "&"}], "/@", 
+          RowBox[{"Complement", "[", 
+           RowBox[{
+            RowBox[{"termsHead", "[", 
+             RowBox[{
+              RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                "]"}], "]"}], ",", "c4"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"reduce", "[", 
+              RowBox[{
+               RowBox[{"NullSpace", "[", 
+                RowBox[{
+                 RowBox[{"CoefficientArrays", "[", 
+                  RowBox[{
+                   RowBox[{"coeffArrayN", "[", 
+                    RowBox[{
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"weightFourSubalgAnsatzXexpanded", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"allSubalgebras", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], "]"}], "[", 
+                    RowBox[{"[", "ss", "]"}], "]"}]}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"c4subalg", "[", "tt__", "]"}], "\[RuleDelayed]", 
+                    
+                    RowBox[{"c4subalg", "[", 
+                    RowBox[{"ss", ",", "tt"}], "]"}]}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ss", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"allSubalgebras", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", "c4subalg"}], 
+                    "]"}], ",", 
+                   RowBox[{"termsHead", "[", 
+                    RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                    "]"}], "]"}], "]"}]}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "]"}], ".", 
+               RowBox[{"coeffArrayN", "[", 
+                RowBox[{"adjacentWeightFourAnsatzXexpanded", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"cl", "[", "a", "]"}], "[", "x", "]"}], "[", "B", 
+                  "]"}], "]"}], "]"}]}], "]"}], "/.", 
+             RowBox[{
+              RowBox[{"Rule", "[", 
+               RowBox[{"p_", ",", "q_"}], "]"}], "\[RuleDelayed]", "p"}]}]}], 
+           "]"}]}], ")"}]}]}], ",", "c4"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.727553814314721*^9, 3.727553845251752*^9}, 
+   3.7275553756959248`*^9},ExpressionUUID->"2a770af4-9480-4f55-8dcb-\
+8a60978cf5c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "1", "]"}], "]"}], "]"}], ",", "c4"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.727554141764496*^9, 
+  3.7275541418943996`*^9}},ExpressionUUID->"5fad71bb-17c1-4cf3-b5da-\
+2036225dd65f"],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.727554158348877*^9, 3.7275553969233932`*^9, 
+  3.7275671146336517`*^9},ExpressionUUID->"37abed2b-379c-453a-9c68-\
+031bd9ca2468"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{
+       RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+       RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}], "]"}], ",", "c4"}], "]"}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.727550811492505*^9, 
+  3.727550811649742*^9}},ExpressionUUID->"124080ff-f21e-46aa-9d5a-\
+fc72ebd71c68"],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.7275508170143757`*^9, 3.727553862957102*^9, 
+  3.7275538931467867`*^9, 3.7275541445209417`*^9, 3.727555409239986*^9, 
+  3.727567127537805*^9},ExpressionUUID->"c18feead-0f7b-49cf-8250-\
+55bb893c5871"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "2", "]"}], "]"}], "]"}], ",", "c4"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7275507952178783`*^9, 
+  3.727550795285181*^9}},ExpressionUUID->"2a224b6e-3468-4835-b739-\
+f306333d879d"],
+
+Cell[BoxData["76"], "Output",
+ CellChangeTimes->{3.727550800474238*^9, 3.727553896896904*^9, 
+  3.727554158234995*^9, 3.727555424075412*^9, 
+  3.727567141765276*^9},ExpressionUUID->"865515bf-e0bf-4070-bcc3-\
+cbacf5566f9f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+     RowBox[{"generateSeed", "[", 
+      RowBox[{"dynkinA", "[", "3", "]"}], "]"}], "]"}], ",", "c4"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7270341566392593`*^9, 3.727034187886709*^9}, 
+   3.727034382446382*^9, {3.7270344411603737`*^9, 3.727034476890305*^9}, {
+   3.727034634038576*^9, 3.727034654822571*^9}, {3.727034706792701*^9, 
+   3.727034726161935*^9}},ExpressionUUID->"750f91f5-fa97-499b-b147-\
+28f37a01a03a"],
+
+Cell[BoxData["59"], "Output",
+ CellChangeTimes->{
+  3.72703419762558*^9, {3.7270343356237*^9, 3.727034358694388*^9}, {
+   3.72703439396387*^9, 3.7270344157669487`*^9}, {3.7270344581328993`*^9, 
+   3.727034490188093*^9}, {3.727034645456953*^9, 3.72703466899174*^9}, 
+   3.727034867245873*^9, 3.7275507812471046`*^9, 3.727553957485811*^9, 
+   3.727554329066291*^9, 3.727555557360244*^9, 
+   3.7275672821313066`*^9},ExpressionUUID->"0e4fd723-d344-4720-ab03-\
+3e0ae19dc637"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"cl", "[", "aAlg__", "]"}], "[", "xAlg__", "]"}], "[", 
+     RowBox[{"Balg_", "?", "SquareMatrixQ"}], "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"cl", "[", "aSubalg__", "]"}], "[", "xSubalg__", "]"}], "[", 
+     RowBox[{"Bsubalg_", "?", "SquareMatrixQ"}], "]"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"cl", "[", "aAlg", "]"}], "[", "xAlg", "]"}], "[", "Balg", 
+      "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"cl", "[", "aSubalg", "]"}], "[", "xSubalg", "]"}], "[", 
+      "Bsubalg", "]"}]}], "]"}], "=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ansatz", ",", "ansatzTerms", ",", 
+       RowBox[{"subalgebras", "=", 
+        RowBox[{"findSubalgebras", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"cl", "[", "aAlg", "]"}], "[", "xAlg", "]"}], "[", "Balg",
+            "]"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"cl", "[", "aSubalg", "]"}], "[", "xSubalg", "]"}], "[", 
+           "Bsubalg", "]"}]}], "]"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "subalgebras", "]"}], ">", "0"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ansatz", "=", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cl", "[", "aSubalg", "]"}], "[", "xSubalg", "]"}], 
+                "[", "Bsubalg", "]"}], "]"}], "/.", 
+              RowBox[{"AssociationThread", "[", 
+               RowBox[{"xSubalg", ",", "vars"}], "]"}]}], "/.", 
+             RowBox[{
+              RowBox[{"c4", "[", "ii_", "]"}], "\[RuleDelayed]", 
+              RowBox[{"c4subalg", "[", 
+               RowBox[{"ii", ",", 
+                RowBox[{"Sequence", "@@", "vars"}]}], "]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"vars", ",", 
+              RowBox[{"subalgebras", "/.", 
+               RowBox[{
+                RowBox[{"subalg", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"cl", "[", "a_", "]"}], "[", "x_", "]"}], "[", 
+                   "B_", "]"}], ",", 
+                  RowBox[{"path", "[", "___", "]"}], ",", 
+                  RowBox[{"coord", "[", "__", "]"}], ",", "vars_"}], "]"}], 
+                "\[RuleDelayed]", "x"}]}]}], "}"}]}], "]"}], "/.", 
+          RowBox[{
+           RowBox[{"Log", "[", "arg_", "]"}], "\[RuleDelayed]", 
+           RowBox[{"Log", "[", 
+            RowBox[{"Factor", "[", "arg", "]"}], "]"}]}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ansatzTerms", "=", 
+         RowBox[{
+          RowBox[{"termsHead", "[", "ansatz", "]"}], "/.", 
+          RowBox[{
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":>", 
+           RowBox[{"CircleDot", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"a", "//.", "expandLogs"}], "/.", 
+               RowBox[{"Pi", "->", "0"}]}], "/.", 
+              RowBox[{
+               RowBox[{"Log", "[", "arg_", "]"}], ":>", 
+               RowBox[{"Log", "[", 
+                RowBox[{
+                 RowBox[{"Sort", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"arg", ",", 
+                    RowBox[{"-", "arg"}]}], "}"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"-", "1"}], "]"}], "]"}], "]"}]}]}], ",", "b", ",", 
+             "c", ",", "d"}], "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"ansatzTerms", "=", 
+         RowBox[{"ansatzTerms", "/.", 
+          RowBox[{
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":>", 
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"b", "//.", "expandLogs"}], "/.", 
+               RowBox[{"Pi", "->", "0"}]}], "/.", 
+              RowBox[{
+               RowBox[{"Log", "[", "arg_", "]"}], ":>", 
+               RowBox[{"Log", "[", 
+                RowBox[{
+                 RowBox[{"Sort", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"arg", ",", 
+                    RowBox[{"-", "arg"}]}], "}"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"-", "1"}], "]"}], "]"}], "]"}]}]}], ",", "c", ",", 
+             "d"}], "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"ansatzTerms", "=", 
+         RowBox[{"ansatzTerms", "/.", 
+          RowBox[{
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":>", 
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a", ",", "b", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"c", "//.", "expandLogs"}], "/.", 
+               RowBox[{"Pi", "->", "0"}]}], "/.", 
+              RowBox[{
+               RowBox[{"Log", "[", "arg_", "]"}], ":>", 
+               RowBox[{"Log", "[", 
+                RowBox[{
+                 RowBox[{"Sort", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"arg", ",", 
+                    RowBox[{"-", "arg"}]}], "}"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"-", "1"}], "]"}], "]"}], "]"}]}]}], ",", "d"}], 
+            "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"ansatzTerms", "=", 
+         RowBox[{"ansatzTerms", "/.", 
+          RowBox[{
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":>", 
+           RowBox[{"CircleDot", "[", 
+            RowBox[{"a", ",", "b", ",", "c", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"d", "//.", "expandLogs"}], "/.", 
+               RowBox[{"Pi", "->", "0"}]}], "/.", 
+              RowBox[{
+               RowBox[{"Log", "[", "arg_", "]"}], ":>", 
+               RowBox[{"Log", "[", 
+                RowBox[{
+                 RowBox[{"Sort", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"arg", ",", 
+                    RowBox[{"-", "arg"}]}], "}"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"-", "1"}], "]"}], "]"}], "]"}]}]}]}], "]"}]}]}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"expand", "[", 
+           RowBox[{"#", "/.", 
+            RowBox[{"Association", "@@", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"tt", "->", "0"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"tt", ",", 
+                 RowBox[{"termsHead", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"reduce", "[", 
+                    RowBox[{"coeffArrayN", "[", "#", "]"}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"Rule", "[", 
+                    RowBox[{"p_", ",", "q_"}], "]"}], ":>", "q"}]}], ",", 
+                   "c4subalg"}], "]"}]}], "}"}]}], "]"}]}]}], "]"}], "&"}], 
+         "@", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"coeffArrayN", "[", "ansatz", "]"}], ".", "ansatzTerms"}], 
+          ")"}]}]}], ",", "0"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.727031048547243*^9, 3.727031067380414*^9}, 
+   3.727034737516016*^9, {3.727035282875387*^9, 3.727035434811078*^9}, {
+   3.727035497377494*^9, 3.7270356528598623`*^9}, {3.727035709242145*^9, 
+   3.727035721894135*^9}, {3.727036026625383*^9, 3.7270360277098293`*^9}, 
+   3.727036142102105*^9, 3.727036223800728*^9, {3.727036323738456*^9, 
+   3.7270363243489103`*^9}, {3.727036405418054*^9, 3.727036408511446*^9}, {
+   3.727036525687224*^9, 3.727036568626786*^9}, {3.727036994151067*^9, 
+   3.727037010177473*^9}, {3.727555278136368*^9, 3.7275553005408373`*^9}, {
+   3.727555351573962*^9, 
+   3.7275553604632397`*^9}},ExpressionUUID->"4b78c745-125b-4759-a1ed-\
+31446dba5983"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+     RowBox[{
+      RowBox[{"generateSeed", "[", 
+       RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+      RowBox[{"generateSeed", "[", 
+       RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], ",", "c4subalg"}], 
+   "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+     RowBox[{
+      RowBox[{"generateSeed", "[", 
+       RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+      RowBox[{"generateSeed", "[", 
+       RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], ",", "c4subalg"}], 
+   "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"termsHead", "[", 
+   RowBox[{
+    RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+     RowBox[{
+      RowBox[{"generateSeed", "[", 
+       RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+      RowBox[{"generateSeed", "[", 
+       RowBox[{
+        RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+        RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+    "c4subalg"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"reduce", "[", 
+   RowBox[{"coeffArrayN", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+        RowBox[{
+         RowBox[{"generateSeed", "[", 
+          RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+         RowBox[{"generateSeed", "[", 
+          RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], "/.", 
+       RowBox[{"c4subalg", "\[Rule]", "c4subalg1"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+        RowBox[{
+         RowBox[{"generateSeed", "[", 
+          RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+         RowBox[{"generateSeed", "[", 
+          RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], "/.", 
+       RowBox[{"c4subalg", "\[Rule]", "c4subalg2"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+        RowBox[{
+         RowBox[{"generateSeed", "[", 
+          RowBox[{"dynkinA", "[", "3", "]"}], "]"}], ",", 
+         RowBox[{"generateSeed", "[", 
+          RowBox[{
+           RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+           RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], "/.", 
+       RowBox[{"c4subalg", "\[Rule]", "c4subalg11"}]}], ")"}], "+", 
+     RowBox[{"nonSubalgebraConstructibleWeightFourAnsatzX", "[", 
+      RowBox[{"generateSeed", "[", 
+       RowBox[{"dynkinA", "[", "3", "]"}], "]"}], "]"}]}], "]"}], "]"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.727554458241679*^9, 3.727554511961773*^9}, {
+  3.727554860980377*^9, 3.727554887914939*^9}, {3.727554920864468*^9, 
+  3.7275549463183403`*^9}, {3.727555119670042*^9, 
+  3.727555119980996*^9}},ExpressionUUID->"c2f3d8c7-9a39-49ae-ba26-\
+8339ac16875a"],
+
+Cell[BoxData["15"], "Output",
+ CellChangeTimes->{{3.727554465241715*^9, 3.727554515736085*^9}, {
+   3.727555094225861*^9, 3.727555120459193*^9}, 3.7275556909821587`*^9, 
+   3.7275672849492188`*^9},ExpressionUUID->"89699fb7-40ab-4895-b773-\
+f2bc49a90396"],
+
+Cell[BoxData["357"], "Output",
+ CellChangeTimes->{{3.727554465241715*^9, 3.727554515736085*^9}, {
+   3.727555094225861*^9, 3.727555120459193*^9}, 3.7275556909821587`*^9, 
+   3.727567307405053*^9},ExpressionUUID->"6507939b-d0c0-4c69-a0ea-\
+9119eb155c06"],
+
+Cell[BoxData["9"], "Output",
+ CellChangeTimes->{{3.727554465241715*^9, 3.727554515736085*^9}, {
+   3.727555094225861*^9, 3.727555120459193*^9}, 3.7275556909821587`*^9, 
+   3.72756731002627*^9},ExpressionUUID->"ca9149b3-1026-43e1-89ba-\
+0877030d779e"],
+
+Cell[BoxData["432"], "Output",
+ CellChangeTimes->{{3.727554465241715*^9, 3.727554515736085*^9}, {
+   3.727555094225861*^9, 3.727555120459193*^9}, 3.7275556909821587`*^9, 
+   3.72756731954659*^9},ExpressionUUID->"37b2406b-b2d8-4c1e-996a-\
+758fff227e45"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "3", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.727554837495769*^9, 3.7275548551777697`*^9}, {
+  3.727554896141356*^9, 3.7275549018433104`*^9}, {3.727555128257183*^9, 
+  3.7275551615145473`*^9}, {3.7275561450970592`*^9, 3.727556173116407*^9}, {
+  3.727556225745556*^9, 3.727556324817501*^9}, {3.7275563781383133`*^9, 
+  3.7275563782370157`*^9}, {3.727567137064114*^9, 
+  3.727567137568076*^9}},ExpressionUUID->"a9372e06-431a-43e8-81ef-\
+e657a5b22856"],
+
+Cell[BoxData["35"], "Output",
+ CellChangeTimes->{
+  3.727554863703741*^9, 3.727554902159759*^9, 3.727555133389292*^9, 
+   3.727555918679228*^9, {3.727556151861413*^9, 3.7275561740800867`*^9}, 
+   3.727556330468418*^9, 3.727556388245078*^9, 
+   3.727567323409214*^9},ExpressionUUID->"a8cf8a64-03b3-4218-96e5-\
+fd9482c152d9"],
+
+Cell[BoxData["1127"], "Output",
+ CellChangeTimes->{
+  3.727554863703741*^9, 3.727554902159759*^9, 3.727555133389292*^9, 
+   3.727555918679228*^9, {3.727556151861413*^9, 3.7275561740800867`*^9}, 
+   3.727556330468418*^9, 3.727556388245078*^9, 
+   3.7275675124523706`*^9},ExpressionUUID->"4ee3ccb0-0952-4e4f-b144-\
+4dcc889a11c9"],
+
+Cell[BoxData["84"], "Output",
+ CellChangeTimes->{
+  3.727554863703741*^9, 3.727554902159759*^9, 3.727555133389292*^9, 
+   3.727555918679228*^9, {3.727556151861413*^9, 3.7275561740800867`*^9}, 
+   3.727556330468418*^9, 3.727556388245078*^9, 
+   3.727567519280912*^9},ExpressionUUID->"4d9c9576-bf2b-4a5d-a022-\
+cab6bdd1e63c"],
+
+Cell[BoxData["413"], "Output",
+ CellChangeTimes->{
+  3.727554863703741*^9, 3.727554902159759*^9, 3.727555133389292*^9, 
+   3.727555918679228*^9, {3.727556151861413*^9, 3.7275561740800867`*^9}, 
+   3.727556330468418*^9, 3.727556388245078*^9, 
+   3.7275676787004957`*^9},ExpressionUUID->"5a092f96-21c7-48ac-afe8-\
+47d4a9406f3b"],
+
+Cell[BoxData["273"], "Output",
+ CellChangeTimes->{
+  3.727554863703741*^9, 3.727554902159759*^9, 3.727555133389292*^9, 
+   3.727555918679228*^9, {3.727556151861413*^9, 3.7275561740800867`*^9}, 
+   3.727556330468418*^9, 3.727556388245078*^9, 
+   3.727567732731793*^9},ExpressionUUID->"46f99f51-3f46-4af8-b662-\
+518bd0d02aa1"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{
+  3.727554863703741*^9, 3.727554902159759*^9, 3.727555133389292*^9, 
+   3.727555918679228*^9, {3.727556151861413*^9, 3.7275561740800867`*^9}, 
+   3.727556330468418*^9, 3.727556388245078*^9, 
+   3.727567732838563*^9},ExpressionUUID->"9107776f-16bf-4a47-964e-\
+4fd84dc77017"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "3", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "4", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.727555866449733*^9, 3.727555868294149*^9}, {
+  3.727556177582389*^9, 3.727556195018373*^9}, {3.727556333195594*^9, 
+  3.727556367571145*^9}, {3.727567145334196*^9, 
+  3.727567145687215*^9}},ExpressionUUID->"abceaacb-df1e-4201-8c49-\
+98bc2f79bda6"],
+
+Cell[BoxData["52"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.727567739977634*^9},ExpressionUUID->"87456926-7564-47a8-9d05-\
+57760ea0e425"],
+
+Cell[BoxData["1810"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.7275683812475843`*^9},ExpressionUUID->"0eeec246-735f-4163-9e3f-\
+af569c507072"],
+
+Cell[BoxData["54"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.7275683893176517`*^9},ExpressionUUID->"540f91d8-db33-44f6-9351-\
+12c33f46599c"],
+
+Cell[BoxData["682"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.727568976417706*^9},ExpressionUUID->"f446faa6-649e-4192-805f-\
+d96e20267ea1"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.7275689765035686`*^9},ExpressionUUID->"3126977f-4b93-4b06-b213-\
+4a0f8fdc7a94"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.727568976514533*^9},ExpressionUUID->"27e2ac4c-a905-4174-8a1a-\
+0a4f464ba13e"],
+
+Cell[BoxData["12"], "Output",
+ CellChangeTimes->{3.72755622813004*^9, 
+  3.727568994079774*^9},ExpressionUUID->"aef11fb7-3823-4baa-800a-\
+bc9b65ab5af1"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"NotebookSave", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7275560329147043`*^9, 
+  3.727556038620018*^9}},ExpressionUUID->"eaf06f73-eaea-4564-bbde-\
+36631a91e316"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "3", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7275692484825277`*^9, 
+  3.7275692543960953`*^9}},ExpressionUUID->"1b8c0292-1d91-4fb4-86eb-\
+b776e7f0c5ba"],
+
+Cell[BoxData["70"], "Output",
+ CellChangeTimes->{
+  3.7275692674849663`*^9},ExpressionUUID->"44826373-273f-4b12-bbed-\
+b5d519db9cfd"],
+
+Cell[BoxData["2836"], "Output",
+ CellChangeTimes->{
+  3.727570399036128*^9},ExpressionUUID->"57715078-15fd-4b74-9f84-\
+0714765667fe"],
+
+Cell[BoxData["375"], "Output",
+ CellChangeTimes->{
+  3.727570458152899*^9},ExpressionUUID->"cfd31779-e8ea-4982-b049-\
+0b8982c233d0"],
+
+Cell[BoxData["1652"], "Output",
+ CellChangeTimes->{
+  3.727572128790434*^9},ExpressionUUID->"893b1819-24b6-4628-8449-\
+5eda1b54458d"],
+
+Cell[BoxData["2124"], "Output",
+ CellChangeTimes->{
+  3.727572868825015*^9},ExpressionUUID->"4deba89a-b38c-4cd2-a937-\
+8cfd005caaf7"],
+
+Cell[BoxData["2124"], "Output",
+ CellChangeTimes->{
+  3.7275728688345833`*^9},ExpressionUUID->"09f77729-34bd-4ab5-98b7-\
+3632b4c37651"],
+
+Cell[BoxData["36"], "Output",
+ CellChangeTimes->{
+  3.727572877541017*^9},ExpressionUUID->"7fd0253c-906a-4d6a-8bbb-\
+65288726f5d4"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"NotebookSave", "[", "]"}]], "Input",ExpressionUUID->"e140e7fe-9289-4712-943b-3739d977bbf4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "3", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinD", "[", "5", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7275692720026608`*^9, 
+  3.727569274384645*^9}},ExpressionUUID->"bf2b7156-48b4-4a52-83b2-\
+35e1c826677a"],
+
+Cell[BoxData["130"], "Output",
+ CellChangeTimes->{
+  3.727572912663272*^9},ExpressionUUID->"b872805b-bcd0-4004-868e-\
+f7b801489825"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`initializing, StandardForm],
+  Evaluator->"Local",
+  ImageSizeCache->{179., {3., 9.}}]], "PrintTemporary",
+ CellChangeTimes->{
+  3.7275752512582817`*^9},ExpressionUUID->"692084cf-6d08-49e0-9b9d-\
+4cdc9d6ec28d"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"NotebookSave", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.727569285444121*^9, 
+  3.727569287135644*^9}},ExpressionUUID->"20d10cab-36cf-40db-aea0-\
+2845e52c3e59"],
+
+Cell[BoxData[{
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "1", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "2", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinA", "[", "3", "]"}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "2", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    RowBox[{"termsHead", "[", 
+     RowBox[{
+      RowBox[{"nonSubalgebraConstructibleWeightFourSubalgAnsatzX", "[", 
+       RowBox[{
+        RowBox[{"generateSeed", "[", 
+         RowBox[{"dynkinE", "[", "6", "]"}], "]"}], ",", 
+        RowBox[{"generateSeed", "[", 
+         RowBox[{
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}], ",", 
+          RowBox[{"dynkinA", "[", "1", "]"}]}], "]"}]}], "]"}], ",", 
+      "c4subalg"}], "]"}], ",", "NULL"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.727569301242564*^9, 
+  3.727569303370675*^9}},ExpressionUUID->"2ae30011-ef9a-470f-b090-\
+7b1d54f62160"],
+
+Cell[BoxData[
+ RowBox[{"NotebookSave", "[", "]"}]], "Input",ExpressionUUID->"f757fdda-ddee-42fd-bb88-cecef62e1d00"]
+},
+WindowSize->{1562, 728},
+WindowMargins->{{47, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 158, 3, 30, "Input",ExpressionUUID->"bfa2a028-3985-40c7-bf73-bd226e4c87c9"],
+Cell[719, 25, 335, 9, 30, "Input",ExpressionUUID->"f44a9872-013f-4e64-9d77-1fbe90fa6208"],
+Cell[1057, 36, 313, 7, 52, "Input",ExpressionUUID->"d8fa0e0d-61da-4916-bd32-26e425177d12"],
+Cell[1373, 45, 522, 12, 30, "Input",ExpressionUUID->"fa4cbd5f-9412-43d7-8f93-5b0974e6dfc7"],
+Cell[1898, 59, 53970, 1395, 2131, "Input",ExpressionUUID->"b4567fd1-0a15-4d5e-9d23-7da8fa703b03"],
+Cell[55871, 1456, 6564, 158, 220, "Input",ExpressionUUID->"1f126873-666c-4c54-9dee-cae686f73057"],
+Cell[CellGroupData[{
+Cell[62460, 1618, 359, 10, 30, "Input",ExpressionUUID->"b562b659-6d80-4613-97e6-853f3ed2e4e6"],
+Cell[62822, 1630, 156, 3, 34, "Output",ExpressionUUID->"7e228cb8-cf12-40ed-a675-751a286d6f3d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63015, 1638, 379, 9, 30, "Input",ExpressionUUID->"e3d96efd-2372-4361-9562-a952c2ab24aa"],
+Cell[63397, 1649, 4719, 146, 119, "Output",ExpressionUUID->"06da5f6a-730b-43d6-bce0-144bd5991674"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[68153, 1800, 1725, 38, 52, "Input",ExpressionUUID->"edd9893c-9369-4f7e-b15b-3aac032941e4"],
+Cell[69881, 1840, 778, 14, 34, "Output",ExpressionUUID->"a477befd-8670-4dd2-b303-844585e59148"]
+}, Open  ]],
+Cell[70674, 1857, 3609, 90, 178, "Input",ExpressionUUID->"a18e03ee-2001-4c4e-9fbb-3be2cc979603"],
+Cell[74286, 1949, 2518, 68, 94, "Input",ExpressionUUID->"9835f7c9-9204-46ee-af65-8df94ae6bf3c"],
+Cell[76807, 2019, 378, 6, 199, "Input",ExpressionUUID->"8f73381d-ae97-4443-954b-5bd4ffce894d"],
+Cell[77188, 2027, 158, 3, 30, "Input",ExpressionUUID->"6ac289f0-9432-40f5-9fff-5018e2939319"],
+Cell[77349, 2032, 335, 9, 30, "Input",ExpressionUUID->"7b9bca74-edcd-402b-a12c-93a0f14d0276"],
+Cell[77687, 2043, 313, 7, 52, "Input",ExpressionUUID->"5afbd574-171d-42e6-889c-066f67c358b8"],
+Cell[78003, 2052, 404, 9, 30, "Input",ExpressionUUID->"9296fce1-2dd2-45f0-887d-edced8b1d608"],
+Cell[78410, 2063, 4084, 100, 199, "Input",ExpressionUUID->"2a770af4-9480-4f55-8dcb-8a60978cf5c3"],
+Cell[CellGroupData[{
+Cell[82519, 2167, 403, 10, 30, "Input",ExpressionUUID->"5fad71bb-17c1-4cf3-b5da-2036225dd65f"],
+Cell[82925, 2179, 178, 3, 34, "Output",ExpressionUUID->"37abed2b-379c-453a-9c68-031bd9ca2468"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83140, 2187, 468, 12, 30, "Input",ExpressionUUID->"124080ff-f21e-46aa-9d5a-fc72ebd71c68"],
+Cell[83611, 2201, 249, 4, 34, "Output",ExpressionUUID->"c18feead-0f7b-49cf-8250-55bb893c5871"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83897, 2210, 403, 10, 30, "Input",ExpressionUUID->"2a224b6e-3468-4835-b739-f306333d879d"],
+Cell[84303, 2222, 222, 4, 34, "Output",ExpressionUUID->"865515bf-e0bf-4070-bcc3-cbacf5566f9f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[84562, 2231, 574, 12, 30, "Input",ExpressionUUID->"750f91f5-fa97-499b-b147-28f37a01a03a"],
+Cell[85139, 2245, 470, 8, 34, "Output",ExpressionUUID->"0e4fd723-d344-4720-ab03-3e0ae19dc637"]
+}, Open  ]],
+Cell[85624, 2256, 8397, 203, 241, "Input",ExpressionUUID->"4b78c745-125b-4759-a1ed-31446dba5983"],
+Cell[CellGroupData[{
+Cell[94046, 2463, 3118, 74, 178, "Input",ExpressionUUID->"c2f3d8c7-9a39-49ae-ba26-8339ac16875a"],
+Cell[97167, 2539, 254, 4, 34, "Output",ExpressionUUID->"89699fb7-40ab-4895-b773-f2bc49a90396"],
+Cell[97424, 2545, 253, 4, 34, "Output",ExpressionUUID->"6507939b-d0c0-4c69-a0ea-9119eb155c06"],
+Cell[97680, 2551, 250, 4, 34, "Output",ExpressionUUID->"ca9149b3-1026-43e1-89ba-0877030d779e"],
+Cell[97933, 2557, 252, 4, 34, "Output",ExpressionUUID->"37b2406b-b2d8-4c1e-996a-758fff227e45"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98222, 2566, 3596, 86, 136, "Input",ExpressionUUID->"a9372e06-431a-43e8-81ef-e657a5b22856"],
+Cell[101821, 2654, 323, 6, 34, "Output",ExpressionUUID->"a8cf8a64-03b3-4218-96e5-fd9482c152d9"],
+Cell[102147, 2662, 327, 6, 34, "Output",ExpressionUUID->"4ee3ccb0-0952-4e4f-b144-4dcc889a11c9"],
+Cell[102477, 2670, 323, 6, 34, "Output",ExpressionUUID->"4d9c9576-bf2b-4a5d-a022-cab6bdd1e63c"],
+Cell[102803, 2678, 326, 6, 34, "Output",ExpressionUUID->"5a092f96-21c7-48ac-afe8-47d4a9406f3b"],
+Cell[103132, 2686, 324, 6, 34, "Output",ExpressionUUID->"46f99f51-3f46-4af8-b662-518bd0d02aa1"],
+Cell[103459, 2694, 322, 6, 34, "Output",ExpressionUUID->"9107776f-16bf-4a47-964e-4fd84dc77017"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103818, 2705, 3996, 98, 157, "Input",ExpressionUUID->"abceaacb-df1e-4201-8c49-98bc2f79bda6"],
+Cell[107817, 2805, 152, 3, 34, "Output",ExpressionUUID->"87456926-7564-47a8-9d05-57760ea0e425"],
+Cell[107972, 2810, 156, 3, 34, "Output",ExpressionUUID->"0eeec246-735f-4163-9e3f-af569c507072"],
+Cell[108131, 2815, 154, 3, 34, "Output",ExpressionUUID->"540f91d8-db33-44f6-9351-12c33f46599c"],
+Cell[108288, 2820, 153, 3, 34, "Output",ExpressionUUID->"f446faa6-649e-4192-805f-d96e20267ea1"],
+Cell[108444, 2825, 153, 3, 34, "Output",ExpressionUUID->"3126977f-4b93-4b06-b213-4a0f8fdc7a94"],
+Cell[108600, 2830, 151, 3, 34, "Output",ExpressionUUID->"27e2ac4c-a905-4174-8a1a-0a4f464ba13e"],
+Cell[108754, 2835, 152, 3, 34, "Output",ExpressionUUID->"aef11fb7-3823-4baa-800a-bc9b65ab5af1"]
+}, Open  ]],
+Cell[108921, 2841, 188, 4, 30, "Input",ExpressionUUID->"eaf06f73-eaea-4564-bbde-36631a91e316"],
+Cell[CellGroupData[{
+Cell[109134, 2849, 3856, 96, 157, "Input",ExpressionUUID->"1b8c0292-1d91-4fb4-86eb-b776e7f0c5ba"],
+Cell[112993, 2947, 133, 3, 34, "Output",ExpressionUUID->"44826373-273f-4b12-bbed-b5d519db9cfd"],
+Cell[113129, 2952, 133, 3, 34, "Output",ExpressionUUID->"57715078-15fd-4b74-9f84-0714765667fe"],
+Cell[113265, 2957, 132, 3, 34, "Output",ExpressionUUID->"cfd31779-e8ea-4982-b049-0b8982c233d0"],
+Cell[113400, 2962, 133, 3, 34, "Output",ExpressionUUID->"893b1819-24b6-4628-8449-5eda1b54458d"],
+Cell[113536, 2967, 133, 3, 34, "Output",ExpressionUUID->"4deba89a-b38c-4cd2-a937-8cfd005caaf7"],
+Cell[113672, 2972, 135, 3, 34, "Output",ExpressionUUID->"09f77729-34bd-4ab5-98b7-3632b4c37651"],
+Cell[113810, 2977, 131, 3, 34, "Output",ExpressionUUID->"7fd0253c-906a-4d6a-8bbb-65288726f5d4"]
+}, Open  ]],
+Cell[113956, 2983, 115, 1, 30, "Input",ExpressionUUID->"e140e7fe-9289-4712-943b-3739d977bbf4"],
+Cell[CellGroupData[{
+Cell[114096, 2988, 3854, 96, 157, "Input",ExpressionUUID->"bf2b7156-48b4-4a52-83b2-35e1c826677a"],
+Cell[117953, 3086, 132, 3, 34, "Output",ExpressionUUID->"b872805b-bcd0-4004-868e-f7b801489825"],
+Cell[118088, 3091, 257, 6, 24, "PrintTemporary",ExpressionUUID->"692084cf-6d08-49e0-9b9d-4cdc9d6ec28d"]
+}, Open  ]],
+Cell[118360, 3100, 186, 4, 30, "Input",ExpressionUUID->"20d10cab-36cf-40db-aea0-2845e52c3e59"],
+Cell[118549, 3106, 3852, 96, 157, "Input",ExpressionUUID->"2ae30011-ef9a-470f-b090-7b1d54f62160"],
+Cell[122404, 3204, 115, 1, 30, "Input",ExpressionUUID->"f757fdda-ddee-42fd-bb88-cecef62e1d00"]
+}
+]
+*)
+
