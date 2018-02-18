@@ -204,14 +204,23 @@ allSubalgebras[generateSeed[dynkinA[1],dynkinA[1]]]=allAlgebras[[{35}]];
 
 (* Generate the weight-two (possibly cluster-adjacent) symbols on a given algebra *)
 
-solveIntegrability[ansatz_,vars_]:=Module[{iteration=1,eqnList},eqnList=DeleteCases[If[FreeQ[#,Log],Flatten[#],Join[Flatten[#/.Log[_]->0],Flatten[coeffArrayN[#,Log]]]]&@(Table[ansatz/.CircleDot[t1_,t2_]:>D[t1*D[t2,var1],var2]-D[t1*D[t2,var2],var1],{var1,vars},{var2,vars}]//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]),0];Association@@reduce[Flatten[eqnList/.Table[var->RandomInteger[{1,200}],{ii,Length[eqnList]*20},{var,vars}]]]]
+solveIntegrability[ansatz_,vars_]:=Module[{iteration=1,eqnList},eqnList=DeleteCases[If[FreeQ[#,Log],Flatten[#],Join[Flatten[#/.Log[_]->0],Flatten[coeffArrayN[#,Log]]]]&@(Table[ansatz/.CircleDot[t1_,t2_]:>D[t1*D[t2,var1],var2]-D[t1*D[t2,var2],var1],{var1,vars},{var2,vars}]),0];Association@@reduce[Flatten[eqnList/.Table[var->RandomInteger[{1,200}],{ii,Length[eqnList]*20},{var,vars}]]]]
 
 weightTwoAnsatzX[cl[a__][x__][B_?SquareMatrixQ]]:=weightTwoAnsatzX[cl[a][x][B]]=Module[{ansatz,expandedAnsatz,redundancyReplacements,Xcoordinates=allClusterVars[cl[a][x][B]][[2]]},ansatz =Array[c2dummy,Length[#]].#&@Flatten[Table[CircleDot[Log[t1],Log[t2]],{t1,Xcoordinates},{t2,Xcoordinates}]];expandedAnsatz=ansatz//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]];redundancyReplacements=Association@@Table[tt->0,{tt,termsHead[reduce[coeffArrayN[expandedAnsatz]]/.Rule[p_,q_]:>q,c2dummy]}];Array[c2,Length[#]].#&@DeleteCases[Expand[coeffArrayN[ansatz/.redundancyReplacements/.solveIntegrability[expand[expandedAnsatz/.redundancyReplacements],Flatten[{x}]],c2dummy]],0]]
-adjacentWeightTwoAnsatzX[cl[a__][x__][B_?SquareMatrixQ]]:=adjacentWeightTwoAnsatzX[cl[a][x][B]]=Module[{ansatz,expandedAnsatz,redundancyReplacements},ansatz =Array[c2dummy,Length[#]].#&@(CircleDot[Log[#1],Log[#2]]&@@@adjacentPairsX[cl[a][x][B]]);expandedAnsatz=ansatz//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]];redundancyReplacements=Association@@Table[tt->0,{tt,termsHead[reduce[coeffArrayN[expandedAnsatz]]/.Rule[p_,q_]:>q,c2dummy]}];Array[c2,Length[#]].#&@DeleteCases[Expand[coeffArrayN[ansatz/.redundancyReplacements/.solveIntegrability[expand[expandedAnsatz/.redundancyReplacements],Flatten[{x}]],c2dummy]],0]]
+adjacentWeightTwoAnsatzX[cl[a__][x__][B_?SquareMatrixQ]]:=adjacentWeightTwoAnsatzX[cl[a][x][B]]=Module[{ansatz},ansatz=Array[c2dummy,Length[#]].#&@(CircleDot[Log[#1],Log[#2]]&@@@Sort[DeleteDuplicates[{Last[Sort[{#[[1]],1/#[[1]]}]],Last[Sort[{#[[2]],1/#[[2]]}]]}&/@adjacentPairsX[cl[a][x][B]]]]);Array[c2,Length[#]].#&@DeleteCases[Expand[coeffArrayN[ansatz/.solveIntegrability[expand[ansatz],Flatten[{x}]],c2dummy]],0]]
 
 (* Generate the weight-four (possibly cluster-adjacent) symbols on a given algebra *)
 
-restrictMiddlePairs[ansatzTerms_,allowedMiddlePairs_]:=Module[{splitAnsatzTerms,expandedMiddlePairs},splitAnsatzTerms=ansatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],b,c,d];splitAnsatzTerms=splitAnsatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],c,d];splitAnsatzTerms=splitAnsatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b,c//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],d];splitAnsatzTerms=splitAnsatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b,c,d//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]];splitAnsatzTerms=splitAnsatzTerms/.CircleDot[t1_,t2_,t3_,t4_]:>temp[t1,t4]*CircleDot[t2,t3];expandedMiddlePairs=allowedMiddlePairs/.CircleDot[a_,b_]:>CircleDot[a//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],b];expandedMiddlePairs=expandedMiddlePairs/.CircleDot[a_,b_]:>CircleDot[a,b//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]];Sort[DeleteCases[expand[ansatzTerms.coeffArrayN[Array[c4dummy,Length[ansatzTerms]]/.Association@@reduce[Sort[DeleteDuplicates[Expand[Flatten[NullSpace[CoefficientArrays[expandedMiddlePairs,termsHead[splitAnsatzTerms]][[2]]].(coeffArray[Array[c4dummy,Length[ansatzTerms]].(coeffArray[splitAnsatzTerms][[2]]),temp][[2]])]]],Length[#1]<Length[#2]&]],c4dummy]],0]]]
+restrictMiddlePairs[ansatzTerms_,allowedMiddlePairs_]:=Module[{splitAnsatzTerms,expandedMiddlePairs},
+(*splitAnsatzTerms=ansatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],b,c,d];
+splitAnsatzTerms=splitAnsatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],c,d];
+splitAnsatzTerms=splitAnsatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b,c//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],d];
+splitAnsatzTerms=splitAnsatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b,c,d//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]];*)
+splitAnsatzTerms=(*splitAnsatzTerms*)ansatzTerms/.CircleDot[t1_,t2_,t3_,t4_]:>temp[t1,t4]*CircleDot[t2,t3];
+(*expandedMiddlePairs=allowedMiddlePairs/.CircleDot[a_,b_]:>CircleDot[a//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],b];
+expandedMiddlePairs=expandedMiddlePairs/.CircleDot[a_,b_]:>CircleDot[a,b//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]];*)
+expandedMiddlePairs=allowedMiddlePairs;
+Sort[DeleteCases[expand[ansatzTerms.coeffArrayN[Array[c4dummy,Length[ansatzTerms]]/.Association@@reduce[Sort[DeleteDuplicates[Expand[Flatten[NullSpace[CoefficientArrays[expandedMiddlePairs,termsHead[splitAnsatzTerms]][[2]]].(coeffArray[Array[c4dummy,Length[ansatzTerms]].(coeffArray[splitAnsatzTerms][[2]]),temp][[2]])]]],Length[#1]<Length[#2]&]],c4dummy]],0]]]
 
 weightFourAnsatzX[cl[a__][x__][B_?SquareMatrixQ]]:=weightFourAnsatzX[cl[a][x][B]]=Module[{ansatzTerms,weightTwoAnsatzTerms=coeffArrayN[weightTwoAnsatzX[cl[a][x][B]],c2]},ansatzTerms=Flatten[Table[CircleDot[t1,t2],{t1,weightTwoAnsatzTerms},{t2,weightTwoAnsatzTerms}]];Array[c4,Length[#]].#&@restrictMiddlePairs[ansatzTerms,weightTwoAnsatzTerms]]
 weightFourAnsatzXexpanded[cl[a__][x__][B_?SquareMatrixQ]]:=weightFourAnsatzXexpanded[cl[a][x][B]]=weightFourAnsatzX[cl[a][x][B]]/.CircleDot[l1_,l2_,l3_,l4_]:>CircleDot[l1//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],l2,l3,l4]/.CircleDot[l1_,l2_,l3_,l4_]:>CircleDot[l1,l2//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],l3,l4]/.CircleDot[l1_,l2_,l3_,l4_]:>CircleDot[l1,l2,l3//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],l4]/.CircleDot[l1_,l2_,l3_,l4_]:>CircleDot[l1,l2,l3,l4//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]]
@@ -229,4 +238,34 @@ weightFourSubalgAnsatzXexpanded[cl[aAlg__][xAlg__][Balg_?SquareMatrixQ],cl[aSuba
 (* Generate the space of symbols on a given algebra that are not 
    subalgebra constructible *)
 
- 
+nonSubalgebraConstructibleWeightFourAnsatzX[generateSeed[dynkinA[1]]]=adjacentWeightFourAnsatzX[generateSeed[dynkinA[1]]];
+nonSubalgebraConstructibleWeightFourAnsatzX[cl[a__][x__][B_?SquareMatrixQ]]:=nonSubalgebraConstructibleWeightFourAnsatzX[cl[a][x][B]]=Array[c4,Length[#]].#&@coeffArrayN[adjacentWeightFourAnsatzXexpanded[cl[a][x][B]]/.Association@@(Rule[#,0]&/@Complement[termsHead[adjacentWeightFourAnsatzXexpanded[cl[a][x][B]],c4],reduce[NullSpace[CoefficientArrays[coeffArrayN[Sum[weightFourSubalgAnsatzXexpanded[cl[a][x][B],allSubalgebras[cl[a][x][B]][[ss]]]/.c4subalg[tt__]:>c4subalg[ss,tt],{ss,Length[allSubalgebras[cl[a][x][B]]]}],c4subalg],termsHead[adjacentWeightFourAnsatzXexpanded[cl[a][x][B]]]][[2]]].coeffArrayN[adjacentWeightFourAnsatzXexpanded[cl[a][x][B]]]]/.Rule[p_,q_]:>p]),c4]
+
+(* Evaluate the weight-four cluster-adjacent non-subalgebra-constructible 
+   ansatz on all subalgebras of a given type on a larger algebra *)
+
+nonSubalgebraConstructibleWeightFourSubalgAnsatzX[cl[aAlg__][xAlg__][Balg_?SquareMatrixQ],cl[aSubalg__][xSubalg__][Bsubalg_?SquareMatrixQ]]:=nonSubalgebraConstructibleWeightFourSubalgAnsatzX[cl[aAlg][xAlg][Balg],cl[aSubalg][xSubalg][Bsubalg]]=Module[{ansatz,ansatzTerms,subalgebras=findSubalgebras[cl[aAlg][xAlg][Balg],cl[aSubalg][xSubalg][Bsubalg]]},If[Length[subalgebras]>0,ansatz=Sum[nonSubalgebraConstructibleWeightFourAnsatzX[cl[aSubalg][xSubalg][Bsubalg]]/.AssociationThread[xSubalg,vars]/.c4[ii_]:>c4subalg[ii,Sequence@@vars],{vars,subalgebras/.subalg[cl[a_][x_][B_],path[___],coord[__],vars_]:>x}]/.Log[arg_]:>Log[Factor[arg]];ansatzTerms=termsHead[ansatz]/.CircleDot[a_,b_,c_,d_]:>CircleDot[a//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],b,c,d];ansatzTerms=ansatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],c,d];ansatzTerms=ansatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b,c//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]],d];ansatzTerms=ansatzTerms/.CircleDot[a_,b_,c_,d_]:>CircleDot[a,b,c,d//.expandLogs/.Pi->0/.Log[arg_]:>Log[Sort[{arg,-arg}][[-1]]]];expand[#/.Association@@Table[tt->0,{tt,termsHead[reduce[coeffArrayN[#]]/.Rule[p_,q_]:>q,c4subalg]}]]&@(coeffArrayN[ansatz].ansatzTerms),0]]
+
+(* The automorphism generators for the finite cluster algebras *)
+
+a2\[Sigma]={x1->(x1 x2)/(1+x1),x2->1/x1};
+a2\[Tau]={x1->1/x2,x2->1/x1};
+
+a3\[Sigma]={x1->x2/(1+x1+x1 x2),x2->((1+x1) x3)/(1+x1+x1 x2+x1 x2 x3),x3->(1+x1+x1 x2)/(x1 x2 x3)};
+a3\[Tau]={x1->1/x3,x2->1/x2,x3->1/x1};
+
+a4\[Sigma]={x1->x2/(1+x1+x1 x2),x2->((1+x1) x3)/(1+x1+x1 x2+x1 x2 x3),x3->((1+x1+x1 x2) x4)/(1+x1+x1 x2+x1 x2 x3+x1 x2 x3 x4),x4->(1+x1+x1 x2+x1 x2 x3)/(x1 x2 x3 x4)};
+a4\[Tau]={x1->1/x4,x2->1/x3,x3->1/x2,x4->1/x1};
+
+a5\[Sigma]={x1->x2/(1+x1+x1 x2),x2->((1+x1) x3)/(1+x1+x1 x2+x1 x2 x3),x3->((1+x1+x1 x2) x4)/(1+x1+x1 x2+x1 x2 x3+x1 x2 x3 x4),x4->((1+x1+x1 x2+x1 x2 x3) x5)/(1+x1+x1 x2+x1 x2 x3+x1 x2 x3 x4+x1 x2 x3 x4 x5),x5->(1+x1+x1 x2+x1 x2 x3+x1 x2 x3 x4)/(x1 x2 x3 x4 x5)};
+a5\[Tau]={x1->1/x5,x2->1/x4,x3->1/x3,x4->1/2,x5->1/x1};
+
+d4\[Sigma]3={x1->1/x3,x2->(x1 x2 (1+x3))/(1+x1),x3->x4,x4->1/x1};
+d4\[Tau]3={x1->x1,x2->x2,x3->x4,x4->x3};
+
+d4\[Sigma]4={x1->x2/(1+x1+x1 x2),x2->(x1 (1+x1) x2 x3 x4)/((1+x1+x1 x2+x1 x2 x3) (1+x1+x1 x2+x1 x2 x4)),x3->(1+x1+x1 x2)/(x1 x2 x3),x4->(1+x1+x1 x2)/(x1 x2 x4)};
+d4\[Tau]4={x1->x1,x2->(1+x1)/(x1 x2 (1+x3) (1+x4)),x3->x3,x4->x4};
+
+d5\[Sigma]={x1->x2/(1+x1+x1 x2),x2->((1+x1) x3)/(1+x1+x1 x2+x1 x2 x3),x3->(x1 x2 (1+x1+x1 x2) x3 x4 x5)/((1+x1+x1 x2+x1 x2 x3+x1 x2 x3 x4) (1+x1+x1 x2+x1 x2 x3+x1 x2 x3 x5)),x4->(1+x1+x1 x2+x1 x2 x3)/(x1 x2 x3 x4),x5->(1+x1+x1 x2+x1 x2 x3)/(x1 x2 x3 x5)};
+d5\[Tau]={x1->x1,x2->(1+x1)/(x1 x2 (1+x3+x3 x4+x3 x5+x3 x4 x5)),x3->(x3 x4 x5)/((1+x3+x3 x4) (1+x3+x3 x5)),x4->(1+x3+x3 x4+x3 x5+x3 x4 x5)/x4,x5->(1+x3+x3 x4+x3 x5+x3 x4 x5)/x5};
+d5z2={x1->x1,x2->x2,x3->x3,x4->x5,x5->x4}; 

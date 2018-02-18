@@ -1,0 +1,76 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+\usepackage{mathtools}
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+\def\a{\mathcal{A}}
+\def\x{\mathcal{X}}
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Subalgebra First Entry Conditions} \hfill \today}
+
+\noindent In this note we describe the first entry conditions that the subalgebras of $\text{Gr}(4,6)$ and $\text{Gr}(4,7)$ inherit from the branch cut condition in six- and seven-particle kinematics. The questions we aim to address are (i) what are the conditions that should be imposed on these subalgebras if we only want symbols that satisfy the first entry condition when evaluated on one of these grassmannians, and (ii) are the inherited conditions the same in both six- and seven-particle kinematics. 
+
+\section*{$A_1 \times A_1$}
+The simplest nontrivial subalgebra we can consider is $A_1 \times A_1$. Since it involve only the two (multiplicatively independent) symbol letters $x_1$ and $x_2$, the only types of functions that can live on this subalgebra are products of logs in these variables. At weight $n$, this gives rise to the $n+1$ functions $\log^{n-p} x_1 \log^{p} x_2$, where $p$ ranges from 0 to $n$. 
+
+There are three $A_1 \times A_1$ subalgebras of $\text{Gr}(4,6)$, which we can associate with the pairs of $A_3$ ${\cal X}$-coordinates 
+$$\{ x_1, x_3 \} \xrightarrow{\sigma} \left \{ \frac{x_2}{1 + x_1 + x_1 x_2}, \frac{1 + x_1 + x_1 x_2}{x_1 x_2 x_3} \right \} \xrightarrow{\sigma} \left \{ \frac{x_3}{1 + x_2 + x_2 x_3}, x_1 (1 + x_2 + x_2 x_3) \right \}. $$
+Note that applying $\sigma$ three times does not send $x_1$ and $x_3$ back to themselves, but rather to their image under $\tau$, namely 
+$$\{ x_1, x_3 \} \xrightarrow{\tau} \left \{ \frac{1}{x_3}, \frac{1}{x_1} \right \}. $$
+Thus, we can argue that only the $A_1 \times A_1$ functions that are symmetric under $\tau$ will be single-valued in $\text{Gr}(4,6)$. In the language of hexagon functions, functions that are symmetric under $\tau$ will be parity even, while functions antisymmetric under $\tau$ will be parity odd.\footnote{In the paper we will need to unpack this more---what is called parity in the hexagon function papers isn't actually the action of spacetime parity on, for instance, momentum twisters.}
+
+Translating from $A_3$ coordinates to letters on Gr(4,6) we have
+$$x_1 \rightarrow \sqrt{u w y_u y_v y_w/v}, \quad x_3 \rightarrow \sqrt{v y_u y_v y_w/(u w)},$$
+from which it is easy to see that only $A_1 \times A_1$ functions that have first entry $x_1/x_2$ (in the original $A_1 \times A_1$ coordinates) will satisfy the branch cut condition when the subalgebra associated with $x_1$ and $x_3$ is evaluated on $\text{Gr}(4,6)$. To see that the same first entry condition is implied by all three $A_1 \times A_1$ subalgebras, it is sufficient to note that $\sigma$ corresponds to permuting $u \rightarrow v \rightarrow w \rightarrow u$ and $y_u \rightarrow 1/y_v \rightarrow y_w \rightarrow 1/y_u$ in the hexagon letters. The only $A_1 \times A_1$ function that satisfies this first entry condition is $\log^4(x_1/x_2)$. Note that this function is manifestly symmetric under the $A_3$ flip $\tau$, and is symmetric under permutation of the $A_1 \times A_1$ variables $x_1$ and $x_2$.  
+
+\section*{$A_2$}
+There are six $A_2$ subalgebras in Gr(4,6), which we can associate with the pairs of $A_3$ ${\cal X}$-coordinates 
+\begin{align*}
+\{ x_1, x_2 \} &\xrightarrow{\sigma} \left \{ \frac{x_2}{1 + x_1 + x_1 x_2}, \frac{(1 + x_1) x_3}{1 + x_1 + x_1 x_2 + x_1 x_2 x_3} \right \} \\
+&\xrightarrow{\sigma} \left \{ \frac{x_3}{1 + x_2 + x_2 x_3}, \frac{1 + x_2}{x_2 x_3} \right \}  \\
+&\xrightarrow{\sigma} \left \{ \frac{1}{x_3}, \frac{x_1 x_2 (1 + x_3)}{1 + x_1} \right \} \\
+&\xrightarrow{\sigma} \left\{ \frac{x_1 x_2 x_3}{1 + x_1 + x_1 x_2}, \frac{1}{x_1 (1 + x_2)} \right \} \\ &\xrightarrow{\sigma} \left \{ \frac{1}{x_1 (1 + x_2 + x_2 x_3)}, \frac{1 + x_1 + x_1 x_2 + x_1 x_2 x_3}{x_2 (1 + x_3)} \right \}.
+\end{align*}
+These pairs of ${\cal X}$-coordinates are mapped to different pairs of ${\cal X}$-coordinates by the $A_3$ flip $\tau$, but these new pairs represent different (sub-)clusters associated with the same $A_2$ subalgebras. In particular, the operator $\sigma^4 \tau$ (where these operators act to the right) takes us to a different pair of ${\cal X}$-coordinates associated with the same $A_2$ subalgebra.
+
+Evaluating the $A_2$ ansatz on the subalgebra associated with the $A_3$ coordinates $x_1$ and $x_2$, the Gr(4,6) branch cut conditions admit the three solutions 
+$$H_{0,0,0,1}\left(1-\frac1u \right), \quad H_{1,0,0,1}\left(1-\frac1u \right), \quad H_{0,1,0,1}\left(1-\frac1u \right).$$
+In terms of the $A_2$ coordinates, this is equivalent to allowing only the first entry
+$$\log (x_1)- \log \left ( \frac{1 + x_1 + x_1 x_2}{x_2} \right),$$
+where we emphasize that this first entry condition applies at the level of ${\cal X}$-coordinates, and is not equivalent to allowing any linear combinations of ${\cal X}$-coordinates that give rise to a symbol letter $x_1 x_2/(1+x_1 + x_1 x_2)$.\footnote{We do, of course, allow the linear combination in which the arguments of both logs are inverted.} Clearly, mapping to any of the other $A_2$ subalgebras will generate the same three functions with one of the arguments $u$, $v$, or $w$.
+
+We can also solve the Gr(4,6) branch cut conditions on an ansatz involving multiple $A_2$ subalgebras. This gives rise to the further solutions
+$$\log \left( \frac v w \right) H_{0, 0, 1} \left(1-\frac1u \right), \quad  \log \left( \frac v w \right) H_{1, 0, 1} \left(1-\frac1u \right),$$
+plus their cyclic images. Each pair of such functions is found in the space spanning the pair of $A_2$ subalgebras that are related by the $A_3$ perumutation $\sigma^3$. In particular, they live in the five-dimensional space that has only the ${\cal X}$-coordinate combinations 
+$$\log(x_1) -\log \left( \frac{1 + x_1 + x_1 x_2}{x_2} \right), \quad \log(x_1) + \log \left( \frac{1}{x_3} \right), \quad \log \left( \frac{1}{x_3} \right) - \log \left( \frac{1 + x_1 + x_1 x_2}{x_1 x_2 x_3} \right) $$
+appearing n their first entry. The ${\cal X}$-coordinates $x_1$ and $(1 + x_1 + x_1 x_2)/x_2$ live on the $A_2$ whose seed is $x_1 \rightarrow x_2$, while the image of these coordinates under the $A_3$ permutation $\sigma^3$ is $1/x_3$ and $(1 + x_1 + x_1 x_2)/(x_1 x_2 x_3)$, respectively. Two of the allowed first entries thus correspond to the allowed first entry on individual $A_2$ subalgebras. Since any branch-cut-satisfying function on a single one of these $A_2$ subalgebras must also be a solution in this larger space, the additional three functions that satisfy this first entry condition are the functions of $u$ (or $v$, or $w$) identified above. 
+
+No further solutions to the Gr(4,6) branch cut condition are found when more $A_2$ subalgebras are included, so we conclude that there are a total of fifteen $A_2$-subalgebra-constructible hexagon functions at weight four.
+
+\end{document}
