@@ -244,6 +244,16 @@ Tensor[a___,b_?NumberQ,c___]:=0;
 
 tensorExpand[x_]:=(x/.tensor:>Tensor)/.Tensor:>tensor;
 
+fastTensorExpand[x_]:=Module[{vars,TTensor,step1,step2},
+vars=tensorVars[x];
+Clear[TTensor];
+Table[TTensor[vars[[ii]]]=(tensorExpand[tensor[vars[[ii]]]]/.tensor[a__]:>a),{ii,Length[vars]}];
+step1=(x/.tensor[a__]:>test@@(TTensor/@{a}));
+tensor[a___,-b_,c___]:=-tensor[a,b,c];
+step2=step1/.test[a__]:>Outer[tensor,a];
+Clear[tensor];
+Return[step2];]
+
 collectTensors[x_]:=Module[{vars,array},
 vars=Cases[Variables[x],tensor[__]];
 array=CoefficientArrays[x,vars];
