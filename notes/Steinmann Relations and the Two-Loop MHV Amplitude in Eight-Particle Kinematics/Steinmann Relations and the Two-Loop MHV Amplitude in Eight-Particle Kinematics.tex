@@ -5,6 +5,7 @@
 \usepackage{epsfig}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{tikz}
 \usepackage{mathrsfs}
 %\usepackage{cite}
 \usepackage{hyperref}
@@ -19,6 +20,7 @@
 \newcommand{\eea}{\end{eqnarray}}
 \def\nl{\nonumber\\}
 \def\Li{\textrm{Li}}
+\DeclareMathOperator{\Gr}{Gr}
 \def\l{\langle}
 \def\r{\rangle}
 \def\eps{\epsilon}
@@ -46,6 +48,18 @@
 \def\eqn#1{eq.~(\ref{#1})}
 \def\eqns#1#2{eqs.~(\ref{#1}) and~(\ref{#2})}
 \def\Eqns#1#2{Eqs.~(\ref{#1}) and~(\ref{#2})}
+\def\drawOctagon{
+\coordinate (P1) at (45:1);
+\coordinate (P2) at (90:1);
+\coordinate (P3) at (135:1);
+\coordinate (P4) at (180:1);
+\coordinate (P5) at (225:1);
+\coordinate (P6) at (270:1);
+\coordinate (P7) at (315:1);
+\coordinate (P8) at (359:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- (P7) -- (P8) -- cycle;
+}
+
 
 \newcommand{\cP}{{\cal P}}
 \def\lr{\leftrightarrow}
@@ -91,9 +105,101 @@ Stanford University, Stanford, CA 94309, USA}
 
 \section{Introduction}
 
-\section{Promoting $R_8^{(2)}$ from Symbol to Function}
+\section{Promoting \texorpdfstring{$R_8^{(2)}$}{R28} from Symbol to Function}
+
+\subsection{Cluster Polylogarithms Review}
 
 Briefly describe the method outlined in~\cite{Golden:2014xqf} for upgrading the $n$-point two-loop MHV symbol to a function.
+
+\subsection{The \texorpdfstring{$A_5$}{A5} Function}
+\begin{itemize}
+	\item describe the $A_5$ cluster algebra
+	\item what makes ``the'' $A_5$ function unique?
+\end{itemize}
+
+The $A_5$ cluster algebra is generated from the seed cluster
+\begin{equation}
+	x_1 \to x_2 \to x_3 \to x_4 \to x_5.
+\end{equation}
+The full $A_5$ algebra contains 132 clusters with 140 distinct $\mathcal{X}$-coordinates. 
+
+Define:
+\begin{equation}
+	x_{i_1\ldots i_k} = \sum_{a=1}^k \prod_{b=1}^a x_{i_b} = x_{i_1}+x_{i_1}x_{i_2} + \ldots + x_{i_1}\cdots x_{i_k}.
+\end{equation}
+
+The $A_5$ cluster algebra has an eight-fold cyclic symmetry, which we denote by $\sigma$:
+\begin{equation}
+\begin{split}
+	\sigma:\quad& 
+		x_1\mapsto\frac{x_2}{1+x_{12}},~~	
+		x_2\mapsto\frac{x_3\left(1+x_1\right)}{1+x_{123}},~~
+		x_3\mapsto\frac{x_4 \left(1+x_{12}\right)}{1+x_{1234}},\\&
+		x_4\mapsto\frac{x_5 \left(1+x_{123}\right)}{1+x_{12345}},~~
+		x_5\mapsto\frac{1+x_{1234}}{x_1 x_2 x_3 x_4 x_5}.
+\end{split}
+\end{equation}
+$A_5$ also has a two-fold flip symmetry, which we denote by $\tau$:
+\begin{equation}
+	\tau:\quad x_i\mapsto\frac{1}{x_{6-i}}.
+\end{equation}
+There are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
+\begin{equation}
+\begin{split}
+	&\left\{x_1\to x_2,~~
+	x_2\to x_3\left(1+x_4\right),~~
+	x_2\left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right\} + \sigma,\\
+	&\left\{x_2\to x_3,~~x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right\} + \sigma + \tau 
+   \end{split}
+\end{equation}
+where by ``$+~\sigma$'' and ``$+~\sigma~+~\tau$'' I mean ``+ cyclic copies'' and ``+ cyclic and flip copies,'' respectively. This correspond to the following topologies of pentagons inside an octagon:
+\begin{center}
+\begin{tikzpicture}
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+\begin{scope}[xshift=3cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
+\end{scope}
+\begin{scope}[xshift=6cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P4) -- (P5) -- (P7) -- cycle;
+\end{scope}
+\begin{scope}[yshift=-2.5cm,xshift=1.5cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P6) -- cycle;
+\end{scope}
+\begin{scope}[yshift=-2.5cm, xshift=4.5cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
+\end{scope}
+\node[] at (9,0) (a) {(8 of each)};
+\node[] at (9,-2.5) (a) {(16 of each)};
+\end{tikzpicture}
+\end{center}
+
+\subsection{Identifying \texorpdfstring{$A_5$}{A5} subalgebras in \texorpdfstring{$\Gr(4,8)$}{Gr(4,8)}}
+Comment on infinite nature of $\Gr(4,8)$, define ``good'' (in the two-loop MHV sense) subalgebras, describe algorithm for finding ``good'', and describe the 56 good $A_5$s in $\Gr(4,8)$.
+
+
+\subsection{Representing \texorpdfstring{$R_8^{(2)}$}{R28}}
+\begin{itemize}	
+	\item $A_5$ contribution
+	\item $\Li_4$ contribution
+	\item $\Li_2\Li_2$ contribution
+	\item $\Li_3\Li_1$ contribution
+	\item $\Li_2\Li_1^2$ contribution
+	\item $\Li_1^4$ contribution
+	\item $\Li_2\pi^2$ contribution
+	\item $\Li_1^2\pi^2$ contribution
+	\item $\pi^4$ constribution
+\end{itemize}	
+
+\subsection{Analytic Properties of \texorpdfstring{$R_8^{(2)}$}{R28}}
+\begin{itemize}
+	\item some plots
+	\item agrees with numerics
+\end{itemize}
 
 \section{The Steinmann Relations for Eight Particles}
 
@@ -173,6 +279,10 @@ Similarly, we can isolate the three-particle invariants by choosing
 \end{align}
 in which case ${}^3 d_1$ through ${}^3 d_8$ each contain a different three-particle Mandelstam invariant, as well as four-particle Mandelstams that they don't partially overlap with. The remaining four letters only contain two- and four-particle invariants. In these letters, conditions~\eqref{stein34_5} and~\eqref{stein34_6} tell us that ${}^3 d_7, {}^3 d_8, {}^3 d_2$, and ${}^3 d_3$ can never appear next to ${}^3 d_1$ in the symbols of ${}^{3} {\cal E}_8$ or ${}^{3,j} {\cal E}_8$ (plus the cyclic images of this statement). Moreover, conditions~\eqref{stein34_1} through~\eqref{stein34_4} give us the additional restrictions that none of ${}^3 d_1, {}^3 d_5, {}^3 d_9$ and ${}^3 d_{10}$ can ever appear next to ${}^3 d_3, {}^3 d_4, {}^3 d_7,$ or ${}^3 d_8$ in the symbol of ${}^{3,1} {\cal E}_8$ (analogous relations hold for the other ${}^{3,j} {\cal E}_8$). These are the restrictions given by the Steinmann relations involving $s_{1234}$ and one of $s_{781}, s_{812}, s_{345}$, or $s_{456}$. The other Steinmann relations between three- and four-particle invariants will not be respected by ${}^{3,1} {\cal E}_8$, since ${}^{3,j} {\cal A}^{\text{BDS-like}}_{8}$ depends on $s_{2345}, s_{3456},$ and $s_{4567}$.
 
+\section{Conclusion}
+
+\appendix
+\section{\texorpdfstring{$A_5$}{A5} Representation of \texorpdfstring{$R^{(2)}_7$}{R27}}
  
 \bibliographystyle{ieeetr}
 
