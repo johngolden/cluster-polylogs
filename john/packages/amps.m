@@ -310,6 +310,16 @@ delta[n_][x_]:=tensorExpand[((x/.{tensor[a_,b_,c_,d_]:>tensor[a,b,c,d]-tensor[a,
 
 b2b2[n_][x_]:=tensorExpand[((x/.tensor[cb3[_],_]:>0)/.wedge[cb2[a_],cb2[b_]]:>tensor[m1[n][a],a,m1[n][b],b])/.{tensor[a_,b_,c_,d_]:>tensor[a,b,c,d]-tensor[a,b,d,c]-tensor[b,a,c,d]+tensor[b,a,d,c]-tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,c,a,b]-tensor[d,c,b,a]}];
 
+fastB2b2[n_][x_]:=Module[{ttensor,wwedge,tmp},
+wwedge[cb2[a_],cb2[b_]]:=ttensor[a,m1[n][a],b,m1[n][b]];
+tmp=x/.wedge->wwedge;
+ttensor[a___,b_*c_,d___]:=ttensor[a,b,d]+ttensor[a,c,d];ttensor[a___,b_^c_,d___]:=c ttensor[a,b,d];ttensor[a___,b_/c_,d___]:=ttensor[a,b,d]-ttensor[a,c,d];ttensor[a___,b_?NumberQ,c___]:=0;
+tmp=Evaluate[tmp];
+Clear[ttensor];
+ttensor[a_,b_,c_,d_]:=tensor[a,b,c,d]-tensor[a,b,d,c]-tensor[b,a,c,d]+tensor[b,a,d,c]-tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,c,a,b]-tensor[d,c,b,a];
+tmp=Evaluate[tmp];
+Return[tmp];];
+
 b3c[n_][x_]:=((x/.wedge[__]:>0)//.{tensor[a_,b_,c_,d_]:>Expand[(Tensor[a,b,c,d]-Tensor[b,a,c,d]-Tensor[b,c,a,d]+Tensor[c,b,a,d]) -
 	(Tensor[b,c,d,a]-Tensor[c,b,d,a]-Tensor[c,d,b,a]+Tensor[d,c,b,a]) ],tensor[cb3[a_],b_]:>Tensor[m1[n][a],a,a,b]-Tensor[a,m1[n][a],a,b]})//.Tensor:>tensor;
 

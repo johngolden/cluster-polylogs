@@ -1,0 +1,168 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{shuffle}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\sgn}{sgn}
+\def\a{\mathcal{A}}
+\def\x{\mathcal{X}}
+\def\dl{d^{\ell}}
+
+\def\ket#1{\langle #1 \rangle}
+
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Integrability and Adjacency in $A_2$} \hfill \today}
+
+\noindent We write down symbols which are transparently integrable and cluster adjacent on $A_2$. 
+
+\subsubsection*{$A_2$ and Cluster Adjacency}
+Taking our seed cluster as $x_1\to x_2$ and following the mutation rule
+\begin{equation}
+	x_{i}' =
+	\begin{cases}
+		x_{k}^{-1}, &\quad i=k,\\
+		x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k
+  	\end{cases}
+\end{equation}
+we label the $\x$-coordinates
+\begin{equation}\label{def:xcoords}
+	\x_1 = \frac{1}{x_1}, ~~~\x_2 = x_2,~~~ \x_3 = x_1 (1 + x_2),~~~ \x_4=\frac{1+x_1+x_1 x_2}{x_2},~~~ \x_5 = \frac{1+x_1}{x_1 x_2}.
+\end{equation}
+These satisfy $1+\x_i = \x_{i-1}\x_{i+1}$, and $\{1/\x_i, \x_{i+1}\}$ form the 5 clusters. Cluster adjacency therefore requires that only the following entries are allowed in symbols:
+\begin{equation}
+	\ldots\otimes\x_i\otimes\x_i\otimes\ldots~~,~~
+	\ldots\otimes\x_{i\pm1}\otimes\x_i\otimes\ldots~~,~~
+	\ldots\otimes\x_i\otimes\x_{i\pm1}\otimes\ldots
+\end{equation}
+
+\subsubsection*{Integrability}
+A generic weight $k$ symbol $S$ with alphabet $\{\x_i\}$ is denoted by 
+\begin{equation}
+	S = \sum_{I=(i_1,\ldots,i_k)} c_I ~\x_{i_1}\otimes \cdots \otimes \x_{i_k}
+\end{equation}
+and must satisfy the integrability condition 
+\begin{equation}
+	\sum_{I=(i_1,\ldots,i_k)} c_I~[d\log \x_{i_j} \wedge d\log \x_{i_{j+1}}]~\x_{i_1}\otimes\cdots\otimes\hat{\x}_j\otimes\hat{\x}_{i_{j+1}}\otimes\cdots\otimes\x_{i_k} = 0~~~(\forall 1\le j< k),
+\end{equation}
+where the hat indicates omitting the corresponding factors in the tensor product \cite{Duhr}. In practice this means: given a symbol, for each term replace the $j$th $\otimes$ with a $d\log \wedge d\log$ and the result has to be zero. Schematically you'll end up with a bunch of terms that look like
+\begin{equation}\label{intConditions}
+	\left(\sum_{a,b} c_{ab}~ d\log \x_a \wedge d\log \x_b\right)\left(\sum_{I} c_I~ \x_{i_1}\otimes\cdots\otimes\x_{i_{k-2}}\right)
+\end{equation}
+and each must vanish. Before we continue, let's adopt the notation
+\begin{equation}
+	\dl a \equiv d\log \x_a.
+\end{equation}
+
+What are the unique solutions to $\sum c_{ab}~ \dl a \wedge \dl b=0$? Some obvious solutions are $a=b$ and $c_{ab} = c_{ba}$. 
+The only adjacent zeroes of this form are
+\begin{equation}
+ 	\dl1\wedge \dl1, \qquad \dl1 \wedge \dl2+\dl2 \wedge \dl1,\qquad \dl1 \wedge \dl5+\dl5 \wedge \dl1,
+\end{equation} 
+along with all cyclic images. These zeroes are of course trivial, but we have the additional non-trivial zero
+\begin{equation}
+	1+\x_1 = \x_2 \x_5 \Rightarrow \dl1 \wedge (\dl2 + \dl5)=0,
+\end{equation}
+again along with all cyclic images. These are the only non-trivial zeroes in these variables (and of course they are not all linearly independent, as the cyclic sum is zero on the nose). We now understand when the l.h.s of eq.~(\ref{intConditions}) can vanish. 
+
+What about when the r.h.s vanishes? This can only happen when $k\ge4$, as there are no multiplicative identities amongst the $\x_i$ and so you can't have an identity amongst logs. Therefore we will ignore this possibility until we get to weight 4. 
+
+In what follows I'll mod out by cyclic symmetry and only consider symbols that contain at least one $\x_1$ along with any number of additional $\x_1$, $\x_2$ and $\x_5$.
+
+
+\subsubsection*{Weight 2}
+
+We have essentially already solved weight 2 in the previous section: one can write down the integrable adjacent symbols
+\begin{eqnarray}
+	\dl1\wedge \dl1 =0 &\Rightarrow &1\otimes1\\
+	\dl1 \wedge \dl2+\dl2 \wedge \dl1 = 0 &\Rightarrow &1\otimes2 + 2\otimes1\\
+	\dl1 \wedge \dl5+\dl5 \wedge \dl1 = 0 &\Rightarrow &1\otimes5 + 5\otimes1\\
+	\dl1 \wedge (\dl2 + \dl5)=0 &\Rightarrow &1\otimes(25) \text{ or } (25)\otimes1
+\end{eqnarray}
+where I've dropped the $\x$'s from the notation and set $(25)=\x_2\x_5$. These are not a linearly independent basis, nor are they meant to be. What is nice about each symbol is that their integrability and adjacency are essentially manifest.
+
+With the addition of all of the cyclic images one finds a basis of 14 linearly independent weight 2 adjacent integrable symbols on $A_2$.
+\subsubsection*{Weight 3}
+
+Now things get a little bit interesting. Let me adopt the shuffle notation
+\begin{equation}
+	a_1\otimes\cdots\otimes a_k \shuffle b \equiv \sum_{i=0}^k a_1\otimes \cdots\otimes a_i \otimes b\otimes a_{i+1} \otimes \cdots \otimes a_k
+\end{equation}
+It is easy to see that as long as $a_1\otimes\cdots\otimes a_k$ is integrable, $a_1\otimes\cdots\otimes a_k \shuffle b$ is as well. This is the symbol equivalent of taking some function and multiplying it by log. 
+
+Now we list some nice integrable adjacent symbols:
+\begin{eqnarray}
+	&1\otimes1\otimes1, \\
+	&1\otimes1\shuffle2, \\
+	&1\otimes1\shuffle5, \\
+	&2\otimes 2\shuffle1, \\
+	&5\otimes 5\shuffle1, \\
+	&1\otimes1\otimes(25), \\
+	&1\otimes(25)\otimes1, \\
+	&(25)\otimes1\otimes1,\\
+	&(25)\otimes 1 \otimes (25),\\
+	&(25)\otimes 1 \shuffle (2/5),
+\end{eqnarray}
+where $(2/5) = \x_2/\x_5$. All but the last of these objects is obviously adjacent, the adjacency of the last follows from 
+\begin{equation}
+	(ab)\shuffle(a/b) = 2(a\otimes a - b\otimes b). 	
+\end{equation} 
+Integrability in the first two and second two entries is easy to see: in each case, you replace $a\otimes b$ with $\dl a \wedge \dl b$ and you'll get either $\dl 1 \wedge \dl (25) = 0$ or $\dl a \wedge \dl a = 0$ (and shuffle integrability is discussed above). 
+
+These form a basis for the space of integrable adjacent symbols in these letters, and have the single simple identity
+\begin{equation}
+	1\otimes1\shuffle(25) = 1\otimes1\shuffle2+1\otimes1\shuffle5.
+\end{equation}
+Taking all the cyclic images of these and removing linear dependencies leaves you with 35 weight 3 adjacent integrable symbols on $A_2$.
+\subsubsection*{Weight 4}
+This case is a bit more tricky. I can trivially write down symbols like 
+\begin{eqnarray}
+	&1\otimes1\otimes1\otimes1, \\
+	&1\otimes1\otimes1\shuffle2, \\
+	&1\otimes1\otimes1\shuffle5, \\
+	&1\otimes1\shuffle2\shuffle2, \\
+	&1\otimes1\shuffle5\shuffle5, \\
+	&2\otimes2\otimes2\shuffle1, \\
+	&5\otimes5\otimes5\shuffle1, \\
+	&1\otimes1\otimes1\otimes(25),\\
+	&1\otimes1\otimes(25)\otimes1,\\
+	&1\otimes(25)\otimes1\otimes1,\\
+	&(25)\otimes1\otimes1\otimes1,\\
+	&1\otimes(25)\otimes1\otimes(25),\\
+	&(25)\otimes1\otimes(25)\otimes1,\\
+	&(25)\otimes1\shuffle(2/5)\shuffle1,
+\end{eqnarray}
+where $a\shuffle b\shuffle c \equiv \frac12(a\shuffle b)\shuffle c$.
+
+These only capture 13 of the 17 degrees of freedom in this integrable adjacent symbol space. Furthermore at weight 4 there is a unique non-trivial solution to the r.h.s of eq.~(\ref{intConditions}), which we can write as
+\begin{equation}
+	\sum \Li_2(-\x_i)+\log\x_i\log\x_{i+1} = -\frac{\pi^2}{2}.
+\end{equation}
+This complicates matters! To be continued...
+\begin{thebibliography}{xx}
+	\bibitem{Duhr} Duhr, Claude, Gangle (https://arxiv.org/pdf/1110.0458.pdf)
+\end{thebibliography}
+\end{document}
