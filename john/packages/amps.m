@@ -312,7 +312,7 @@ b2b2[n_][x_]:=tensorExpand[((x/.tensor[cb3[_],_]:>0)/.wedge[cb2[a_],cb2[b_]]:>te
 
 fastB2b2[n_][x_]:=Module[{ttensor,wwedge,tmp},
 wwedge[cb2[a_],cb2[b_]]:=ttensor[a,m1[n][a],b,m1[n][b]];
-tmp=x/.wedge->wwedge;
+tmp=x//.{wedge->wwedge,tensor->ttensor};
 ttensor[a___,b_*c_,d___]:=ttensor[a,b,d]+ttensor[a,c,d];ttensor[a___,b_^c_,d___]:=c ttensor[a,b,d];ttensor[a___,b_/c_,d___]:=ttensor[a,b,d]-ttensor[a,c,d];ttensor[a___,b_?NumberQ,c___]:=0;
 tmp=Evaluate[tmp];
 Clear[ttensor];
@@ -410,7 +410,8 @@ Return[base]];
 
 (*first, clean up ratios*)
 
-clean[n_][R_]:=clean[n][R]=With[{x=Position[numRatios[n],num[n][R]]},If[Length[x]==1,allRatios[n][[x[[1,1]]]],With[{y=Position[numRatios[n],num[n][-R]]},If[Length[y]==1,-allRatios[n][[y[[1,1]]]],0]]]];
+clean[n_][R_]:=clean[n][R]=cleanNum[n][num[n][R]];
+Table[cleanNum[n][numRatios[n][[i]]]=allRatios[n][[i]];cleanNum[n][-numRatios[n][[i]]]=-allRatios[n][[i]],{n,6,9},{i,Length[allRatios[n]]}];;
 
 a2Vars[n_][{x1_,x2_}]:=Module[{x,answer},
 x[1]=x1;
