@@ -1,0 +1,4838 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    163969,       4830]
+NotebookOptionsPosition[    162125,       4769]
+NotebookOutlinePosition[    162504,       4786]
+CellTagsIndexPosition[    162461,       4783]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Q: Reproduce R27 with A5 rep", "Title",
+ CellChangeTimes->{{3.7155216343483543`*^9, 3.715521661935596*^9}, {
+   3.7155217024191933`*^9, 3.715521776747312*^9}, {3.715697106466093*^9, 
+   3.715697132670868*^9}, 3.717339565784286*^9, {3.717596412665661*^9, 
+   3.7175964295471077`*^9}, 3.7190772318918056`*^9, {3.719161602248806*^9, 
+   3.719161617724811*^9}, 3.7191622907219543`*^9, {3.719330906137623*^9, 
+   3.719330919779743*^9}, 3.7214675803034782`*^9, {3.722256568008562*^9, 
+   3.722256584333577*^9}, {3.7222587062837543`*^9, 3.7222587099149513`*^9}, 
+   3.723892693455821*^9, {3.723910170409132*^9, 3.723910179723064*^9}, {
+   3.7247613005595207`*^9, 3.724761305849478*^9}, {3.7251093997280607`*^9, 
+   3.725109422520021*^9}, {3.725109486952263*^9, 3.725109487141718*^9}, {
+   3.7253796263545513`*^9, 3.725379627752042*^9}, {3.7262081679226522`*^9, 
+   3.726208187405767*^9}, {3.7262310495952473`*^9, 3.726231058788488*^9}, {
+   3.727099108843804*^9, 3.727099123185153*^9}, {3.727512928109139*^9, 
+   3.727512933417872*^9}, {3.72821639588512*^9, 3.728216402599391*^9}, {
+   3.730102925667328*^9, 3.730102956536682*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"<<", "tools.m"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.713271961760497*^9, 3.7132719819312153`*^9}, {
+  3.713272319095078*^9, 3.713272323693686*^9}, {3.7132801678394003`*^9, 
+  3.7132801680639467`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"n", "=", "7"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7301029613327293`*^9, 3.730102962205765*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["defs", "Subsection",
+ CellChangeTimes->{{3.7302034762072268`*^9, 3.730203477064707*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"<<", "\"\<a2SubFuncs.dat\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.727789559255394*^9, 3.727789571610578*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"a2FuncSymbol", "[", 
+    RowBox[{"x1_", ",", "x2_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{"tensor", "[", 
+     RowBox[{"x1", ",", 
+      RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2"}], "]"}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x1", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["29", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1", ",", "x1"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1", ",", "x2"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2", ",", "x1"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2", ",", "x2"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1", ",", "x1"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1", ",", "x2"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2", ",", "x1"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["29", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2", ",", "x2"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["19", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["17", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["17", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["19", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x1", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{"tensor", "[", 
+     RowBox[{"x2", ",", 
+      RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1"}], "]"}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x1", ",", "x2"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2", ",", "x1"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2", ",", "x2"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["13", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1", ",", "x1"}], "]"}]}], 
+    "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1", ",", "x2"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2", ",", "x1"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["19", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2", ",", "x2"}], "]"}]}], 
+    "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["8", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["17", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{"tensor", "[", 
+     RowBox[{
+      RowBox[{"1", "+", "x2"}], ",", 
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1"}], "]"}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{"tensor", "[", 
+     RowBox[{
+      RowBox[{"1", "+", "x2"}], ",", 
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}]}], "]"}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{"2", " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["8", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["19", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1", ",", "x1"}], 
+      "]"}]}], "-", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["12", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1", ",", "x2"}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["17", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["12", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2", ",", "x1"}], 
+      "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2", ",", "x2"}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{"tensor", "[", 
+     RowBox[{
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+      RowBox[{"1", "+", "x2"}], ",", 
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}]}], "]"}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{"2", " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["19", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["12", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1", ",", "x1"}], 
+      "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1", ",", "x2"}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["11", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2", ",", "x1"}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["29", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2", ",", "x2"}], 
+      "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["4", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{"tensor", "[", 
+     RowBox[{
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}], ",", 
+      RowBox[{"1", "+", "x2"}], ",", "x1", ",", 
+      RowBox[{"1", "+", "x1", "+", 
+       RowBox[{"x1", " ", "x2"}]}]}], "]"}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["11", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["6", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["9", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["9", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["2", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["7", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", "x2"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2", ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", "x1"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "5"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x1"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["3", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", "x2"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "10"], " ", 
+     RowBox[{"tensor", "[", 
+      RowBox[{
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x1", "+", 
+        RowBox[{"x1", " ", "x2"}]}], ",", 
+       RowBox[{"1", "+", "x2"}]}], "]"}]}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730203516082801*^9, 3.730203525174046*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"a5Func", "[", 
+    RowBox[{"x1_", ",", "x2_", ",", "x3_", ",", "x4_", ",", "x5_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"x3", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x4"}], ")"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{"x2", ",", 
+       RowBox[{"x3", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x4", "+", 
+          RowBox[{"x4", " ", "x5"}]}], ")"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x1", " ", "x2"}], 
+        RowBox[{"1", "+", "x1"}]], ",", "x3"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x1", " ", "x2"}], 
+        RowBox[{"1", "+", "x1"}]], ",", 
+       RowBox[{"x3", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x4", "+", 
+          RowBox[{"x4", " ", "x5"}]}], ")"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       RowBox[{"x1", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x2"}], ")"}]}], ",", 
+       FractionBox[
+        RowBox[{"x2", " ", "x3"}], 
+        RowBox[{"1", "+", "x2"}]]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       RowBox[{"x1", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x2"}], ")"}]}], ",", 
+       FractionBox[
+        RowBox[{"x2", " ", "x3", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x4"}], ")"}]}], 
+        RowBox[{"1", "+", "x2"}]]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{"x3", ",", 
+       RowBox[{"x4", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x5"}], ")"}]}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", "x3"}], 
+        RowBox[{"1", "+", "x2"}]], ",", "x4"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x1", " ", "x2", " ", "x3"}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}]}]], ",", "x4"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x1", " ", "x2", " ", "x3"}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}]}]], ",", 
+       RowBox[{"x4", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x5"}], ")"}]}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x1", " ", "x2", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}]}], 
+        RowBox[{"1", "+", "x1"}]], ",", 
+       FractionBox[
+        RowBox[{"x3", " ", "x4", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x5"}], ")"}]}], 
+        RowBox[{"1", "+", "x3"}]]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       RowBox[{"x1", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x2", "+", 
+          RowBox[{"x2", " ", "x3"}]}], ")"}]}], ",", 
+       FractionBox[
+        RowBox[{"x2", " ", "x3", " ", "x4"}], 
+        RowBox[{"1", "+", "x2", "+", 
+         RowBox[{"x2", " ", "x3"}]}]]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1"}], ")"}], " ", "x3"}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}]}], ")"}], " ", "x4", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x5"}], ")"}]}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4", " ", "x5"}]}]]}], 
+      "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", "x3"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x2"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}]}], ")"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}]}], ")"}], " ", "x4"}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}]}]]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}]}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1"}], ")"}], " ", "x3", " ", "x4"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}]}], ")"}]}]]}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}]}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1"}], ")"}], " ", "x3", " ", "x4", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x5"}], ")"}]}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4", " ", "x5"}]}], 
+          ")"}]}]]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       RowBox[{"x3", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x4"}], ")"}]}], ",", 
+       FractionBox[
+        RowBox[{"x4", " ", "x5"}], 
+        RowBox[{"1", "+", "x4"}]]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", "x3", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x4"}], ")"}]}], 
+        RowBox[{"1", "+", "x2"}]], ",", 
+       FractionBox[
+        RowBox[{"x4", " ", "x5"}], 
+        RowBox[{"1", "+", "x4"}]]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       RowBox[{"x2", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "x3", "+", 
+          RowBox[{"x3", " ", "x4"}]}], ")"}]}], ",", 
+       FractionBox[
+        RowBox[{"x3", " ", "x4", " ", "x5"}], 
+        RowBox[{"1", "+", "x3", "+", 
+         RowBox[{"x3", " ", "x4"}]}]]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x3", " ", "x4"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x2", "+", 
+           RowBox[{"x2", " ", "x3"}], "+", 
+           RowBox[{"x2", " ", "x3", " ", "x4"}]}], ")"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x2", "+", 
+           RowBox[{"x2", " ", "x3"}]}], ")"}], " ", "x5"}], 
+        RowBox[{"1", "+", "x2", "+", 
+         RowBox[{"x2", " ", "x3"}], "+", 
+         RowBox[{"x2", " ", "x3", " ", "x4"}], "+", 
+         RowBox[{"x2", " ", "x3", " ", "x4", " ", "x5"}]}]]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x3", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x4"}], ")"}]}], 
+        RowBox[{"1", "+", "x2", "+", 
+         RowBox[{"x2", " ", "x3"}], "+", 
+         RowBox[{"x2", " ", "x3", " ", "x4"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x2"}], ")"}], " ", "x4", " ", "x5"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x4"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x2", "+", 
+           RowBox[{"x2", " ", "x3"}], "+", 
+           RowBox[{"x2", " ", "x3", " ", "x4"}], "+", 
+           RowBox[{"x2", " ", "x3", " ", "x4", " ", "x5"}]}], ")"}]}]]}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1"}], ")"}], " ", "x3", " ", "x4"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}]}], ")"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}]}], ")"}], " ", "x5"}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4", " ", "x5"}]}]]}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", "x3", " ", "x4"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x2", "+", 
+           RowBox[{"x2", " ", "x3"}]}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}]}], ")"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}]}], ")"}], " ", "x5"}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4", " ", "x5"}]}]]}], 
+      "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"a2F", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"x2", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3", "+", 
+           RowBox[{"x3", " ", "x4"}]}], ")"}]}], 
+        RowBox[{"1", "+", "x1", "+", 
+         RowBox[{"x1", " ", "x2"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+         RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}]}]], ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1"}], ")"}], " ", "x3", " ", "x4", " ", "x5"}], 
+        
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x3", "+", 
+           RowBox[{"x3", " ", "x4"}]}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "x1", "+", 
+           RowBox[{"x1", " ", "x2"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4"}], "+", 
+           RowBox[{"x1", " ", "x2", " ", "x3", " ", "x4", " ", "x5"}]}], 
+          ")"}]}]]}], "]"}]}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730203472211218*^9, 3.730203481028364*^9}, {
+  3.730203649760626*^9, 3.730203661380526*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["load in list of A5s", "Subsection",
+ CellChangeTimes->{{3.730103002066588*^9, 3.7301030050140743`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a5s", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"g47ify", "/@", "#"}], "&"}], "/@", 
+    RowBox[{"(", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"subalgSeed", "[", 
+        RowBox[{"e6", "[", "]"}], "]"}], "/@", 
+       RowBox[{
+        RowBox[{"subalg", "[", 
+         RowBox[{"e6", "[", "]"}], "]"}], "[", "a5", "]"}]}], ")"}], 
+     ")"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730103011735729*^9, 3.730103106063066*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["fix B2b2", "Subsection",
+ CellChangeTimes->{{3.730103114748115*^9, 3.7301031198439083`*^9}, {
+  3.73010410099434*^9, 3.730104104684037*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ansatzB2b2", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"p", "/@", 
+      RowBox[{"Range", "[", 
+       RowBox[{"Length", "[", "a5s", "]"}], "]"}]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{"a5F", "@@@", "a5s"}], ")"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730103881033622*^9, 3.730103918663013*^9}, {
+  3.730104054390806*^9, 3.730104055960047*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ansatzB2b2Exp", "=", 
+   RowBox[{"Monitor", "[", 
+    RowBox[{
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"collectTensors", "[", 
+        RowBox[{"tensorExpand", "[", 
+         RowBox[{"collectTensors", "[", 
+          RowBox[{"li22Part", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ansatzB2b2", "[", 
+              RowBox[{"[", "iii", "]"}], "]"}], "/.", 
+             RowBox[{
+              RowBox[{"a5F", "[", "a__", "]"}], "\[RuleDelayed]", 
+              RowBox[{"a5FuncSymbol", "[", "a", "]"}]}]}], "/.", 
+            RowBox[{
+             RowBox[{"tensor", "[", "a__", "]"}], "\[RuleDelayed]", 
+             RowBox[{"(", 
+              RowBox[{"tensor", "@@", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"clean", "[", "n", "]"}], "/@", 
+                 RowBox[{"{", "a", "}"}]}], ")"}]}], ")"}]}]}], "]"}], "]"}], 
+         "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"iii", ",", 
+         RowBox[{"Length", "[", "ansatzB2b2", "]"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"iii", ",", 
+       RowBox[{"Length", "[", "ansatzB2b2", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.730204320800396*^9, 3.7302043722952843`*^9}, {
+  3.730204408223711*^9, 3.730204419643674*^9}, {3.730209245693495*^9, 
+  3.7302092841096687`*^9}, {3.730210227387501*^9, 3.730210240269416*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"targetB2b2", "=", 
+   RowBox[{"Expand", "[", 
+    RowBox[{
+     RowBox[{"b2b2", "[", "n", "]"}], "[", 
+     RowBox[{"symbol", "[", "n", "]"}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730103185184761*^9, 3.7301032013972*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solnB2b2", "=", 
+   RowBox[{"fit", "[", 
+    RowBox[{"ansatzB2b2Exp", "-", "targetB2b2"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730103536739621*^9, 3.7301035486448593`*^9}, {
+  3.730104021398419*^9, 3.73010407340742*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"func", "=", 
+   RowBox[{"ansatzB2b2", "//.", "solnB2b2"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730104081401639*^9, 3.73010411782446*^9}, {
+  3.730105100281623*^9, 3.730105104611703*^9}, {3.730210936171151*^9, 
+  3.730210936511441*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tmp", "=", 
+   RowBox[{"collectTensors", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"func", "/.", 
+       RowBox[{"a5F", "\[Rule]", "a5FuncSymbol"}]}], ")"}], "/.", 
+     RowBox[{
+      RowBox[{"tensor", "[", "a__", "]"}], "\[RuleDelayed]", 
+      RowBox[{"(", 
+       RowBox[{"tensor", "@@", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"clean", "[", "n", "]"}], "/@", 
+          RowBox[{"{", "a", "}"}]}], ")"}]}], ")"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7302120652712297`*^9, 3.730212071842443*^9}, {
+  3.7302122316820583`*^9, 3.730212233212851*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tmp", "=", 
+   RowBox[{"tmp", "//", "fastTensorExpand"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730212235526958*^9, 3.7302122436355352`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"funcSym", "=", 
+   RowBox[{"collectTensors", "[", "tmp", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730212254806267*^9, 3.730212260176113*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"collectTensors", "[", 
+  RowBox[{"li22Part", "[", 
+   RowBox[{"funcSym", "-", 
+    RowBox[{"symbol", "[", "n", "]"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.730212913674748*^9, 3.730212955319481*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.7302129499831867`*^9, 3.730213006733141*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["fix Li4", "Subsection",
+ CellChangeTimes->{{3.730104144037321*^9, 3.730104146782299*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"funcSymLi4", "=", 
+   RowBox[{"collectTensors", "[", 
+    RowBox[{"li4Part", "[", "funcSym", "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730214720619204*^9, 3.730214732753862*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tab", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"sortInverse", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"listSym", "[", "n", "]"}], "[", 
+        RowBox[{"f", "[", 
+         RowBox[{
+          RowBox[{"ratios", "[", "n", "]"}], "[", 
+          RowBox[{"[", "aa", "]"}], "]"}], "]"}], "]"}], "/.", 
+       RowBox[{
+        RowBox[{"f", "[", "a_", "]"}], "\[RuleDelayed]", "a"}]}], "]"}], ",", 
+     
+     RowBox[{"{", 
+      RowBox[{"aa", ",", 
+       RowBox[{"Length", "[", 
+        RowBox[{"ratios", "[", "n", "]"}], "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7302134685127583`*^9, 3.730213533422865*^9}, {
+  3.7302136203090363`*^9, 3.730213622284258*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"goodPos", "=", 
+   RowBox[{"Union", "[", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{"tab", ",", "#"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "&"}], "/@", 
+      RowBox[{"Union", "[", "tab", "]"}]}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7302136248854027`*^9, 3.730213689022777*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ansatzLi4", "=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p", "[", "i", "]"}], 
+      RowBox[{"Total", "[", 
+       RowBox[{
+        RowBox[{"listSym", "[", "n", "]"}], "[", 
+        RowBox[{"Li", "[", 
+         RowBox[{"4", ",", 
+          RowBox[{
+           RowBox[{"ratios", "[", "n", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"goodPos", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}]}], "]"}], "]"}], 
+       "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "goodPos", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.730210978552258*^9, 3.730211029864036*^9}, {
+  3.73021369493754*^9, 3.730213720888741*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ansatzLi4Exp", "=", 
+   RowBox[{"collectTensors", "[", 
+    RowBox[{"funcSymLi4", "+", 
+     RowBox[{"li4Part", "[", 
+      RowBox[{
+       RowBox[{"sym", "[", "n", "]"}], "[", "ansatzLi4", "]"}], "]"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730211030925601*^9, 3.7302110597834473`*^9}, {
+  3.730213100875473*^9, 3.730213109770257*^9}, {3.7302131937779093`*^9, 
+  3.730213207109857*^9}, {3.730214947890243*^9, 3.730214954684535*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"targetLi4", "=", 
+   RowBox[{
+    RowBox[{"symbol", "[", "n", "]"}], "//", "li4Part"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730213155634387*^9, 3.7302131562586718`*^9}, {
+  3.730213376308024*^9, 3.7302133830084963`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"zero", "=", 
+   RowBox[{"ansatzLi4Exp", "-", "targetLi4"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730213136140926*^9, 3.730213154076805*^9}, {
+  3.7302133883105707`*^9, 3.730213393723918*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solnLi4", "=", 
+   RowBox[{"fit", "[", "zero", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730213396339395*^9, 3.7302134041984797`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newFunc", "=", 
+   RowBox[{
+    RowBox[{"func", "+", "ansatzLi4"}], "/.", "solnLi4"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.730215114274622*^9, 3.7302151306855917`*^9}, {
+  3.7302151741326838`*^9, 3.730215175267543*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newFuncSymb", "=", 
+   RowBox[{"collectTensors", "[", 
+    RowBox[{"funcSym", "+", 
+     RowBox[{"tensorExpand", "[", 
+      RowBox[{
+       RowBox[{"sym", "[", "n", "]"}], "[", 
+       RowBox[{"ansatzLi4", "/.", "solnLi4"}], "]"}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.730215152844759*^9, 3.7302152030247993`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"collectTensors", "[", 
+  RowBox[{"li4Part", "[", 
+   RowBox[{"newFuncSymb", "-", 
+    RowBox[{"symbol", "[", "n", "]"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.730215245834899*^9, 3.730215265414316*^9}, {
+  3.730215372152948*^9, 3.7302153784651318`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.73021551394071*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{840, 1006},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification->1.25,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1130, 15, 114, "Title"],
+Cell[1713, 39, 368, 9, 66, "Input"],
+Cell[2084, 50, 135, 3, 39, "Input"],
+Cell[CellGroupData[{
+Cell[2244, 57, 94, 1, 54, "Subsection"],
+Cell[2341, 60, 150, 3, 39, "Input"],
+Cell[2494, 65, 137178, 4020, 21984, "Input"],
+Cell[139675, 4087, 13065, 383, 1323, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[152777, 4475, 109, 1, 43, "Subsection"],
+Cell[152889, 4478, 473, 15, 39, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[153399, 4498, 146, 2, 54, "Subsection"],
+Cell[153548, 4502, 400, 11, 39, "Input"],
+Cell[153951, 4515, 1438, 36, 196, "Input"],
+Cell[155392, 4553, 274, 7, 39, "Input"],
+Cell[155669, 4562, 267, 6, 39, "Input"],
+Cell[155939, 4570, 275, 6, 39, "Input"],
+Cell[156217, 4578, 633, 18, 66, "Input"],
+Cell[156853, 4598, 179, 4, 39, "Input"],
+Cell[157035, 4604, 183, 4, 39, "Input"],
+Cell[CellGroupData[{
+Cell[157243, 4612, 233, 5, 39, "Input"],
+Cell[157479, 4619, 94, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[157622, 4626, 95, 1, 54, "Subsection"],
+Cell[157720, 4629, 226, 5, 39, "Input"],
+Cell[157949, 4636, 746, 22, 66, "Input"],
+Cell[158698, 4660, 432, 12, 39, "Input"],
+Cell[159133, 4674, 768, 23, 92, "Input"],
+Cell[159904, 4699, 485, 11, 39, "Input"],
+Cell[160392, 4712, 260, 6, 39, "Input"],
+Cell[160655, 4720, 230, 5, 39, "Input"],
+Cell[160888, 4727, 175, 4, 39, "Input"],
+Cell[161066, 4733, 259, 6, 39, "Input"],
+Cell[161328, 4741, 373, 10, 66, "Input"],
+Cell[CellGroupData[{
+Cell[161726, 4755, 287, 6, 39, "Input"],
+Cell[162016, 4763, 69, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,37 @@
+(*
+
+A2 xcoords, following our standard notation:
+
+x[1] = 1/x1
+x[2] = x2
+x[3] = x1 (1 + x2)
+x[4] = (1 + x1 + x1 x2)/x2
+x[5] = (1 + x1)/(x1 x2)
+
+a2FuncSymbol is simply the skew-dihedral sum of
+
+tensor[x[i], x[i + 1], x[i], x[i + 1]/x[i - 1]] - tensor[x[i - 1], x[i], x[i], x[i + 1]/x[i - 1]]
+
+*)
+
+a2FuncSymbol = tensor[x[1], x[2], x[1], x[2]] - tensor[x[1], x[2], x[1], x[5]] + 
+ tensor[x[1], x[2], x[2], x[1]] - tensor[x[1], x[2], x[2], x[3]] + 
+ tensor[x[1], x[5], x[1], x[2]] - tensor[x[1], x[5], x[1], x[5]] - 
+ tensor[x[1], x[5], x[5], x[1]] + tensor[x[1], x[5], x[5], x[4]] - 
+ tensor[x[2], x[1], x[1], x[2]] + tensor[x[2], x[1], x[1], x[5]] - 
+ tensor[x[2], x[1], x[2], x[1]] + tensor[x[2], x[1], x[2], x[3]] - 
+ tensor[x[2], x[3], x[2], x[1]] + tensor[x[2], x[3], x[2], x[3]] + 
+ tensor[x[2], x[3], x[3], x[2]] - tensor[x[2], x[3], x[3], x[4]] + 
+ tensor[x[3], x[2], x[2], x[1]] - tensor[x[3], x[2], x[2], x[3]] - 
+ tensor[x[3], x[2], x[3], x[2]] + tensor[x[3], x[2], x[3], x[4]] - 
+ tensor[x[3], x[4], x[3], x[2]] + tensor[x[3], x[4], x[3], x[4]] + 
+ tensor[x[3], x[4], x[4], x[3]] - tensor[x[3], x[4], x[4], x[5]] + 
+ tensor[x[4], x[3], x[3], x[2]] - tensor[x[4], x[3], x[3], x[4]] - 
+ tensor[x[4], x[3], x[4], x[3]] + tensor[x[4], x[3], x[4], x[5]] - 
+ tensor[x[4], x[5], x[4], x[3]] + tensor[x[4], x[5], x[4], x[5]] - 
+ tensor[x[4], x[5], x[5], x[1]] + tensor[x[4], x[5], x[5], x[4]] - 
+ tensor[x[5], x[1], x[1], x[2]] + tensor[x[5], x[1], x[1], x[5]] + 
+ tensor[x[5], x[1], x[5], x[1]] - tensor[x[5], x[1], x[5], x[4]] + 
+ tensor[x[5], x[4], x[4], x[3]] - tensor[x[5], x[4], x[4], x[5]] + 
+ tensor[x[5], x[4], x[5], x[1]] - tensor[x[5], x[4], x[5], x[4]];
+
