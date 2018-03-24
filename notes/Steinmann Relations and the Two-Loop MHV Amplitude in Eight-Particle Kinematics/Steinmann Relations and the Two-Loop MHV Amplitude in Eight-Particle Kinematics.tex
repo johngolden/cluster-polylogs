@@ -68,7 +68,7 @@
 
 \def\blue#1{{\color{blue}#1}}
 
-\title{Steinmann Relations and the Two-Loop MHV Amplitude in Eight-Particle Kinematics}
+\title{Cluster Polylogarithms and the Eight-Particle MHV Amplitude}
 
 \author{John~Golden,$^{1,2}$}
 \author{Andrew~J.~McLeod$^{2,3,4}$}
@@ -87,7 +87,7 @@ Stanford University, Stanford, CA 94309, USA}
 
 \affiliation{$^4$ Niels Bohr International Academy, Blegdamsvej 17, 2100 Copenhagen, Denmark}
 
-\abstract{We present the full functional form of the two-loop eight-point MHV amplitude in the planar limit of maximally supersymmetric Yang-Mills theory, in terms of cluster polylogarithms. We also compute the two BDS-like ans\"atze that can be formulated in eight-particle kinematics, and find that \dots}
+\abstract{We construct a cluster-polylogarithimc representation of the eight-point two-loop MHV amplitude in the planar limit of maximally supersymmetric Yang-Mills theory. This representation makes manifest a novel cluster-algebraic decomposition of the nonclassical part of this amplitudes into its $A_5$ subalgebras, and limits smoothly to a similar decomposition of the seven-point MHV amplitude in collinear limits. We also investigate the equivalence of the extended Steinmann relations and cluster adjacency in eight-point kinematics by exploring the space of BDS-like normalized amplitudes.}
 
 %\preprint{
 %\begin{flushright} DESY ??--??? \\ SLAC--PUB--?????
@@ -103,6 +103,11 @@ Stanford University, Stanford, CA 94309, USA}
 
 
 \section{Introduction}
+
+\begin{enumerate}
+\item[-] emphasize the fact that promoting symbols to functions is hard---only a few other instances in the literature (don't forget  this is done Regge limits as well---cite)
+\item[-] we should also check our function against MRK predictions if possible (but don't want to hold up paper for this... clearly we can publish without)
+\end{enumerate}
 
 \section{Promoting \texorpdfstring{$R_8^{(2)}$}{R28} from Symbol to Function}
 
@@ -295,28 +300,34 @@ Let me briefly describe the collinear limit for this representation. As discusse
 	\item agrees with numerics
 \end{itemize}
 
-\section{The Steinmann Relations for Eight Particles}
+\section{The Steinmann Relations in Eight-Particle Kinematics}
 
-When the number of gluons $n$ is not a multiple of 4, the BDS-like ansatz is unique because there exists only a single decomposition of the BDS ansatz
+The Steinmann relations dictate that double discontinuities of any amplitude must vanish when taken in partially overlapping momentum channels~\cite{Steinmann,Cahill:1973qp}. Recently, it has been realized that the restrictions this imposes on discontinuities in three- and higher-particle channels are transparently encoded in the symbol of BDS-like normalized amplitudes when the number of particles is not a multiple of four~\cite{Caron-Huot:2016owq, Dixon:2016nkn}. This is due to the fact that the BDS-like ansatz for these numbers of particles only depends on two-particle Mandelstam invariants, and thus acts as a spectator when discontinuities are taken in these channels. The Steinmann relations therefore apply directly to these BDS-like normalized amplitudes, where they imply that restricted pairs of Mandelstam invariants cannot appear sequentially in the first two entries of the symbol. In fact, these restrictions have been found to apply at all depths in the symbol, providing strong constraints on the spaces of symbols that are expected to appear in these kinematics to any weight~\cite{omega_paper,cosmic_galois_paper}. 
+
+The extended Steinmann relations have also been found to be equivalent to the cluster adjacency of these symbols---namely, that their adjacent symbol entries always appear together in a cluster of Gr(4,$n$)~\cite{Drummond:2017ssj}.
+
+\subsection{BDS-Like Ans\"atze}
+
+When the number of particles $n$ is not a multiple of four, the BDS-like ansatz is unique. Namely, there exists only a single decomposition of the BDS ansatz
 \begin{equation}
 {\cal A}_n^{\text{BDS}} = {\cal A}_n^{\text{BDS-like}}(\{s_{i,i+1}\}) \exp \left[ \frac{\Gamma_{\text{cusp}}}{4} Y_{n}(\{u_i\})  \right], \quad n\neq4K,
 \end{equation}
-such that the kinematic dependence of $A^{\text{BDS-like}}_{n}$ involves only two-particle Mandelstam invariants while $Y_{n}$ is a weight-two function depending only on dual conformal invariant cross ratios~\cite{Yang:2010az}. %In particular, at one loop this relation becomes
+such that the kinematic dependence of $A^{\text{BDS-like}}_{n}$ involves only two-particle Mandelstam invariants while $Y_{n}$ depends only on dual conformal invariant cross ratios~\cite{Yang:2010az}. %In particular, at one loop this relation becomes
 %\begin{equation}
 %A^{\text{BDS},(1)}_{n} = A^{\text{BDS-like},(1)}_{n}(\{s_{i,i+1}\}) + Y_{n}(\{u_i\}), \quad n\neq4K,
 %\end{equation}
-When $n$ is a multiple of 4, no decomposition of this type exists, and we are forced to consider multiple BDS-like ans\"atze if we want to transparently expose all Steinmann relations between higher-particle Mandelstam invariants. 
+When $n$ is a multiple of four, no decomposition of this type exists, and we are forced to consider multiple BDS-like ans\"atze if we want to transparently expose all Steinmann relations between higher-particle Mandelstam invariants. 
 
-In eight particle kinematics, there are two natural BDS-like normalization choices we might consider. Namely, we can let our BDS-like ansatz depend on either three- or four-particle Mandelstam invariants in addition to two-particle invariants. In this spirit, let us define a pair of Bose-symmetric BDS-like ans\"atze, respectively satisfying
+In eight-particle kinematics, there are two natural BDS-like normalization choices we might consider~\cite{Dixon:2016nkn}. Namely, we can let our BDS-like ansatz depend on either three- or four-particle Mandelstam invariants in addition to two-particle invariants. In this spirit, let us define a pair of Bose-symmetric BDS-like ans\"atze, respectively satisfying
 \begin{align}
 {\cal A}_8^{\text{BDS}} &= {}^3 {\cal A}_8^{\text{BDS-like}}(\{s_{i,i+1}\}, \{s_{i,i+1,i+2,i+3}\}) \exp \left[ \frac{\Gamma_{\text{cusp}}}{4}\ {}^3 Y_{8}(\{u_i\})  \right], \label{bds_like_3} \\
 %{\cal A}^{\text{BDS},(1)}_{n} &= {}^3 {\cal A}^{\text{BDS-like},(1)}_{8}(\{s_{i,i+1}\}, \{s_{i,i+1,i+2,i+3}\}) + {}^3 Y_{8}(\{u_i\}), \\
 {\cal A}_8^{\text{BDS}} &= {}^4 {\cal A}_8^{\text{BDS-like}}(\{s_{i,i+1}\}, \{s_{i,i+1,i+2}\}) \exp \left[ \frac{\Gamma_{\text{cusp}}}{4}\ {}^4 Y_{8}(\{u_i\})  \right]. \label{bds_like_4}
 %{\cal A}^{\text{BDS},(1)}_{n} &= {}^4 {\cal A}^{\text{BDS-like},(1)}_{8}(\{s_{i,i+1}\}, \{s_{i,i+1,i+2}\}) + {}^4 Y_{8}(\{u_i\}). 
 \end{align}
-In fact, the functions ${}^3 A^{\text{BDS-like}}_{8} $ and ${}^4 A^{\text{BDS-like}}_{8}$ are not uniquely fixed by these decomposition choices; each admits a family of Bose-symmetric solutions. 
- 
-Any choice for ${}^3 A^{\text{BDS-like}}_{8}$ or ${}^4 A^{\text{BDS-like}}_{8}$ that satisfy eqns.~\eqref{bds_like_3} or \eqref{bds_like_4} gives rise to a BDS-like normalized amplitude that manifestly exhibits a subset of the Steinmann relations. In particular, defining
+In fact, the functions ${}^3 A^{\text{BDS-like}}_{8} $ and ${}^4 A^{\text{BDS-like}}_{8}$ are not uniquely fixed by these decomposition choices; each admits a family of Bose-symmetric solutions. However, any choice of ${}^3 A^{\text{BDS-like}}_{8}$ or ${}^4 A^{\text{BDS-like}}_{8}$ consistent with eqns.~\eqref{bds_like_3} or \eqref{bds_like_4} gives rise to a BDS-like normalized amplitude that manifestly exhibits a subset of the Steinmann relations. 
+
+In particular, defining
 \begin{equation}
 {}^X {\cal E}_8 \equiv \frac{{\cal A}_8^{\text{MHV}}}{{}^X {\cal A}^{\text{BDS-like}}_{8}} = \exp\left[ R_8 - \frac{\Gamma_{\text{cusp}}}{4} \  {}^X Y_8 \right] \label{BDS_like_amplitude}
 \end{equation}
@@ -331,7 +342,7 @@ for all $i$, while ${}^4 {\cal E}_8$ is expected to satisfy
 \text{Disc}_{s_{i+2,i+3,i+4,i+5}}\left[\text{Disc}_{s_{i,i+1,i+2,i+3}} ({}^4 {\cal E}_8) \right] &= 0, \label{stein44_2} \\
 \text{Disc}_{s_{i+3,i+4,i+5,i+6}}\left[\text{Disc}_{s_{i,i+1,i+2,i+3}} ({}^4 {\cal E}_8) \right] &= 0. \label{stein44_3}
 \end{align}
-However, conditions~\eqref{stein33_1} through~\eqref{stein44_3} don't exhaust the set of Steinmann relations obeyed by generic eight-particle amplitudes---there are also Steinmann relations between partially overlapping three- and four-particle invariants. If we want to make these additional relations manifest, we can use the fact that it proves possible to define a BDS-like ansatz that depends on all but one of the four-particle invariants (and on no three-particle invariants). That is, we decompose the BDS ansatz as
+However, conditions~\eqref{stein33_1} through~\eqref{stein44_3} don't exhaust the set of Steinmann relations obeyed by generic eight-particle amplitudes---there are also Steinmann relations between partially overlapping three- and four-particle invariants. If we want to make these additional relations manifest, we can instead define a BDS-like ansatz that depends on all but one of the four-particle invariants (and on no three-particle invariants). That is, we decompose the BDS ansatz as
 \begin{equation}
 {\cal A}_8^{\text{BDS}} = {}^{3,j} {\cal A}_8^{\text{BDS-like}}(\{s_{i,i+1}\}, \{s_{i,i+1,i+2,i+3} \neq s_{j,j+1,j+2,j+3} \}) \exp \left[ \frac{\Gamma_{\text{cusp}}}{4}\ {}^{3,j} Y_{8}(\{u_i\})  \right], \label{bds_like_3q}
 %{\cal A}^{\text{BDS}}_{n} = {}^{3,j} {\cal A}^{\text{BDS-like}}_{8}(\{s_{i,i+1}\}, \{s_{i,i+1,i+2,i+3} \neq s_{j,j+1,j+2,j+3} \}) + {}^{3,j} Y_{8}(\{u_i\}), 
@@ -345,13 +356,26 @@ and in so doing define a BDS-like normalized amplitude that satisfies
 \text{Disc}_{s_{i+1,i+2,i+3}}\left[\text{Disc}_{s_{i,i+1,i+2}} ({}^{3,j} {\cal E}_8) \right] &= 0, \label{stein34_5} \\
 \text{Disc}_{s_{i+2,i+3,i+4}}\left[\text{Disc}_{s_{i,i+1,i+2}} ({}^{3,j} {\cal E}_8) \right] &= 0, \label{stein34_6}
 \end{align}
-where the relations~\eqref{stein34_5} and~\eqref{stein34_6} are the Steinmann relations satisfied by ${}^3 {\cal E}_8$. Clearly it is not possible to find a solution to eq.~\eqref{bds_like_3q} that is Bose-symmetric, but we can require that it is invariant under the dihedral flip that maps $s_{i \dots l} \rightarrow s_{9-i \dots 9 - l}$. There is again a family of solutions that satisfy these constraints. 
+where the relations~\eqref{stein34_5} and~\eqref{stein34_6} are the Steinmann relations also satisfied by ${}^3 {\cal E}_8$. Clearly it is not possible to find a solution to eq.~\eqref{bds_like_3q} that is Bose-symmetric, but we can require that it is invariant under the dihedral flip that maps $s_{i \dots l} \rightarrow s_{9-i \dots 9 - l}$. There is again a family of solutions to this decomposition that respects this symmetry. 
 
-Momentum conservation implies that ${}^{3,j+4} {\cal A}^{\text{BDS-like}}_{8} = {}^{3,j} {\cal A}^{\text{BDS-like}}_{8}$, and thus every eight-point Steinmann relation is made manifest in at least one of the amplitudes 
+Momentum conservation implies that ${}^{3,j+4} {\cal A}^{\text{BDS-like}}_{8} = {}^{3,j} {\cal A}^{\text{BDS-like}}_{8}$, so there are only four independent BDS-like normalized amplitudes of this type. All eight-point Steinmann relation are thus made manifest in at least one of the amplitudes 
 $$\{{}^4 {\cal E}_8, {}^{3,1} {\cal E}_8 , {}^{3,2} {\cal E}_8 , {}^{3,3} {\cal E}_8 , {}^{3,4} {\cal E}_8 \}.$$ 
-However, in practice it may prove convenient to retain ${}^{3} {\cal E}_8$ in one's toolbox, since it can be chosen to respect Bose symmetry. It may additionally prove possible to chose these amplitudes to satisfy other desirable properties, since ${}^{3} Y_{8}$, ${}^{4} Y_{8}$, and ${}^{3,j} Y_{8}$ are not uniquely picked out by eqns.~\eqref{bds_like_3}, \eqref{bds_like_4}, and \eqref{bds_like_3q}. In fact there is a 10-dimensional (3-dimensional) space of (Bose-symmetric) solutions for ${}^{3} Y_{8}$, a 36-dimensional (4-dimensional) space of (Bose-symmetric) solutions for ${}^{4} Y_{8}$, and a 5-dimensional (3-dimensional) space of (dihedral flip-invariant) solutions for ${}^{3,j} Y_{8}$.
+However, in practice it may prove convenient to retain ${}^{3} {\cal E}_8$ in one's toolbox, since it can be chosen to respect Bose symmetry. Explicit forms for ${}^3 Y_{8}(\{u_i\})$, ${}^4 Y_{8}(\{u_i\})$, and ${}^{3,j} Y_{8}(\{u_i\})$ are provided in appendix~\ref{appendix:bds_like}.
 
-To take full advantage of the Steinmann relations, it is convenient to work in terms of symbol letters that isolate different Mandelstam invariants. There are twelve independent dual conformally invariant cross ratios that can appear in these symbols
+\subsection{Steinmann Relations and Cluster Adjacency}
+
+It is easy to check that the 
+
+\section{Conclusion}
+
+\appendix
+\section{\texorpdfstring{$A_5$}{A5} Representation of \texorpdfstring{$R^{(2)}_7$}{R27}}
+
+\section{BDS-Like Conversions In Eight-Point Kinematics} \label{appendix:bds_like}
+
+It may additionally prove possible to chose these amplitudes to satisfy other desirable properties, since ${}^{3} Y_{8}$, ${}^{4} Y_{8}$, and ${}^{3,j} Y_{8}$ are not uniquely picked out by eqns.~\eqref{bds_like_3}, \eqref{bds_like_4}, and \eqref{bds_like_3q}. In fact there is a 10-dimensional (3-dimensional) space of (Bose-symmetric) solutions for ${}^{3} Y_{8}$, a 36-dimensional (4-dimensional) space of (Bose-symmetric) solutions for ${}^{4} Y_{8}$, and a 5-dimensional (3-dimensional) space of (dihedral flip-invariant) solutions for ${}^{3,j} Y_{8}$.
+ 
+ To take full advantage of the Steinmann relations, it is convenient to work in terms of symbol letters that isolate different Mandelstam invariants. There are twelve independent dual conformally invariant cross ratios that can appear in these symbols
 \begin{align}
 u_1 &= \frac{s_{12} s_{4567}}{s_{123} s_{812}}, \quad \text{and cyclic (8-orbit)} \\
 u_9 &= \frac{s_{123} s_{567}}{s_{1234} s_{4567}}, \quad \text{and cyclic (4-orbit).}
@@ -373,11 +397,7 @@ Similarly, we can isolate the three-particle invariants by choosing
 \end{align}
 in which case ${}^3 d_1$ through ${}^3 d_8$ each contain a different three-particle Mandelstam invariant, as well as four-particle Mandelstams that they don't partially overlap with. The remaining four letters only contain two- and four-particle invariants. In these letters, conditions~\eqref{stein34_5} and~\eqref{stein34_6} tell us that ${}^3 d_7, {}^3 d_8, {}^3 d_2$, and ${}^3 d_3$ can never appear next to ${}^3 d_1$ in the symbols of ${}^{3} {\cal E}_8$ or ${}^{3,j} {\cal E}_8$ (plus the cyclic images of this statement). Moreover, conditions~\eqref{stein34_1} through~\eqref{stein34_4} give us the additional restrictions that none of ${}^3 d_1, {}^3 d_5, {}^3 d_9$ and ${}^3 d_{10}$ can ever appear next to ${}^3 d_3, {}^3 d_4, {}^3 d_7,$ or ${}^3 d_8$ in the symbol of ${}^{3,1} {\cal E}_8$ (analogous relations hold for the other ${}^{3,j} {\cal E}_8$). These are the restrictions given by the Steinmann relations involving $s_{1234}$ and one of $s_{781}, s_{812}, s_{345}$, or $s_{456}$. The other Steinmann relations between three- and four-particle invariants will not be respected by ${}^{3,1} {\cal E}_8$, since ${}^{3,j} {\cal A}^{\text{BDS-like}}_{8}$ depends on $s_{2345}, s_{3456},$ and $s_{4567}$.
 
-\section{Conclusion}
 
-\appendix
-\section{\texorpdfstring{$A_5$}{A5} Representation of \texorpdfstring{$R^{(2)}_7$}{R27}}
- 
 \bibliographystyle{ieeetr}
 
 \bibliography{eight_particle_two_loop}
