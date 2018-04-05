@@ -1,15 +1,24 @@
 \pdfoutput=1
-\documentclass[11pt, reqno,preprint]{article}
+\documentclass[11pt,reqno]{article}
 \usepackage{jheppub}
-\usepackage{epsfig}
-\usepackage{amssymb}
-\usepackage{amsmath}
 \usepackage{tikz}
-\usepackage{mathrsfs}
+%\usepackage{epsfig}
+%\usepackage{amssymb}
+%\usepackage{amsfonts}
+%\usepackage{amsmath}
+%\usepackage{mathrsfs}
 %\usepackage{cite}
-\usepackage{hyperref}
-\usepackage{multirow}
-\usepackage{feynmp-auto}
+%\usepackage{hyperref}
+%\usepackage{multirow}
+%\usepackage{feynmp-auto}
+
+\def\ket#1{\langle #1 \rangle}
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\sgn}{sgn}
 
 \def\be{\begin{equation}}
 \def\ee{\end{equation}}
@@ -18,8 +27,6 @@
 \newcommand{\bea}{\begin{eqnarray}}
 \newcommand{\eea}{\end{eqnarray}}
 \def\nl{\nonumber\\}
-\def\Li{\textrm{Li}}
-\DeclareMathOperator{\Gr}{Gr}
 \def\l{\langle}
 \def\r{\rangle}
 \def\eps{\epsilon}
@@ -65,7 +72,6 @@
 
 \def\draftnote#1{{\bf [#1]}}
 
-
 \def\blue#1{{\color{blue}#1}}
 
 \title{Cluster Polylogarithms and the Eight-Particle MHV Amplitude}
@@ -99,7 +105,7 @@ Stanford University, Stanford, CA 94309, USA}
 \hypersetup{pageanchor=false}
 \maketitle
 \hypersetup{pageanchor=true}
-\begin{fmffile}{feyndiags}
+%\begin{fmffile}{feyndiags}
 
 
 \section{Introduction}
@@ -116,7 +122,91 @@ Stanford University, Stanford, CA 94309, USA}
 
 \section{Cluster Algebras and Cluster Polylogarithms}
 
-Briefly describe the method outlined in~\cite{Golden:2014xqf} for upgrading the $n$-point two-loop MHV symbol to a function.
+\subsection{The A2 function}
+We define the $A_2$ function as
+\begin{equation}
+	f_{A_2}=\sum_{\text{skew-dihedral}} \Li_{2,2}(-x_i,-x_{i+2})-\Li_{1,3}(-x_i,-x_{i+2})-\Li_2(-x_i)\log(x_{i+1})\log(x_{i+2}).
+\end{equation}
+It has the symbol
+\begin{align}
+	-\sum_{\text{skew-dihedral}}
+	&x_i \otimes x_i \otimes x_{i+1} \otimes x_{i+1}
+	+x_i \otimes x_{i+1} \otimes x_i \otimes x_{i-1}
+	+x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_i\\
+	&\quad-2\left(x_i \otimes x_{i+1} \otimes (x_ix_{i+2}) \otimes x_{i+1}
+	-x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_{i+2}\right)\nl
+\end{align}
+And satisfies the properties:
+\begin{itemize}
+	\item clustery cobracket
+	\item cluster adjacent in $A_2$
+	\item smooth and real-valued in the positive domain
+\end{itemize}
+Some cluster algebra rules:
+\begin{equation}
+  \label{eq:b-mutation}
+  b'_{i j} =
+  \begin{cases}
+    -b_{i j}, &\quad \text{if $k \in \lbrace i, j\rbrace$,}\\
+    b_{i j}, &\quad \text{if $b_{i k} b_{k j} \leq 0$,}\\
+    b_{i j} + b_{i k} b_{k j}, &\quad \text{if $b_{i k}, b_{k j} > 0$,}\\
+    b_{i j} - b_{i k} b_{k j}, &\quad \text{if $b_{i k}, b_{k j} < 0$.}
+  \end{cases}
+\end{equation}
+
+\begin{equation}
+  \label{eq:x-coords-mutation}
+  x_{i}' =
+  \begin{cases}
+    x_{k}^{-1}, &\quad i=k,\\
+    x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k
+  \end{cases}.
+\end{equation}
+
+\begin{equation}
+  \label{eq:poisson-x-coords}
+  \lbrace x_{i}, x_{j}\rbrace = b_{i j} x_{i} x_{j}.
+\end{equation}
+
+\begin{equation}
+  \lbrace x_{i}', x_{j}'\rbrace = b_{i j}' x_{i}' x_{j}'
+\end{equation}
+
+In momentum twistor language we have the $n$ momentum twistors $Z_i$, which together form the $4 \times n$ matrix
+
+\begin{equation}	
+K = \left(\begin{array}{ccc}
+z_{11} & \ldots & z_{n1} \\
+z_{12} & \ldots & z_{n2} \\
+z_{13} & \ldots & z_{n3} \\
+z_{14} & \ldots & z_{n4}\end{array}\right).
+\end{equation}
+As long as the first 4 columns are non-singular, we can row reduce $K$ in to the form
+\begin{equation}
+K'=\left(
+\begin{array}{ccccccc}
+ 1 & 0 & 0 & 0 & y_{11} & \ldots  & y_{(n-4)1} \\
+ 0 & 1 & 0 & 0 & y_{12} & \ldots  & y_{(n-4)2} \\
+ 0 & 0 & 1 & 0 & y_{13} & \ldots  & y_{(n-4)3} \\
+ 0 & 0 & 0 & 1 & y_{14} & \ldots  & y_{(n-4)4} \\
+\end{array}
+\right).
+\end{equation}
+The columns of $K'$ define a new set of momentum twistors $Z'_i$, where for example $Z'_1 = \{1,0,0,0\}$ and $Z'_5 = \{y_{11},y_{12},y_{13},y_{14}\}$. It is easy to check that 
+\begin{align}
+	&y_{ij} = (-1)^j \ket{\{1,2,3,4\}\setminus\{j\},i}/\ket{1234},\\
+	&\ket{abcd}' = \det(Z'_a Z'_b Z'_c Z'_d) = \ket{abcd}/\ket{1234}.
+\end{align}
+You can then define the Sklyanin bracket as an operation on these $y_{ij}$ by
+\begin{equation}
+	\{y_{ij},y_{ab}\} = (\sgn(a-i) - \sgn(b-j)) y_{ib} y_{aj}.
+\end{equation}
+Which then extends to a bracket on functions of the $y_{ij}$ via
+\begin{equation}\label{eq:def}
+	\{f(y), g(y)\} =  \sum_{i,a=1}^n\sum_{j,b=1}^4\frac{\partial f}{\partial y_{ij}}  \frac{\partial g}{\partial y_{ab}} 
+\{y_{ij}, y_{ab}\}.
+\end{equation}
+Now if we want to evaluate the Poisson bracket between two $\mathcal{X}$-coordinates, we can instead treat them as functions of the $y_{ij}$ and use eq.~(\ref{eq:def}). To be precise, for each four-bracket $\ket{abcd}$ in the $\mathcal{X}$-coordinates, replace them with $\ket{abcd}'$ expanded out in terms of $y_{ij}$ (e.g. $\ket{1256}' =y_{13} y_{24}-y_{14} y_{23}$). Then you can calculate eq.~(\ref{eq:def}) directly in terms of the $y_{ij}$
 
 \section{Promoting \texorpdfstring{$R_8^{(2)}$}{R28} from Symbol to Function}
 
@@ -408,5 +498,5 @@ in which case ${}^3 d_1$ through ${}^3 d_8$ each contain a different three-parti
 
 \bibliography{eight_particle_two_loop}
 
-\end{fmffile}
+%\end{fmffile}
 \end{document}

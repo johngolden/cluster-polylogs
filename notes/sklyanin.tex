@@ -34,7 +34,6 @@
 \lhead{\textbf{Computing the Sklyanin Bracket} \hfill \today}
 
 In momentum twistor language we have the $n$ momentum twistors $Z_i$, which together form the $4 \times n$ matrix
-
 \begin{equation}	
 K = \left(\begin{array}{ccc}
 z_{11} & \ldots & z_{n1} \\
@@ -58,19 +57,18 @@ The columns of $K'$ define a new set of momentum twistors $Z'_i$, where for exam
 	&y_{ij} = (-1)^j \ket{\{1,2,3,4\}\setminus\{j\},i}/\ket{1234},\label{eq:numerics}\\
 	&\ket{abcd}' = \det(Z'_a Z'_b Z'_c Z'_d) = \ket{abcd}/\ket{1234}.
 \end{align}
-You can then define the Sklyanin bracket as an operation on these $y_{ij}$ by
+The Sklyanin bracket on these $y_{ij}$ is given by
 \begin{equation}
 	\{y_{ij},y_{ab}\} = (\sgn(a-i) - \sgn(b-j)) y_{ib} y_{aj}.
 \end{equation}
-Which then extends to a bracket on functions of the $y_{ij}$ via
-\begin{equation}\label{eq:def}
+This extends to a bracket on functions of the $y_{ij}$ via
+\begin{equation}\label{def:sklyanin}
 	\{f(y), g(y)\} =  \sum_{i,a=1}^n\sum_{j,b=1}^4\frac{\partial f}{\partial y_{ij}}  \frac{\partial g}{\partial y_{ab}} 
 \{y_{ij}, y_{ab}\}.
 \end{equation}
-Now if we want to evaluate the Poisson bracket between two $\mathcal{X}$-coordinates, we can instead treat them as functions of the $y_{ij}$ and use eq.~(\ref{eq:def}), dividing by an overall factor of 2.\footnote{Of course also remember that the Poisson bracket on $\mathcal{X}$-coordinates is actually defined on the Log's of the $\mathcal{X}$-coordinates, so in practice not only do you have to divide by $2$ but you also have to divide by the product of the two $\mathcal{X}$-coordinates in order to get what we commonly refer to as ``the Poisson bracket".} To be precise, for each four-bracket $\ket{abcd}$ in the $\mathcal{X}$-coordinates, replace them with $\ket{abcd}'$ expanded out in terms of $y_{ij}$ (e.g. $\ket{1256}' =y_{53} y_{64}-y_{54} y_{63}$). Then you can calculate eq.~(\ref{eq:def}) directly in terms of the $y_{ij}$, though note that it will be a VERY long expression. 
-
-To actually extract a real value for the Poisson bracket, you need to numerically evaluate the remaining expression. I think you can choose arbitrary numerical values of the $y_{ij}$, but to be sure I choose some point $K$ in the positive grassmannian and then use eq.~(\ref{eq:numerics}) to get values for the $y_{ij}$. After plugging in the numbers, if you get some nasty fraction dependent on the particular kinematic choice, then the two $\mathcal{X}$-coordinates have a ``bad" Poisson bracket. However if you get some nice number, such as $\pm1$ or 0 (it's also possible to get values such as $\pm2$, but in practical cases that doesn't occur), then you can say that the $\mathcal{X}$-coordinates have nice Poisson bracket. 
-
-As for why this whole procedure actually works, I have no idea, but apparently it's explained in http://arxiv.org/abs/math/0208033. 
-
+What we commonly refer to as ``the Poisson bracket'' between two $\mathcal{X}$-coordinates, $\{\mathcal{X}_1,\mathcal{X}_2\}$ is then calculated via
+\begin{equation}
+	\{\mathcal{X}_1,\mathcal{X}_2\} = \frac{1}{2 \mathcal{X}_1\mathcal{X}_2} \{\mathcal{X}_1',\mathcal{X}_2'\}
+\end{equation}
+where $\mathcal{X}_i' = \mathcal{X}_i$ with $\ket{ijkl} \to \ket{ijkl}'$. 
 \end{document}
