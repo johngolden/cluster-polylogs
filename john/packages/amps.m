@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (*load data*)
 oldDir=Directory[];
 SetDirectory[Directory[]<>"/data"];
@@ -202,13 +205,7 @@ numXcoords[n_]:=numXcoords[n]=xcoords[n]//num[n];
 
 (*the length of the multiplicative basis of a given set of cross-ratios*)
 
-multLength[x_]:=If[Length[x]<2,Length[x],Module[{Y,M},
-Y = PowerExpand[Log /@ x]/.Pi -> 0;
-Y = Expand[Y.(y /@ Range[Length[Y]])];
-Y = List @@ Collect[Y, Log[__]];
-Y = Y/.Log[__]->1;
-M = CoefficientArrays[Y, y /@ Range[Length[x]]][[2]];
-Return[MatrixRank[M]];]];
+multLength[x_]:=If[Length[x]<2,Length[x],MatrixRank[CoefficientArrays[genEqs[(p/@Range[Length[x]]).tensorExpand[tensor/@x]],p/@Range[Length[x]]][[2]]]];
 
 (*generate a multiplicative basis for a given set of cross-ratios*)
 
@@ -242,17 +239,22 @@ Tensor[a___,b_^c_,d___]:=c Tensor[a,b,d];
 Tensor[a___,b_/c_,d___]:=Tensor[a,b,d]-Tensor[a,c,d];
 Tensor[a___,b_?NumberQ,c___]:=0;
 
+(*the most barebones and widely applicable tensorExpand*)
 tensorExpand[x_]:=(x/.tensor:>Tensor)/.Tensor:>tensor;
 
-fastTensorExpand[x_]:=Module[{vars,TTensor,step1,step2},
-vars=tensorVars[x];
-Clear[TTensor];
-Table[TTensor[vars[[ii]]]=(tensorExpand[tensor[vars[[ii]]]]/.tensor[a__]:>a),{ii,Length[vars]}];
-step1=(x/.tensor[a__]:>test@@(TTensor/@{a}));
-tensor[a___,-b_,c___]:=-tensor[a,b,c];
-step2=step1/.test[a__]:>Outer[tensor,a];
-Clear[tensor];
-Return[step2];]
+(*fastest for most applications, only works at weight 4*)
+tensorExpVars[r_]:=tensorExpVars[r]=Variables[Tensor[r]]/.Tensor[a_]:>a;
+tensorExpExponents[r_]:=tensorExpExponents[r]=Coefficient[Tensor[r],#]&/@(Tensor/@tensorExpVars[r]);
+tensorExpFastBase[a_,b_,c_,d_]:=tensorExpFastBase[a,b,c,d]=Flatten[Outer[tensor,tensorExpVars[a],tensorExpVars[b],tensorExpVars[c],tensorExpVars[d]]].Flatten[Outer[Times,tensorExpExponents[a],tensorExpExponents[b],tensorExpExponents[c],tensorExpExponents[d]]];
+tensorExpandFast[x_]:=collectTensors[collectTensors[x]/.tensor:>tensorExpFastBase];
+
+(*from andrew mcleod, works best on very large expressions with complicated coefficients*)
+termsHead[expression_,coefficientHead_:tensor]:=Sort@DeleteDuplicates[Cases[expression,coefficientHead[___],{0,\[Infinity]}]]
+coeffArray[expression_,coefficientHead_:tensor]:=CoefficientArrays[expression,termsHead[expression,coefficientHead]]
+tensorExpandHuge[x_]:=coeffArray[x][[2]].coeffArray[#][[2]].termsHead[#]&@(termsHead[x]/.tensor->tensorExpFastBase);
+
+collectTensors[0]=0;
+collectPs[0]=0;
 
 collectTensors[x_]:=Module[{vars,array},
 vars=Cases[Variables[x],tensor[__]];
@@ -367,30 +369,35 @@ Li[2,a_] Log[a_]^2:>-2 (tensor[a,a,m1[n][a],a]+2 tensor[a,m1[n][a],a,a]+3 tensor
 Log[a_]^4:>24tensor[a,a,a,a],
 Log[a_]^2 Log[b_]^2:>4 tensor[a,a,b,b]+4 tensor[a,b,a,b]+4 tensor[a,b,b,a]+4 tensor[b,a,a,b]+4 tensor[b,a,b,a]+4 tensor[b,b,a,a],
 Li[{2,2},{a_,b_}]:> tensor[m1[n][b],m1[n][a],a,b]+tensor[m1[n][b],m1[n][a],b,a]+tensor[m1[n][b],b,m1[n][a],a]-tensor[m1[n][a b],m1[n][a],a,b]-tensor[m1[n][a b],m1[n][a],b,a]-tensor[m1[n][a b],a,m1[n][a],a]+tensor[m1[n][a b],a,a,a]+tensor[m1[n][a b],a,a,b]+tensor[m1[n][a b],a,m1[n][b],b]+tensor[m1[n][a b],a,b,a]+tensor[m1[n][a b],m1[n][b],a,b]+tensor[m1[n][a b],m1[n][b],b,a]-tensor[m1[n][a b],b,m1[n][a],a]+tensor[m1[n][a b],b,a,a]+tensor[m1[n][a b],b,m1[n][b],b],
-Li[{3,1},{x_,y_}]:>tensor[m1[n][y], m1[n][x], x, x] + tensor[m1[n][-x y], x, x, x] + 
- tensor[m1[n][-x y], x, x, m1[n][y]] + tensor[m1[n][-x y], x, y, m1[n][y]] + 
- tensor[m1[n][-x y], x, m1[n][y], x] + tensor[m1[n][-x y], y, x, m1[n][y]] + 
- tensor[m1[n][-x y], y, y, m1[n][y]] + tensor[m1[n][-x y], y, m1[n][y], x] - 
- tensor[m1[n][-x y], m1[n][x], x, x] + tensor[m1[n][-x y], m1[n][y], x, x],
+Li[{3,1},{x_,y_}]:>tensor[m1[n][y], m1[n][x], x, x] + tensor[m1[n][x y], x, x, x] + 
+ tensor[m1[n][x y], x, x, m1[n][y]] + tensor[m1[n][x y], x, y, m1[n][y]] + 
+ tensor[m1[n][x y], x, m1[n][y], x] + tensor[m1[n][x y], y, x, m1[n][y]] + 
+ tensor[m1[n][x y], y, y, m1[n][y]] + tensor[m1[n][x y], y, m1[n][y], x] - 
+ tensor[m1[n][x y], m1[n][x], x, x] + tensor[m1[n][x y], m1[n][y], x, x],
 Li[{1,3},{x_,y_}]:>tensor[m1[n][y], y, y, m1[n][x]] + tensor[m1[n][y], y, m1[n][x], y] + 
- tensor[m1[n][y], m1[n][x], y, y] + tensor[m1[n][-x y], x, x, x] + 
- tensor[m1[n][-x y], x, x, y] - tensor[m1[n][-x y], x, x, m1[n][x]] + 
- tensor[m1[n][-x y], x, y, x] + tensor[m1[n][-x y], x, y, y] - 
- tensor[m1[n][-x y], x, y, m1[n][x]] - tensor[m1[n][-x y], x, m1[n][x], y] + 
- tensor[m1[n][-x y], y, x, x] + tensor[m1[n][-x y], y, x, y] - 
- tensor[m1[n][-x y], y, x, m1[n][x]] + tensor[m1[n][-x y], y, y, x] - 
- tensor[m1[n][-x y], y, y, m1[n][x]] - tensor[m1[n][-x y], y, m1[n][x], y] - 
- tensor[m1[n][-x y], m1[n][x], y, y] + tensor[m1[n][-x y], m1[n][y], y, y],
+ tensor[m1[n][y], m1[n][x], y, y] + tensor[m1[n][x y], x, x, x] + 
+ tensor[m1[n][x y], x, x, y] - tensor[m1[n][x y], x, x, m1[n][x]] + 
+ tensor[m1[n][x y], x, y, x] + tensor[m1[n][x y], x, y, y] - 
+ tensor[m1[n][x y], x, y, m1[n][x]] - tensor[m1[n][x y], x, m1[n][x], y] + 
+ tensor[m1[n][x y], y, x, x] + tensor[m1[n][x y], y, x, y] - 
+ tensor[m1[n][x y], y, x, m1[n][x]] + tensor[m1[n][x y], y, y, x] - 
+ tensor[m1[n][x y], y, y, m1[n][x]] - tensor[m1[n][x y], y, m1[n][x], y] - 
+ tensor[m1[n][x y], m1[n][x], y, y] + tensor[m1[n][x y], m1[n][y], y, y],
 tensor[a___]dLog[b_]:>tensor[a,b]};
 
-sym[n_][x_]:=tensorExpand[(x//.Pi:>0)//.symRules[n]];
+symClean[expr_]:=expr//.{Li4[a_]:>-tensor[1-a,a,a,a],Li3[a_] Log[b_]:>-(tensor[1-a,a,a,b]+tensor[1-a,a,b,a]+tensor[1-a,b,a,a]+tensor[b,1-a,a,a]),Li2[a_] Li2[b_]:>tensor[1-a,a,1-b,b]+tensor[1-a,1-b,a,b]+tensor[1-a,1-b,b,a]+tensor[1-b,b,1-a,a]+tensor[1-b,1-a,a,b]+tensor[1-b,1-a,b,a],Li2[a_]^2:>2 tensor[1-a,a,1-a,a]+4 tensor[1-a,1-a,a,a],Li2[a_] Log[b_] Log[c_]:>-(tensor[1-a,a,b,c]+tensor[1-a,a,c,b]+tensor[1-a,b,a,c]+tensor[1-a,b,c,a]+tensor[1-a,c,b,a]+tensor[1-a,c,a,b]+tensor[b,1-a,a,c]+tensor[b,1-a,c,a]+tensor[b,c,1-a,a]+tensor[c,b,1-a,a]+tensor[c,1-a,b,a]+tensor[c,1-a,a,b]),Li2[a_] Log[a_] Log[b_]:>-tensor[a,b,1-a,a]-tensor[a,1-a,a,b]-tensor[a,1-a,b,a]-tensor[b,a,1-a,a]-2 (tensor[b,1-a,a,a]+tensor[1-a,a,a,b]+tensor[1-a,a,b,a]+tensor[1-a,b,a,a]),Li2[a_] Log[b_]^2:>-2 (tensor[b,b,1-a,a]+tensor[b,1-a,a,b]+tensor[b,1-a,b,a]+tensor[1-a,a,b,b]+tensor[1-a,b,a,b]+tensor[1-a,b,b,a]),Li2[a_]Li2[b_]:>tensor[1-a,a,1-b,b]+tensor[1-a,1-b,a,b]+tensor[1-a,1-b,b,a]+tensor[1-b,1-a,a,b]+tensor[1-b,1-a,b,a]+tensor[1-b,b,1-a,a],Li2[a_] Log[a_]^2:>-2 (tensor[a,a,1-a,a]+2 tensor[a,1-a,a,a]+3 tensor[1-a,a,a,a]),Log[a_] Log[b_] Log[c_] Log[d_]:>tensor[a,b,c,d]+tensor[a,b,d,c]+tensor[a,c,b,d]+tensor[a,c,d,b]+tensor[a,d,b,c]+tensor[a,d,c,b]+tensor[b,a,c,d]+tensor[b,a,d,c]+tensor[b,c,a,d]+tensor[b,c,d,a]+tensor[b,d,a,c]+tensor[b,d,c,a]+tensor[c,a,b,d]+tensor[c,a,d,b]+tensor[c,b,a,d]+tensor[c,b,d,a]+tensor[c,d,a,b]+tensor[c,d,b,a]+tensor[d,a,b,c]+tensor[d,a,c,b]+tensor[d,b,a,c]+tensor[d,b,c,a]+tensor[d,c,a,b]+tensor[d,c,b,a],Log[a_] Log[b_] Log[c_]^2:>2 (tensor[a,b,c,c]+tensor[a,c,b,c]+tensor[a,c,c,b]+tensor[b,a,c,c]+tensor[b,c,a,c]+tensor[b,c,c,a]+tensor[c,a,b,c]+tensor[c,a,c,b]+tensor[c,b,a,c]+tensor[c,b,c,a]+tensor[c,c,a,b]+tensor[c,c,b,a]),Log[a_] Log[b_]^3:>6 (tensor[a,b,b,b]+tensor[b,a,b,b]+tensor[b,b,a,b]+tensor[b,b,b,a]),Log[a_]^4:>24tensor[a,a,a,a],Log[a_]^2 Log[b_]^2:>4 tensor[a,a,b,b]+4 tensor[a,b,a,b]+4 tensor[a,b,b,a]+4 tensor[b,a,a,b]+4 tensor[b,a,b,a]+4 tensor[b,b,a,a],Li22[x_,y_]:>tensor[-1+y,-1+x,x,y]+tensor[-1+y,-1+x,y,x]+tensor[-1+y,y,-1+x,x]-tensor[-1+x y,-1+x,x,y]-tensor[-1+x y,-1+x,y,x]-tensor[-1+x y,x,-1+x,x]+tensor[-1+x y,x,x,x]+tensor[-1+x y,x,x,y]+tensor[-1+x y,x,-1+y,y]+tensor[-1+x y,x,y,x]+tensor[-1+x y,-1+y,x,y]+tensor[-1+x y,-1+y,y,x]-tensor[-1+x y,y,-1+x,x]+tensor[-1+x y,y,x,x]+tensor[-1+x y,y,-1+y,y],Li13[a_,b_]:>tensor[-1+b,-1+a,b,b]+tensor[-1+b,b,-1+a,b]+tensor[-1+b,b,b,-1+a]-tensor[-1+a b,-1+a,b,b]-tensor[-1+a b,a,-1+a,b]-tensor[-1+a b,a,a,-1+a]+tensor[-1+a b,a,a,a]+tensor[-1+a b,a,a,b]-tensor[-1+a b,a,b,-1+a]+tensor[-1+a b,a,b,a]+tensor[-1+a b,a,b,b]+tensor[-1+a b,-1+b,b,b]-tensor[-1+a b,b,-1+a,b]-tensor[-1+a b,b,a,-1+a]+tensor[-1+a b,b,a,a]+tensor[-1+a b,b,a,b]-tensor[-1+a b,b,b,-1+a]+tensor[-1+a b,b,b,a],
+Li31[x_,y_]:>tensor[1-y,1-x,x,x]+tensor[1-x y,x,x,x]+tensor[1-x y,x,x,1-y]+tensor[1-x y,x,y,1-y]+tensor[1-x y,x,1-y,x]+tensor[1-x y,y,x,1-y]+tensor[1-x y,y,y,1-y]+tensor[1-x y,y,1-y,x]-tensor[1-x y,1-x,x,x]+tensor[1-x y,1-y,x,x],Li3[a_]Log[b_]:>tensor[1-a,a,a,b]+tensor[1-a,a,b,a]+tensor[1-a,b,a,a]+tensor[b,1-a,a,a]};
+
+sym[n_][x_]:=(x//.Pi:>0)//.symRules[n]
 
 
 li22Part[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[a,b,d,c]-ttensor[b,a,c,d]+ttensor[b,a,d,c]-ttensor[c,d,a,b]+ttensor[c,d,b,a]+ttensor[d,c,a,b]-ttensor[d,c,b,a])//.ttensor:>tensor;
 li4Part[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[b,a,c,d]-ttensor[b,c,a,d]-ttensor[b,c,d,a]+ttensor[c,b,a,d]+ttensor[c,b,d,a]+ttensor[c,d,b,a]-ttensor[d,c,b,a])//.ttensor:>tensor;
 li2li2Part[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[a,b,d,c]-ttensor[b,a,c,d]+ttensor[b,a,d,c]+ttensor[c,d,a,b]-ttensor[c,d,b,a]-ttensor[d,c,a,b]+ttensor[d,c,b,a])//.ttensor:>tensor;
 li2loglogPart[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[a,b,d,c])//.ttensor:>tensor;
-li3logPart[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,b,c,d]-ttensor[b,a,c,d])//.ttensor:>tensor;
+li3logPart[x_]:=(x//.tensor[a_,b_,c_,d_]:> ttensor[a,c,b,d]-ttensor[b,a,c,d]-ttensor[b,c,a,d]+ttensor[c,a,b,d])//.ttensor:>tensor;
+li3Part[x_]:=x/.tensor[a_,b_,c_]:>tensor[a,b,c]-tensor[b,a,c]-tensor[b,c,a]+tensor[c,b,a];
+li2Part[x_]:=x/.tensor[a_,b_]:>tensor[a,b]-tensor[b,a];
 
 
 (*calculate the poisson bracket of two cluster x-coordinate*)
@@ -412,6 +419,7 @@ Return[base]];
 
 clean[n_][R_]:=clean[n][R]=cleanNum[n][num[n][R]];
 Table[cleanNum[n][numRatios[n][[i]]]=allRatios[n][[i]];cleanNum[n][-numRatios[n][[i]]]=-allRatios[n][[i]],{n,6,9},{i,Length[allRatios[n]]}];;
+cleanNum[n_][x_]:=0
 
 a2Vars[n_][{x1_,x2_}]:=Module[{x,answer},
 x[1]=x1;
@@ -459,7 +467,55 @@ SetAttributes[Ccap1,Orderless];
 SetAttributes[Ccap,Orderless];
 SetAttributes[Tup,Orderless];
 
-collinearLimit[n_]:=collinearLimit[n]={Ccap[ii_,jj_,Tup[ii_,kk_,ll_],Tup[oo_,mm_,nn_]]->Br[ii,oo,mm,nn] Br[ii,jj,kk,ll],Ccap[kk_,ll_,Tup[ii_,jj_,mm_],Tup[ii_,jj_,nn_]]->Br[ii,jj,mm,nn] Br[ii,jj,kk,ll],Ccap[kk_,ll_,Tup[ii_,jj__],Tup[ii_,mm__]]->Ccap1[ii,Tup[kk,ll],Tup[jj],Tup[mm]],Ccap1[ii_,Tup[jj_,kk_],Tup[jj_,ll_],Tup[mm__]]->Br[ii,jj,kk,ll] Br[ii,jj,mm],Br[n-1,n,ii__]->Br[n-1,B,ii],Br[n,ii__]->Br[n-1,ii],Br[n-1,B,n-2,1]->XXX,Br[n-1,B,n-2,ii_]->E1*Br[n-2,n-1,1,ii],Br[n-1,B,1,ii_]->E2*Br[n-2,n-1,1,ii],Ccap[n-1,n,Tup[n-2,1,ii_],Tup[jj__]]->Br[n-2,n-1,1,ii] Br[B,jj],Ccap[n-2,1,Tup[n-1,n,jj_],Tup[kk__]]->Br[n-2,n-1,1,jj] Br[B,kk],Ccap[n-1,n,Tup[ii__],Tup[jj__]]->Ccap[n-1,B,Tup[ii],Tup[jj]],Ccap[ii__,Tup[n-1,n,jj_],Tup[kk__]]->Ccap[ii,Tup[n-1,B,jj],Tup[kk]],Ccap[n,ii__]->Ccap[n-1,ii],Ccap[ii__,Tup[n,jj__],Tup[kk__]]->Ccap[ii,Tup[n-1,jj],Tup[kk]],Ccap1[ii_,Tup[n-1,n],Tup[jj__],Tup[kk__]]->Ccap1[ii,Tup[n-1,B],Tup[jj],Tup[kk]],Ccap1[n-1,Tup[n,ii_],Tup[jj__],Tup[kk__]]->Ccap1[n-1,Tup[B,ii],Tup[jj],Tup[kk]],Ccap1[n,Tup[n-1,ii_],Tup[jj__],Tup[kk__]]->Ccap1[n-1,Tup[B,ii],Tup[jj],Tup[kk]],Ccap1[n,jj__]->Ccap1[n-1,jj],Ccap1[Tup[n,jj_],kk__]->Ccap1[Tup[n-1,jj],kk],Ccap[ii__,Tup[n-2,n-1,B],Tup[jj__]]->E1*Ccap[ii,Tup[n-2,n-1,1],Tup[jj]],Ccap[ii__,Tup[1,n-1,B],Tup[jj__]]->E2*Ccap[ii,Tup[n-2,n-1,1],Tup[jj]],Ccap1[n-2,Tup[n-1,B],Tup[jj__],Tup[kk__]]->E1*Ccap1[n-2,Tup[n-1,1],Tup[jj],Tup[kk]],Ccap1[1,Tup[n-1,B],Tup[jj__],Tup[kk__]]->E2*Ccap1[1,Tup[n-1,n-2],Tup[jj],Tup[kk]],Ccap1[ii_,Tup[jj_,B],Tup[n-2,1],Tup[kk__]]->Br[ii,n-2,1,jj] Br[ii,B,kk],Ccap1[n-1,Tup[B,n-2],Tup[jj__],Tup[kk__]]->E1*Ccap1[n-1,Tup[n-2,1],Tup[jj],Tup[kk]],Ccap1[n-1,Tup[B,1],Tup[jj__],Tup[kk__]]->E2*Ccap1[n-1,Tup[n-2,1],Tup[jj],Tup[kk]],Ccap1[n-1,Tup[B,ii_],Tup[n-2,1],Tup[jj__]]->Br[n-1,n-2,1,ii] Br[n-1,B,jj]};
+collinearLimit[n_] := 
+  collinearLimit[
+    n] = {Ccap[ii_, jj_, Tup[ii_, kk_, ll_], Tup[oo_, mm_, nn_]] :> 
+     Br[ii, oo, mm, nn] Br[ii, jj, kk, ll], 
+    Ccap[kk_, ll_, Tup[ii_, jj_, mm_], Tup[ii_, jj_, nn_]] :> 
+     Br[ii, jj, mm, nn] Br[ii, jj, kk, ll], 
+    Ccap[kk_, ll_, Tup[ii_, jj__], Tup[ii_, mm__]] :> 
+     Ccap1[ii, Tup[kk, ll], Tup[jj], Tup[mm]], 
+    Ccap1[ii_, Tup[jj_, kk_], Tup[jj_, ll_], Tup[mm__]] :> 
+     Br[ii, jj, kk, ll] Br[ii, jj, mm], 
+    Br[n - 1, n, ii__] :> Br[n - 1, B, ii], 
+    Br[n, ii__] :> Br[n - 1, ii], Br[n - 1, B, n - 2, 1] :> XXX, 
+    Br[n - 1, B, n - 2, ii_] :> E1*Br[n - 2, n - 1, 1, ii], 
+    Br[n - 1, B, 1, ii_] :> E2*Br[n - 2, n - 1, 1, ii], 
+    Ccap[n - 1, n, Tup[n - 2, 1, ii_], Tup[jj__]] :> 
+     Br[n - 2, n - 1, 1, ii] Br[B, jj], 
+    Ccap[n - 2, 1, Tup[n - 1, n, jj_], Tup[kk__]] :> 
+     Br[n - 2, n - 1, 1, jj] Br[B, kk], 
+    Ccap[n - 1, n, Tup[ii__], Tup[jj__]] :> 
+     Ccap[n - 1, B, Tup[ii], Tup[jj]], 
+    Ccap[ii__, Tup[n - 1, n, jj_], Tup[kk__]] :> 
+     Ccap[ii, Tup[n - 1, B, jj], Tup[kk]], 
+    Ccap[n, ii__] :> Ccap[n - 1, ii], 
+    Ccap[ii__, Tup[n, jj__], Tup[kk__]] :> 
+     Ccap[ii, Tup[n - 1, jj], Tup[kk]], 
+    Ccap1[ii_, Tup[n - 1, n], Tup[jj__], Tup[kk__]] :> 
+     Ccap1[ii, Tup[n - 1, B], Tup[jj], Tup[kk]], 
+    Ccap1[n - 1, Tup[n, ii_], Tup[jj__], Tup[kk__]] :> 
+     Ccap1[n - 1, Tup[B, ii], Tup[jj], Tup[kk]], 
+    Ccap1[n, Tup[n - 1, ii_], Tup[jj__], Tup[kk__]] :> 
+     Ccap1[n - 1, Tup[B, ii], Tup[jj], Tup[kk]], 
+    Ccap1[n, jj__] :> Ccap1[n - 1, jj], 
+    Ccap1[Tup[n, jj_], kk__] :> Ccap1[Tup[n - 1, jj], kk], 
+    Ccap[ii__, Tup[n - 2, n - 1, B], Tup[jj__]] :> 
+     E1*Ccap[ii, Tup[n - 2, n - 1, 1], Tup[jj]], 
+    Ccap[ii__, Tup[1, n - 1, B], Tup[jj__]] :> 
+     E2*Ccap[ii, Tup[n - 2, n - 1, 1], Tup[jj]], 
+    Ccap1[n - 2, Tup[n - 1, B], Tup[jj__], Tup[kk__]] :> 
+     E1*Ccap1[n - 2, Tup[n - 1, 1], Tup[jj], Tup[kk]], 
+    Ccap1[1, Tup[n - 1, B], Tup[jj__], Tup[kk__]] :> 
+     E2*Ccap1[1, Tup[n - 1, n - 2], Tup[jj], Tup[kk]], 
+    Ccap1[ii_, Tup[jj_, B], Tup[n - 2, 1], Tup[kk__]] :> 
+     Br[ii, n - 2, 1, jj] Br[ii, B, kk], 
+    Ccap1[n - 1, Tup[B, n - 2], Tup[jj__], Tup[kk__]] :> 
+     E1*Ccap1[n - 1, Tup[n - 2, 1], Tup[jj], Tup[kk]], 
+    Ccap1[n - 1, Tup[B, 1], Tup[jj__], Tup[kk__]] :> 
+     E2*Ccap1[n - 1, Tup[n - 2, 1], Tup[jj], Tup[kk]], 
+    Ccap1[n - 1, Tup[B, ii_], Tup[n - 2, 1], Tup[jj__]] :> 
+     Br[n - 1, n - 2, 1, ii] Br[n - 1, B, jj]};
 
 collinear[n_][x_]:=((x//.{br:>Br,ccap1:>Ccap1,ccap:>Ccap,tup:>Tup})//.collinearLimit[n])//.{Br:>br,Ccap1:>ccap1,Ccap:>ccap,Tup:>tup};
 
