@@ -245,7 +245,7 @@ tensorExpand[x_]:=(x/.tensor:>Tensor)/.Tensor:>tensor;
 (*fastest for most applications, only works at weight 4*)
 tensorExpVars[r_]:=tensorExpVars[r]=Variables[Tensor[r]]/.Tensor[a_]:>a;
 tensorExpExponents[r_]:=tensorExpExponents[r]=Coefficient[Tensor[r],#]&/@(Tensor/@tensorExpVars[r]);
-tensorExpFastBase[a_,b_,c_,d_]:=tensorExpFastBase[a,b,c,d]=Flatten[Outer[tensor,tensorExpVars[a],tensorExpVars[b],tensorExpVars[c],tensorExpVars[d]]].Flatten[Outer[Times,tensorExpExponents[a],tensorExpExponents[b],tensorExpExponents[c],tensorExpExponents[d]]];
+tensorExpFastBase[a_,b_,c_,d_]:=Flatten[Outer[tensor,tensorExpVars[a],tensorExpVars[b],tensorExpVars[c],tensorExpVars[d]]].Flatten[Outer[Times,tensorExpExponents[a],tensorExpExponents[b],tensorExpExponents[c],tensorExpExponents[d]]];
 tensorExpandFast[x_]:=collectTensors[collectTensors[x]/.tensor:>tensorExpFastBase];
 
 (*from andrew mcleod, works best on very large expressions with complicated coefficients*)
