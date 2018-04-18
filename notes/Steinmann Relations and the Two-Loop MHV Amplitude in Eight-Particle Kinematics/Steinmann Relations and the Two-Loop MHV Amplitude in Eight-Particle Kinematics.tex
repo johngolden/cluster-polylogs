@@ -418,7 +418,7 @@ More surprisingly, the extended Steinmann constraints have been found to be equi
 
 \draftnote{Paragraph introducing the BDS ansatz}
 
-When the number of particles $n$ is not a multiple of four, a unique BDS-like ansatz can be defined that depends on just two-particle Mandelstam invariants. That is, there exists just a single decomposition of the BDS ansatz
+When the number of particles $n$ is not a multiple of four, a unique BDS-like ansatz can be defined that depends on just two-particle Mandelstam invariants. That is, there exists just a single decomposition of the BDS ansatz into
 \begin{equation}
 {\cal A}_n^{\text{BDS}}(\{\mand{i,\dots,i+j}\}) = {\cal A}_n^{\text{BDS-like}}(\{\mand{i,i+1}\}) \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4} Y_{n}(\{u_i\})  \right], \quad n\neq4K,
 \end{equation}
@@ -453,18 +453,18 @@ while ${}^3 {\cal E}_8$ is expected to satisfy
 \end{equation}
 Due to momentum conservation in eight-point kinematics, the six relations in~\eqref{stein44} corresponding to a given $i$ only result in three independent constraints; however, these relations will be independent for larger $n$.
 
-Since the functions ${}^4 Y_{8}$ and ${}^3 Y_{8}$ are not unique, it may be possible to chose them in a way that endows the corresponding amplitudes ${}^4 {\cal E}_8$ and ${}^3 {\cal E}_8$ with additional simplifications. \draftnote{\dots} In general, they can be expressed as classical polylogarithms taking \begin{align}
+Since the functions ${}^4 Y_{8}$ and ${}^3 Y_{8}$ are not unique, it may be possible to chose them in a way that endows the amplitudes they define with additional nice properties. In general, these functions can be expressed as classical polylogarithms taking \begin{align}
 \mathfrak{X}_{i,8} &= \frac{\langle i,i+1,i+2,i+4 \rangle \langle i+1,i+3,i+4,i+5\rangle}{\langle i,i+1,i+4,i+5 \rangle \langle i+1,i+2,i+3,i+4 \rangle}, \\
 \mathfrak{X}_{i,4} &= \frac{\langle i,i+1,i+3,i+7 \rangle \langle i,i+2,i+3,i+4 \rangle}{\langle i,i+1,i+2,i+3 \rangle \langle i,i+3,i+4,i+7 \rangle},
 \end{align}
-as negative arguments, where $\mathfrak{X}_{i,8}$ and $\mathfrak{X}_{i,4}$ are ${\cal X}$-coordinates in Gr(4,8) that respectively carve out an eight-orbit and a four-orbit of the dihedral group. The dilog part of these functions is uniquely determined by~\eqref{bds_like_4} and~\eqref{bds_like_3}, but diagonalizing the $(\text{Li}_1)^2$ contribution in these variables gives the representations
+as negative arguments, where $\mathfrak{X}_{i,8}$ and $\mathfrak{X}_{i,4}$ are ${\cal X}$-coordinates in Gr(4,8) that respectively carve out an eight-orbit and a four-orbit of the dihedral group. Their dilogarithmic part is uniquely determined by~\eqref{bds_like_4} and~\eqref{bds_like_3}, and we can choose to use the freedom in these decompositions to diagonalize the $\text{Li}_1$ contributions in these variables (we emphasize that this is an aesthetic choice, and there may be other more physically or mathematically motivated choices). This gives rise to the bose-symmetric representations
 \begin{align}
 {}^4 Y_8 &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac14 \text{Li}_1\left(- \mathfrak{X}_{i,4} \right)^2 \bigg], \\
 {}^3 Y_8 &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac12 \text{Li}_1\left(- \mathfrak{X}_{i,8} \right)^2 \bigg].
 \end{align}
-, so  
+Plugging these functions into equation~\eqref{BDS_like_amplitude}, it can be checked that ${}^4 {\cal E}_8$ and ${}^3 {\cal E}_8$ respectively satisfy the Steinmann relations in~\eqref{stein33} and~\eqref{stein44} as expected, while they violate all other Steinmann relations. \draftnote{check}
 
-Conditions~\eqref{stein33} and~\eqref{stein44} don't exhaust the set of Steinmann relations obeyed by generic eight-particle amplitudes---there are also Steinmann relations between partially overlapping three- and four-particle invariants. If we want to make these additional relations manifest, we can instead define a BDS-like ansatz that depends on only a subset of the three- or four-particle invariants. In particular, it proves possible to decompose the BDS ansatz as either
+To recover more of these Steinmann relations, such as those holding between partially overlapping three- and four-particle invariants, we can instead define BDS-like ans\"atze that depend only on subsets of the three- or four-particle invariants. In particular, it proves possible to decompose the BDS ansatz into either
 \begin{align}
 {\cal A}_8^{\text{BDS}}(\{\mand{i,\dots,i+k}\}) &= {}^{{\{a,b\}}_4} {\cal A}_8^{\text{BDS-like}}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2,i+3} | i \in \{a,b\} \})  \label{bds_like_4q} \\ 
 &\hspace{5.6cm} \times \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4}\ {}^{{\{a,b\}}_4} Y_{8}(\{u_i\})  \right], \nonumber  \\
@@ -499,7 +499,7 @@ in addition to all the Steinmann relations satisfied by ${}^4 {\cal E}_8$ as giv
 %\hspace{0.324cm} \text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{i-2,i-1,i}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \label{stein34}
 %\end{rcases} i \notin \{a,b\}
 %\end{equation}
-as well as all the Steinmann relations satisfied by ${}^3 {\cal E}_8$ and described in eq.~\eqref{stein44}, and all the relations specified in eq.~\eqref{stein33} that don't involve a discontinuity in either $\mand{a,a+1,a+2}$ or $\mand{b,b+1,b+2}$. Clearly it is not possible for BDS-like amplitudes of either type to be Bose-symmetric; however, it is possible to construct a solution to~\eqref{bds_like_3q} such that $\EthreeJ$ is invariant under the dihedral flip $s_{i,\dots,i+k} \rightarrow s_{9-i,\dots,9-i-k}$ when this flip is oriented to map $\mand{a,a+1,a+2}$ and $\mand{b,b+1,b+2}$ between each other.
+as well as all the Steinmann relations satisfied by ${}^3 {\cal E}_8$ and described in eq.~\eqref{stein44}, and all the relations specified in eq.~\eqref{stein33} that don't involve a discontinuity in either $\mand{a,a+1,a+2}$ or $\mand{b,b+1,b+2}$. Clearly it is not possible for BDS-like amplitudes of either type to be Bose-symmetric; however, it proves possible to construct solutions to~\eqref{bds_like_3q} such that $\EthreeJ$ respects the dihedral flip $s_{i,\dots,i+k} \rightarrow s_{9-i,\dots,9-i-k}$ when this mapping is oriented to map $\mand{a,a+1,a+2}$ and $\mand{b,b+1,b+2}$ between each other.
 
 
 \newpage
