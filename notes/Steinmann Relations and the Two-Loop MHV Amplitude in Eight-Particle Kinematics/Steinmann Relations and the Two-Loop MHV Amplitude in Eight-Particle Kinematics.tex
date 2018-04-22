@@ -73,6 +73,8 @@
 \def\mand#1{\scaleto{s}{4.6pt}_{\scaleto{#1}{5.2pt}}}
 \def\EthreeJ{{}^{{\{a,b\}}_3} {\cal E}_8}
 \def\EfourJ{{}^{{\{a,b\}}_4} {\cal E}_8}
+\def\LiOneCalX#1#2{\text{Li}_1(-\mathfrak{X}_{#1,#2})}
+\def\LiOneBarCalX#1#2{\text{Li}_1(-\overline{\mathfrak{X}}_{#1,#2})}
 
 \newcommand{\cP}{{\cal P}}
 \def\lr{\leftrightarrow}
@@ -462,9 +464,9 @@ where $\mathfrak{X}_{i,8}$ and $\mathfrak{X}_{i,4}$ are ${\cal X}$-coordinates i
 {}^4 Y_8 &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac14 \text{Li}_1\left(- \mathfrak{X}_{i,4} \right)^2 \bigg], \\
 {}^3 Y_8 &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac12 \text{Li}_1\left(- \mathfrak{X}_{i,8} \right)^2 \bigg].
 \end{align}
-We emphasize that this is an aesthetically motivated choice, and that there may exist other more physically or mathematically inspired choices that endow ${}^4 {\cal E}_8$ or ${}^3 {\cal E}_8$ with further nice features. It can be checked that ${}^4 {\cal E}_8$ and ${}^3 {\cal E}_8$ respectively satisfy the Steinmann relations in~\eqref{stein33} and~\eqref{stein44} as expected, while they violate all other Steinmann relations. \draftnote{check}
+We emphasize that this is an aesthetically motivated choice; there may exist other more physically (or mathematically) inspired choices that endow ${}^4 {\cal E}_8$ or ${}^3 {\cal E}_8$ with additional desirable properties. Regardless, it can be checked that any realization of ${}^4 Y_8$ or ${}^3 Y_8$ that respects Bose symmetry gives rise to a BDS-like normalized amplitude that satisfies either~\eqref{stein33} or~\eqref{stein44}, while violating all other Steinmann relations (all at the level of the symbol). 
 
-To recover more of these Steinmann relations, such as those holding between partially overlapping three- and four-particle invariants, we can instead define BDS-like ans\"atze that depend only on subsets of the three- or four-particle invariants. In particular, it proves possible to decompose the BDS ansatz into either
+If we want to recover more Steinmann relations, such as those holding between partially overlapping three- and four-particle invariants, we can instead define BDS-like ans\"atze that depend only on subsets of the three- or four-particle invariants. In particular, it proves possible to decompose the BDS ansatz into either
 \begin{align}
 {\cal A}_8^{\text{BDS}}(\{\mand{i,\dots,i+k}\}) &= {}^{{\{a,b\}}_4} {\cal A}_8^{\text{BDS-like}}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2,i+3} | i \in \{a,b\} \})  \label{bds_like_4q} \\ 
 &\hspace{5.6cm} \times \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4}\ {}^{{\{a,b\}}_4} Y_{8}(\{u_i\})  \right], \nonumber  \\
@@ -499,24 +501,13 @@ in addition to all the Steinmann relations satisfied by ${}^4 {\cal E}_8$ as giv
 %\hspace{0.324cm} \text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{i-2,i-1,i}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \label{stein34}
 %\end{rcases} i \notin \{a,b\}
 %\end{equation}
-as well as all the Steinmann relations satisfied by ${}^3 {\cal E}_8$ and described in eq.~\eqref{stein44}, and all the relations specified in eq.~\eqref{stein33} that don't involve a discontinuity in either $\mand{a,a+1,a+2}$ or $\mand{b,b+1,b+2}$. Clearly it is not possible for BDS-like amplitudes of either type to be Bose-symmetric; however, it proves possible to construct solutions to~\eqref{bds_like_3q} such that $\EthreeJ$ respects the dihedral flip $s_{i,\dots,i+k} \rightarrow s_{9-i,\dots,9-i-k}$ when this mapping is oriented to map $\mand{a,a+1,a+2}$ and $\mand{b,b+1,b+2}$ between each other.
+as well as all the Steinmann relations satisfied by ${}^3 {\cal E}_8$ and described in eq.~\eqref{stein44}, and all the relations specified in eq.~\eqref{stein33} that don't involve a discontinuity in either $\mand{a,a+1,a+2}$ or $\mand{b,b+1,b+2}$. Clearly it is not possible for BDS-like amplitudes of either type to be Bose-symmetric; however, it proves possible to construct solutions to~\eqref{bds_like_3q} such that $\EthreeJ$ respects the dihedral flip $s_{i,\dots,i+k} \rightarrow s_{9-i,\dots,9-i-k}$ when this mapping is oriented to map $\mand{a,a+1,a+2}$ and $\mand{b,b+1,b+2}$ between each other. We present specific realizations of ${}^{{\{1,2\}}_4} Y_{8}$ and ${}^{{\{7,8\}}_3} Y_{8}$ in appendix~\ref{appendix:bds_like}. As with the Bose-symmetric normalization choices, it can be checked that all possible realizations of ${}^{{\{a,b\}}_4} Y_{8}$ and ${}^{{\{a,b\}}_3} Y_{8}$ give rise to BDS-like amplitudes that obey and break the same Steinmann relations (for a given pair of indices $a$ and $b$). 
 
-
- \begin{align}
-{}^{{\{1,2\}}_4} Y_{8} &= {}^{4}Y_8 -
-\Big( \text{Li}_1(-\mathfrak{X}_{1, 4}) + \text{Li}_1(-\mathfrak{X}_{4, 4}) + \text{Li}_1(-\mathfrak{X}_{4, 8}) + \text{Li}_1(-\mathfrak{X}_{8, 8}) \Big)  \\
-&\hspace{3.4cm} \times \Big( \text{Li}_1(-\mathfrak{X}_{3, 4}) + \text{Li}_1(-\mathfrak{X}_{4, 4}) + \text{Li}_1(-\mathfrak{X}_{3, 8}) + \text{Li}_1(-\mathfrak{X}_{7, 8}) \Big) \nonumber
-\end{align}
 
 
 \newpage
-These considerations implies that all eight-point Steinmann relations are made manifest in at least one of the amplitudes 
-$$\{{}^4 {\cal E}_8, {}^{{\{1,2\}}_3} {\cal E}_8 ,  {}^{{\{5,6\}}_3} {\cal E}_8 \}.$$ 
-However, in practice it may prove convenient to retain ${}^{3} {\cal E}_8$ in one's toolbox, since it can be chosen to respect Bose symmetry. The extended Steinmann relations~\eqref{stein33},~\eqref{stein44}, and~\eqref{stein34} can be checked by computing the appropriate BDS-like normalized amplitudes from the remainder function, as per eq.~\eqref{BDS_like_amplitude}; while all of these relations are satisfied as expected, all further relations are violated at two loops (for any choice of...)
 
 \draftnote{To Do: can any given Steinmann relation be saved (in Bose-symmetric or ...)? Any other features of the full space worth working out?}
-
-Explicit forms for ${}^3 Y_{8}(\{u_i\})$, ${}^4 Y_{8}(\{u_i\})$, and ${}^{3,j} Y_{8}(\{u_i\})$ are provided in appendix~\ref{appendix:bds_like}.
 
 \draftnote{To Do: define $\Gamma_{\text{cusp}}$ in this section if we don't earlier}
 
@@ -544,6 +535,25 @@ The extended Steinmann relations~\eqref{stein33_1} through~\eqref{stein34_8} can
 \section{\texorpdfstring{$A_5$}{A5} Representation of \texorpdfstring{$R^{(2)}_7$}{R27}}
 
 \section{BDS-Like Conversions for Eight Particles} \label{appendix:bds_like}
+
+ \begin{align}
+{}^{{\{1,2\}}_4} Y_{8} &= {}^{4}Y_8 -
+\Big( \LiOneCalX{1}{4} + \LiOneCalX{4}{4} + \LiOneCalX{4}{8} + \LiOneCalX{8}{8} \Big)  \\
+&\hspace{3.4cm} \times \Big( \LiOneCalX{3}{4}+ \LiOneCalX{4}{4} + \LiOneCalX{3}{8} + \LiOneCalX{7}{8} \Big) \nonumber
+\end{align}
+
+ \begin{align}
+{}^{{\{7,8\}}_3} Y_{8} &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac14 \text{Li}_1\left(- \mathfrak{X}_{i,4} \right)^2 \bigg] \nonumber \\
+&\hspace{.4cm}- \bigg[ \frac 12\Big( \LiOneCalX{1}{4} + \LiOneCalX{3}{4} \Big) \Big( \LiOneCalX{2}{4} + \LiOneCalX{4}{4} \Big)  \nonumber \\
+&\hspace{1.2cm} + \LiOneCalX{1}{4}  \Big( \LiOneCalX{1}{8} + \LiOneCalX{4}{8} + \LiOneCalX{6}{8} + \LiOneCalX{7}{8} \Big) \nonumber \\ 
+&\hspace{1.2cm} + \LiOneCalX{2}{4}  \Big( \LiOneCalX{1}{8} + \LiOneCalX{4}{8} - \LiOneCalX{6}{8}  -  \LiOneCalX{3}{8} \Big) \\
+&\hspace{1.2cm} + \LiOneCalX{1}{8}  \Big( \LiOneCalX{4}{8} + \frac12  \LiOneCalX{1}{8} - \frac12 \LiOneCalX{3}{8} \Big) \nonumber \\
+&\hspace{1.2cm} + \LiOneCalX{5}{8}  \Big( \LiOneCalX{4}{8} - \frac12  \LiOneCalX{5}{8} + \frac12 \LiOneCalX{7}{8} \Big) \nonumber \\
+&\hspace{1.2cm} + \LiOneCalX{6}{8}  \Big( \LiOneCalX{4}{8} - \frac12  \LiOneCalX{2}{8} - \frac12 \LiOneCalX{6}{8} \Big)\nonumber \\
+&\hspace{1.2cm} - \LiOneCalX{2}{4} \LiOneCalX{3}{4} \bigg]_{\LiOneCalX{i}{j} + \LiOneBarCalX{i}{j}} \nonumber
+\end{align}
+where $\overline{\mathfrak{X}}_{i,j}$ is the image of the ${\cal X}$-coordinate $\mathfrak{X}_{i,j}$ under the dihedral flip that sends $Z_i \rightarrow Z_{9-i}$ (that is, the expression in the second square bracket is understood to be the sum of itself and this dihedral image). 
+
 
 The decompositions~\eqref{bds_like_3}, \eqref{bds_like_4}, and \eqref{bds_like_3q} do not uniquely determine ${}^{3} Y_{8}$, ${}^{4} Y_{8}$, or ${}^{3,j} Y_{8}$. In fact, there exists a 10-dimensional (3-dimensional) space of (Bose-symmetric) solutions for ${}^{3} Y_{8}$, a 36-dimensional (5-dimensional) space of (Bose-symmetric) solutions for ${}^{4} Y_{8}$, and a 3-dimensional space of solutions for ${}^{3,j} Y_{8}$. 
  \begin{align}
