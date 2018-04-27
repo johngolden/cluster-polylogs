@@ -253,6 +253,24 @@ termsHead[expression_,coefficientHead_:tensor]:=Sort@DeleteDuplicates[Cases[expr
 coeffArray[expression_,coefficientHead_:tensor]:=CoefficientArrays[expression,termsHead[expression,coefficientHead]]
 tensorExpandHuge[x_]:=coeffArray[x][[2]].coeffArray[#][[2]].termsHead[#]&@(termsHead[x]/.tensor->tensorExpFastBase);
 
+(*fastest and most memory efficient for large expressions -- uses parallelize!*)
+
+tensorExpandParallel[expr__]:=Module[{vars,len,len2,len3,len4,pos,evalNum,reverseNum,findPos,coeffs,tensorExpArray,posNonZero,tensors},
+vars=Union[Flatten[letters/@(Cases[Variables[expr],tensor[__]]/.tensor[a__]:>a)]];
+len=Length[vars];len2=len^2;len3=len^3;len4=len^4;
+Table[pos[vars[[ii]]]=ii,{ii,Length[vars]}];
+evalNum[a_,b_,c_,d_]:=evalNum[a,b,c,d]=len3 (a-1)+len2 (b-1)+ len (c-1)+d;
+Table[reverseNum[evalNum[a,b,c,d]]=tensor@@(vars[[#]]&/@{a,b,c,d}),{a,len},{b,len},{c,len},{d,len}];
+findPos[a_,b_,c_,d_]:=findPos[a,b,c,d]=evalNum@@(pos/@{a,b,c,d});
+tensorExpArray[a_,b_,c_,d_]:=Module[{l1,l2},
+l1=Flatten[Outer[findPos,letters[a],letters[b],letters[c],letters[d]]];
+l2=Flatten[Outer[Times,exponents[a],exponents[b],exponents[c],exponents[d]]];
+Return[SparseArray[Thread[({#}&/@l1)->l2],{len4}]];];
+coeffs=ParallelMap[#/.tensor->tensorExpArray&,expr];
+posNonZero=Sort[Flatten[List@@(InputForm[coeffs]/.SparseArray[a_,b_,c_,d__]:>d[[2,2]])]];
+tensors=SparseArray[Table[{posNonZero[[i]]}->reverseNum[posNonZero[[i]]],{i,Length[posNonZero]}],{len4}];
+Return[Normal[coeffs].Normal[tensors]];];
+
 collectTensors[0]=0;
 collectPs[0]=0;
 
@@ -335,7 +353,7 @@ m=CoefficientArrays[eqs,x][[2]];
 If[Union[Flatten[Normal[m]]]=={0},Return[{0->0}]];
 b=-eqs/.p[_]:>0;
 mat=Transpose[Append[Transpose[m],b]];
-matSolve=Rationalize[Chop[DeleteCases[RowReduce[N[mat]],Table[0,{i,Length[mat[[1]]]}]]],.0000001];
+matSolve=Rationalize[Chop[DeleteCases[RowReduce[N[mat]],Table[0,{i,Length[mat[[1]]]}]]],.000000001];
 isSolnGood=If[Length[matSolve]-Length[matSolve[[1]]]==0,If[Union[Flatten[matSolve-IdentityMatrix[Length[matSolve]]]]=={0},0,1],If[Max[Position[#,1,1,1][[1,1]]&/@matSolve]>Length[x],0,1]];
 soln=If[isSolnGood==1, Table[With[{pos=Position[matSolve[[iii]],1,1,1][[1,1]]},x[[pos]]->-(matSolve[[iii,pos+1;;-1]].Append[x,-1][[pos+1;;-1]])],{iii,Length[matSolve]}],{}];
 Return[soln];];
