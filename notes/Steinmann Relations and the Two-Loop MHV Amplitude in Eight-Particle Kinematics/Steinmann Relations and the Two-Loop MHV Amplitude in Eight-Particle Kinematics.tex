@@ -132,32 +132,27 @@ Stanford University, Stanford, CA 94309, USA}
 
 \section{Cluster Algebras and Cluster Polylogarithms}
 
-\subsection{The A2 function}
-We define the $A_2$ function as
-\begin{equation}
-	f_{A_2}  = \sum_{\text{skew-dihedral}} f_i^\pm = \sum_{i=1}^5 ( f_i^+ - f_i^- ) 
+\subsection{Recap of essential facts}
+Begin with a quiver of nodes $i$, labeled by $x_i$, connected by arrows. The information of the arrows can be represented through an adjacency matrix $b_{ij}$ = (\# arrows $i\to j$) - (\# arrows $j \to i$). The simplest (non-trivial) example is the quiver associated with the Dynkin diagram $A_2$:
+\begin{equation}\label{eq:A2-quiver}
+	x_1\to x_2.
 \end{equation}
-in terms of the building blocks
+Now choose a node $k$ and re-label the nodes via the mutation rules:
 \begin{equation}
-f^\pm_{i}=\Li_{2,2}(-x_i,-x_{i\pm2})-\Li_{1,3}(-x_i,-x_{i\pm2})-\Li_2(-x_i)\log(x_{i\pm1})\log(x_{i\pm2}).
+  \label{eq:x-coords-mutation}
+  x_{i}' =
+  \begin{cases}
+    x_{k}^{-1}, &\quad i=k,\\
+    x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k
+  \end{cases}.
 \end{equation}
-where the indices $i$ are understood to be mod 5.
-It has the symbol
-\begin{align}
-   -\sum_{\text{skew-dihedral}}
-   &x_i \otimes x_i \otimes x_{i+1} \otimes x_{i+1}
-   +x_i \otimes x_{i+1} \otimes x_i \otimes x_{i-1}
-   +x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_i\\
-   &\quad-2\left(x_i \otimes x_{i+1} \otimes (x_ix_{i+2}) \otimes x_{i+1}
-   -x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_{i+2}\right)\nl
-\end{align}
-And satisfies the properties:
+Lastly, re-draw the arrows according to
 \begin{itemize}
-   \item clustery cobracket
-   \item cluster adjacent in $A_2$
-   \item smooth and real-valued in the positive domain
+	\item for each path $i\to j \to k$, add an arrow $i\to j$,
+	\item reverse all arrows on the edges incident with $k$,
+	\item and remove any two-cycles that may have formed.
 \end{itemize}
-Some cluster algebra rules:
+The equivalent changes to the adjacency matrix are summarized as
 \begin{equation}
   \label{eq:b-mutation}
   b'_{i j} =
@@ -168,15 +163,15 @@ Some cluster algebra rules:
     b_{i j} - b_{i k} b_{k j}, &\quad \text{if $b_{i k}, b_{k j} < 0$.}
   \end{cases}
 \end{equation}
-
+This set of rules constitutes a \emph{mutation} on node $k$, and generates a new quiver. For example, mutating on node 2 of eq. (\ref{eq:A2-quiver}) gives
 \begin{equation}
-  \label{eq:x-coords-mutation}
-  x_{i}' =
-  \begin{cases}
-    x_{k}^{-1}, &\quad i=k,\\
-    x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k
-  \end{cases}.
+	x_1(1+x_2)\leftarrow \frac{1}{x_2}.
 \end{equation}
+Mutation is also an involution, so mutating on node 2 of the above diagram will take you back to the original quiver $x_1\to x_2$.
+
+For our purposes, a \emph{cluster algebra} is a set of quivers closed under mutation. This means that mutating on any node of any quiver will generate a different quiver in the cluster algebra. We generically name cluster algebras after particularly simple quiver types that appear, for example a cluster algebra containing a quiver of type $A_2$ is referred to as an ``$A_2$ cluster algebra''. Let us now work through the simple example of $A_2$ to understand some of the interesting structure inherent in the definitions eqs. (\ref{eq:x-coords-mutation}) and (\ref{eq:b-mutation}).
+
+\subsection{Grassmannian cluster algebras (and cluster Poisson spaces)}
 
 \begin{equation}
   \label{eq:poisson-x-coords}
@@ -187,6 +182,136 @@ Some cluster algebra rules:
   \lbrace x_{i}', x_{j}'\rbrace = b_{i j}' x_{i}' x_{j}'
 \end{equation}
 
+\subsection{Cluster polylogarithms and adjacency}
+
+\subsection{Cluster automorphisms}
+
+\subsection{The \texorpdfstring{$A_2$}{A2} function}
+We define the $A_2$ function as
+\begin{equation}
+	f_{A_2}  = \sum_{\text{skew-dihedral}} f_i^\pm = \sum_{i=1}^5 ( f_i^+ - f_i^- ) 
+\end{equation}
+in terms of the building blocks
+\begin{equation}
+f^\pm_{i}=\Li_{2,2}(-x_i,-x_{i\pm2})-\Li_{1,3}(-x_i,-x_{i\pm2})-\Li_2(-x_i)\log(x_{i\pm1})\log(x_{i\pm2}).
+\end{equation}
+where $6-i$ is understood to be mod 5. It has the symbol
+\begin{align}
+   -\sum_{\text{skew-dihedral}}
+   &x_i \otimes x_i \otimes x_{i+1} \otimes x_{i+1}
+   +x_i \otimes x_{i+1} \otimes x_i \otimes x_{i-1}
+   +x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_i\\
+   &\quad-2\left(x_i \otimes x_{i+1} \otimes (x_ix_{i+2}) \otimes x_{i+1}
+   -x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_{i+2}\right)\nl
+\end{align}
+
+\begin{align}
+   -\sum_{\text{skew-dihedral}}
+   &[i , i , i+1 , i+1]
+   +[i , i+1 , i , i-1]
+   +[i , i+1 , i+1 , i]\\&-2\left([i , i+1 , (ii+2) , i+1]
+   -[i , i+1 , i+1 , i+2]\right)
+\end{align}
+
+\begin{equation}
+   -\sum_{\text{skew-dihedral}}[1122]+[1215]+[1221]-2([1212]+[1232]-[1223])
+\end{equation}
+
+And satisfies the properties:
+\begin{itemize}
+   \item clustery cobracket
+   \item cluster adjacent in $A_2$
+   \item smooth and real-valued in the positive domain
+\end{itemize}
+
+\subsection{Cluster subalgebra-constructibility and the \texorpdfstring{$A_3$}{A3} function}
+
+\subsection{Previous applications for 6- and 7-pt amplitudes}
+
+
+\section{The \texorpdfstring{$A_5$}{A5} Function and \texorpdfstring{$R_7^{(2)}$}{R27} }
+
+\subsection{Definition and properties of \texorpdfstring{$A_5$}{A5}}
+The $A_5$ cluster algebra is generated from the seed cluster
+\begin{equation}
+	x_1 \to x_2 \to x_3 \to x_4 \to x_5.
+\end{equation}
+The full $A_5$ algebra contains 132 clusters with 140 distinct $\mathcal{X}$-coordinates. Define:
+\begin{equation}
+	x_{i_1\ldots i_k} = \sum_{a=1}^k \prod_{b=1}^a x_{i_b} = x_{i_1}+x_{i_1}x_{i_2} + \ldots + x_{i_1}\cdots x_{i_k}.
+\end{equation}
+The $A_5$ cluster algebra has an eight-fold cyclic symmetry, which is generated by $\sigma$:
+\begin{equation}
+\begin{split}
+	\sigma:\quad& 
+		x_1\mapsto\frac{x_2}{1+x_{12}},~~	
+		x_2\mapsto\frac{x_3\left(1+x_1\right)}{1+x_{13}},~~
+		x_3\mapsto\frac{x_4 \left(1+x_{12}\right)}{1+x_{1234}},\\&
+		x_4\mapsto\frac{x_5 \left(1+x_{123}\right)}{1+x_{12345}},~~
+		x_5\mapsto\frac{1+x_{1234}}{x_1 x_2 x_3 x_4 x_5}.
+\end{split}
+\end{equation}
+$A_5$ also has a two-fold flip symmetry, which is generated by $\tau$:
+\begin{equation}
+	\tau:\quad x_i\mapsto\frac{1}{x_{6-i}}.
+\end{equation}
+\subsection{\texorpdfstring{$A_2$}{A2}-constructability in \texorpdfstring{$A_5$}{A5}}
+
+There are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
+\begin{equation}
+\begin{split}
+	&\left\{x_1\to x_2,~~
+	x_2\to x_3\left(1+x_4\right),~~
+	x_2\left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right\} + \sigma,\\
+	&\left\{x_2\to x_3,~~x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right\} + \sigma + \tau 
+   \end{split}
+\end{equation}
+where by ``$+~\sigma$'' and ``$+~\sigma~+~\tau$'' I mean ``+ cyclic copies'' and ``+ cyclic and flip copies,'' respectively. This correspond to the geometries
+\begin{center}
+\begin{tikzpicture}
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+\begin{scope}[xshift=3cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
+\end{scope}
+\begin{scope}[xshift=6cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P4) -- (P5) -- (P7) -- cycle;
+\end{scope}
+\begin{scope}[yshift=-2.5cm,xshift=1.5cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P6) -- cycle;
+\end{scope}
+\begin{scope}[yshift=-2.5cm, xshift=4.5cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
+\end{scope}
+\node[] at (9,0) (a) {(8 of each)};
+\node[] at (9,-2.5) (a) {(16 of each)};
+\end{tikzpicture}
+\end{center}
+The $A_5$ function is a sum over two of the classes of $A_2$ subalgebras, $x_2\to x_3\left(1+x_4\right)$ and $x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}$, appropriately antisymmetrized so that the overall $f_{A_5}$ picks up a minus sign under both $\sigma$ and $\tau$. Explicitly, this is written
+\begin{equation}
+	f_{A_5} = \sum_{i=0}^7\sum_{j=0}^1(-1)^{i+j}\sigma^i\tau^j\left(\frac12 f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right) + f_{A_2}\left(x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right)\right).
+\end{equation}
+The factor of $\frac12$ in front of $f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right)$ is simply a symmetry factor, as it lives in an 8-cycle of $\{\sigma,\tau\}$.
+
+Which pentagonalizations do these two $A_2$s correspond to?
+
+A large outstanding question is: why these two $A_2$s? I have no justification/argument for them other than they work. 
+
+The $A_5$ does not have $B_2\wedge B_2$ expressible in terms of $A_1 \times A_1$ subalgebras (i.e. it is not expressible as a sum of $f_{A_3}$s). This is very surprising!
+
+\subsection{\texorpdfstring{$A_5$}{A5} representation of \texorpdfstring{$R_7^{(2)}$}{R27}}
+
+\subsection{Behavior of \texorpdfstring{$A_5$}{A5} functions in the \texorpdfstring{$7\to6$}{7 to 6} collinear limit}
+
+\section{Constructing \texorpdfstring{$R_8^{(2)}$}{R28}}
+
+\subsection{Taming the \texorpdfstring{$\Gr(4,8)$}{Gr(4,8)} infinities}
+
+\subsubsection{Sklyanin bracket}
 In momentum twistor language we have the $n$ momentum twistors $Z_i$, which together form the $4 \times n$ matrix
 
 \begin{equation}  
@@ -223,88 +348,8 @@ Which then extends to a bracket on functions of the $y_{ij}$ via
 \end{equation}
 Now if we want to evaluate the Poisson bracket between two $\mathcal{X}$-coordinates, we can instead treat them as functions of the $y_{ij}$ and use eq.~(\ref{eq:def}). To be precise, for each four-bracket $\ket{abcd}$ in the $\mathcal{X}$-coordinates, replace them with $\ket{abcd}'$ expanded out in terms of $y_{ij}$ (e.g. $\ket{1256}' =y_{13} y_{24}-y_{14} y_{23}$). Then you can calculate eq.~(\ref{eq:def}) directly in terms of the $y_{ij}$
 
-\section{Promoting \texorpdfstring{$R_8^{(2)}$}{R28} from Symbol to Function}
 
-\subsection{The \texorpdfstring{$A_5$}{A5} Function}
-\begin{itemize}
-	\item describe the $A_5$ cluster algebra
-	\item what makes ``the'' $A_5$ function unique?
-\end{itemize}
-
-The $A_5$ cluster algebra is generated from the seed cluster
-\begin{equation}
-	x_1 \to x_2 \to x_3 \to x_4 \to x_5.
-\end{equation}
-The full $A_5$ algebra contains 132 clusters with 140 distinct $\mathcal{X}$-coordinates. 
-
-Define:
-\begin{equation}
-	x_{i_1\ldots i_k} = \sum_{a=1}^k \prod_{b=1}^a x_{i_b} = x_{i_1}+x_{i_1}x_{i_2} + \ldots + x_{i_1}\cdots x_{i_k}.
-\end{equation}
-
-The $A_5$ cluster algebra has an eight-fold cyclic symmetry, which is generated by $\sigma$:
-\begin{equation}
-\begin{split}
-	\sigma:\quad& 
-		x_1\mapsto\frac{x_2}{1+x_{12}},~~	
-		x_2\mapsto\frac{x_3\left(1+x_1\right)}{1+x_{123}},~~
-		x_3\mapsto\frac{x_4 \left(1+x_{12}\right)}{1+x_{1234}},\\&
-		x_4\mapsto\frac{x_5 \left(1+x_{123}\right)}{1+x_{12345}},~~
-		x_5\mapsto\frac{1+x_{1234}}{x_1 x_2 x_3 x_4 x_5}.
-\end{split}
-\end{equation}
-$A_5$ also has a two-fold flip symmetry, which is generated by $\tau$:
-\begin{equation}
-	\tau:\quad x_i\mapsto\frac{1}{x_{6-i}}.
-\end{equation}
-There are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
-\begin{equation}
-\begin{split}
-	&\left\{x_1\to x_2,~~
-	x_2\to x_3\left(1+x_4\right),~~
-	x_2\left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right\} + \sigma,\\
-	&\left\{x_2\to x_3,~~x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right\} + \sigma + \tau 
-   \end{split}
-\end{equation}
-where by ``$+~\sigma$'' and ``$+~\sigma~+~\tau$'' I mean ``+ cyclic copies'' and ``+ cyclic and flip copies,'' respectively. This correspond to the geometries
-\begin{center}
-\begin{tikzpicture}
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
-\begin{scope}[xshift=3cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
-\end{scope}
-\begin{scope}[xshift=6cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P4) -- (P5) -- (P7) -- cycle;
-\end{scope}
-\begin{scope}[yshift=-2.5cm,xshift=1.5cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P6) -- cycle;
-\end{scope}
-\begin{scope}[yshift=-2.5cm, xshift=4.5cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
-\end{scope}
-\node[] at (9,0) (a) {(8 of each)};
-\node[] at (9,-2.5) (a) {(16 of each)};
-\end{tikzpicture}
-\end{center}
-\subsubsection*{The \texorpdfstring{$A_5$}{A5} function}
-The $A_5$ function is a sum over two of the classes of $A_2$ subalgebras, $x_2\to x_3\left(1+x_4\right)$ and $x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}$, appropriately antisymmetrized so that the overall $f_{A_5}$ picks up a minus sign under both $\sigma$ and $\tau$. Explicitly, this is written
-\begin{equation}
-	f_{A_5} = \sum_{i=0}^7\sum_{j=0}^1(-1)^{i+j}\sigma^i\tau^j\left(\frac12 f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right) + f_{A_2}\left(x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right)\right).
-\end{equation}
-The factor of $\frac12$ in front of $f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right)$ is simply a symmetry factor, as it lives in an 8-cycle of $\{\sigma,\tau\}$.
-
-Which pentagonalizations do these two $A_2$s correspond to?
-
-A large outstanding question is: why these two $A_2$s? I have no justification/argument for them other than they work. 
-
-The $A_5$ does not have $B_2\wedge B_2$ expressible in terms of $A_1 \times A_1$ subalgebras (i.e. it is not expressible as a sum of $f_{A_3}$s). This is very surprising!
-
-\subsection{Identifying \texorpdfstring{$A_5$}{A5} subalgebras in \texorpdfstring{$\Gr(4,8)$}{Gr(4,8)}}
+\subsubsection{Identifying \texorpdfstring{$A_5$}{A5} subalgebras in \texorpdfstring{$\Gr(4,8)$}{Gr(4,8)}}
 Comment on infinite nature of $\Gr(4,8)$, define ``good'' (in the two-loop MHV sense) subalgebras, describe algorithm for finding ``good'', and describe the 56 good $A_5$s in $\Gr(4,8)$.
 
 There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
@@ -362,7 +407,10 @@ Neither of the latter 2 $A_5$s behave smoothly in the collinear limit (and neith
 
 Note: there are no good $A_6$s in $\Gr(4,8)$.  
 
-\subsection{Representing \texorpdfstring{$R_8^{(2)}$}{R28}}
+\subsection{Fitting non-classical component of \texorpdfstring{$R_8^{(2)}$}{R28}}
+\subsubsection{Behavior of \texorpdfstring{$A_5$}{A5} functions in the \texorpdfstring{$8\to7$}{8 to 7} collinear limit}
+
+\subsection{Fitting the classical component of \texorpdfstring{$R_8^{(2)}$}{R28}}
 The $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit. 
 \begin{equation}\label{eq:r28A5}
 \begin{split}
@@ -404,7 +452,7 @@ Let me briefly describe the collinear limit for this representation. As discusse
 	\item $\pi^4$ constribution
 \end{itemize}	
 
-\subsection{Analytic Properties of \texorpdfstring{$R_8^{(2)}$}{R28}}
+\section{Analytic Properties of \texorpdfstring{$R_8^{(2)}$}{R28}}
 \begin{itemize}
 	\item some plots
 	\item agrees with numerics
@@ -532,7 +580,6 @@ The extended Steinmann relations~\eqref{stein33_1} through~\eqref{stein34_8} can
 \section{Conclusion}
 
 \appendix
-\section{\texorpdfstring{$A_5$}{A5} Representation of \texorpdfstring{$R^{(2)}_7$}{R27}}
 
 \section{BDS-Like Conversions for Eight Particles} \label{appendix:bds_like}
 
