@@ -1,0 +1,108 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+\usepackage{dsfont}
+\usepackage[all]{xy}
+
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+\def\acoord{$\mathcal{A}$-coordinate}
+\def\acoords{$\mathcal{A}$-coordinates}
+\def\a{\mathcal{A}}
+
+\newcommand{\unit}{1\!\!1}
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Poisson Bracket for \acoords} \hfill \today}
+
+The basic idea for generating a well-defined Poisson bracket on \acoords is to start with some seed (in terms of \acoords) with standard adjacency matrix $B$ written as a $n \times k$ matrix (this the case when you have $n$ total nodes with $k$ mutable). Then find some skew-symmetric $n \times n$ matrix $\Omega$ such that 
+\begin{equation}\label{eq:omega-def}
+	\Omega B = \left(\begin{array}{c}
+					\mathds{1}_{k\times k}\\0_{(n-k)\times k}
+				\end{array}\right)
+\end{equation}
+Then the claim is that the entries $\omega_{ij}$ form a Poisson bracket on \acoords, i.e. 
+\begin{equation}
+	\{\a_i,\a_j\} = \omega_{ij}\a_i\a_j \Rightarrow \{\bar{\a_i},\bar{\a_j}\} = \bar{\omega_{ij}}\bar{\a_i}\bar{\a_j}
+\end{equation}
+where $\bar{}$ indicates mutation. The interesting feature here is that imposing eq.~(\ref{eq:omega-def}) does not entirely constrain $\Omega$. For example, let's take a seed from $\Gr(2,5)$:
+\begin{equation}\label{eq:gr25-seed}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(25,25) *+{\langle 13\rangle} ="0",
+	(75,25) *+{\langle 14\rangle} ="1",
+	(125,25) *+{\framebox[5ex]{$\langle 15\rangle$}} ="2",
+	(125,75) *+{\framebox[5ex]{$\langle 45\rangle$}} ="3",
+	(75,75) *+{\framebox[5ex]{$\langle 34\rangle$}} ="4",
+	(25,75) *+{\framebox[5ex]{$\langle 23\rangle$}} ="5",
+	(0,0) *+{\framebox[5ex]{$\langle 12\rangle$}} ="6",
+	(145,75) *+{},
+	"0", {\ar"1"},
+	"4", {\ar"0"},
+	"0", {\ar"5"},
+	"6", {\ar"0"},
+	"1", {\ar"2"},
+	"3", {\ar"1"},
+	"1", {\ar"4"},
+\end{xy}
+\end{gathered}
+\end{equation}
+Associating $\ket{13}$ and $\ket{14}$ with nodes 1 and 2, resp., and then $\ket{12},\ldots,\ket{15}$ with nodes $3,\ldots,7$ we have
+\begin{equation}
+	B = \left(
+\begin{array}{cc}
+ 0 & 1 \\
+ -1 & 0 \\
+ 1 & 0 \\
+ -1 & 0 \\
+ 1 & -1 \\
+ 0 & 0 \\
+ 0 & -1 \\
+\end{array}
+\right)
+\end{equation}
+in which case $\Omega$ takes the form 
+{\tiny
+\begin{equation*}\hspace{-2cm}
+	\Omega = \left(
+\begin{array}{ccccccc}
+ 0 & c_{13}-c_{14}+c_{15}-1 & c_{13} & c_{14} & c_{15} & c_{16} & -c_{15} \\
+ -c_{13}+c_{14}-c_{15}+1 & 0 & c_{23} & c_{24} & c_{24}-c_{23} & c_{26} & -c_{13}+c_{14}-c_{15}+c_{23}-c_{24} \\
+ -c_{13} & -c_{23} & 0 & c_{34} & c_{34}-c_{23} & c_{36} & -c_{13}+c_{23}-c_{34} \\
+ -c_{14} & -c_{24} & -c_{34} & 0 & c_{34}-c_{24} & c_{46} & -c_{14}+c_{24}-c_{34} \\
+ -c_{15} & c_{23}-c_{24} & c_{23}-c_{34} & c_{24}-c_{34} & 0 & c_{26}-c_{36}+c_{46} & -c_{15} \\
+ -c_{16} & -c_{26} & -c_{36} & -c_{46} & -c_{26}+c_{36}-c_{46} & 0 & -c_{16}+c_{26}-c_{36}+c_{46} \\
+ c_{15} & c_{13}-c_{14}+c_{15}-c_{23}+c_{24} & c_{13}-c_{23}+c_{34} & c_{14}-c_{24}+c_{34} & c_{15} & c_{16}-c_{26}+c_{36}-c_{46} & 0 
+\end{array}
+\right)
+\end{equation*}}
+The $c_{ij}$ are arbitrary, and I guess we really only care about the $2\times2$ entries in the upper left corner but I present the full matrix for completion's sake. 
+
+Some considerable confusion remains, at least on my part. In particular, what mutation rule does one use to generate mutated $\Omega$'s? One can just follow the standard $B$-matrix mutation rules, although it becomes tricky because the $B$-matrix rules require checking the sign of elements, which is difficult if you want to keep the $c_{ij}$ generic. Furthermore, how does this relate to the Sklyanin bracket calculations done on \acoords? If one chooses to mutate $\Omega$ via the $B$-matrix rules, then the Sklyanin bracket (as we know it) is not compatible with any choice of $c_{ij}$. 
+
+The best case scenario here is to find some Poisson bracket on the $\a$'s which makes manifest some particularly nice adjacency structure in the (Steinmann) remainder function. Perhaps this is equivalent to finding some representation of the symbol in terms of $\mathcal{X}$-coordinates where again the Poisson bracket between adjacent pairs follows some nice pattern. 
+\end{document}

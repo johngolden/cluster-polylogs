@@ -1,0 +1,197 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\sgn}{sgn}
+\def\a{\mathcal{A}}
+\def\x{\mathcal{X}}
+\def\dl{d^{\ell}}
+
+\def\ket#1{\langle #1 \rangle}
+
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{A Lightning Introduction to Scattering Amplitudes and Gr(4,8)} \hfill \today}
+\subsubsection*{Cluster Polylogarithms for $A_2$ and $A_5$}
+Taking our seed cluster as $x_1\to x_2$ and following the $\x$-variables mutation rule
+\begin{equation}
+	x_{i}' =
+	\begin{cases}
+		x_{k}^{-1}, &\quad i=k,\\
+		x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k
+  	\end{cases}
+\end{equation}
+we label the $\x$-coordinates
+\begin{equation}\label{def:xcoords}
+	\x_1 = \frac{1}{x_1}, ~~~\x_2 = x_2,~~~ \x_3 = x_1 (1 + x_2),~~~ \x_4=\frac{1+x_1+x_1 x_2}{x_2},~~~ \x_5 = \frac{1+x_1}{x_1 x_2}.
+\end{equation}
+These satisfy $1+\x_i = \x_{i-1}\x_{i+1}$, and $\{1/\x_i, \x_{i+1}\}$ form the 5 clusters. 
+
+We now define ``the $A_2$ function'' $f_{A_2}$ as 
+\begin{equation}
+	f_{A_2}(x_1 \to x_2) = \sum_{\text{skew-dihedral}} \Li_{2,2}(-\x_{i-1},-\x_{i+1})-\Li_{1,3}(-\x_{i-1},-\x_{i+1})-\Li_2(-\x_{i-1})\log(\x_i)\log(\x_{i+1}). 
+\end{equation}
+It is beyond the immediate scope of this short note to explain why this function is uniquely associated to the $A_2$ algebra, but I'm happy to explain this more in detail. And skew-dihedral means that the function picks up a minus sign under $\x_i \to \x_{6-i}$ but is symmetric under $\x_i\to\x_{i+1}$.
+
+We then associate with the $A_5$ cluster algebra (generated from the seed quiver $x_1 \to \ldots \to x_5$) a function built out of $A_2$ subalgebras:
+\begin{equation}
+	f_{A_5} = \sum_{i=0}^7\sum_{j=0}^1(-1)^{i+j}\sigma_{A_5}^i\tau_{A_5}^j\left(\frac12 f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right) + f_{A_2}\left(x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right)\right).
+\end{equation}
+$\sigma_{A_5}$ and $\tau_{A_5}$ are the dihedral cycle+flip, $f_{A_5}$ is therefore antisymmetric under either. 
+
+All of these seemingly arbitrary definitions are motivated by the fact that $\Gr(4,7)$ has 7 $A_5$ subalgebras, and we can express a very complicated physics function (technically ``the non-classical portion of the two-loop MHV remainder function in planar $\mathcal{N}=4$ supersymmetric Yang-Mills'') as a sum of the $A_5$ function evaluated over all of them:
+{\tiny\begin{equation}
+	R^{(2)}_7 = \sum_{\text{cyclic}} f_{A_5}\left(\frac{\langle 1567\rangle  \langle 2345\rangle }{\langle
+   5(12)(34)(67)\rangle }\to-\frac{\langle 1267\rangle  \langle 1345\rangle 
+   \langle 4567\rangle }{\langle 1567\rangle  \langle 4(12)(35)(67)\rangle
+   }\to\frac{\langle 1234\rangle  \langle 5(12)(34)(67)\rangle }{\langle
+   1245\rangle  \langle 3(12)(45)(67)\rangle }\to-\frac{\langle 1237\rangle 
+   \langle 4(12)(35)(67)\rangle }{\langle 1234\rangle  \langle 1267\rangle 
+   \langle 3457\rangle }\to\frac{\langle 3(12)(45)(67)\rangle }{\langle
+   1237\rangle  \langle 3456\rangle }\right).
+\end{equation}}
+There are actually other functions which we can use to express $R^{(2)}_7$, namely ones associated with $D_5$ and $A_3$ subalgebras (but definitely not $D_4$ or $A_4$, thanks to an exhaustive search). Both $f_{D_5}$ and $f_{A_3}$ are built out of $f_{A_2}$'s. The downside of $A_3$ is that any representation is not unique (thanks to functional identities amongst the polylogarithms), similarly there are degrees of freedom inside $f_{D_5}$ which cancel out in any sum over $\Gr(4,7)$. The $A_5$ representation is nice because a) it is uniquely determined and b) as we will see it generalizes nicely to $\Gr(4,8)$.
+\subsubsection*{Gr(4,8)}
+Based on the results of other physics calculations, we know that the function $R^{(2)}_n$ only ``depends'' on $\a$-variables of the form: 
+\begin{align}\label{def:letters}
+\begin{split}
+\ket{i\,\,i{+}1\,\,jk},& \quad 
+\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}, \\ 
+\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}},& \quad
+\ket{i(i{-}2\,\,i{-}1)(i{+}1\,\,i{+}2)(j\,\,j{+}1)}
+\end{split}
+\end{align}
+where
+\begin{align}
+\begin{split}
+	\ket{i(jk)(lm)(no)} &\equiv \ket{ijlm}\ket{ikno} - \ket{ijno} \ket{iklm},\\
+	\ket{ij\overline{k} \cap \overline{l}} &\equiv \ket{i\overline{k}}\ket{j\overline{l}} - \ket{j\overline{k}}\ket{i\overline{l}},\quad \bar{j}=(j-1\,j\,j+1).
+\end{split}
+\end{align} 
+We'll call these ``good letters''. Our conjecture is that the function $R^{(2)}_n$ can be expressed in terms of polylogarithms with $\x$-variables as arguments that are built out of only those letters. Let's similarly call those ``good $\x$-variables''. There are 1588 good $\x$-variables in $\Gr(4,8)$ that involve at most 4 powers of Pl\"ukers (I believe that there are none involving higher powers but that is purely conjecture). 
+
+Continuing the theme, let me define a ``good subalgebra'' of $\Gr(4,8)$ as one that only involves good $\x$-variables. There are 56 good $A_5$s in $\Gr(4,8)$, modulo dihedral+conjugation. They are generated by
+{\tiny \begin{align}
+	&\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
+   1235\rangle  \langle 1268\rangle }\to \frac{\langle
+   1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
+    \langle 2356\rangle }\to \frac{\langle 1235\rangle 
+   \langle 3456\rangle }{\langle 1356\rangle  \langle
+   2345\rangle }\to \frac{\langle 1567\rangle  \langle
+   2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
+   }\to \frac{\langle 1356\rangle  \langle 4567\rangle
+   }{\langle 1567\rangle  \langle 3456\rangle }\\
+   &\frac{\langle 1238\rangle  \langle 2345\rangle
+   }{\langle 1234\rangle  \langle 2358\rangle
+   }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
+   }{\langle 5(18)(23)(46)\rangle }\to\frac{\langle
+   1568\rangle  \langle 2358\rangle  \langle 3456\rangle
+   }{\langle 1358\rangle  \langle 2356\rangle  \langle
+   4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
+   }{\langle 1258\rangle  \langle 3456\rangle
+   }\to\frac{\langle 1278\rangle  \langle 1358\rangle
+   }{\langle 1238\rangle  \langle 1578\rangle }\\
+   &\frac{\langle 1234\rangle  \langle 3456\rangle
+   }{\langle 1346\rangle  \langle 2345\rangle
+   }\to\frac{\langle 1348\rangle  \langle 2346\rangle
+   }{\langle 1234\rangle  \langle 3468\rangle
+   }\to-\frac{\langle 1346\rangle  \langle 5678\rangle
+   }{\langle 6(18)(34)(57)\rangle }\to-\frac{\langle
+   1678\rangle  \langle 3468\rangle  \langle 34(128)\cap
+   (567)\rangle }{\langle 1268\rangle  \langle
+   1348\rangle  \langle 3467\rangle  \langle 5678\rangle
+   }\to\frac{\langle 1278\rangle  \langle
+   6(18)(34)(57)\rangle }{\langle 1678\rangle  \langle
+   34(128)\cap (567)\rangle }\\
+   &\frac{\langle 1234\rangle  \langle 1278\rangle
+   }{\langle 1238\rangle  \langle 1247\rangle
+   }\to-\frac{\langle 1248\rangle  \langle 3457\rangle
+   }{\langle 4(12)(35)(78)\rangle }\to-\frac{\langle
+   1247\rangle  \langle 12(345)\cap (678)\rangle
+   }{\langle 1278\rangle  \langle 4(12)(35)(67)\rangle
+   }\to-\frac{\langle 4567\rangle  \langle
+   4(12)(35)(78)\rangle }{\langle 1245\rangle  \langle
+   3457\rangle  \langle 4678\rangle }\to-\frac{\langle
+   4(12)(35)(67)\rangle }{\langle 1234\rangle  \langle
+   4567\rangle }
+\end{align}}
+The first $A_5$ lives in an 8-cycle of the $\Gr(4,8)$ dihedral+parity, while the other three live in 16-cycles. And again I call these good subalgebras because by generating the full $A_5$ algebra from those seeds one only creates good $\x$-variables. I claim that there are no good $D_5$'s or $A_6$'s in $\Gr(4,8)$. 
+
+Now, it turns out that $R^{(2)}_8$ can be represented by simply adding together two of the $A_5$'s:
+{\small \begin{equation}\label{eq:r28A5}
+\begin{split}
+	&R^{(2)}_8 = \frac14 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
+   1235\rangle  \langle 1268\rangle }\to \frac{\langle
+   1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
+    \langle 2356\rangle }\to \frac{\langle 1235\rangle 
+   \langle 3456\rangle }{\langle 1356\rangle  \langle
+   2345\rangle }\to \frac{\langle 1567\rangle  \langle
+   2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
+   }\to \frac{\langle 1356\rangle  \langle 4567\rangle
+   }{\langle 1567\rangle  \langle 3456\rangle }\right)+\\
+   &\frac12 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 2345\rangle
+   }{\langle 1234\rangle  \langle 2358\rangle
+   }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
+   }{\langle 5(18)(23)(46)\rangle }\to\frac{\langle
+   1568\rangle  \langle 2358\rangle  \langle 3456\rangle
+   }{\langle 1358\rangle  \langle 2356\rangle  \langle
+   4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
+   }{\langle 1258\rangle  \langle 3456\rangle
+   }\to\frac{\langle 1278\rangle  \langle 1358\rangle
+   }{\langle 1238\rangle  \langle 1578\rangle }\right)\\
+   &+\text{ dihedral} + \text{conjugate}
+\end{split}
+\end{equation}}
+The difference between the overall factors of the two terms is due to overcounting the first $A_5$ (as it lives in an 8-cycle).
+\subsubsection*{Braid Symmetres in $\Gr(4,8)$}
+(This section written for mine and Andrew's benefit).
+The braid symmetries of Fraser are:
+\begin{align}
+	\sigma_1: \quad&Z_1 \to Z_2,~~ Z_2 \to Z_1 \ket{2345} + Z_2\ket{3451}\\
+			&Z_5 \to Z_6,~~ Z_6 \to Z_5 \ket{6781} + Z_6\ket{7815}\nonumber \\ \nonumber \\
+	\sigma_2: \quad&Z_2 \to Z_3,~~ Z_3 \to Z_2 \ket{3456} + Z_3\ket{4562}\\
+			&Z_6 \to Z_7,~~ Z_7 \to Z_6 \ket{7812} + Z_7\ket{8126}\nonumber \\  \nonumber \\
+	\sigma_3: \quad&Z_3 \to Z_4,~~ Z_4 \to Z_3 \ket{4567} + Z_4\ket{5673}\\
+			&Z_7 \to Z_8,~~ Z_8 \to Z_7 \ket{8123} + Z_8\ket{1237}\nonumber
+\end{align}
+They map $\x$-coordinates to $\x$-coordinates, and satisfy the braid relations
+\begin{equation}
+	\sigma_1\sigma_2\sigma_1=\sigma_2\sigma_1\sigma_2,\quad \sigma_2\sigma_3\sigma_2=\sigma_3\sigma_2\sigma_3
+\end{equation}
+along with other non-trivial relations such as 
+\begin{equation}
+	\sigma_3 \sigma_2 \sigma_1 = \text{dihedral cycle}, \quad \sigma_1 \sigma_2 \sigma_3^2 \sigma_2 \sigma_1 = \text{identity}.
+\end{equation}
+\subsubsection*{Initial Questions}
+
+\begin{itemize}
+	\item What is the behavior of $R^{(2)}_8$ under the $\sigma_i$? Is there any physics interpretation?
+	\item Do the $\sigma_i$ help ``distinguish'' the subalgebras that contribute to $R^{(2)}_8$?
+	\item If you take the $\x$-variables that show up in $R^{(2)}_8$, and apply all possible braids to them, does it generate all of the clusters?
+\end{itemize}
+
+\end{document}

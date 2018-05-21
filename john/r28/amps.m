@@ -298,7 +298,7 @@ m=CoefficientArrays[eqs,x][[2]];
 If[Union[Flatten[Normal[m]]]=={0},Return[{0->0}]];
 b=-eqs/.p[_]:>0;
 mat=Transpose[Append[Transpose[m],b]];
-matSolve=Rationalize[Chop[DeleteCases[RowReduce[N[mat]],Table[0,{i,Length[mat[[1]]]}]]],.0000001];
+matSolve=Rationalize[Chop[DeleteCases[RowReduce[N[mat]],Table[0,{i,Length[mat[[1]]]}]]],.000000001];
 isSolnGood=If[Length[matSolve]-Length[matSolve[[1]]]==0,If[Union[Flatten[matSolve-IdentityMatrix[Length[matSolve]]]]=={0},0,1],If[Max[Position[#,1,1,1][[1,1]]&/@matSolve]>Length[x],0,1]];
 soln=If[isSolnGood==1, Table[With[{pos=Position[matSolve[[iii]],1,1,1][[1,1]]},x[[pos]]->-(matSolve[[iii,pos+1;;-1]].Append[x,-1][[pos+1;;-1]])],{iii,Length[matSolve]}],{}];
 Return[soln];];
