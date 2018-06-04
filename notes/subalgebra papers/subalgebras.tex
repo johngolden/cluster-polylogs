@@ -26,7 +26,11 @@
 \def\nl{\nonumber\\}
 \def\nn{\nonumber}
 \def\x{\mathcal{X}}
+\def\xcoord{$\mathcal{X}$-coordinate }
+\def\xcoords{$\mathcal{X}$-coordinates }
 \def\a{\mathcal{A}}
+\def\acoord{$\mathcal{A}$-coordinate }
+\def\acoords{$\mathcal{A}$-coordinates }
 \def\draftnote#1{{\bf [#1]}}
 \def\pdfeq#1{\texorpdfstring{$#1$}{a}}
 
@@ -623,41 +627,39 @@ Putting this all together, we say that an $A_2$ cluster algebra is any set of cl
 \subsubsection{\pdfeq{\x}-adjacency}
 \subsection{The \pdfeq{A_2} function}
 We define the $A_2$ function as
-\begin{equation}
-	f_{A_2}  = \sum_{\text{skew-dihedral}} f_i^\pm = \sum_{i=1}^5 ( f_i^+ - f_i^- ) 
+\begin{equation}\label{def:a2-function}
+\begin{split}
+	f_{A_2}(x_1 \to x_2)  = \sum_{\text{skew-dihedral}} &\Li_{2,2}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right) + \Li_{1,3}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right)+6 \Li_3\left(-\x_{i-1}\right) \log \left(\x_{i+1}\right)
+	\\&-\Li_2\left(-\x_{i-1}\right) \log \left(\x_{i+1}\right) \left(3 \log \left(\x_{i-1}\right)-\log \left(\x_i\right)+\log \left(\x_{i+1}\right)\right)
+	\\&+\frac{1}{2} \log \left(\x_{i-3}\right) \log \left(\x_i\right) \log ^2\left(\x_{i-1}\right),
+\end{split}
 \end{equation}
-in terms of the building blocks
+where the $\x_i$ are defined in terms of $x_1$ and $x_2$ as in eq.~(\ref{def:a2-xcoords}), and the skew-dihedral sum indicates subtracting the dihedral flip ($\x_1 \to \x_{6-i}$) and taking a cyclic sum $i=1$ to $5$.
+
+This representation of $f_{A_2}$ differs from that in \cite{Golden:2014xqa} in several key ways. Firstly, we have added classical polylogarithm terms in order to make $f_{A_2}$ adjacent in $A_2$:
 \begin{equation}
-f^\pm_{i}=\Li_{2,2}(-x_i,-x_{i\pm2})-\Li_{1,3}(-x_i,-x_{i\pm2})-\Li_2(-x_i)\log(x_{i\pm1})\log(x_{i\pm2}).
+   \text{symbol}(f_{A_2}) = -\sum_{\text{skew-dihedral}}[2233]+[2321]+[2332]-2([2323]+[2343]-[2334])
 \end{equation}
-where $6-i$ is understood to be mod 5. It has the symbol
-\begin{align}
-   -\sum_{\text{skew-dihedral}}
-   &x_i \otimes x_i \otimes x_{i+1} \otimes x_{i+1}
-   +x_i \otimes x_{i+1} \otimes x_i \otimes x_{i-1}
-   +x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_i\\
-   &\quad-2\left(x_i \otimes x_{i+1} \otimes (x_ix_{i+2}) \otimes x_{i+1}
-   -x_i \otimes x_{i+1} \otimes x_{i+1} \otimes x_{i+2}\right)\nl
-\end{align}
+where we adopt the condensed notation $[ijkl] = \x_i\otimes\x_j\otimes\x_k\otimes\x_l$ in order to highlight the adjacency. 
 
-\begin{align}
-   -\sum_{\text{skew-dihedral}}
-   &[i , i , i+1 , i+1]
-   +[i , i+1 , i , i-1]
-   +[i , i+1 , i+1 , i]\\&-2\left([i , i+1 , (ii+2) , i+1]
-   -[i , i+1 , i+1 , i+2]\right)
-\end{align}
-
+An additional benefit of this representation is that all arguments of the polylogarithms in for $f_{A_2}$ are -\xcoords of $A_2$. Furthermore, the function is smooth and real-valued for all $x_1, x_2>0$. The structure of the $A_2$ cluster algebra plays a crucial role in this analytic behavior in the following way. $\Li_{2,2}(x,y)$ and $\Li_{1,3}(x,y)$ have branch cuts at $x=1,y=1, x*y=1$. The first two branch cuts are trivially avoided as $-1/\x_i<0$ for $x_1,x_2>0$, however the last one is avoided only because of the exchange relation for $A_2$: 
 \begin{equation}
-   -\sum_{\text{skew-dihedral}}[1122]+[1215]+[1221]-2([1212]+[1232]-[1223])
+	0<\left(-\frac{1}{\x_{i-1}}\right)\left(-\frac{1}{\x_{i+1}}\right) = \frac{1}{1+\x_i}<1.
 \end{equation}
 
-And satisfies the properties:
+Lastly, $f_{A_2}$ has $\Lambda^2\B_2$ and $\B_3 \otimes \mathbb{C}^*$ coproduct elements expressible in terms of \xcoords of $A_2$:
+\begin{equation}
+	\delta\left(f_{A_2}\right) = -\sum_{\text{skew-dihedral}} \{-\x_{i-1}\}_2 \wedge \{-\x_{i+1}\}_2 + 3\{-\x_{i}\}_2 \wedge \{-\x_{i+1}\}_2 + \frac{5}{2}\{-\x_{i}\}_3 \otimes \x_{i+1}
+\end{equation}
+
+This representation of $f_{A_2}$ therefore shares the following properties with $\mathcal{E}^{(2)}_n$:
 \begin{itemize}
-   \item clustery cobracket
-   \item cluster adjacent in $A_2$
-   \item smooth and real-valued in the positive domain
+	\item cluster adjacent,
+	\item clustery coproduct,
+	\item smooth and real-valued in the positive domain.
 \end{itemize}
+
+
 
 \section{Cluster subalgebra-constructibility} 
 \subsection{\pdfeq{A_2} functions are a complete basis}
@@ -753,6 +755,8 @@ This particular choice of $A_2$'s as building blocks for $f_{A_5}$ is solely mot
 
 \section{Subalgebra representations for \pdfeq{\mathcal{P}_7^{(2)}}}
 
+... do not seem to exist :(
+
 \section{Tools for working with infinite cluster algebras}
 \subsection{Sklyanin bracket}
 In momentum twistor language we have the $n$ momentum twistors $Z_i$, which together form the $4 \times n$ matrix
@@ -793,10 +797,27 @@ Now if we want to evaluate the Poisson bracket between two $\mathcal{X}$-coordin
 \subsection{Poisson/Sklyanin bracket for \pdfeq{\a}-coordinates}
 
 \section{Identifying ``good'' variables and subalgebras in the infinite case}
-Comment on infinite nature of $\Gr(4,8)$, define ``good'' (in the two-loop MHV sense) subalgebras, describe algorithm for finding ``good'', and describe the 56 good $A_5$s in $\Gr(4,8)$.
 
-There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
-\begin{align}
+In grappling with the infinite nature of the cluster algebra associated with $\Gr(4,n\ge8)$, we are guided by the knowledge of the finite subset of \acoords which will appear in the symbol of $\mathcal{E}^{(2)}_n$\cite{CaronHuot:2011ky}: 
+\begin{align}\label{def:good-letters}
+\begin{split}
+\ket{i\,\,i{+}1\,\,jk},& \quad 
+\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}, \\ 
+\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}},& \quad
+\ket{i(i{-}2\,\,i{-}1)(i{+}1\,\,i{+}2)(j\,\,j{+}1)}.
+\end{split}
+\end{align}
+We will refer to these as ``good'' \acoords. Similarly, we say an \xcoord $x$ is ``good'' if $x$ and $1+x$ are expressible as products of powers of good \acoords. In $\Gr(4,8)$ there are 116 good \acoords and 1588 good \xcoords\footnote{Strictly speaking this is conjectural and has only been checked through conformal weight 16 in the numerator/denominator. It would be good to check for weight 20 \xcoords.}. Continuing the theme, within $\Gr(4,8)$ we classify subalgebras as ``good'' if they can be generated by only mutating on good \xcoords\footnote{If you mutate on good \acoords you will generate a larger class of subalgebras, as there are nodes at which there is a good \acoord but the corresponding \xcoord is not good}.
+
+The power of these definitions is that they restrict us to a natural finite subset of $\Gr(4,n\ge8)$, and we conjecture that this subset provides all the necessary \xcoords for $\mathcal{E}^{(2)}_n$. In practice, generating good subalgebras of $\Gr(4,n)$ is accomplished by 
+\begin{enumerate}
+	\item generating all Pl\"ucker identities amongst good letters,
+	\item this gives a list of all good \xcoords,
+	\item their Poisson structure can be calculated with the Sklyanin bracket (time-consuming but finite),
+	\item using the Poisson structure to identify subalgebras of interest.
+\end{enumerate}
+Following this procedure for $\Gr(4,8)$ gives 1600 good $A_3$ subalgebras, 496 $A_4$, 24 $D_4$, and 56 $A_5$. There are no good subalgebras larger than $A_5$. The good $A_5$ subalgebras are generated by
+\begin{align}\label{eq:g48-a5s}
 	&\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
    1235\rangle  \langle 1268\rangle }\to \frac{\langle
    1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
@@ -805,7 +826,7 @@ There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
    2345\rangle }\to \frac{\langle 1567\rangle  \langle
    2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
    }\to \frac{\langle 1356\rangle  \langle 4567\rangle
-   }{\langle 1567\rangle  \langle 3456\rangle }\\
+   }{\langle 1567\rangle  \langle 3456\rangle },\nl
    &\frac{\langle 1238\rangle  \langle 2345\rangle
    }{\langle 1234\rangle  \langle 2358\rangle
    }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
@@ -815,7 +836,7 @@ There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
    4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
    }{\langle 1258\rangle  \langle 3456\rangle
    }\to\frac{\langle 1278\rangle  \langle 1358\rangle
-   }{\langle 1238\rangle  \langle 1578\rangle }\\
+   }{\langle 1238\rangle  \langle 1578\rangle },\nl
    &\frac{\langle 1234\rangle  \langle 3456\rangle
    }{\langle 1346\rangle  \langle 2345\rangle
    }\to\frac{\langle 1348\rangle  \langle 2346\rangle
@@ -827,7 +848,7 @@ There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
    1348\rangle  \langle 3467\rangle  \langle 5678\rangle
    }\to\frac{\langle 1278\rangle  \langle
    6(18)(34)(57)\rangle }{\langle 1678\rangle  \langle
-   34(128)\cap (567)\rangle }\\
+   34(128)\cap (567)\rangle },\nl
    &\frac{\langle 1234\rangle  \langle 1278\rangle
    }{\langle 1238\rangle  \langle 1247\rangle
    }\to-\frac{\langle 1248\rangle  \langle 3457\rangle
@@ -838,9 +859,12 @@ There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
    4(12)(35)(78)\rangle }{\langle 1245\rangle  \langle
    3457\rangle  \langle 4678\rangle }\to-\frac{\langle
    4(12)(35)(67)\rangle }{\langle 1234\rangle  \langle
-   4567\rangle }
+   4567\rangle },
 \end{align}
-The first $A_5$ lives in an 8-cycle of the $\Gr(4,8)$ dihedral+parity, while the other three live in 16-cycles. Also note that in the first $A_5$, 7 and 8 never appear together in a $\langle\rangle$, and so the $8\to7$ collinear limit is smooth for this $A_5$. The second $A_5$ also features a smooth collinear limit, as 
+along with their symmetric images. The first $A_5$ lives in an 8-cycle of the $\Gr(4,8)$ dihedral+parity, while the other three live in 16-cycles. 
+
+\section{Fitting the non-classical component of \pdfeq{R_8^{(2)}}}
+Note that in the first $A_5$ in eq.~(\ref{eq:g48-a5s}, 7 and 8 never appear together, and so the $8\to7$ collinear limit is smooth for this $A_5$. The second $A_5$ also features a smooth collinear limit, as 
 \begin{equation}
 	\frac{\langle 1278\rangle  \langle 1358\rangle
    }{\langle 1238\rangle  \langle 1578\rangle } \xrightarrow{8\to7} \frac{\langle 1267\rangle  \langle 1357\rangle
@@ -848,16 +872,7 @@ The first $A_5$ lives in an 8-cycle of the $\Gr(4,8)$ dihedral+parity, while the
 \end{equation}
 Neither of the latter 2 $A_5$s behave smoothly in the collinear limit (and neither do any of their dihedral+parity images).
 
-Note: there are no good $A_6$s in $\Gr(4,8)$.  
-\subsection{Variables}
-\subsubsection{Define ``good''}
-\subsubsection{Generate \& classify ``good''}
-\subsection{Subalgebras}
-\subsubsection{Define ``good''}
-\subsubsection{Generate \& classify ``good''}
-
-\section{Fitting the non-classical component of \pdfeq{R_8^{(2)}}}
-The $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit. 
+Remarkably, the $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A_5$'s in $\Gr(4,8)$ which behave smoothly in the collinear limit. 
 \begin{equation}\label{eq:r28A5}
 \begin{split}
 	&R^{(2)}_8 = \frac14 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
@@ -882,11 +897,11 @@ The $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A
    &+\text{ dihedral} + \text{conjugate}
 \end{split}
 \end{equation}
-Again the difference between the overall factors of the two terms is simply a result of symmetry. 
+The difference between the overall factors of the two terms is simply a result of symmetry overcounting. 
 
 
 \subsection{Behavior of \pdfeq{A_5} functions in the \pdfeq{8\to7} collinear limit}
-Let me briefly describe the collinear limit for this representation. As discussed previously, the $A_5$s explicitly written in (\ref{eq:r28A5}) behave smoothly under the collinear limit, however not all of their dihedral+parity images do as well. In the case of the first $A_5$, which has 8 images under dihedral+parity, 4 of the $f_{A_5}$s vanish, while the remaining 3 are well-defined. For the second $A_5$, which has 16 images under dihedral+parity, 2 of the $f_{A_5}$s have ``bad'' collinear limits but they cancel off each other in the sum. Out of the remaining 14, 4 have good collinear limits and 10 vanish identically. Therefore, when we add up the contributions from both $A_5$s + their images, we end up with 7 terms -- these correspond to the 7 $A_5$s in $\Gr(4,7)$. 
+While the $A_5$'s explicitly written in (\ref{eq:r28A5}) behave smoothly under the collinear limit, however not all of their dihedral+parity images do as well. In the case of the first $A_5$, which has 8 images under dihedral+parity, 4 of the $f_{A_5}$'s vanish (at the level of $\B_2 \wedge \B_2$) under the collinear limit, while the remaining 3 are non-vanishing and well-behaved. For the second $A_5$, which has 16 images under dihedral+parity, 2 of the $f_{A_5}$s have ``bad'' collinear limits but they cancel off each other in the sum. Out of the remaining 14, 4 have good collinear limits and 10 vanish identically. Therefore, when we add up the contributions from both $A_5$'s + their images, we end up with 7 terms -- these correspond to the 7 $A_5$s in $\Gr(4,7)$. 
 
 \subsection{Behavior of \pdfeq{R_8^{(2)}} under braid automorphisms}
 
