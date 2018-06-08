@@ -111,17 +111,16 @@ Stanford University, Stanford, CA 94309, USA}
 
 \section{Pedantic introduction to cluster algebras}
 
-\subsection{Motivation and the \pdfeq{A_2} cluster algebra}
 Cluster algebras were introduced by Fomin and Zelevinsky \cite{1021.16017}, in large part motivated by questions of total positivity. The original goal was to gain a better understanding of what algebraic varieties can have a natural notion of positivity, and what functions can determine such positivity. A simple and highly-relevant example for amplitudes is the positive Grassmannian $\Gr^+(k,n)$, i.e. the space of $k\times n$ matrices where all ordered $k\times k$ minors are positive. 
 
-Before I further describe what a cluster algebra is, let me give a more precise idea of what questions cluster algebras help us answer. One very nice question that we can gain some handle on is: how many minors do we need to specify a point in $\Gr^+(k,n)$? In other words, given a $k \times n$ matrix $M$, how many minors of $M$ do we have to calculate to know if $M \in \Gr^+(k,n)$? The reason that this is an interesting question is that the minors are not all independent, they satisfy identities known as Pl\"ucker relations:
+What kind of questions can cluster algebras help us answer? One of the most straightforward is: how many minors do we need to specify a point in $\Gr^+(k,n)$? In other words, given a $k \times n$ matrix $M$, how many minors of $M$ do we have to calculate to know if $M \in \Gr^+(k,n)$? The reason that this is an interesting question is that the minors are not all independent, they satisfy the identities known as Pl\"ucker relations:
 \begin{equation}
   \label{eq:plucker-rel}
   \ket{abI} \ket{cdI} = \ket{acI} \ket{bdI} + \ket{adI}\ket{bcI},
 \end{equation}
 where the Pl\"ucker coordinates = $\ket{i_1,\ldots,i_k}$ = the minor of columns $i_1, \ldots,i_k$, and $I$ is a multi-index with $k-2$ entries.
 
-Let's work through the example of $\Gr(2,5)$ in detail to try to understand how many minors one needs to check for positivity of the whole matrix. First of all, we'll definitely have to check the 5 cyclically adjacent minors, $\ket{12}, \ket{23}, \ket{34}, \ket{45}, \ket{15}> 0$, as they are all independent from each other. Now, how many of the non-adjacent minors do we have to check? It turns out that the answer is 2. For example, if we specify that $\ket{13}, \ket{14}>0$ then we can use Pl\"ucker relations to show
+We'll now work through the example of $\Gr(2,5)$ in detail to try to understand how many minors one needs to check for positivity of the whole matrix. The 5 cyclically adjacent minors, $\ket{12}, \ket{23}, \ket{34}, \ket{45}, \ket{15}> 0$, are all independent from each other and so must each be checked. How many of the non-adjacent minors do we have to check? It turns out that the answer is 2. For example, if we specify that $\ket{13}, \ket{14}>0$ then we can use Pl\"ucker relations to show
 \begin{equation}
 \begin{split}
 	\ket{24} &= (\ket{12}\ket{34} + \ket{23}\ket{14})/\ket{13}\\
@@ -140,9 +139,9 @@ So we only need to check two -- but can we check any two? Clearly we can use any
 \end{array}
 \right)
 \end{equation}
-satisfies $\ket{12},\ldots,\ket{15},\ket{13},\ket{25}>0$ but has $\ket{14}<0$. In the end, $\{\ket{13}, \ket{14}\}$ and its cyclic images are the only pairs that describe a point in $\Gr^+(2,5)$. 
+satisfies $\ket{12},\ldots,\ket{15},\ket{13},\ket{25}>0$ but has $\ket{14},\ket{24},\ket{35}<0$. In the end, $\{\ket{13}, \ket{14}\}$ and its cyclic images are the only pairs that describe a point in $\Gr^+(2,5)$. 
 
-This was easy enough to work out for this small case, but I think it is also easy to convince yourself that the problem gets much more complicated for larger matrices. However, there is a closely related, and much simpler, problem in geometry which can give us a bit more intuition: triangulating polygons.
+This was easy enough to work out for this small case, but the problem gets much more complicated for larger matrices. However, there is a closely related, and much simpler, problem in geometry which can give us a bit more intuition: triangulating polygons.
 
 Consider the following triangulation of the pentagon:
 \begin{equation}
@@ -169,18 +168,19 @@ A simple observation, but one at the very heart of cluster algebras, is that giv
 \end{tikzpicture} 
 \end{equation}
 By repeatedly performing these flips one can generate all possible triangulations of a polygon:
-\begin{figure}[h]
+\pagebreak
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.6]{pentagon-triangulations}
 \end{figure}
 
-where in each case the red diagonal gets flipped. 
+\noindent where in each case the red diagonal gets flipped. 
 
-Cluster algebras are a combinatorial tool which captures all of this structure (and much more!). The basic idea is that a cluser algebra is a collection of \emph{clusters}, which in this case represent individual triangulations of an $n$-gon, and these clusters are connected via a process called \emph{mutation}, which in this case is the flipping-the-diagonal process. I will initially describe everything in terms of Grassmannian cluster algebras, but the framework is entirely generalizable to other contexts of interest.
+Cluster algebras are a combinatorial tool which captures all of this structure (and much more!). The basic idea is that a cluser algebra is a collection of \emph{clusters}, which in this case represent individual triangulations of an $n$-gon, and these clusters are connected via a process called \emph{mutation}, which in this case is the flipping-the-diagonal process. We will initially describe everything in terms of Grassmannian cluster algebras, but the framework is entirely generalizable to other contexts of interest.
 
 \subsubsection*{Basic definition}
 
-Let's construct the cluster algebra for $\Gr(2,5)$. Each cluster is labeled by a collection of coordinates, which in this case are the edges of our pentagon along with the diagonals of the particular triangulation. These coordinates are then connected via an orientation of the pentagon and all subtriangles, for example:
+We'll begin by constructing the cluster algebra for $\Gr(2,5)$. Each cluster is labeled by a collection of coordinates, which in this case are the edges of the pentagon along with the diagonals of the particular triangulation. These coordinates are then connected via an orientation of the pentagon and all subtriangles, for example:
 \begin{equation}\label{eq:oriented-pentagon}
 \begin{tikzpicture}
   \drawLabeledPentagon
@@ -244,12 +244,87 @@ This creates a new adjacency matrix $b_{ij}'$ via
 \end{equation}
 Mutation is an involution, so mutating on $a_k'$ will take you back to the original cluster (as flipping the same diagonal twice will take you back to where you started). 
 
-For our purposes, \emph{a cluster algebra is a set of quivers closed under mutation}. This means that mutating on any node of any quiver will generate a different quiver in the cluster algebra. The general procedure is to start with a quiver such as eq. (\ref{eq:gr25-seed}), with some collection of frozen and unfrozen variables in a connected quiver, and continue mutating on all available nodes until you either close your set or convince yourself that the cluster algebra is infinite. 
+For our purposes, \emph{a cluster algebra is a set of quivers closed under mutation}. This means that mutating on any node of any quiver will generate a different quiver in the cluster algebra. The general procedure is to start with a quiver such as eq. (\ref{eq:gr25-seed}), with some collection of frozen and unfrozen nodes in a connected quiver, and continue mutating on all available nodes until you either close your set or convince yourself that the cluster algebra is infinite. 
 
-\draftnote{describe what a subalgebra is?}
+We will end this brief introduction with a last piece of notation: cluster algebras are often referred to by particularly nice quiver types formed by their mutable nodes at some cluster. In the case of $\Gr(2,5)$, the mutable nodes of eq.~(\ref{eq:gr25-seed}) form an oriented $A_2$ Dynkin diagram, $\ket{13}\to\ket{14}$, and so we will often speak interchangeably of the cluster algebras for $\Gr(2,5)$ and $A_2$. This is a slight abuse of notation as the $\Gr(2,5)$ cluster algebra corresponds specifically to the cluster algebra generated by the collection of frozen and mutable nodes in eq.~(\ref{eq:gr25-seed}), whereas an $A_2$ cluster algebra is $a_1 \to a_2$ dressed with any number of frozen nodes. We will see how this language can be useful in the next section.
 
-\subsection{An overview of finite cluster algebras}
-Fomin and Zelevinksy \cite{1054.17024} showed that a cluster algebra is of finite type iff the mutable part of its quiver at some cluster takes the form of an oriented, simply-laced Dynkin diagram: $A_n, D_n, E_{n\le8}$. We discuss a few relevant cases here. 
+\subsection{Subalgebras}
+
+Cluster algebras contain a rich and intricate subalgebra structure which will be critical for our upcoming physics applications. We can study a simple example by looking at triangulations of a hexagon, which is equivalently described by the cluster algebra associated with $\Gr(2,6)$:
+\begin{equation}\label{eq:gr26-seed}
+\begin{gathered}
+\begin{tikzpicture}
+	\coordinate (P1) at (90:1);
+	\coordinate (P2) at (30:1);
+	\coordinate (P3) at (330:1);
+	\coordinate (P4) at (270:1);
+	\coordinate (P5) at (210:1);
+	\coordinate (P6) at (150:1);
+	\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- cycle;
+  	\draw[color=red] (P1) -- (P3);
+  	\draw[color=red] (P1) -- (P4);
+  	\draw[color=red] (P1) -- (P5);
+	\draw (0,1.2) node {1};
+	\draw (30:1.1) node[anchor=west] {2};
+	\draw (330:1.1) node[anchor=west] {3};
+	\draw (270:1.2) node {4};
+	\draw (210:1.1) node[anchor=east] {5};
+	\draw (150:1.1) node[anchor=east] {6};
+	\draw (2.5,0) node {$\longleftrightarrow$};
+	\draw (3,0) node {\phantom{.}};
+\end{tikzpicture} 
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(-50,-50) *+{\langle 13\rangle} ="13",
+	(0,-50) *+{\langle 14\rangle} ="14",
+	(50,-50) *+{\langle 15\rangle} ="15",
+	(100,-50) *+{\framebox[5ex]{$\langle 16\rangle$}} ="16",
+	(100,0) *+{\framebox[5ex]{$\langle 56\rangle$}} ="56",
+	(50,0) *+{\framebox[5ex]{$\langle 45\rangle$}} ="45",
+	(0,0) *+{\framebox[5ex]{$\langle 34\rangle$}} ="34",
+	(-50,0) *+{\framebox[5ex]{$\langle 23\rangle$}} ="23",
+	(-75,-75) *+{\framebox[5ex]{$\langle 12\rangle$}} ="12",
+	(70,0) *+{},
+	"12", {\ar"13"},
+	"13", {\ar"14"},
+	"13", {\ar"23"},
+	"34", {\ar"13"},
+	"14", {\ar"15"},
+	"14", {\ar"34"},
+	"45", {\ar"14"},
+	"15", {\ar"45"},
+	"56", {\ar"15"},
+	"15", {\ar"16"},
+\end{xy}
+\end{gathered}
+\end{equation}
+The cluster algebra associated with $\Gr(2,6)$ features 14 clusters, and these clusters can be grouped together in to multiple (overlapping) sets which we call subalgebras. A simple example is the collection of all triangulations which involve the cord $\ket{15}$. This set is itself a cluster algebra, and can be generated via mutations by taking the diagram in eq.~(\ref{eq:gr26-seed}), ``freezing'' the cord $\ket{15}$, then mutating on the other two cords. This of course is just the cluster algebra of triangulating a pentagon
+\begin{equation}
+\begin{gathered}
+\begin{tikzpicture}
+	\coordinate (P1) at (90:1);
+	\coordinate (P2) at (30:1);
+	\coordinate (P3) at (330:1);
+	\coordinate (P4) at (270:1);
+	\coordinate (P5) at (210:1);
+	\coordinate (P6) at (150:1);
+	\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- cycle;
+  	\draw[color=red] (P1) -- (P3);
+  	\draw[color=red] (P1) -- (P4);
+	\draw[color=blue] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+	\draw (0,1.2) node {1};
+	\draw (30:1.1) node[anchor=west] {2};
+	\draw (330:1.1) node[anchor=west] {3};
+	\draw (270:1.2) node {4};
+	\draw (210:1.1) node[anchor=east] {5};
+	\draw (150:1.1) node[anchor=east] {6};
+\end{tikzpicture} 
+\end{gathered}
+\end{equation}
+ 
+
+
+\subsection{An overview of finite cluster algebras}\label{sec:finite-algebras}
+Fortunately, Fomin and Zelevinksy classified all finite cluster algebras in\cite{1054.17024}. In particular, they showed that a cluster algebra is of finite type iff the mutable part of its quiver at some cluster takes the form of an oriented, simply-laced Dynkin diagram: $A_n, D_n, E_{n\le8}$. We will describe several of the relevant cases to give the reader a flavor for the world of finite algebras. 
 
 Cluster algebras of type $A_n$ 
 \begin{equation}\label{def:An}
@@ -695,22 +770,34 @@ Lastly, $f_{A_2}$ has $\Lambda^2\B_2$ and $\B_3 \otimes \mathbb{C}^*$ coproduct 
 	\delta\left(f_{A_2}\right) = -\sum_{\text{skew-dihedral}} \{-\x_{i-1}\}_2 \wedge \{-\x_{i+1}\}_2 + 3\{-\x_{i}\}_2 \wedge \{-\x_{i+1}\}_2 + \frac{5}{2}\{-\x_{i}\}_3 \otimes \x_{i+1}
 \end{equation}
 
-This representation of $f_{A_2}$ therefore shares the following properties with $\mathcal{E}^{(2)}_n$:
+This representation of $f_{A_2}$ therefore shares the following properties with $\mathcal{E}^{(2)}_{n>6}$:
 \begin{itemize}
 	\item cluster adjacent,
 	\item clustery coproduct,
+	\item contains intrinsicaly non-classical polylogarithms,
 	\item smooth and real-valued in the positive domain.
 \end{itemize}
 
 
-
 \section{Cluster subalgebra-constructibility} 
+
 \subsection{\pdfeq{A_2} functions are a complete basis}
 \subsection{Definition and outline for construction}
+
+
+
 \subsection{Results}
 
 \section{Subalgebra representations for \pdfeq{R_7^{(2)}}} 
+
+The overarching goal for this paper is to exhaustively explore ways in which $\mathcal{E}^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7)$. $\Gr(4,7)$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $\Gr(4,7)$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical). 
+
+$f_{A_2}$ evaluated across the 504 distinct $A_2$ subalgebras in $\Gr(4,7)$ gives a basis with only ??? degrees of freedom
+
 \subsection{\pdfeq{A_2\subset A_3} representation}
+This section is a review of \cite{Golden:2014xqa,Golden:2014xqf}. 
+
+
 \subsection{\pdfeq{A_2\subset A_5} representation}
 As discussed previously, there are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
 \begin{equation}
