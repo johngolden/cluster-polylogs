@@ -37,6 +37,14 @@
 \def\flag{{\huge \color{red} \textinterrobang}}
 \def\pdfeq#1{\texorpdfstring{$#1$}{a}}
 
+\def\fd5{f_{D_5}}
+\def\fa3{f_{A_3}}
+\def\rn{R^{(2)}_n}
+\def\rsev{R^{(2)}_7}
+
+\def\bb2{B_2\wedge B_2}
+\def\b3c{B_3 \otimes \mathbb{C}^*}
+
 
 \def\drawPentagon{
 \coordinate (P1) at (90:1);
@@ -355,6 +363,8 @@ Putting this all together, we will generically refer to an $A_2$ cluster algebra
 \end{gathered}.
 \end{equation}
 (Mutating on the node in red moves you clockwise around the pentagon.) In future sections it will be necessary to consider collections of multiple $A_2$ algebras, in such cases we label them by only one of their clusters, e.g. $x_1 \to x_2$, with the understanding that we are referring to the $A_2$ which contains that cluster as an element.
+
+\draftnote{poisson bracket?}
 
 \subsection{Subalgebras}
 
@@ -838,9 +848,32 @@ $E_6 \simeq \Gr(4,7)$, as defined in eq.~(\ref{def:E6}), has automorphism group 
 
 \section{Cluster Polylogarithms and MHV Amplitudes}
 
+We now turn our attention to polylogarithms. In particular, our goal for this section is to construct polylogarithm functions that are endowed with cluster algebraic structure. The physics motivation for this is that $\mathcal{N}=4$ SYM provides us with at least one infinite class of polylogarithm functions, $R^{(2)}_n$, which clearly have cluster algebraic structure. We will discuss this evidence further in sec.~\ref{sec:cluster-algebra-R2n}. Before we do that, we will first review the Hopf coproduct and Lie cobracket on the space of polylogarithm functions, which are useful tools for removing functional identities and revealing intrinsic structure. We will then discuss techniques for using a cluster algebra to construct interesting polylogarithm functions. As an example, we will show that there is essentially a unique weight-4 polylogarithm function associted with the $A_2$ cluster algebra, called $f_{A_2}$. This function has numerous nice (and surprising) features which make it a unique and excellent building block for $R^{(2)}_n$, which we will then discuss in sec.~\ref{sec:sub-constructibility}.  
+
+Very important definition:\flag
+\begin{itemize}
+	\item cluster $\a$-polylogarithm: symbol alphabet is drawn from the \acoords for some cluster algebra
+	\item cluster $\x$-polylogarithm: cobracket arguments are drawn from the \xcoords for some cluster algebra
+\end{itemize}
+Do we include adjacency?
+
 \subsection{The Coproduct and Cobracket}
 
-\subsection{Cluster-Algebraic Structure of MHV Amplitudes}
+\draftnote{JG: Sec. 2.1 of \cite{Golden:2014xqa} is actually pretty well-written, in my opinion -- at least, I don't think I could do any better here. So you are welcome to write what you think would be most helpful for non-Brown folk. In the meantime I will list some necessary definitions, mostly grabbed from \cite{Golden:2014xqa}, that come up later in the paper.}
+
+Cobracket integrability condition:
+\begin{equation} \label{eq:integrability}
+	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
+\end{equation}
+
+
+\subsection{Cluster-Algebraic Structure of MHV Amplitudes}\label{sec:cluster-algebra-R2n}
+
+This is a review of \cite{Golden:2013xva,Golden:2014xqa,Golden:2014pua}. The essential idea is that $R^{(2)}_n$ ``depends'' only on \xcoords of $\Gr(4,n)$. This notion of dependence has multiple facets, two of which we review here: 
+\begin{itemize}
+	\item $R^{(2)}_n$ can be written, at functional level, in terms of the functions $\Li_{2,2},~\Li_{1,3}$, and classical $\Li_k$ all with arguments $-\mathcal{X}$ where $\mathcal{X}$ is a cluster \xcoord of $\Gr(4,n)$.
+	\item $R^{(2)}_n$ has Lie cobracket elements $\B_2 \wedge \B_2$ and $\B_3 \otimes \mathbb{C}^*$ expressible in terms of Bloch group elements $\{-\mathcal{X}\}_k$ where $\mathcal{X}$ is a cluster \xcoord of $\Gr(4,n)$. 
+\end{itemize}
 
 \subsection{The \pdfeq{A_2} function}
 We define the $A_2$ function as
@@ -895,30 +928,50 @@ However, the benefit of \xcoords is that they have a unique Poisson bracket, whe
 
 While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so clear. However we have checked for all Grassmannian cluster algebras $\Gr(k\le4,n\le7)$ that $\a$-adjacency implies $\x$-adjacency, so we conjecture that the two phrasings of cluster adjacency are identical in constraining symbol space. \flag
 
-
-
-
-\section{Cluster Subalgebra-Constructibility} 
+\section{Cluster subalgebra-constructibility}\label{sec:sub-constructibility} 
 
 Define the basic notion here (which applies to both clustery and non-clustery cobrackets) (differentiate between symbol-level and cobracket-level constructibility)
 
-\subsection{MHV Amplitudes and \pdfeq{A_2}-Constructibility}
+\subsection{\pdfeq{A_2} functions are a complete basis}
 
-Proof that the \pdfeq{A_2} function spans the $\delta_{2,2}$ component of MHV amplitudes in Planar $\mathcal{N}=4$.
+A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis for weight-4 cluster $\x$-polylogarithms for all cluster algebras \footnote{This has been checked for $E_6$ and all subalgebras contained therein.}. This is because the cobracket integrability condition, eq.~(\ref{eq:integrability}), requires relationships between the arguments of the cobrackets. Remarkably, the $A_2$ exchange relation
+\begin{equation}
+	1+\x_i = \x_{i-1}\x_{i+1}
+\end{equation}
+is a sufficient relationship to generate one solution to integrability, namely $f_{A_2}$. In contrast, the $A_1\times A_1$ cluster algebra has two algebraically distinct variables and so provides no solutions to integrability. 
 
-\subsection{Finite Subalgebras of Gr(4,$n$)}
+For any larger algebra, one generates a solution to integrability for each $A_2$ subalgebra. The magic of cluster algebras is that there exist no additional relationships -- this is equivalent to the statement that all cluster algebras can be fully decomposed in to $A_2$ and $A_1 \times A_1$ subalgebras. 
 
-Describe/tabulate the finite cluster algebras that appear as subalgebras of Gr(4,$n$)
+This essentially ``solves'' the problem of constructing $\rn$, via the algorithm described in \cite{Golden:2014xqf}, as it is a cluster $\x$-polylogarithm of $\Gr(4,n)$.
 
-\subsection{Cobracket-Level Decompositions of \pdfeq{R_7^{(2)}}}
 
-Method and results of general search---describe \pdfeq{A_3} and null results in more depth, leaving a discussion of \pdfeq{A_5} and \pdfeq{D_5} for the next sections
+\subsection{Definition and outline for construction}
 
-\subsection{Decomposing \pdfeq{R_n^{(2)}} for $n \ge 8$}
+There are many features of a cluster algebra that one can make manifest, or endow upon, a polylogarithm. Here are some examples (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subalgebra of $A$):
+\begin{itemize}
+	\item ``$\a$-polylog on $A$'': symbol alphabet is drawn from the \acoords of $A$,
+	\item ``$\x$-polylog on $A$'': an $\a$-polylog on $A$ with non-zero cobracket (in both $\bb2$ and $\b3c$) and the cobracket arguments are drawn from the \xcoords of $A$,
+	\item ``extended $\x$-polylog on $A$'': an $\a$-polylog on $A$ whose cobracket arguments are $\x$ and $1-\x$, where $\x$ are drawn from the \xcoords of $A$,
+	\item ``automorphic $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that is invariant, up to an overal minus sign, under the automorphisms of $A$,
+	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$,
+	\item ``$B_i$-constructible $\a/\x$-polylog'': an automorphic $\a$- or $\x$-polylog on $A$ that is composed of automorphic $\a$- or $\x$-polylogs on $B_i$,
+	\item ``$B_{i_1} - B_{i_2} - \ldots $-constructible $\a/\x$-polylog'': iterating the above definition for multiple nestings of subalgebras of decreasing rank
+\end{itemize}
 
-Some discussion of why this is harder, and pointing to paper II
 
-\section{The \pdfeq{A_5} Function} 
+\subsection{Results}
+
+\section{Subalgebra representations for \pdfeq{R_7^{(2)}}}\label{sec:R27-reps} 
+
+The overarching goal for this paper is to exhaustively explore ways in which $\mathcal{E}^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7)$. $\Gr(4,7)$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $\Gr(4,7)$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical). 
+
+$f_{A_2}$ evaluated across the 504 distinct $A_2$ subalgebras in $\Gr(4,7)$ gives a basis with only ??? degrees of freedom
+
+\subsection{\pdfeq{A_2\subset A_3} representation}
+This section is a review of \cite{Golden:2014xqa,Golden:2014xqf}. 
+
+
+\subsection{The \pdfeq{A_5} Function}\label{a5-func}
 
 As discussed previously, there are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
 \begin{equation}
@@ -976,7 +1029,127 @@ The two types of $A_2$'s appearing in $f_{A_5}$ are:
 \end{tikzpicture}
 \end{equation}
 
-\section{The \pdfeq{D_5} Function}
+\subsection{The \pdfeq{D_5} Function}\label{sec:d5-func}
+
+In this section we analyze ``the'' $D_5$ function, $\fd5$, which we generate by:
+\begin{itemize}
+	\item starting with an ansatz of all distinct $\fa3$'s in $D_5$,
+	\item imposing antisymmetry under all of the $D_5$ automorphisms $\{\sigma, \tau, \mathbb{Z}_2\}$,
+	\item taking the fully symmetric sum of this $\fd5$ over $E_6$ and fitting to $R^{(2)}_7$.
+\end{itemize}
+The resulting function has 1 free parameter, which represents an internal degree of freedom in $\fd5$ that cancels in the symmetric sum over $E_6$.
+
+There are 65 distinct $\a3$'s in $D_5$. Of these, only 42 produce linearly independent $\fa3$'s. Imposing full $D_5$ antisymmetry on this collection of $\fa3$'s leaves only 5 degrees of freedom. Requiring that the full $E_6$-symmetric sum of $\fd5$ gives $R^{(2)}_7$ fixes 4 of these parameters, leaving us with only 1 degree of freedom. Of course when we are looking for a particular representation of $\fd5$ we have 24 degrees of freedom (23 of which are equivalent to adding zero).
+
+It would be nice to find a property that fixes some of these parameters that does not rely on explicitly knowing $R^{(2)}_7$. Of course a cluster-y property would be great, but even a physics one would be nice. 
+
+Because of the 1 degree of freedom, it is difficult to describe in detail the properties of $\fd5$ until we have set this value. Furthermore, we likely want to keep this parameter free so that we have some freedom when we try to express $R^{(2)}_7$ in terms of $\fd5$. 
+
+The piece that does not cancel in the full $E_6$ sum can be represented in terms of 13 $\a3$'s. The following 8 enter with coefficient $+1/2$:
+\begin{gather*}
+	x_2\to x_3\to x_5,\quad x_1\to x_2\to x_3 \left(1+x_5\right),\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_4,\quad x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_4\right)}{1+x_2}\to x_5,\\ \\
+	\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5,\quad \frac{1+x_3}{x_3x_4}\to x_2 (1+x_{34})\to \frac{x_3x_5}{1+x_3},\\ \\
+	\frac{1+x_{23}}{x_2 x_3 x_4}\to x_1(1+x_{234})\to \frac{x_2x_3 x_5}{1+x_{23}},\quad
+	\frac{x_1 x_2 x_3x_5}{1+x_{123}}\to\frac{\left(1+x_1\right) x_3 x_4}{\left(1+x_3\right)\left(1+x_{1234}\right)}\to \frac{1+x_{123}}{\left(1+x_1\right) x_3},\\
+\end{gather*}
+and these 5 enter with coefficient $-1/2$:
+\begin{gather*}
+	x_2\to x_3\to x_4,\quad x_1\to x_2\to x_3 \left(1+x_4\right),\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_5,\\ \\ x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_5\right)}{1+x_2}\to x_4,\quad
+	\frac{x_1 x_2 x_3x_4}{1+x_{123}}\to\frac{\left(1+x_1\right) x_3 x_5}{\left(1+x_3\right)\left(1+x_{1235}\right)}\to \frac{1+x_{123}}{\left(1+x_1\right) x_3}.
+\end{gather*}
+There is not any nice cancellation of terms at the level of $\bb2$ for this sum of functions. It would be exciting to find a representation for $\fd5$ which relied on very few $\bb2$ terms, but of course some relatively large number of terms will be necessary in order to full capture the $D_5$ symmetries. 
+
+Also, although we have not done a truly exhaustive search, based on extensive checks it does not seem likely that there is a representation that includes \emph{all} $\a3$'s in $D_5$ (with simple coefficients, at least).
+
+We do not include a representation for the piece of the function that cancels in the full $E_6$ sum, as the shortest representation we have found involves a cumbersome sum of 17 $\a3$'s. 
+
+\subsubsection*{Representing $R^{(2)}_7$ in terms of $\fd5$}
+
+An $E_6$ version of the $\Gr(4,7)$ seed is:
+\begin{equation}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(0,50) *+{\frac{\langle 1234\rangle  \langle 1267\rangle }{\langle
+   		1237\rangle  \langle 1246\rangle }} ="1",
+	(100,50) *+{-\frac{\langle 1247\rangle  \langle 3456\rangle
+ 	  	}{\langle 4(12)(35)(67)\rangle }} ="2",
+	(200,50) *+{\frac{\langle 1246\rangle  \langle 5(12)(34)(67)\rangle
+ 	  	}{\langle 1245\rangle  \langle 1267\rangle  \langle
+   		3456\rangle }} ="3",
+	(200,0) *+{-\frac{\langle 4(12)(35)(67)\rangle }{\langle
+   		1234\rangle  \langle 4567\rangle }} ="4",
+	(300,50) *+{-\frac{\langle 1267\rangle  \langle 1345\rangle  \langle
+   		4567\rangle }{\langle 1567\rangle  \langle
+   		4(12)(35)(67)\rangle }} ="5",
+	(400,50) *+{\frac{\langle 1567\rangle  \langle 2345\rangle }{\langle
+   		5(12)(34)(67)\rangle }} ="6",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"5", {\ar"3"},
+	"6", {\ar"5"},
+\end{xy}
+\end{gathered}
+\end{equation}
+The symmetries are $\sigma$ (period 7), $\tau$, and $\mathbb{Z}_2$ (both period 2) and can be represented as:
+\begin{align*}
+	\sigma:\quad &x_1\mapsto \frac{1}{x_6
+   \left(1+x_{534}\right)}, \quad x_2\mapsto \frac{1+x_{6534}}{x_5
+   \left(1+x_{34}\right)}, \quad x_3\mapsto
+   \frac{\left(1+x_{234}\right)
+   \left(1+x_{534}\right)}{x_3
+   \left(1+x_4\right)},\\ \\ 
+   &x_4\mapsto
+   \frac{1+x_{34}}{x_4}, \quad x_5\mapsto \frac{1+x_{1234}}{x_2
+   \left(1+x_{34}\right)}, \quad x_6\mapsto \frac{1}{x_1
+   \left(1+x_{234}\right)},\\ \\
+   \tau: \quad&x_1\mapsto \frac{x_5}{1+x_{65}},\quad x_2\mapsto
+   \left(1+x_5\right) x_6,\quad x_3\mapsto
+   \frac{\left(1+x_{12}\right)
+   \left(1+x_{65}\right)}{x_1 x_2 x_3 \left(1+x_4\right)
+   x_5 x_6},\\ \\ 
+   &x_4\mapsto x_4,\quad x_5\mapsto x_1
+   \left(1+x_2\right),\quad x_6\mapsto
+   \frac{x_2}{1+x_{12}},\\ \\
+   \mathbb{Z}_2:\quad &x_1 \leftrightarrow x_6, \quad x_2 \leftrightarrow x_5
+\end{align*}
+These are directly equivalent to $\Gr(4,7)$ cycle$^2$, flip, and parity ($\sigma = $ cycle$^2$ because the map for just a single cycle was too cumbersome to print).
+
+The simplest $D_5$ subalgebra of $E_6$ is obtained by freezing the $x_6$ node and then mutating once on $x_5$, at which point we have the seed cluster
+\begin{equation}\label{eq:d5ine6}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(0,25) *+{x_1} ="1",
+	(50,25) *+{x_2} ="2",
+	(100,25) *+{\frac{x_3 x_5}{1+x_5}} ="3",
+	(150,0) *+{x_4} ="4",
+	(150,50) *+{\frac{1}{x_5}} ="5",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"3", {\ar"5"},
+\end{xy}
+\end{gathered}
+\end{equation}
+We'll refer to the cluster algebra generated by (\ref{eq:d5ine6}) as $D_5^{(0,0)}$. The remaining 13 $D_5$'s in $E_6$ are generated by applying $\sigma$ and $\tau$. We can now label each $D_5$ via the number of $\sigma$'s and $\tau$'s applied to $D_5^{(0,0)}$:
+\begin{equation}
+	D_5^{(i,j)} = \sigma^{i}\tau^j(D_5^{(0,0)})
+\end{equation}
+We do not have to consider $\mathbb{Z}_2$ because 
+\begin{equation}
+	\mathbb{Z}_2(D_5^{(0,0)}) = D_5^{(5,1)}.
+\end{equation}
+Note that by this we do not mean that $\sigma^5\tau$ acting on the cluster (\ref{eq:d5ine6}) equals $\mathbb{Z}_2$ acting on (\ref{eq:d5ine6}); instead $\mathbb{Z}_2$ acting on the complete $D_5$ algebra \emph{generated by} (\ref{eq:d5ine6}) is equal to $\sigma^5\tau$ acting on the same algebra.
+
+With this notation in place we can say that 
+\begin{equation}
+	R^{(2)}_7 = \sum_{i=0}^{6}\sum_{j=0}^{1} f_{D_5^{(i,j)}}.
+\end{equation}
+While this is the most technically correct way to phrase things, it is of course much more evocative to write
+\begin{equation}
+	R^{(2)}_7 = \sum_{D_5\subset E_6} f_{D_5},
+\end{equation}
+which is ill-defined up to the sign in front of each $\fd5$. 
 
 
 \section{Conclusion}
