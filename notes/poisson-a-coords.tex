@@ -22,6 +22,10 @@
 \def\acoord{$\mathcal{A}$-coordinate}
 \def\acoords{$\mathcal{A}$-coordinates}
 \def\a{\mathcal{A}}
+\def\xcoord{$\mathcal{X}$-coordinate }
+\def\xcoords{$\mathcal{X}$-coordinates }
+\def\acoord{$\mathcal{A}$-coordinate }
+\def\acoords{$\mathcal{A}$-coordinates }
 
 \newcommand{\unit}{1\!\!1}
 
@@ -102,7 +106,8 @@ in which case $\Omega$ takes the form
 \end{equation*}}
 The $c_{ij}$ are arbitrary, and I guess we really only care about the $2\times2$ entries in the upper left corner but I present the full matrix for completion's sake. 
 
-Some considerable confusion remains, at least on my part. In particular, what mutation rule does one use to generate mutated $\Omega$'s? One can just follow the standard $B$-matrix mutation rules, although it becomes tricky because the $B$-matrix rules require checking the sign of elements, which is difficult if you want to keep the $c_{ij}$ generic. Furthermore, how does this relate to the Sklyanin bracket calculations done on \acoords? If one chooses to mutate $\Omega$ via the $B$-matrix rules, then the Sklyanin bracket (as we know it) is not compatible with any choice of $c_{ij}$. 
+The overall point here is that any choice of the $c_{ij}$ defines \emph{a} Poisson bracket on the \acoords, and this Poisson bracket then satisfies all of the properties that the normal \xcoord Poisson bracket does (invariant under mutation\footnote{Unfortunately each Poisson bracket on \acoords has a different set of mutation rules that one just has to work out. Gekhtman said that this is, in principle, not very illuminating. I have not tried it myself.}, etc). The tradeoff is straightforward: in \xcoord language one has a single Poisson bracket, but there is no single representation of a symbol in terms of \xcoords. In contrast, there is a single representation of a symbol in terms of \acoords but there is not a single Poisson bracket on \acoords. This of course jives with the fact that \acoords can appear together in different clusters with different $b_{ij}$ elements.
 
-The best case scenario here is to find some Poisson bracket on the $\a$'s which makes manifest some particularly nice adjacency structure in the (Steinmann) remainder function. Perhaps this is equivalent to finding some representation of the symbol in terms of $\mathcal{X}$-coordinates where again the Poisson bracket between adjacent pairs follows some nice pattern. 
+I believe then that the Sklyanin bracket is just one of the many possible Poisson brackets one can define on \acoords, but I do not believe it is ``priviledged'' in any way. It is also worth emphasizing that one can evaluate the Sklyanin bracket directly on \acoords, i.e. no need to dress them in to DCI cross-ratios. 
+ 
 \end{document}
