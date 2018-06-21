@@ -1,4 +1,4 @@
-\pdfoutput=1
+
 \documentclass[11pt]{article}
 \usepackage{jheppub}
 \usepackage{epsfig}
@@ -682,7 +682,7 @@ The cluster algebra $D_5$
     \end{xy}
     \end{gathered}
 \end{equation}
-is not immediately connected with any Grassmannian, although it appears as a subalgebra of any $\Gr(k,n)$ with rank > 5. $D_5$ has 182 clusters, 25 \acoords, and 260 \xcoords. There are 125 distinct $A_2$ subalgebras, 65 $A_3$, 10 $A_4$, and 5 $D_4$. 
+is not immediately connected with any Grassmannian, although it appears as a subalgebra of any $\Gr(k,n)$ with rank $> 5$. $D_5$ has 182 clusters, 25 \acoords, and 260 \xcoords. There are 125 distinct $A_2$ subalgebras, 65 $A_3$, 10 $A_4$, and 5 $D_4$. 
 
 Finally, we describe the cluster algebra $E_6$
 \begin{equation}\label{def:E6}
@@ -848,18 +848,16 @@ $E_6 \simeq \Gr(4,7)$, as defined in eq.~(\ref{def:E6}), has automorphism group 
 
 \section{Cluster Polylogarithms and MHV Amplitudes}
 
-We now turn our attention to polylogarithms. In particular, our goal for this section is to construct polylogarithm functions that are endowed with cluster algebraic structure. The physics motivation for this is that $\mathcal{N}=4$ SYM provides us with at least one infinite class of polylogarithm functions, $R^{(2)}_n$, which clearly have cluster algebraic structure. We will discuss this evidence further in sec.~\ref{sec:cluster-algebra-R2n}. Before we do that, we will first review the Hopf coproduct and Lie cobracket on the space of polylogarithm functions, which are useful tools for removing functional identities and revealing intrinsic structure. We will then discuss techniques for using a cluster algebra to construct interesting polylogarithm functions. As an example, we will show that there is essentially a unique weight-4 polylogarithm function associted with the $A_2$ cluster algebra, called $f_{A_2}$. This function has numerous nice (and surprising) features which make it a unique and excellent building block for $R^{(2)}_n$, which we will then discuss in sec.~\ref{sec:sub-constructibility}.  
-
-Very important definition:\flag
+Terminology guide (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subalgebra of $A$):
 \begin{itemize}
-	\item cluster $\a$-polylogarithm: symbol alphabet is drawn from the \acoords for some cluster algebra
-	\item cluster $\x$-polylogarithm: cobracket arguments are drawn from the \xcoords for some cluster algebra
+	\item ``$\a$-polylog on $A$'': symbol alphabet is drawn from the \acoords of $A$,
+	\item ``$\x$-polylog on $A$'': an $\a$-polylog on $A$ with non-zero cobracket (in both $\bb2$ and $\b3c$) and the cobracket arguments are drawn from the \xcoords of $A$,
+	\item ``extended $\x$-polylog on $A$'': an $\a$-polylog on $A$ whose cobracket arguments are $\x$ and $1-\x$, where $\x$ are drawn from the \xcoords of $A$,
+	\item ``automorphic $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that is invariant, up to an overal minus sign, under the automorphisms of $A$,
+	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$.
 \end{itemize}
-Do we include adjacency?
 
 \subsection{The Coproduct and Cobracket}
-
-\draftnote{JG: Sec. 2.1 of \cite{Golden:2014xqa} is actually pretty well-written, in my opinion -- at least, I don't think I could do any better here. So you are welcome to write what you think would be most helpful for non-Brown folk. In the meantime I will list some necessary definitions, mostly grabbed from \cite{Golden:2014xqa}, that come up later in the paper.}
 
 Cobracket integrability condition:
 \begin{equation} \label{eq:integrability}
@@ -869,11 +867,13 @@ Cobracket integrability condition:
 
 \subsection{Cluster-Algebraic Structure of MHV Amplitudes}\label{sec:cluster-algebra-R2n}
 
-This is a review of \cite{Golden:2013xva,Golden:2014xqa,Golden:2014pua}. The essential idea is that $R^{(2)}_n$ ``depends'' only on \xcoords of $\Gr(4,n)$. This notion of dependence has multiple facets, two of which we review here: 
+This is a review of \cite{Golden:2013xva,Golden:2014xqa,Golden:2014pua}. The essential idea is that $R^{(2)}_n$ ``depends'' only on \xcoords of $\Gr(4,n)$. This notion of dependence has multiple facets, such as 
 \begin{itemize}
 	\item $R^{(2)}_n$ can be written, at functional level, in terms of the functions $\Li_{2,2},~\Li_{1,3}$, and classical $\Li_k$ all with arguments $-\mathcal{X}$ where $\mathcal{X}$ is a cluster \xcoord of $\Gr(4,n)$.
 	\item $R^{(2)}_n$ has Lie cobracket elements $\B_2 \wedge \B_2$ and $\B_3 \otimes \mathbb{C}^*$ expressible in terms of Bloch group elements $\{-\mathcal{X}\}_k$ where $\mathcal{X}$ is a cluster \xcoord of $\Gr(4,n)$. 
 \end{itemize}
+
+Furthermore, there is the closely related object $\mathcal{E}^{(2)}_n$, which satisfies cluster adjacency, which we review now.
 
 \subsection{The \pdfeq{A_2} function}
 We define the $A_2$ function as
@@ -909,9 +909,6 @@ This representation of $f_{A_2}$ therefore shares the following properties with 
 	\item smooth and real-valued in the positive domain.
 \end{itemize}
 
-
-\subsection{Cluster Automorphisms}
-
 \subsection{Cluster Adjacency}
 
 Cluster adjacency is a property of all Steinmann-satisfying amplitudes, and was first introduced in \cite{Drummond:2017ssj}. The original phrasing of this property is that the symbol of all Steinmann-satisfying integrals in $n$-particle kinematics, when fully expanded out in terms of \acoords, is of the form 
@@ -932,6 +929,12 @@ While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so cl
 
 Define the basic notion here (which applies to both clustery and non-clustery cobrackets) (differentiate between symbol-level and cobracket-level constructibility)
 
+Terminology guide (let $A$ be a cluster algebra, $B_i$ be a rank $i$ subalgebra of $A$, and $i_1<i_2<\ldots$):
+\begin{itemize}
+	\item ``$B_i{\subset}A$-constructible $\a/\x$-polylog': an automorphic $\a$- or $\x$-polylog on $A$ that is composed of automorphic $\a$- or $\x$-polylogs on $B_i$,
+	\item ``$B_{i_1} {\subset} B_{i_2}{\subset}\ldots{\subset}A$-constructible $\a/\x$-polylog'': iterating the above definition for multiple nestings of subalgebras of decreasing rank.
+\end{itemize}
+
 \subsection{\pdfeq{A_2} functions are a complete basis}
 
 A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis for weight-4 cluster $\x$-polylogarithms for all cluster algebras \footnote{This has been checked for $E_6$ and all subalgebras contained therein.}. This is because the cobracket integrability condition, eq.~(\ref{eq:integrability}), requires relationships between the arguments of the cobrackets. Remarkably, the $A_2$ exchange relation
@@ -947,16 +950,64 @@ This essentially ``solves'' the problem of constructing $\rn$, via the algorithm
 
 \subsection{Definition and outline for construction}
 
-There are many features of a cluster algebra that one can make manifest, or endow upon, a polylogarithm. Here are some examples (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subalgebra of $A$):
-\begin{itemize}
-	\item ``$\a$-polylog on $A$'': symbol alphabet is drawn from the \acoords of $A$,
-	\item ``$\x$-polylog on $A$'': an $\a$-polylog on $A$ with non-zero cobracket (in both $\bb2$ and $\b3c$) and the cobracket arguments are drawn from the \xcoords of $A$,
-	\item ``extended $\x$-polylog on $A$'': an $\a$-polylog on $A$ whose cobracket arguments are $\x$ and $1-\x$, where $\x$ are drawn from the \xcoords of $A$,
-	\item ``automorphic $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that is invariant, up to an overal minus sign, under the automorphisms of $A$,
-	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$,
-	\item ``$B_i$-constructible $\a/\x$-polylog'': an automorphic $\a$- or $\x$-polylog on $A$ that is composed of automorphic $\a$- or $\x$-polylogs on $B_i$,
-	\item ``$B_{i_1} - B_{i_2} - \ldots $-constructible $\a/\x$-polylog'': iterating the above definition for multiple nestings of subalgebras of decreasing rank
-\end{itemize}
+We will adopt some novel notation to describe subalgebras. Specifically, given a seed quiver for an algebra, we can label a subalgebra by 
+\begin{enumerate}
+	\item a sequence of mutations on the seed quiver that moves us to a cluster that lies within the subalgebra,
+	\item along with a list of nodes that one mutates on the new cluster to generate the subalgebra.
+\end{enumerate}
+For example, with $A_3$ we have the seed cluster
+\begin{equation}
+	x_1 \to x_2 \to x_3,
+\end{equation}
+i.e. we have nodes 1, 2, 3 initially occupied by the coordinates $x_1, x_2, x_3$. The nodes remain fixed but the coordinates occupying each node change as one mutates. Note that two $A_2$ subalgebras are present directly in the seed cluster, namely $x_1 \to x_2$ and $x_2 \to x_3$. We label these two subalgebras by the nodes to mutate on to generate the subalgebra, so in this case we have 
+\begin{equation}
+	A_3|_{12} = x_1 \to x_2,\qquad A_3|_{23} = x_2 \to x_3.
+\end{equation}
+But of course these are not the only two $A_2$ subalgebras that appear in the complete $A_3$ algebra. To reach the other subalgebras one needs to mutate on the seed quiver and move out to other clusters. A mutation path is just a sequence of integers, e.g. ``123'', which means to mutate on node 1, then mutate the resulting quiver on node 2, then 3. We label this by $A_3|^{123}$, and working out the mutations gives
+\begin{equation}
+	A_3|^{123} = \frac{x_2}{1+x_{12}}\to\frac{\left(1+x_1\right) x_3}{1+x_{123}}\to\frac{1+x_{12}}{x_1 x_2 x_3}.
+\end{equation}
+Note that once again we have two obvious $A_2$ subalgebras. These are then labeled by 
+\begin{equation}
+	A_3|^{123}_{12} = \frac{x_2}{1+x_{12}}\to\frac{\left(1+x_1\right) x_3}{1+x_{123}}, \qquad A_3|^{123}_{23} = \frac{\left(1+x_1\right) x_3}{1+x_{123}}\to\frac{1+x_{12}}{x_1 x_2 x_3}.
+\end{equation}
+To summarize, we label subalgebras with the notation 
+\begin{equation}
+	\text{Algebra}|^{\text{mutation path from algebra seed to cluster containing subalgebra seed}}_{\text{nodes of the cluster to mutate on to generate the subalgebra}}~.
+\end{equation}
+For this paper we always refer to the seed quivers listed in sec.~\ref{sec:finite-algebras}. Lastly, this notation can be extended to include disconnected subalgebras by including a comma between the nodes, for example in $A_3$ we have the $A_1\times A_1$ subalgebra 
+\begin{equation}
+	A_3|_{1,3} = x_1 ~~x_3,
+\end{equation}
+which generates a square face of the associahedron. 
+
+One downside of this notation is that it is not unique, as there are many possible mutation paths to any cluster, and each subalgebra has many equivalent seed clusters. For example \flag 
+\begin{equation}
+	A_3|^{123}_{23} = A_3|_{12} = x_1\to x_2.
+\end{equation}
+However in the case of finite cluster algebras one can always find at least one path of shortest length (and in the case of multiple shortest paths, sort left-to-right by lowest node number). 
+
+In this section we will explore the space of subalgebra-constructible polylogarithms for finite algebras (specifically those $\subseteq E_6$). Specifically, let us start with the question: how many ways can we embed $f_{A_2}$ into a larger algebra in a way that respects the automorphisms of that larger algebra? As discussed in the previous section, because we are working at the level of the cobracket, $f_{A_2}$ evaluated across all subalgebras of a larger algebra form a complete basis and so ``$A_2$-constructibility'' is possible for all cluster polylogarithms we are exploring. We can work through the simple example of $A_2 \subset A_3$ to give a more concrete flavor for this procedure. 
+
+The six $A_2$ subalgebras of $A_3$ are labeled by
+\begin{equation}\label{eq:a2-in-a3}
+\begin{gathered}
+	A_3|^{}_{12} = x_1 \to x_2, \quad 
+	A_3|^{}_{23} = x_2 \to x_3, \quad 
+	A_3|^{123}_{12} = \frac{x_2}{1+x_{12}}\to \frac{\left(1+x_1\right) x_3}{1+x_{123}},\\ \\
+	A_3|^{1}_{23} = \frac{x_1 x_2}{1+x_1}\to x_3,\quad 
+	A_3|^{2}_{13} = x_1 \left(1+x_2\right)\to \frac{x_2 x_3}{1+x_2},\quad
+	A_3|^{3}_{12} =  x_1\to x_2 \left(1+x_3\right).
+\end{gathered}	
+\end{equation}
+
+We construct $f_{A_3}$ by beginning with an ansatz of $f_{A_2}$ evaluated on the six $A_2$ subalgebras listed in eq.~(\ref{eq:a2-in-a3}). We then require that $f_{A_3}$ be invariant under the automorphisms of $A_3$ up to an overall sign. As discussed in sec.~\ref{sec:automorphisms}, $A_3$ has two automorphisms, 
+\begin{equation}
+	\sigma_{A_3}: etc.
+\end{equation}
+Therefore there are four possible $f_{A_3}$, which we denote by their sign-behavior under $\sigma_{A_3}$ and $\tau_{A_3}$, for example $f_{A_3}^{+-}$ is invariant under $\sigma_{A_3}$ and picks up an overal minus sign under $\tau_{A_3}$. However not all sign-behaviors are necessarily possible, and working out which ``orientations'' of subalgebras can be made to fit the larger algebra's automorphisms is the central ingredient of our story. For example, there is no collection of $f_{A_2}$'s which is invariant under both $\sigma_{A_3}$ and $\tau_{A_3}$, i.e. $f_{A_3}^{++}$ does not exist. This can be worked out geometrically at the level of the $A_3$ associahedron, although it is a bit intricate. It is instead easier to run the problem through a linear algebra solver.
+
+
 
 
 \subsection{Results}
