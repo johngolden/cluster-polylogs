@@ -1,0 +1,290 @@
+\pdfoutput=1
+
+
+\documentclass[12pt]{article}
+\usepackage{epsfig}
+\usepackage{fancyhdr} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{scalerel}
+\usepackage{mathtools}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage[all]{xy}
+
+\usetikzlibrary{calc}
+
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+\def\ket#1{\langle #1 \rangle}
+\def\nl{\nonumber\\}
+\def\nn{\nonumber}
+\def\x{\mathcal{X}}
+\def\xcoord{$\mathcal{X}$-coordinate }
+\def\xcoords{$\mathcal{X}$-coordinates }
+\def\a{\mathcal{A}}
+\def\acoord{$\mathcal{A}$-coordinate }
+\def\acoords{$\mathcal{A}$-coordinates }
+\def\draftnote#1{{\bf [#1]}}
+\def\flag{{\huge \color{red} \textinterrobang}}
+\def\pdfeq#1{\texorpdfstring{$#1$}{a}}
+
+\def\fd5{f_{D_5}}
+\def\fa3{f_{A_3}}
+\def\rn{R^{(2)}_n}
+\def\rsev{R^{(2)}_7}
+
+\def\bb2{B_2\wedge B_2}
+\def\b3c{B_3 \otimes \mathbb{C}^*}
+
+
+\def\drawPentagon{
+\coordinate (P1) at (90:1);
+\coordinate (P2) at (18:1);
+\coordinate (P3) at (306:1);
+\coordinate (P4) at (234:1);
+\coordinate (P5) at (162:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+}
+
+\def\drawLabeledPentagon{
+\coordinate (P1) at (90:1);
+\coordinate (P2) at (18:1);
+\coordinate (P3) at (306:1);
+\coordinate (P4) at (234:1);
+\coordinate (P5) at (162:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+\draw (0,1.2) node {1};
+\draw (1,.3) node[anchor=west] {2};
+\draw (.5,-.9) node[anchor=west] {3};
+\draw (-.5,-.9) node[anchor=east] {4};
+\draw (-1,.3) node[anchor=east] {5};
+}
+
+\def\drawHexagon{
+\coordinate (P1) at (90:1);
+\coordinate (P2) at (30:1);
+\coordinate (P3) at (330:1);
+\coordinate (P4) at (270:1);
+\coordinate (P5) at (210:1);
+\coordinate (P6) at (150:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- cycle;
+}
+
+
+\def\drawLabeledHexagon{
+\coordinate (P1) at (90:1);
+\coordinate (P2) at (30:1);
+\coordinate (P3) at (330:1);
+\coordinate (P4) at (270:1);
+\coordinate (P5) at (210:1);
+\coordinate (P6) at (150:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- cycle;
+\draw (0,1.2) node {1};
+\draw (30:1.1) node[anchor=west] {2};
+\draw (330:1.1) node[anchor=west] {3};
+\draw (270:1.2) node {4};
+\draw (210:1.1) node[anchor=east] {5};
+\draw (150:1.1) node[anchor=east] {6};
+}
+
+\def\drawOctagon{
+\coordinate (P1) at (45:1);
+\coordinate (P2) at (90:1);
+\coordinate (P3) at (135:1);
+\coordinate (P4) at (180:1);
+\coordinate (P5) at (225:1);
+\coordinate (P6) at (270:1);
+\coordinate (P7) at (315:1);
+\coordinate (P8) at (359:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- (P7) -- (P8) -- cycle;
+}
+
+
+\def\mand#1{\scaleto{s}{4.6pt}_{\scaleto{#1}{5.2pt}}}
+\def\EthreeJ{{}^{{\{a,b\}}_3} {\cal E}_8}
+\def\EfourJ{{}^{{\{a,b\}}_4} {\cal E}_8}
+\def\LiOneCalX#1#2{\text{Li}_1(-\mathfrak{X}_{#1,#2})}
+\def\LiOneBarCalX#1#2{\text{Li}_1(-\overline{\mathfrak{X}}_{#1,#2})}
+
+\newcommand{\cP}{{\cal P}}
+\def\lr{\leftrightarrow}
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{$A_2$-constructible function counts}}
+
+In this section we introduce and describe the results for $A_2 \subset A_3$ constructibility in the finite algebras of interest. 
+
+Here we follow the steps worked through in the previous section, namely
+\begin{itemize}
+	\item begin with an ansatz of all $f_{A_2}$ applied across all $A_2$ subalgebras of a given larger algebra,
+	\item impose that the overall function is invariant under automorphisms up to overall sign choices,
+	\item count the number of solutions to these constraints.
+\end{itemize}
+In the case of $A_n$ algebras we only have to impose the dihedral automorphisms $\sigma_n$ and $\tau_n$, and so the resulting table is exactly analogous to eq.~(\ref{eq:a3-func-counts}):
+\begin{equation}\label{eq:a3-func-counts}
+\begin{array}{ l | c | c | c | c }			
+  & \sigma^+\tau^+ & \sigma^+\tau^- & \sigma^-\tau^+ & \sigma^-\tau^- \\
+  \hline
+  A_3 & 0 & 1 & 0 & 1 \\  
+  \hline
+  A_4 & 0 & 3 & 0 & 0 \\
+  \hline
+  A_5 & 2 & 5 & 2 & 5 
+\end{array} 
+\end{equation}
+It is interesting to note that the $+-$ sign choice admits at least one solution for all $A_n$ studied so far, and that is the only sign choice for $A_4$. 
+
+As discussed in sec. (automorphisms), $D_4$ has the automorphism group $D_4\times S_3$, with two cyclic generators $\sigma_{D_4}^{(4)}$ and $\sigma_{D_4}^{(3)}$ (corresponding to the $D_4$ and $S_3$, respectively) and then the $D_4$ flip $\tau_{D_4}$ as well as the $S_3$ flip denoted $\mathbb{Z}_{2,D_4}$. In the following table these are abbreviated $\sigma_4,\sigma_3,\tau_4, \mathbb{Z}_2$, respectively. Because of the four automorphism generators, there are 16 possible sign choices to impose on the collection of 36 distinct $f_{A_2}$'s in $D_4$. 
+\begin{equation}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^+ \tau_4^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 0 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 1 & 0 \\
+\cline{2-3}
+\end{tabular} 
+\hspace{.6cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^+ \tau_4^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 2 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 0 & 0 \\
+\cline{2-3}
+\end{tabular}
+\hspace{.6cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^- \tau_4^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 1 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 1 & 0 \\
+\cline{2-3}
+\end{tabular}
+\hspace{.6cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^- \tau_4^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 1 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 0 & 0 \\
+\cline{2-3}
+\end{tabular}
+\end{equation}
+Here we again see that the space of functions satisfying automorphisms is remarkably constrained, with no functions exhibiting a sign flip under $\sigma_3$ and only one sign choice -- $\sigma_4^+\tau_4^-\sigma_3^+\mathbb{Z}_2^+$ -- that offers more than one possible solution.
+
+
+$D_5$ is less symmetric than $D_4$, with only $D_5 \times \mathbb{Z}_2$ automorphism group (in the table the generators are labeled by $\sigma,\tau,$ and $\mathbb{Z}_2$). Therefore there are 8 possible sign choices to impose on the collection of 125 distinct $f_{A_2}$'s in $D_5$, and the resulting number of solutions is
+\begin{equation}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+11 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+16 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 6 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 13 \\
+\hline
+\end{tabular} 
+\end{equation}
+
+Finally we turn to $E_6$, which has automorphism group $D_{14}$ with generators $\sigma,\tau,$ and $\mathbb{Z}_2$). $E_6$ is much larger than the algebras studied so far, with 504 distinct $A_2$ subalgebras, however the space of automorphic functions is still quite constrained:
+\begin{equation}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\end{equation}
+
+\end{document}
