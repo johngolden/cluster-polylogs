@@ -138,7 +138,7 @@ Stanford University, Stanford, CA 94309, USA}
 
 \affiliation{$^4$ Niels Bohr International Academy, Blegdamsvej 17, 2100 Copenhagen, Denmark}
 
-\abstract{Everything we know about cluster algebras and polylogarithms.}
+\abstract{The seven-particle remainder function in planar maximally supersymmetric Yang-Mills theory can be thought of as . We systematically investigate the ways in which the `nonclassical' part of  decomposed into the subalgebras of the Grassmannian Gr(4,7). We find it is possible to decompose }
 
 
 \begin{document}
@@ -146,21 +146,36 @@ Stanford University, Stanford, CA 94309, USA}
 
 \section{Introduction}
 
-A growing body of evidence suggests that cluster algebras (or their generalizations) have a central role to play in multi-loop scattering amplitudes in the planar limit of ${\cal N} = 4$ supersymmetric Yang-Mills (SYM) theory. All known loop-level amplitudes in this theory are expressible in terms of cluster coordinates~\cite{Golden:2013xva,Golden:2013lha,Golden:2014xqa,Golden:2014pua,Dixon:2013eka,Dixon:2014voa,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn,Drummond:2017ssj}, as are certain classes of Feynman integrals~\cite{Drummond:2010cz,Drummond:2017ssj,Bourjaily:2018aeq,Henn:2018cdp}, some of which have been computed to all loop orders~\cite{Caron-Huot:2018dsv}. Even more strikingly, the symbols of these integrals and amplitudes (once appropriately normalized) are believed to involve only cluster coordinates that appear together in clusters of Gr(4,$n$) in adjacent entries~\cite{Drummond:2017ssj}, an observation that is also borne out by all amplitudes that have been computed in this theory~\cite{all_orders_adjacency}. Thus, cluster algebras seem to combinatorially realize much of the analytic structure of these amplitudes, encoding their locality in a non-obvious way.  
+A growing body of evidence suggests that cluster algebras (or their generalizations) have a central role to play in multi-loop scattering amplitudes in the planar limit of ${\cal N} = 4$ supersymmetric Yang-Mills (SYM) theory. In all known loop-level amplitudes in this theory, cluster coordinates on Gr(4,$n$) correctly identify the location of branch cuts~\cite{Golden:2013xva,Golden:2013lha,Golden:2014xqa,Golden:2014pua,Dixon:2013eka,Dixon:2014voa,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn,Drummond:2017ssj}, as they do in certain classes of Feynman integrals~\cite{Drummond:2010cz,Drummond:2017ssj,Bourjaily:2018aeq,Henn:2018cdp}, some of which have been computed to all loop orders~\cite{Caron-Huot:2018dsv}. Even more strikingly, the adjacent symbol entries of these (appropriately normalized) amplitudes and integrals are believed to involve only those cluster coordinates that appear together in clusters of Gr(4,$n$)~\cite{Drummond:2017ssj}.
+%, an observation that is also borne out by all known amplitudes in this theory~\cite{all_orders_adjacency}. 
+Correspondingly, cluster algebras combinatorially realize much of the analytic structure of these amplitudes, encoding their locality in a non-obvious way.  
 
-The fact that cluster algebras appear in this context is not totally surprising, insofar as they are dual to plabic graphs, which describe the integrands of this theory to all orders~\cite{ArkaniHamed:2012nw}. In particular, physical singularities . However, it is not obvious that new branch points integration won't generate ---and indeed, it has recently been seen that Feynman integrals contributing to eight- and higher-particle amplitudes involve algebraic roots when expressed in terms of cluster coordinates, corresponding to internal loop momenta becoming equal~\cite{Prlina:2017azl,Bourjaily:2018aeq,Henn:2018cdp}. This obfuscates the connection between amplitudes and cluster algebras (which only involve rational transformations), as does the eventual appearance of functions beyond polylogarithms in this theory~\cite{}. Both complications point to the need for some generalization of cluster algebras (or of the role cluster coordinates play in iterated integrals) if analogous algebraic structure is to be found at higher loops and particle multiplicities.
+The fact that cluster algebras appear in this context is not totally surprising, since they are dual to the plabic graphs that describe the integrands of this theory to all orders~\cite{ArkaniHamed:2012nw}. In particular, the boundaries of the positive Grassmannian coincide with physical singularities, and can be realized as the vanishing locus of cluster coordinate. 
 
-There is reason to be optimistic this structure exists, due to the sheer number of ways cluster-algebraic structure appears in the maximally-helicity-violating (MHV) amplitudes of this theory at low loop orders. The two-loop symbol of these amplitudes has been computed to all $n$~\cite{CaronHuot:2011ky}, providing a rich source of data that can be probed for cluster-algebraic properties. In addition to having symbol alphabets composed entirely of cluster coordinates in Gr(4,$n$), it has been shown that the `nonclassical' part of these amplitudes is uniquely determined by a combination of physical and cluster-algebraic properties~\cite{Golden:2014pua}. , a pair of functions can be associated with the $A_2$ and $A_3$ subalgebras of Gr(4,$n$), in terms of which this nonclassical component of these amplitudes can be geometrically decomposed into sums over these subagebras~\cite{Golden:2014xqa}. Their remaining `classical' part can always be written as products of classical polylogarithms with arguments that~\cite{Golden:2014xqf}.\draftnote{should we phrase this as a conjecture, or as it's stated now?} .
+However, it is not obvious that new branch points can't appear during integration---and indeed, it has been found that Feynman integrals contributing to eight- and higher-particle amplitudes involve algebraic roots when expressed in terms of cluster coordinates; the corresponding branch points occur where internal propagators go on shell due to two loop momenta becoming equal~\cite{Prlina:2017azl,Bourjaily:2018aeq,Henn:2018cdp}. This obfuscates the connection between amplitudes and cluster algebras (since cluster algebras only generate rational quantities), as does the eventual appearance of functions beyond polylogarithms~\cite{}. Both complications point to the need for more general objects than cluster algebras to describe the analagous algebraic structure that we can hope to find at higher loops and particle multiplicities.
+
+There is reason to be optimistic such structure exists, due to the sheer number of ways cluster algebras appear in the simplest amplitudes in planar ${\cal N}=4$ SYM theory. In particular, the symbols of all two-loop maximally-helicity-violating (MHV) amplitudes in this theory are known~\cite{CaronHuot:2011ky}, and have been found to exhibit a great deal of cluster-algebraic structure. In addition to having symbol alphabets composed entirely of cluster coordinates in Gr(4,$n$)~\cite{Golden:2013xva,Golden:2013lha,Golden:2014xqa,Golden:2014pua}, the `nonclassical' part of these amplitudes---namely, the part that cannot be expressed in terms of classical polylogarithms---is uniquely determined by a small set of physical and cluster-algebraic properties~\cite{Golden:2014pua}.  Moreover, a pair of functions can be associated with the cluster algebras on $A_2$ and $A_3$, in terms of which this nonclassical component of each amplitude can be geometrically decomposed into a sum over the $A_2$ or $A_3$ subalgebras of Gr(4,$n$)~\cite{Golden:2014xqa}. The remaining `classical' part of these amplitudes can, moreover, always be written as products of classical polylogarithms involving only negative cluster coordinates as arguments~\cite{Golden:2014xqf}.
+
+The present work extends this set of observations by describing two new functions, associated with the cluster algebras on $D_5$ and $A_5$, in terms of which the nonclassical part of the seven-point remainder function can also be decomposed. We  
 
 
-The appearance of cluster algebras in loop-level a theory was first noted at two loops~\cite{Golden:2013xva,Golden:2013lha,Golden:2014xqa,Golden:2014pua}, where the symbol of the $n$-point maximally-helicity-violating (MHV) amplitude~\cite{CaronHuot:2011ky} was observed to involve only cluster coordinates on the grassmannian Gr(4,$n$). This observation has since been borne out to higher loops in six- and seven-particle kinematics in both MHV and next-to-MHV (NMHV) amplitudes~\cite{Dixon:2013eka,Dixon:2014voa,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn,Drummond:2017ssj}, as well as in certain classes of Feynman integrals, some of which have been computed to all loop orders~\cite{Drummond:2017ssj,Bourjaily:2018aeq,Caron-Huot:2018dsv,Henn:2018cdp}. Even more strikingly, it has been conjectured that pairs of these cluster coordinates only appear in the adjacent entries of the symbol of appropriately-normalized amplitudes when they also appear together in a cluster in Gr(4,$n$)~\cite{Drummond:2017ssj}.  
+We conjecture that these functions, like the $A_2$ and $A_3$ functions, are valid for all $n$---i.e.~that the nonclassical part of all two-loop MHV amplitudes can be decomposed in terms of them. 
+
+
+
+The importance of the nonclassical part of the amplitude (most mathematically complicated part). Note that the remainder function and BDS-like normalized amplitudes have the same nonclassical part
+
+
+It is hoped that further developing this geometric picture for how these simple amplitudes can be decomposed into cluster-algebraic building blocks will help clarify what types of algebraic structures might play this role beyond the applicability of cluster algebras.
+
+In a companion paper, we apply some of these results at the next order by constructing the nonclassical part of the eight-point remainder function in terms of the same $A_5$ function found at seven points.   
+
 %which at least for low points is equivalent to imposing the extended Steinmann relations~\cite{Steinmann,Steinmann2,Cahill:1973qp,Caron-Huot:2018dsv,to_appear}.
 
+The remainder of this paper is organized as follows. In section~\ref{sec:brief_intro} we provide a self-contained introduction to cluster algebras and the principle ways in which they have appeared in ${\cal N} =4$ SYM theory. This section is intended to (at least partially) fill a pedagogical gap in the physics literature, and can be skipped by those who are familiar with recent developments at the intersection of these topics. In section~\ref{sec:cluster_polylog_MHV_review} we describe the tools relevant for working with polylogarithms, and in particular review the ways in which the coproduct and Poisson cobracket of two-loop amplitudes can be seen to exhibit curious cluster-algebraic properties. We then turn to our systematic analysis of the subalgebra-constructibility of the seven-point remainder function in section~\ref{sec:sub-constructibility}, describing our general approach and in particular showing why the previously-found $A_2$ and $A_3$ functions are the only interesting functions associated with cluster algebras of rank two and three. Finally, in sections~\ref{sec:d5-func} and~\ref{sec:a5-func} we construct the $D_5$ and $A_5$ functions in terms of which the nonclassical part of the remainder function can be decomposed. \draftnote{more about these sections} We conclude with a discussion of directions for future study.
 
-Perhaps the appearance of cluster algebras in this context isn't so surprising, given that integrands in this theory are described to all orders by the positive grassmannian $\Gr^+(k,n)$~\cite{}. Each on-shell diagram comes equipped with a cluster algebra associated with the variables that label its faces, which belong to the nodes of its dual graph.  
+This paper includes three appendices. First, appendix~\ref{appendix:integrable_A2} walks through the explicit construction of integrable and cluster-adjacent $A_2$ symbols through weight XXX, illustrating how symbols can be constructed on any cluster algebra. Appendix~\ref{appendix:subalgebras} tabulates the subalgebras of each type that appear in the finite cluster algebras relevant to $R_7^{(2)}$, while appendix~\ref{appendix:cobrackets} tabulates the number of independent nonclassical degrees of freedom in each of these finite cluster algebras.
 
-
-The remainder of this paper is organized as follows. In section~\ref{sec:brief_intro} we provide a self-contained introduction to cluster algebras and the main ways in which they appear in the planar limit of ${\cal N}=4$ SYM theory. This section is intended to fill a pedagogical gap in the physics literature, and can be skipped by those who are familiar with recent developments at the intersection of these topics. In section~\ref{sec:cluster_polylog_MHV_review} we 
 
 \section{A Brief Introduction to Cluster Algebras} \label{sec:brief_intro}
 
@@ -642,7 +657,7 @@ where $l=n-k$ and
 We have emphasized Grassmannian cluster algebras so far for two reasons: 1) the correspondence with triangulations and positive matrices make them easy to gain an intuition for and 2) the cluster algebra for $\Gr(4,n)$ is intimately connected to $n$-particle kinematics in $\mathcal{N}=4$ SYM. Let us now address point 2 a bit more in detail.
 
 
-\subsubsection{Applications to momentum twistors and \pdfeq{\mathcal{N}}=4 SYM}
+\subsubsection*{Applications to momentum twistors and \pdfeq{\mathcal{N}}=4 SYM}
 
 An immediate connection between $\Gr(4,n)$ and $\mathcal{N}=4$ SYM is that the $\x$-coordinates are dual-conformal invariant cross-ratios and appear as arguments of relevant physical functions. We can see this for example in the two-loop, six-particle remainder function 
 \begin{align}
@@ -907,7 +922,7 @@ This representation of $f_{A_2}$ differs from that in \cite{Golden:2014xqa} in s
 \end{equation}
 where we adopt the condensed notation $[ijkl] = \x_i\otimes\x_j\otimes\x_k\otimes\x_l$ in order to highlight the adjacency. 
 
-An additional benefit of this representation is that all arguments of the polylogarithms in for $f_{A_2}$ are -\xcoords of $A_2$. Furthermore, the function is smooth and real-valued for all $x_1, x_2>0$. The structure of the $A_2$ cluster algebra plays a crucial role in this analytic behavior in the following way. $\Li_{2,2}(x,y)$ and $\Li_{1,3}(x,y)$ have branch cuts at $x=1,y=1, x*y=1$. The first two branch cuts are trivially avoided as $-1/\x_i<0$ for $x_1,x_2>0$, however the last one is avoided only because of the exchange relation for $A_2$: 
+An additional benefit of this representation is that all arguments of the polylogarithms in for $f_{A_2}$ are negative \xcoords of $A_2$. Furthermore, the function is smooth and real-valued for all $x_1, x_2>0$. The structure of the $A_2$ cluster algebra plays a crucial role in this analytic behavior in the following way. $\Li_{2,2}(x,y)$ and $\Li_{1,3}(x,y)$ have branch cuts at $x=1,y=1, x*y=1$. The first two branch cuts are trivially avoided as $-1/\x_i<0$ for $x_1,x_2>0$, however the last one is avoided only because of the exchange relation for $A_2$: 
 \begin{equation}
 	0<\left(-\frac{1}{\x_{i-1}}\right)\left(-\frac{1}{\x_{i+1}}\right) = \frac{1}{1+\x_i}<1.
 \end{equation}
@@ -941,6 +956,9 @@ However, the benefit of \xcoords is that they have a unique Poisson bracket, whe
 While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so clear. However we have checked for all Grassmannian cluster algebras $\Gr(k\le4,n\le7)$ that $\a$-adjacency implies $\x$-adjacency, so we conjecture that the two phrasings of cluster adjacency are identical in constraining symbol space. \flag
 
 \section{Cluster subalgebra-constructibility}\label{sec:sub-constructibility} 
+
+The overarching goal for this paper is to exhaustively explore ways in which $\mathcal{E}^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7)$. $\Gr(4,7)$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $\Gr(4,7)$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical). 
+
 
 Define the basic notion here (which applies to both clustery and non-clustery cobrackets) (differentiate between symbol-level and cobracket-level constructibility)
 
@@ -1022,80 +1040,19 @@ We construct $f_{A_3}$ by beginning with an ansatz of $f_{A_2}$ evaluated on the
 \end{equation}
 Therefore there are four possible $f_{A_3}$, which we denote by their sign-behavior under $\sigma_{A_3}$ and $\tau_{A_3}$, for example $f_{A_3}^{+-}$ is invariant under $\sigma_{A_3}$ and picks up an overal minus sign under $\tau_{A_3}$. However not all sign-behaviors are necessarily possible, and working out which ``orientations'' of subalgebras can be made to fit the larger algebra's automorphisms is the central ingredient of our story. For example, there is no collection of $f_{A_2}$'s which is invariant under both $\sigma_{A_3}$ and $\tau_{A_3}$, i.e. $f_{A_3}^{++}$ does not exist. This can be worked out geometrically at the level of the $A_3$ associahedron, although it is a bit intricate. It is instead easier to run the problem through a linear algebra solver.
 
-
-
-
-\subsection{Results}
-
-\section{Subalgebra representations for \pdfeq{R_7^{(2)}}}\label{sec:R27-reps} 
-
-The overarching goal for this paper is to exhaustively explore ways in which $\mathcal{E}^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7)$. $\Gr(4,7)$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $\Gr(4,7)$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical). 
-
 $f_{A_2}$ evaluated across the 504 distinct $A_2$ subalgebras in $\Gr(4,7)$ gives a basis with only ??? degrees of freedom
+
 
 \subsection{\pdfeq{A_2\subset A_3} representation}
 This section is a review of \cite{Golden:2014xqa,Golden:2014xqf}. 
 
 
-\subsection{The \pdfeq{A_5} Function}\label{a5-func}
 
-As discussed previously, there are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
-\begin{equation}
-\begin{split}
-	&\left\{x_1\to x_2,~~
-	x_2\to x_3\left(1+x_4\right),~~
-	x_2\left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right\} + \sigma_{A_5},\\
-	&\left\{x_2\to x_3,~~x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right\} + \sigma_{A_5} + \tau_{A_5} 
-   \end{split}
-\end{equation}
-where by ``$+\sigma_{A_5}$'' and ``$+\sigma_{A_5}+\tau_{A_5}$'' I mean ``+ cyclic copies'' and ``+ cyclic and flip copies,'' respectively. These correspond to the geometries
-\begin{center}
-\begin{tikzpicture}
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
-\begin{scope}[xshift=3cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
-\end{scope}
-\begin{scope}[xshift=6cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P4) -- (P5) -- (P7) -- cycle;
-\end{scope}
-\begin{scope}[yshift=-2.5cm,xshift=1.5cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P6) -- cycle;
-\end{scope}
-\begin{scope}[yshift=-2.5cm, xshift=4.5cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
-\end{scope}
-\node[] at (9,0) (a) {(8 of each)};
-\node[] at (9,-2.5) (a) {(16 of each)};
-\end{tikzpicture}
-\end{center}
 
-The $A_5$ function is a sum over two of the classes of $A_2$ subalgebras, $x_2\to x_3\left(1+x_4\right)$ and $x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}$, appropriately antisymmetrized so that the overall $f_{A_5}$ picks up a minus sign under both $\sigma_{A_5}$ and $\tau_{A_5}$. Explicitly, this is written
-\begin{equation}
-	f_{A_5} = \sum_{i=0}^7\sum_{j=0}^1(-1)^{i+j}\sigma_{A_5}^i\tau_{A_5}^j\left(\frac12 f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right) + f_{A_2}\left(x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right)\right).
-\end{equation}
-The factor of $\frac12$ in front of $f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right)$ is simply a symmetry factor, as it lives in an 8-cycle of $\{\sigma_{A_5},\tau_{A_5}\}$.
 
-The two types of $A_2$'s appearing in $f_{A_5}$ are:
 
-\begin{equation}
-\begin{tikzpicture}
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
-\node[anchor=east] at (-1,0) (a) {$x_2 \to x_3(1+x_4):$};
-\begin{scope}[xshift=6cm]
-\drawOctagon
-\node[anchor=east] at (-1,0) (a) {$x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}:$};
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
-\end{scope}
-\end{tikzpicture}
-\end{equation}
 
-\subsection{The \pdfeq{D_5} Function}\label{sec:d5-func}
+\section{The \pdfeq{D_5} Function}\label{sec:d5-func}
 
 In this section we analyze ``the'' $D_5$ function, $\fd5$, which we generate by:
 \begin{itemize}
@@ -1218,7 +1175,74 @@ While this is the most technically correct way to phrase things, it is of course
 which is ill-defined up to the sign in front of each $\fd5$. 
 
 
+
+
+\section{The \pdfeq{A_5} Function}\label{sec:a5-func}
+
+As discussed previously, there are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
+\begin{equation}
+\begin{split}
+	&\left\{x_1\to x_2,~~
+	x_2\to x_3\left(1+x_4\right),~~
+	x_2\left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right\} + \sigma_{A_5},\\
+	&\left\{x_2\to x_3,~~x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right\} + \sigma_{A_5} + \tau_{A_5} 
+   \end{split}
+\end{equation}
+where by ``$+\sigma_{A_5}$'' and ``$+\sigma_{A_5}+\tau_{A_5}$'' I mean ``+ cyclic copies'' and ``+ cyclic and flip copies,'' respectively. These correspond to the geometries
+\begin{center}
+\begin{tikzpicture}
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+\begin{scope}[xshift=3cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
+\end{scope}
+\begin{scope}[xshift=6cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P4) -- (P5) -- (P7) -- cycle;
+\end{scope}
+\begin{scope}[yshift=-2.5cm,xshift=1.5cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P6) -- cycle;
+\end{scope}
+\begin{scope}[yshift=-2.5cm, xshift=4.5cm]
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
+\end{scope}
+\node[] at (9,0) (a) {(8 of each)};
+\node[] at (9,-2.5) (a) {(16 of each)};
+\end{tikzpicture}
+\end{center}
+
+The $A_5$ function is a sum over two of the classes of $A_2$ subalgebras, $x_2\to x_3\left(1+x_4\right)$ and $x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}$, appropriately antisymmetrized so that the overall $f_{A_5}$ picks up a minus sign under both $\sigma_{A_5}$ and $\tau_{A_5}$. Explicitly, this is written
+\begin{equation}
+	f_{A_5} = \sum_{i=0}^7\sum_{j=0}^1(-1)^{i+j}\sigma_{A_5}^i\tau_{A_5}^j\left(\frac12 f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right) + f_{A_2}\left(x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right)\right).
+\end{equation}
+The factor of $\frac12$ in front of $f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right)$ is simply a symmetry factor, as it lives in an 8-cycle of $\{\sigma_{A_5},\tau_{A_5}\}$.
+
+The two types of $A_2$'s appearing in $f_{A_5}$ are:
+
+\begin{equation}
+\begin{tikzpicture}
+\drawOctagon
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
+\node[anchor=east] at (-1,0) (a) {$x_2 \to x_3(1+x_4):$};
+\begin{scope}[xshift=6cm]
+\drawOctagon
+\node[anchor=east] at (-1,0) (a) {$x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}:$};
+\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
+\end{scope}
+\end{tikzpicture}
+\end{equation}
+
 \section{Conclusion}
+
+\begin{enumerate}
+\item since there are so few $D_5$ and $A_5$ subalgebras of Gr(4,7), these decompositions distill more intrinsic (better word?) geometric structure than the $A_3$ function 
+\item would be interesting to find the $D_5$ decomposition of higher-point amplitudes, to see if this seter our determined constants
+\item not possible to get the full (function-level) amplitude out of a single (function-level) subalgebra function; it merits checking whether a linear combination of different subalgebra functions could be found
+\item bring up mutations as active vs passive transformations?
+\end{enumerate}
 
 \section*{Acknowledgements}
 
@@ -1227,7 +1251,7 @@ We thank Jacob Bourjaily, Marcus Spradlin, \dots for illuminating discussions. T
 
 \appendix
 
-\section{Integrability and Adjacency for \pdfeq{A_2}}
+\section{Integrability and Adjacency for \pdfeq{A_2}}  \label{appendix:integrable_A2}
 
 \section{Counting Subalgebras of Finite Cluster Algebras}\label{appendix:subalgebras}
 In this appendix we catalog the subalgebra structure for the finite connected cluster algebras \(\subseteq E_6\). These algebras are: \(A_2, A_3, A_4, D_4, A_5, D_5, E_6\).
@@ -1336,7 +1360,8 @@ When counting distinct subalgebras, we lump together all subalgebras which are l
 \hline \(A_1 \times A_1 \times A_1 \times A_1 \times A_1\) & 0 & 0 \\ 
 \hline
 \end{tabular}
-\section{Cobracket Spaces in Finite Cluster Algebras}
+
+\section{Cobracket Spaces in Finite Cluster Algebras}\label{appendix:cobrackets}
 
 \bibliographystyle{ieeetr}
 
