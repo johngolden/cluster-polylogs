@@ -393,7 +393,7 @@ Putting this all together, we will generically refer to an $A_2$ cluster algebra
 
 \draftnote{poisson bracket?}
 
-\subsection{Subalgebras}
+\subsection{Subalgebras}\label{sec:subalgebras}
 
 Cluster algebras contain a rich and intricate subalgebra structure which will be critical for our upcoming physics applications. We can study a simple example by looking at triangulations of a hexagon, which is equivalently described by the cluster algebra associated with $\Gr(2,6)$:
 \begin{equation}\label{eq:gr26-seed}
@@ -723,7 +723,7 @@ Finally, we describe the cluster algebra $E_6$
       (120,0) *+{x_5} ="6",
       "1", {\ar"2"},
       "2", {\ar"3"},
-      "4", {\ar"3"},
+      "3", {\ar"4"},
       "5", {\ar"3"},
       "6", {\ar"5"},
     \end{xy}
@@ -936,6 +936,8 @@ This representation of $f_{A_2}$ therefore shares the following properties with 
 	\item smooth and real-valued in the positive domain.
 \end{itemize}
 
+\draftnote {Could/should mention the other purely classical terms one could augment $f_{A_2}$ with.}
+
 \subsection{Cluster Adjacency}
 
 Cluster adjacency is a property of all Steinmann-satisfying amplitudes, and was first introduced in \cite{Drummond:2017ssj}. The original phrasing of this property is that the symbol of all Steinmann-satisfying integrals in $n$-particle kinematics, when fully expanded out in terms of \acoords, is of the form 
@@ -954,110 +956,412 @@ While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so cl
 
 \section{Cluster subalgebra-constructibility}\label{sec:sub-constructibility} 
 
-The overarching goal for this paper is to exhaustively explore ways in which $\mathcal{E}^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7)$. $\Gr(4,7)$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $\Gr(4,7)$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical). 
+In this and future sections we will exhaustively explore ways in which $R^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7) \simeq E_6$. $E_6$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $E_6$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical).
 
+The main takeaways from this section are:
+\begin{enumerate}
+	\item $f_{A_2}$ forms a complete basis for the $B_2 \wedge B_2$ component of cluster polylogarithms for any algebra. 
+	\item Cluster polylogarithms can be endowed with ``subalgebra'' structure, where polylogarithms associated with smaller algebras are used to construct polylogarithms assocaited with larger algebras. This is called \emph{subalgebra-constructibility}.
+	\item Subalgebra-constructibility depends intricately on the automorphism structure of cluster algebras, and only a small collection of functions are subalgebra-constructible. 
+	\item We show that $R^{(2)}_7$ is subalgebra-constructible, and describe two novel representations which express this constructibility in terms of $D_5$ and $A_5$ subalgebras. 
+\end{enumerate}
 
-Define the basic notion here (which applies to both clustery and non-clustery cobrackets) (differentiate between symbol-level and cobracket-level constructibility)
+We begin with point 1. 
 
-Terminology guide (let $A$ be a cluster algebra, $B_i$ be a rank $i$ subalgebra of $A$, and $i_1<i_2<\ldots$):
+\subsection{\pdfeq{A_2} functions are a basis for cluster polylogarithms}
+
+A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis the $B_2 \wedge B_2$ component of any weight-4 cluster polylogarithms for all cluster algebras \footnote{This has been checked for $E_6$ and all subalgebras contained therein.}. What this means is that given a weight-4 cluster polylogarithm $F$ that is associated with cluster algebra $A$, there exists at least one decomposition of $F$ of the following form:
+\begin{equation}\label{eq:a2-decomp}
+	F = \sum_{(x_i\to x_j) \subset A} c_{ij} ~f_{A_2}(x_i \to x_j) + C, 
+\end{equation}
+where the sum ranges over all $A_2$ subalgebras of $A$ and $C$ is a purely classical polylogarithm which also satisfies adjacency on $A$. While this decomposition may not seem remarkable at first glance, it has several key features which we highlight here:
 \begin{itemize}
-	\item ``$B_i{\subset}A$-constructible $\a/\x$-polylog': an automorphic $\a$- or $\x$-polylog on $A$ that is composed of automorphic $\a$- or $\x$-polylogs on $B_i$,
-	\item ``$B_{i_1} {\subset} B_{i_2}{\subset}\ldots{\subset}A$-constructible $\a/\x$-polylog'': iterating the above definition for multiple nestings of subalgebras of decreasing rank.
+	\item The classical function $C$ can be written purely in terms of $\Li_{k}(-\x)$ for $k\le4$, where $\x$ is an \xcoord of $A$.
+	\item This decomposition can be determined, up to terms proportional to constants, algorithmically given only the \emph{symbol} for $F$.
 \end{itemize}
+Specifically, given the symbol for $F$, the algorithm for determining eq.~(\ref{eq:a2-decomp}) is: 
+\begin{itemize}
+	\item Solve for $c_{ij}$ such that $\delta|_{B_2 \wedge B_2}\big(F - \sum c_{ij} ~f_{A_2}(x_i \to x_j)\big) = 0$, where again the sum is over all $A_2$ subalgebras of $A$.
+	\item Once the $c_{ij}$ are fixed, the resulting function $C = F - \sum c_{ij} ~f_{A_2}(x_i \to x_j)$ can be fit to an ansatz of weight-4 functions composed of (products of) $\Li_{k\le4}(-\x)$ over all \xcoords of $A$. 
+\end{itemize}
+And again, matching beyond-the-symbol terms must be dealt with through other considerations. 
 
-\subsection{\pdfeq{A_2} functions are a complete basis}
-
-A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis for weight-4 cluster $\x$-polylogarithms for all cluster algebras \footnote{This has been checked for $E_6$ and all subalgebras contained therein.}. This is because the cobracket integrability condition, eq.~(\ref{eq:integrability}), requires relationships between the arguments of the cobrackets. Remarkably, the $A_2$ exchange relation
+In practice, then, then existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-4 cluster polylogarithms. While we do not have a rigorous proof for the fact that $f_{A_2}$ forms a basis for $B_2 \wedge B_2$ (beyond the explicit check through $E_6$), we can understand why this might be the case. Specifically, recall that the cobracket integrability condition, eq.~(\ref{eq:integrability}), requires relationships between the arguments of the cobrackets. Remarkably, the $A_2$ exchange relation
 \begin{equation}
 	1+\x_i = \x_{i-1}\x_{i+1}
 \end{equation}
 is a sufficient relationship to generate one solution to integrability, namely $f_{A_2}$. In contrast, the $A_1\times A_1$ cluster algebra has two algebraically distinct variables and so provides no solutions to integrability. 
 
-For any larger algebra, one generates a solution to integrability for each $A_2$ subalgebra. The magic of cluster algebras is that there exist no additional relationships -- this is equivalent to the statement that all cluster algebras can be fully decomposed in to $A_2$ and $A_1 \times A_1$ subalgebras. 
+For any larger algebra, one generates a solution to integrability for each $A_2$ subalgebra. The magic of cluster algebras is that there exist no additional relationships -- this is equivalent to the statement that all cluster algebras can be fully decomposed in to $A_2$ and $A_1 \times A_1$ subalgebras. While this does not constitute a proof that $f_{A_2}$ forms a basis, it highlights the suggestive connection:
+\begin{itemize}
+	\item all cluster algebras can be decomposed in to  $A_2$ and $A_1\times A_1$ subalgebras and,
+	\item all weight-4 cluster polylogarithms can be decomposed in to $f_{A_2}$ and classical polyogarithms. 
+\end{itemize}
+The rest of this section will be focused on exploring extensions of this idea beyond $A_2$. Specifically, we'll start by exploring the space of cluster polylogarithms one can associate with the $A_3$ cluster algebra. Once we have these functions we can look at rank $>3$ algebras and ask: which weight-4 cluster polylogarithms can be decomposed in to ``$A_3$ functions''? More broadly, our goal is to understand to what extent one can construct cluster polylogarithms which mimic the subalgebra structure of their associate cluster algebra. From a purely mathematical standpoint we are motivated to study this question on the strength of the $f_{A_2}$ forming a basis. From a physics perspective we are motivated to study this question because, as we will show, $R^{(2)}_n$ exhibits this subalgebraic structure. 
 
-This essentially ``solves'' the problem of constructing $\rn$, via the algorithm described in \cite{Golden:2014xqf}, as it is a cluster $\x$-polylogarithm of $\Gr(4,n)$.
+\subsection{\pdfeq{A_2}-constructibility and \pdfeq{A_3}}
 
+We'll begin bootstrapping our way up to polylogarithms associated with larger algebras by determine the space of weight-4 cluster polylogarithms associated with the $A_3$ cluster algebra. This is equivalent to asking: how many cluster polylogarithms can be constructed out of the $A_2$ subalgebras of $A_3$? 
 
-\subsection{Definition and outline for construction}
-
-We will adopt some novel notation to describe subalgebras. Specifically, given a seed quiver for an algebra, we can label a subalgebra by 
-\begin{enumerate}
-	\item a sequence of mutations on the seed quiver that moves us to a cluster that lies within the subalgebra,
-	\item along with a list of nodes that one mutates on the new cluster to generate the subalgebra.
-\end{enumerate}
-For example, with $A_3$ we have the seed cluster
-\begin{equation}
-	x_1 \to x_2 \to x_3,
-\end{equation}
-i.e. we have nodes 1, 2, 3 initially occupied by the coordinates $x_1, x_2, x_3$. The nodes remain fixed but the coordinates occupying each node change as one mutates. Note that two $A_2$ subalgebras are present directly in the seed cluster, namely $x_1 \to x_2$ and $x_2 \to x_3$. We label these two subalgebras by the nodes to mutate on to generate the subalgebra, so in this case we have 
-\begin{equation}
-	A_3|_{12} = x_1 \to x_2,\qquad A_3|_{23} = x_2 \to x_3.
-\end{equation}
-But of course these are not the only two $A_2$ subalgebras that appear in the complete $A_3$ algebra. To reach the other subalgebras one needs to mutate on the seed quiver and move out to other clusters. A mutation path is just a sequence of integers, e.g. ``123'', which means to mutate on node 1, then mutate the resulting quiver on node 2, then 3. We label this by $A_3|^{123}$, and working out the mutations gives
-\begin{equation}
-	A_3|^{123} = \frac{x_2}{1+x_{12}}\to\frac{\left(1+x_1\right) x_3}{1+x_{123}}\to\frac{1+x_{12}}{x_1 x_2 x_3}.
-\end{equation}
-Note that once again we have two obvious $A_2$ subalgebras. These are then labeled by 
-\begin{equation}
-	A_3|^{123}_{12} = \frac{x_2}{1+x_{12}}\to\frac{\left(1+x_1\right) x_3}{1+x_{123}}, \qquad A_3|^{123}_{23} = \frac{\left(1+x_1\right) x_3}{1+x_{123}}\to\frac{1+x_{12}}{x_1 x_2 x_3}.
-\end{equation}
-To summarize, we label subalgebras with the notation 
-\begin{equation}
-	\text{Algebra}|^{\text{mutation path from algebra seed to cluster containing subalgebra seed}}_{\text{nodes of the cluster to mutate on to generate the subalgebra}}~.
-\end{equation}
-For this paper we always refer to the seed quivers listed in sec.~\ref{sec:finite-algebras}. Lastly, this notation can be extended to include disconnected subalgebras by including a comma between the nodes, for example in $A_3$ we have the $A_1\times A_1$ subalgebra 
-\begin{equation}
-	A_3|_{1,3} = x_1 ~~x_3,
-\end{equation}
-which generates a square face of the associahedron. 
-
-One downside of this notation is that it is not unique, as there are many possible mutation paths to any cluster, and each subalgebra has many equivalent seed clusters. For example \flag 
-\begin{equation}
-	A_3|^{123}_{23} = A_3|_{12} = x_1\to x_2.
-\end{equation}
-However in the case of finite cluster algebras one can always find at least one path of shortest length (and in the case of multiple shortest paths, sort left-to-right by lowest node number). 
-
-In this section we will explore the space of subalgebra-constructible polylogarithms for finite algebras (specifically those $\subseteq E_6$). Specifically, let us start with the question: how many ways can we embed $f_{A_2}$ into a larger algebra in a way that respects the automorphisms of that larger algebra? As discussed in the previous section, because we are working at the level of the cobracket, $f_{A_2}$ evaluated across all subalgebras of a larger algebra form a complete basis and so ``$A_2$-constructibility'' is possible for all cluster polylogarithms we are exploring. We can work through the simple example of $A_2 \subset A_3$ to give a more concrete flavor for this procedure. 
-
-The six $A_2$ subalgebras of $A_3$ are labeled by
+Begin with the six $A_2$ subalgebras in $A_3$ -- as discussed in sec.~(\ref{sec:subalgebras}), there are multiple ways to think of these subalgebras. The simplest is that these are the $\binom{6}{5}$ pentagons embeddable in a hexagon. These are also present as the six pentagonal faces in the $A_3$ associahedron, fig.~\ref{fig:a3-poly}. For this applications it is most practical to list the six distinct $A_2$ seeds that appear in the 14 cluster generated by mutating on the standard $A_3$ seed, $x_1 \to x_2 \to x_3$:
 \begin{equation}\label{eq:a2-in-a3}
 \begin{gathered}
-	A_3|^{}_{12} = x_1 \to x_2, \quad 
-	A_3|^{}_{23} = x_2 \to x_3, \quad 
-	A_3|^{123}_{12} = \frac{x_2}{1+x_{12}}\to \frac{\left(1+x_1\right) x_3}{1+x_{123}},\\ \\
-	A_3|^{1}_{23} = \frac{x_1 x_2}{1+x_1}\to x_3,\quad 
-	A_3|^{2}_{13} = x_1 \left(1+x_2\right)\to \frac{x_2 x_3}{1+x_2},\quad
-	A_3|^{3}_{12} =  x_1\to x_2 \left(1+x_3\right).
+	x_1 \to x_2, \quad 
+	x_2 \to x_3, \quad 
+	\frac{x_2}{1+x_{12}}\to \frac{\left(1+x_1\right) x_3}{1+x_{123}},\\ \\
+	\frac{x_1 x_2}{1+x_1}\to x_3,\quad 
+	x_1 \left(1+x_2\right)\to \frac{x_2 x_3}{1+x_2},\quad
+	 x_1\to x_2 \left(1+x_3\right).
 \end{gathered}	
 \end{equation}
 
-We construct $f_{A_3}$ by beginning with an ansatz of $f_{A_2}$ evaluated on the six $A_2$ subalgebras listed in eq.~(\ref{eq:a2-in-a3}). We then require that $f_{A_3}$ be invariant under the automorphisms of $A_3$ up to an overall sign. As discussed in sec.~\ref{sec:automorphisms}, $A_3$ has two automorphisms, 
+We now construct an ansatz for $f_{A_3}$ as a sum of $f_{A_2}$ evaluated on these six subalgebras:
 \begin{equation}
-	\sigma_{A_3}: etc.
+	f_{A_3} = c_1 f_{A_2}(x_1 \to x_2) + \ldots + c_6 f_{A_2}(x_1\to x_2 \left(1+x_3\right)). 
+\end{equation}	
+Due to the inherited properties of $f_{A_2}$, the above ansatz already has a cluster-y cobracket, satisfies cluster adjacency, and is smooth and real-valued in the positive domain. The remaining problem to solve is to find values for the $c_i$ such that $f_{A_3}$ is invariant (up to an overall sign) under the automorphisms of $A_3$. These were discussed in a previous section (ref), we write them down explicitly here:
+\begin{align}
+	&\sigma_{A_3}:\quad x_1 \to \frac{x_2}{1+x_1 + x_1 x_2}, ~~x_2 \to \frac{x_3(1+x_1)}{1+x_1 + x_1x_2 +x_1x_2x_3},~~ x_3 \to \frac{1+x_1 + x_1 x_2}{x_1x_2x_3},\nl \\
+	&\tau_{A_3}:\quad x_1 \to \frac{1}{x_3}, ~~x_2\to\frac{1}{x_2},~~x_3\to \frac{1}{x_1}.\nn
+\end{align}
+Recall that $\sigma$ is essentially the cyclic automorphism on the hexagon, and $\tau$ is the dihedral flip. 
+
+The first thing to try is to make $f_{A_3}$ completely invariant under the $A_3$ automorphisms:
+\begin{equation}\label{eq:fA3++}
+	\sigma_{A_3}(f_{A_3}) = f_{A_3},\quad \tau_{A_3}(f_{A_3}) = f_{A_3}.  
 \end{equation}
-Therefore there are four possible $f_{A_3}$, which we denote by their sign-behavior under $\sigma_{A_3}$ and $\tau_{A_3}$, for example $f_{A_3}^{+-}$ is invariant under $\sigma_{A_3}$ and picks up an overal minus sign under $\tau_{A_3}$. However not all sign-behaviors are necessarily possible, and working out which ``orientations'' of subalgebras can be made to fit the larger algebra's automorphisms is the central ingredient of our story. For example, there is no collection of $f_{A_2}$'s which is invariant under both $\sigma_{A_3}$ and $\tau_{A_3}$, i.e. $f_{A_3}^{++}$ does not exist. This can be worked out geometrically at the level of the $A_3$ associahedron, although it is a bit intricate. It is instead easier to run the problem through a linear algebra solver.
+However it turns out there is no collection of $c_i$ that solves such a constraint. If instead we impose 
+\begin{equation}
+	\sigma_{A_3}(f_{A_3}) = f_{A_3},\quad \tau_{A_3}(f_{A_3}) = -f_{A_3},
+\end{equation}
+Then we find the solution 
+\begin{equation}
+	c_i = \text{constant}.
+\end{equation}
+We label this particular solution by 
+\begin{equation}
+	f_{A_3}^{+-} = f_{A_2}(x_1 \to x_2) + \ldots + f_{A_2}(x_1\to x_2 \left(1+x_3\right)) = \sum_{i=1}^6 \sigma_{A_3}^i\big(f_{A_2}(x_1\to x_2)\big),
+\end{equation}
+where the signs indicate behavior under $\sigma$ and $\tau$, respectively. Similarly, based on the lack of a solution for eq.~(\ref{eq:fA3++}) we say that $f_{A_3}^{++} = 0$. There are two remaining sign choices to check, $f_{A_3}^{-+}$ and $f_{A_3}^{--}$, and we find $f_{A_3}^{-+} = 0$ and		
+\begin{equation}
+	f_{A_3}^{--} =\sum_{i=1}^6(-1)^i\sigma_{A_3}^i \big(f_{A_2}(x_1\to x_2)\big).
+\end{equation}
 
-$f_{A_2}$ evaluated across the 504 distinct $A_2$ subalgebras in $\Gr(4,7)$ gives a basis with only ??? degrees of freedom
+Therefore we see that, unlike the case of $A_2$, there are two functions one can associate with $A_3$: $f_{A_3}^{+-}$ and $f_{A_3}^{--}$. These functions arise purely from the interplay between the overall symmetries of the $A_3$ cluster algebra and the structure of the $A_2$ subalgebras in $A_3$, i.e. there has been no physics input so far. We can tabulate our results in the following table:
+\begin{equation}\label{eq:a3-func-counts}
+\begin{array}{ l | c | c | c | c }			
+  & \sigma^+\tau^+ & \sigma^+\tau^- & \sigma^-\tau^+ & \sigma^-\tau^- \\
+  \hline
+  A_3 & 0 & 1 & 0 & 1 \\  
+\end{array} 
+\end{equation}
+This displays the total number of non-classical weight-4 cluster polylogarithm functions associated with the $A_3$ cluster algebra with the given sign changes under the $\sigma$ and $\tau$ automorphisms. 
+
+\subsection{\pdfeq{A_2}-constructibility for larger algebras}\label{sec:a2-constructibility}
+
+It is a straightforward exercise to extend the analysis of the previous section to any (finite) cluster algebra, namely
+\begin{itemize}
+	\item begin with an ansatz of $f_{A_2}$ applied across all $A_2$ subalgebras of a given larger algebra,
+	\item impose that the overall function is invariant under automorphisms up to overall sign choices,
+	\item count the number of solutions to these constraints.
+\end{itemize}
+
+In the case of $A_n$ algebras we only have to impose the dihedral automorphisms $\sigma_n$ and $\tau_n$, and so the resulting table is exactly analogous to eq.~(\ref{eq:a3-func-counts}):
+\begin{equation}\label{eq:an-func-counts}
+\begin{array}{ l | c | c | c | c }			
+  & \sigma^+\tau^+ & \sigma^+\tau^- & \sigma^-\tau^+ & \sigma^-\tau^- \\
+  \hline
+  A_3 & 0 & 1 & 0 & 1 \\  
+  \hline
+  A_4 & 0 & 3 & 0 & 0 \\
+  \hline
+  A_5 & 2 & 5 & 2 & 5 
+\end{array} 
+\end{equation}
+It is interesting to note that the $+-$ sign choice admits at least one solution for all $A_n$ studied so far, and that is the only sign choice for $A_4$. 
+
+As discussed in sec.~(\ref{sec:automorphisms}), $D_4$ has the automorphism group $D_4\times S_3$, with two cyclic generators $\sigma_{D_4}^{(4)}$ and $\sigma_{D_4}^{(3)}$ (corresponding to the $D_4$ and $S_3$, respectively) and then the $D_4$ flip $\tau_{D_4}$ as well as the $S_3$ flip denoted $\mathbb{Z}_{2,D_4}$. In the following table these are abbreviated $\sigma_4,\sigma_3,\tau_4, \mathbb{Z}_2$, respectively. Because of the four automorphism generators, there are 16 possible sign choices to impose on the collection of 36 distinct $f_{A_2}$'s in $D_4$. 
+\begin{equation}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^+ \tau_4^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 0 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 1 & 0 \\
+\cline{2-3}
+\end{tabular} 
+\hspace{.6cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^+ \tau_4^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 2 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 0 & 0 \\
+\cline{2-3}
+\end{tabular}
+\hspace{.6cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^- \tau_4^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 1 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 1 & 0 \\
+\cline{2-3}
+\end{tabular}
+\hspace{.6cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^- \tau_4^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{3}^+$} & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\mathbb{Z}_2^+$ & 1 & 0 \\
+\cline{2-3} $\mathbb{Z}_2^-$ & 0 & 0 \\
+\cline{2-3}
+\end{tabular}
+\end{equation}
+Here we again see that the space of functions satisfying automorphisms is remarkably constrained, with no functions exhibiting a sign flip under $\sigma_3$ and only one sign choice -- $\sigma_4^+\tau_4^-\sigma_3^+\mathbb{Z}_2^+$ -- that offers more than one possible solution.
 
 
-\subsection{\pdfeq{A_2\subset A_3} representation}
-This section is a review of \cite{Golden:2014xqa,Golden:2014xqf}. 
+$D_5$ is less symmetric than $D_4$, with only $D_5 \times \mathbb{Z}_2$ automorphism group (in the table the generators are labeled by $\sigma,\tau,$ and $\mathbb{Z}_2$). Therefore there are 8 possible sign choices to impose on the collection of 125 distinct $f_{A_2}$'s in $D_5$, and the resulting number of solutions is
+\begin{equation}\label{eq:a2-d5-counts}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+5 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+10 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 3 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 7 \\
+\hline
+\end{tabular} 
+\end{equation}
 
+Finally we turn to $E_6$, which has automorphism group $D_{14}$ with generators $\sigma,\tau,$ and $\mathbb{Z}_2$). $E_6$ is much larger than the algebras studied so far, with 504 distinct $A_2$ subalgebras, however the space of automorphic functions is still quite constrained:
+\begin{equation}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+14 & 16 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+23 & 19 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 0 \\
+\hline
+\end{tabular} 
+\end{equation}
+Here it is very surprising that there exist no functions on $E_6$ which pick up a minus sign under the dihedral cycle. Recall at this point that $R^{(2)}_7$ is a cluster polylogarithm on $E_6\simeq \Gr(4,7)$ which is invariant under all of $\sigma, \tau,$ and $\mathbb{Z}_2$. Therefore it exists as some linear combination of the 14 degrees of freedom in $f_{E_6}^{+++}$. 
 
+\subsection{\pdfeq{A_3}-constructibility}
 
+Having exhausted our explorations of $A_2$-constructible functions, we can now turn to looking at ways in which ``$A_3$ functions'' can be used to construct cluster polylogarithms. Since $A_3$ functions are themselves built out of $A_2$ functions, the space of $A_3$-constructible functions will be a subset of our results from the previous section. 
 
+Since there are two functions associated with $A_3$, $f_{A_3}^{+-}$ and $f_{A_3}^{--}$, the analysis is not quite as straightforward as the case of $A_2$. To simplify matters we will start by choosing only one of the $A_3$ functions and using it as our basis. Future analysis could include looking at the space of functions that can be written down as a sum of both $f_{A_3}^{+-}$ and $f_{A_3}^{--}$, however currently we are aware of no function of relevance to physics with such a property. Instead, it is known that $R^{(2)}_7$ can be decomposed in to $f_{A_3}^{--}$ \cite{Golden:2014xqa,Golden:2014xqf} functions, and so we will focus on that function for this analysis. 
 
+Interestingly, we find that there are no $A_3^{--}\subset A_4$ or $A_3^{--}\subset D_4$ functions. For $A_5$ we have 
 
+\begin{equation}\label{eq:a3-a5-func-counts}
+\begin{array}{ l | c | c | c | c }      
+  & \sigma^+\tau^+ & \sigma^+\tau^- & \sigma^-\tau^+ & \sigma^-\tau^- \\
+  \hline
+  A_3^{--}\subset A_5 & 1 & 1 & 0 & 3 
+\end{array} 
+\end{equation}
+For $D_5$ we have
+\begin{equation}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+2 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+3 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 1 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 5 \\
+\hline
+\end{tabular} 
+\end{equation}
+And finally $E_6$ gives
+\begin{equation}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+8 & 8 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+8 & 11 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 0 \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\mathbb{Z}_2^+$} & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+0 & 0 \\
+\hline
+\end{tabular} 
+\end{equation}
+
+\subsection{Subalgebra-constructibility of \pdfeq{R^{(2)}_7}}
+
+So far we have seen how we can bootstrap smaller cluster polylogarithms into bigger ones via automorphisms and subalgebra structures. One could continue in this vein, for example look for $D_4$-constructible functions, etc. A future goal of this research is to develop more refined symmetry arguments for why certain subalgebra chains produce valid cluster polylogarithms and other chains do not. 
+
+Rather than continuing to bootstrap our way up and explore all possibilities, we'll shift our focus to the target of $R^{(2)}_7$ and finding ways in which it can be decomposed in to functions on subalgebras. This is a top-down approach for finding new and interesting cluster polylogarithms, rather than the bottom-up approach we have been describing. 
+
+First we describe the $\Gr(4,7)$ seed. The seed cluster for $\Gr(4,7)$ generated by eq.~(\ref{eq:gkn-seed}) is not manifestly of $E_6$ quiver type, instead one must make a sequence of mutations to arrive at the following cluster (presented here in terms of \xcoords):
+\begin{equation}\label{eq:g47-seed}
+\begin{gathered}
+\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
+	(0,50) *+{\frac{\langle 1234\rangle  \langle 1267\rangle }{\langle
+   		1237\rangle  \langle 1246\rangle }} ="1",
+	(100,50) *+{-\frac{\langle 1247\rangle  \langle 3456\rangle
+ 	  	}{\langle 4(12)(35)(67)\rangle }} ="2",
+	(200,50) *+{\frac{\langle 1246\rangle  \langle 5(12)(34)(67)\rangle
+ 	  	}{\langle 1245\rangle  \langle 1267\rangle  \langle
+   		3456\rangle }} ="3",
+	(200,0) *+{-\frac{\langle 4(12)(35)(67)\rangle }{\langle
+   		1234\rangle  \langle 4567\rangle }} ="4",
+	(300,50) *+{-\frac{\langle 1267\rangle  \langle 1345\rangle  \langle
+   		4567\rangle }{\langle 1567\rangle  \langle
+   		4(12)(35)(67)\rangle }} ="5",
+	(400,50) *+{\frac{\langle 1567\rangle  \langle 2345\rangle }{\langle
+   		5(12)(34)(67)\rangle }} ="6",
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"3", {\ar"4"},
+	"5", {\ar"3"},
+	"6", {\ar"5"},
+\end{xy}
+\end{gathered}
+\end{equation}
+
+The general question we will be trying to answer in the upcoming sections is: for each subalgebra type of $E_6$, does $R^{(2)}_7$ admit a decomposition in to cluster polylogarithms of type $A$? In particular, the results of sec.~(\ref{sec:a2-constructibility}) give us a menu of possible functions, some of which are entirely fixed while others contain free parameters. For each candidate subalgebra, we scan over all non-zero cluster polylogarithms and see if an ansatz consisting of that function evaluated on all of the relevant subalgebras of $E_6$ can be matched to the non-classical component of $R^{(2)}_7$. If there does exist a solution, we can then look for further decompositions of that solution in to even smaller subalgebras. 
+
+Since $D_5$ is the largest subalgebra of $E_6$ (in terms of number of clusters), we will begin there. 
 
 \section{The \pdfeq{D_5} Function}\label{sec:d5-func}
 
-In this section we analyze ``the'' $D_5$ function, $\fd5$, which we generate by:
+Let us now work through finding all possible $D_5$ decompositions of $R^{(2)}_7$. Specifically, we will
 \begin{itemize}
-	\item starting with an ansatz of all distinct $\fa3$'s in $D_5$,
-	\item imposing antisymmetry under all of the $D_5$ automorphisms $\{\sigma, \tau, \mathbb{Z}_2\}$,
-	\item taking the fully symmetric sum of this $\fd5$ over $E_6$ and fitting to $R^{(2)}_7$.
+	\item begin with the 5-parameter solution for $f_{D_5}^{+++}$ (see eq.~(\ref{eq:a2-d5-counts})),
+	\item evaluate $f_{D_5}^{+++}$ over the 14 $D_5$ subalgebras of $\Gr(4,7)$,
+	\item thus generating an ansatz with 19 free parameters: 5 inside $f_{D_5}^{+++}$ and 14 from the sum over all the subalgebras,
+	\item now it is straightforward to check if there is a choice of these parameters which matches the non-classical component of $R^{(2)}_7$.
 \end{itemize}
-The resulting function has 1 free parameter, which represents an internal degree of freedom in $\fd5$ that cancels in the symmetric sum over $E_6$.
+This procedure is then repeated for all non-zero sign choices for $f_{D_5}$, namely $f_{D_5}^{+-+}$ (10 parameters), $f_{D_5}^{-+-}$ (3 parameters), and $f_{D_5}^{---}$ (7 parameters). 
+
+
+
 
 There are 65 distinct $\a3$'s in $D_5$. Of these, only 42 produce linearly independent $\fa3$'s. Imposing full $D_5$ antisymmetry on this collection of $\fa3$'s leaves only 5 degrees of freedom. Requiring that the full $E_6$-symmetric sum of $\fd5$ gives $R^{(2)}_7$ fixes 4 of these parameters, leaving us with only 1 degree of freedom. Of course when we are looking for a particular representation of $\fd5$ we have 24 degrees of freedom (23 of which are equivalent to adding zero).
 
@@ -1085,32 +1389,7 @@ We do not include a representation for the piece of the function that cancels in
 
 \subsubsection*{Representing $R^{(2)}_7$ in terms of $\fd5$}
 
-An $E_6$ version of the $\Gr(4,7)$ seed is:
-\begin{equation}
-\begin{gathered}
-\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
-	(0,50) *+{\frac{\langle 1234\rangle  \langle 1267\rangle }{\langle
-   		1237\rangle  \langle 1246\rangle }} ="1",
-	(100,50) *+{-\frac{\langle 1247\rangle  \langle 3456\rangle
- 	  	}{\langle 4(12)(35)(67)\rangle }} ="2",
-	(200,50) *+{\frac{\langle 1246\rangle  \langle 5(12)(34)(67)\rangle
- 	  	}{\langle 1245\rangle  \langle 1267\rangle  \langle
-   		3456\rangle }} ="3",
-	(200,0) *+{-\frac{\langle 4(12)(35)(67)\rangle }{\langle
-   		1234\rangle  \langle 4567\rangle }} ="4",
-	(300,50) *+{-\frac{\langle 1267\rangle  \langle 1345\rangle  \langle
-   		4567\rangle }{\langle 1567\rangle  \langle
-   		4(12)(35)(67)\rangle }} ="5",
-	(400,50) *+{\frac{\langle 1567\rangle  \langle 2345\rangle }{\langle
-   		5(12)(34)(67)\rangle }} ="6",
-	"1", {\ar"2"},
-	"2", {\ar"3"},
-	"3", {\ar"4"},
-	"5", {\ar"3"},
-	"6", {\ar"5"},
-\end{xy}
-\end{gathered}
-\end{equation}
+
 The symmetries are $\sigma$ (period 7), $\tau$, and $\mathbb{Z}_2$ (both period 2) and can be represented as:
 \begin{align*}
 	\sigma:\quad &x_1\mapsto \frac{1}{x_6
