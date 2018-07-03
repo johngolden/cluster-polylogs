@@ -1,0 +1,58 @@
+We will adopt some novel notation to describe subalgebras. Specifically, given a seed quiver for an algebra, we can label a subalgebra by 
+\begin{enumerate}
+	\item a sequence of mutations on the seed quiver that moves us to a cluster that lies within the subalgebra,
+	\item along with a list of nodes that one mutates on the new cluster to generate the subalgebra.
+\end{enumerate}
+For example, with $A_3$ we have the seed cluster
+\begin{equation}
+	x_1 \to x_2 \to x_3,
+\end{equation}
+i.e. we have nodes 1, 2, 3 initially occupied by the coordinates $x_1, x_2, x_3$. The nodes remain fixed but the coordinates occupying each node change as one mutates. Note that two $A_2$ subalgebras are present directly in the seed cluster, namely $x_1 \to x_2$ and $x_2 \to x_3$. We label these two subalgebras by the nodes to mutate on to generate the subalgebra, so in this case we have 
+\begin{equation}
+	A_3|_{12} = x_1 \to x_2,\qquad A_3|_{23} = x_2 \to x_3.
+\end{equation}
+But of course these are not the only two $A_2$ subalgebras that appear in the complete $A_3$ algebra. To reach the other subalgebras one needs to mutate on the seed quiver and move out to other clusters. A mutation path is just a sequence of integers, e.g. ``123'', which means to mutate on node 1, then mutate the resulting quiver on node 2, then 3. We label this by $A_3|^{123}$, and working out the mutations gives
+\begin{equation}
+	A_3|^{123} = \frac{x_2}{1+x_{12}}\to\frac{\left(1+x_1\right) x_3}{1+x_{123}}\to\frac{1+x_{12}}{x_1 x_2 x_3}.
+\end{equation}
+Note that once again we have two obvious $A_2$ subalgebras. These are then labeled by 
+\begin{equation}
+	A_3|^{123}_{12} = \frac{x_2}{1+x_{12}}\to\frac{\left(1+x_1\right) x_3}{1+x_{123}}, \qquad A_3|^{123}_{23} = \frac{\left(1+x_1\right) x_3}{1+x_{123}}\to\frac{1+x_{12}}{x_1 x_2 x_3}.
+\end{equation}
+To summarize, we label subalgebras with the notation 
+\begin{equation}
+	\text{Algebra}|^{\text{mutation path from algebra seed to cluster containing subalgebra seed}}_{\text{nodes of the cluster to mutate on to generate the subalgebra}}~.
+\end{equation}
+For this paper we always refer to the seed quivers listed in sec.~\ref{sec:finite-algebras}. Lastly, this notation can be extended to include disconnected subalgebras by including a comma between the nodes, for example in $A_3$ we have the $A_1\times A_1$ subalgebra 
+\begin{equation}
+	A_3|_{1,3} = x_1 ~~x_3,
+\end{equation}
+which generates a square face of the associahedron. 
+
+One downside of this notation is that it is not unique, as there are many possible mutation paths to any cluster, and each subalgebra has many equivalent seed clusters. For example \flag 
+\begin{equation}
+	A_3|^{123}_{23} = A_3|_{12} = x_1\to x_2.
+\end{equation}
+However in the case of finite cluster algebras one can always find at least one path of shortest length (and in the case of multiple shortest paths, sort left-to-right by lowest node number). 
+
+In this section we will explore the space of subalgebra-constructible polylogarithms for finite algebras (specifically those $\subseteq E_6$). Specifically, let us start with the question: how many ways can we embed $f_{A_2}$ into a larger algebra in a way that respects the automorphisms of that larger algebra? As discussed in the previous section, because we are working at the level of the cobracket, $f_{A_2}$ evaluated across all subalgebras of a larger algebra form a complete basis and so ``$A_2$-constructibility'' is possible for all cluster polylogarithms we are exploring. We can work through the simple example of $A_2 \subset A_3$ to give a more concrete flavor for this procedure. 
+
+The six $A_2$ subalgebras of $A_3$ are labeled by
+\begin{equation}\label{eq:a2-in-a3}
+\begin{gathered}
+	A_3|^{}_{12} = x_1 \to x_2, \quad 
+	A_3|^{}_{23} = x_2 \to x_3, \quad 
+	A_3|^{123}_{12} = \frac{x_2}{1+x_{12}}\to \frac{\left(1+x_1\right) x_3}{1+x_{123}},\\ \\
+	A_3|^{1}_{23} = \frac{x_1 x_2}{1+x_1}\to x_3,\quad 
+	A_3|^{2}_{13} = x_1 \left(1+x_2\right)\to \frac{x_2 x_3}{1+x_2},\quad
+	A_3|^{3}_{12} =  x_1\to x_2 \left(1+x_3\right).
+\end{gathered}	
+\end{equation}
+
+We construct $f_{A_3}$ by beginning with an ansatz of $f_{A_2}$ evaluated on the six $A_2$ subalgebras listed in eq.~(\ref{eq:a2-in-a3}). We then require that $f_{A_3}$ be invariant under the automorphisms of $A_3$ up to an overall sign. As discussed in sec.~\ref{sec:automorphisms}, $A_3$ has two automorphisms, 
+\begin{equation}
+	\sigma_{A_3}: etc.
+\end{equation}
+Therefore there are four possible $f_{A_3}$, which we denote by their sign-behavior under $\sigma_{A_3}$ and $\tau_{A_3}$, for example $f_{A_3}^{+-}$ is invariant under $\sigma_{A_3}$ and picks up an overal minus sign under $\tau_{A_3}$. However not all sign-behaviors are necessarily possible, and working out which ``orientations'' of subalgebras can be made to fit the larger algebra's automorphisms is the central ingredient of our story. For example, there is no collection of $f_{A_2}$'s which is invariant under both $\sigma_{A_3}$ and $\tau_{A_3}$, i.e. $f_{A_3}^{++}$ does not exist. This can be worked out geometrically at the level of the $A_3$ associahedron, although it is a bit intricate. It is instead easier to run the problem through a linear algebra solver.
+
+$f_{A_2}$ evaluated across the 504 distinct $A_2$ subalgebras in $\Gr(4,7)$ gives a basis with only ??? degrees of freedom
