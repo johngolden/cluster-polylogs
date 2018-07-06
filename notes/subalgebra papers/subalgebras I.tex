@@ -1359,7 +1359,36 @@ Let us now work through finding all possible $D_5$ decompositions of $R^{(2)}_7$
 \end{itemize}
 This procedure is then repeated for all non-zero sign choices for $f_{D_5}$, namely $f_{D_5}^{+-+}$ (10 parameters), $f_{D_5}^{-+-}$ (3 parameters), and $f_{D_5}^{---}$ (7 parameters). 
 
+Remarkably, there exists a solution in the case of $f_{D_5}^{---}$. Furthermore, two free parameters remain. These represent internal degrees of freedom in $f_{D_5}^{---}$ which cancel when summed over all $D_5$ subalgebras of $E_6$. The solution can be characterized as 
+\begin{align}\label{eq:fd5-init}
+	f_{D_5}^{---} = \sum_{D_5^{---}}
+	&\left(\frac{1}{2}-\frac{c_1}{2}\right) f_{A_2}\left(x_1\to x_2 \left(1+x_{34}\right)\right)
+	+c_1 f_{A_2}\left(x_2\to x_3 \left(1+x_4\right)\right) \nl
+	&+\left(\frac{1}{3}-\frac{2 c_1}{3}-\frac{2 c_2}{3}\right) f_{A_2}\left(x_3\to x_4\right) 
+	+\left(\frac{1}{3}+\frac{c_1}{3}+\frac{4 c_2}{3}\right) f_{A_2}\left(\frac{x_2 x_3}{1+x_2}\to x_4\right)\nl
+	&-c_2 f_{A_2}\left(x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) 
+	+\left(\frac{1}{6}-\frac{c_1}{3}-\frac{c_2}{3}\right) f_{A_2}\left(\frac{x_1 x_2 x_3}{1+x_{12}}\to x_4\right),
+\end{align}
+where we have adopted a shorthand notation for the fully antisymmetric sum over $D_5$:
+\begin{equation}
+	\sum_{D_5^{---}} = \sum_{i=0}^4\sum_{j=0}^1\sum_{k=0}^1 (-1)^{i+j+k} \sigma_{D_5}^i\tau_{D_5}^j\mathbb{Z}_{2,D_5}^k.
+\end{equation}
+To recap: the form of $f_{D_5}^{---}$ as presented in eq.~(\ref{eq:fd5-init}) can be used as a basis to express $R^{(2)}_7$, i.e. we (schematically) have
+\begin{equation}
+	R^{(2)}_7 = \sum_{D_5\subset \Gr(4,7)} f_{D_5}^{---}(x_i \to \ldots) + C,
+\end{equation}
+where $C$ represents a sum of classical polylogs, and the parameters $c_1, c_2$ in eq.~(\ref{eq:fd5-init}) represent degrees of freedom which cancel in the sum $\sum_{D_5\subset \Gr(4,7)}$.
 
+We now will tune $c_1$ and $c_2$ to embed further subalgebra structure inside $f_{D_5}^{---}$. This follows exactly the same procedure for finding $D_5$-decompositions of $R^{(2)}_7$, instead now we are trying to find $A_4$-, $D_4$-, or $A_3$-decompositions of $f_{D_5}^{---}$. Surprisingly, there are two different possibilities: one of which involves $A_4$ subalgebras and the other involving $A_3$. We will review these decompositions now.
+
+Setting 
+\begin{equation}
+	c_2 = \frac{1}{5} + 2 c_1
+\end{equation}
+and leaving $c_1$ free makes $f_{D_5}^{---}$ an $A_3^{--}$-constructible function:
+\begin{equation}
+	f_{A_3\subset D_5}^{---} = 
+\end{equation}
 
 
 There are 65 distinct $\a3$'s in $D_5$. Of these, only 42 produce linearly independent $\fa3$'s. Imposing full $D_5$ antisymmetry on this collection of $\fa3$'s leaves only 5 degrees of freedom. Requiring that the full $E_6$-symmetric sum of $\fd5$ gives $R^{(2)}_7$ fixes 4 of these parameters, leaving us with only 1 degree of freedom. Of course when we are looking for a particular representation of $\fd5$ we have 24 degrees of freedom (23 of which are equivalent to adding zero).
