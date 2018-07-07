@@ -1348,7 +1348,7 @@ The general question we will be trying to answer in the upcoming sections is: fo
 
 Since $D_5$ is the largest subalgebra of $E_6$ (in terms of number of clusters), we will begin there. 
 
-\section{The \pdfeq{D_5} Function}\label{sec:d5-func}
+\section{\pdfeq{D_5} Decompositions of \pdfeq{R^{(2)}_7}}\label{sec:d5-func}
 
 Let us now work through finding all possible $D_5$ decompositions of $R^{(2)}_7$. Specifically, we will
 \begin{itemize}
@@ -1359,15 +1359,16 @@ Let us now work through finding all possible $D_5$ decompositions of $R^{(2)}_7$
 \end{itemize}
 This procedure is then repeated for all non-zero sign choices for $f_{D_5}$, namely $f_{D_5}^{+-+}$ (10 parameters), $f_{D_5}^{-+-}$ (3 parameters), and $f_{D_5}^{---}$ (7 parameters). 
 
-Remarkably, there exists a solution in the case of $f_{D_5}^{---}$. Furthermore, two free parameters remain. These represent internal degrees of freedom in $f_{D_5}^{---}$ which cancel when summed over all $D_5$ subalgebras of $E_6$. The solution can be characterized as 
+There exists a solution only in the case of $f_{D_5}^{---}$. Surprisingly, two free parameters remain. These represent internal degrees of freedom in $f_{D_5}^{---}$ which cancel when summed over all $D_5$ subalgebras of $E_6$. The solution can be characterized as 
 \begin{align}\label{eq:fd5-init}
-	f_{D_5}^{---} = \sum_{D_5^{---}}
-	&\left(\frac{1}{2}-\frac{c_1}{2}\right) f_{A_2}\left(x_1\to x_2 \left(1+x_{34}\right)\right)
-	+c_1 f_{A_2}\left(x_2\to x_3 \left(1+x_4\right)\right) \nl
-	&+\left(\frac{1}{3}-\frac{2 c_1}{3}-\frac{2 c_2}{3}\right) f_{A_2}\left(x_3\to x_4\right) 
-	+\left(\frac{1}{3}+\frac{c_1}{3}+\frac{4 c_2}{3}\right) f_{A_2}\left(\frac{x_2 x_3}{1+x_2}\to x_4\right)\nl
-	&-c_2 f_{A_2}\left(x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) 
-	+\left(\frac{1}{6}-\frac{c_1}{3}-\frac{c_2}{3}\right) f_{A_2}\left(\frac{x_1 x_2 x_3}{1+x_{12}}\to x_4\right),
+f_{D_5}^{---} = \sum_{D_5^{---}}
+	&\frac{1}{2} c_1 f_{A_2}\left(x_1\to x_2 \left(1+x_{34}\right)\right)+
+	\left(1-c_1\right) f_{A_2}\left(x_2\to x_3 \left(1+x_4\right)\right)+\nl
+	&\left(-\frac{1}{2}+\frac{c_1}{2}\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right)+
+	\frac{1}{2} c_2 f_{A_2}\left(x_3\to x_4\right)+\nl
+	&\left(c_1-c_2\right) f_{A_2}\left(\frac{x_2 x_3}{1+x_2}\to x_4\right)+
+	\frac{1}{4} c_2 f_{A_2}\left(\frac{x_1 x_2 x_3}{1+x_{12}}\to x_4\right)+\nl
+	&\left(\frac{1}{2}-c_1+\frac{3 c_2}{4}\right) f_{A_2}\left(x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right)
 \end{align}
 where we have adopted a shorthand notation for the fully antisymmetric sum over $D_5$:
 \begin{equation}
@@ -1377,111 +1378,51 @@ To recap: the form of $f_{D_5}^{---}$ as presented in eq.~(\ref{eq:fd5-init}) ca
 \begin{equation}
 	R^{(2)}_7 = \sum_{D_5\subset \Gr(4,7)} f_{D_5}^{---}(x_i \to \ldots) + C,
 \end{equation}
-where $C$ represents a sum of classical polylogs, and the parameters $c_1, c_2$ in eq.~(\ref{eq:fd5-init}) represent degrees of freedom which cancel in the sum $\sum_{D_5\subset \Gr(4,7)}$.
+where $C$ represents a sum of classical polylogarithms, and the parameters $c_1, c_2$ in eq.~(\ref{eq:fd5-init}) represent degrees of freedom which cancel in the sum $\sum_{D_5\subset \Gr(4,7)}$.
 
-We now will tune $c_1$ and $c_2$ to embed further subalgebra structure inside $f_{D_5}^{---}$. This follows exactly the same procedure for finding $D_5$-decompositions of $R^{(2)}_7$, instead now we are trying to find $A_4$-, $D_4$-, or $A_3$-decompositions of $f_{D_5}^{---}$. Surprisingly, there are two different possibilities: one of which involves $A_4$ subalgebras and the other involving $A_3$. We will review these decompositions now.
+We can tune $c_1$ and $c_2$ to embed further subalgebra structure inside $f_{D_5}^{---}$. This follows exactly the same procedure for finding $D_5$-decompositions of $R^{(2)}_7$, instead now we are trying to find $A_4$-, $D_4$-, or $A_3$-decompositions of $f_{D_5}^{---}$. It turns out that there are two different possibilities: one of which involves $A_4$ subalgebras and the other involving $A_3$. We will review these decompositions now.
 
 Setting 
 \begin{equation}
-	c_2 = \frac{1}{5} + 2 c_1
+	c_2 = -\frac{6}{5} + \frac{8}{5} c_1
 \end{equation}
 and leaving $c_1$ free makes $f_{D_5}^{---}$ an $A_3^{--}$-constructible function:
+\begin{align}
+	f_{A_3\subset D_5}^{---} = \frac{1}{10}\sum_{D_5^{---}}
+	&\left(-3+4 c_1\right) f_{A_3}^{--}\left(x_1\to x_2\to x_3 \left(1+x_4\right)\right)
+	+\left(6-3 c_1\right) f_{A_3}^{--}\left(x_1\to x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) \nl
+	&+\left(2-c_1\right) f_{A_3}^{--}\left(x_2\to x_3 \left(1+x_4\right)\to x_5\right)+\left(\frac{1}{2}
+	-\frac{3 c_1}{2}\right) f_{A_3}^{--}\left(\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5\right) \nl
+	&+\left(-1+\frac{c_1}{2}\right) f_{A_3}^{--}\left(\frac{1}{x_4}\to \frac{x_2 x_3 \left(1+x_4\right)}{1+x_2}\to x_5\right).
+\end{align}
+There is no $A_3^{+-}$ representation. Setting 
 \begin{equation}
-	f_{A_3\subset D_5}^{---} = 
+	c_1 = \frac{3}{5}, \qquad c_2 = 0,
 \end{equation}
-
-
-There are 65 distinct $\a3$'s in $D_5$. Of these, only 42 produce linearly independent $\fa3$'s. Imposing full $D_5$ antisymmetry on this collection of $\fa3$'s leaves only 5 degrees of freedom. Requiring that the full $E_6$-symmetric sum of $\fd5$ gives $R^{(2)}_7$ fixes 4 of these parameters, leaving us with only 1 degree of freedom. Of course when we are looking for a particular representation of $\fd5$ we have 24 degrees of freedom (23 of which are equivalent to adding zero).
-
-It would be nice to find a property that fixes some of these parameters that does not rely on explicitly knowing $R^{(2)}_7$. Of course a cluster-y property would be great, but even a physics one would be nice. 
-
-Because of the 1 degree of freedom, it is difficult to describe in detail the properties of $\fd5$ until we have set this value. Furthermore, we likely want to keep this parameter free so that we have some freedom when we try to express $R^{(2)}_7$ in terms of $\fd5$. 
-
-The piece that does not cancel in the full $E_6$ sum can be represented in terms of 13 $\a3$'s. The following 8 enter with coefficient $+1/2$:
-\begin{gather*}
-	x_2\to x_3\to x_5,\quad x_1\to x_2\to x_3 \left(1+x_5\right),\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_4,\quad x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_4\right)}{1+x_2}\to x_5,\\ \\
-	\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5,\quad \frac{1+x_3}{x_3x_4}\to x_2 (1+x_{34})\to \frac{x_3x_5}{1+x_3},\\ \\
-	\frac{1+x_{23}}{x_2 x_3 x_4}\to x_1(1+x_{234})\to \frac{x_2x_3 x_5}{1+x_{23}},\quad
-	\frac{x_1 x_2 x_3x_5}{1+x_{123}}\to\frac{\left(1+x_1\right) x_3 x_4}{\left(1+x_3\right)\left(1+x_{1234}\right)}\to \frac{1+x_{123}}{\left(1+x_1\right) x_3},\\
-\end{gather*}
-and these 5 enter with coefficient $-1/2$:
-\begin{gather*}
-	x_2\to x_3\to x_4,\quad x_1\to x_2\to x_3 \left(1+x_4\right),\quad \frac{x_1 x_2}{1+x_1}\to x_3\to x_5,\\ \\ x_1\left(1+x_2\right)\to \frac{x_2 x_3\left(1+x_5\right)}{1+x_2}\to x_4,\quad
-	\frac{x_1 x_2 x_3x_4}{1+x_{123}}\to\frac{\left(1+x_1\right) x_3 x_5}{\left(1+x_3\right)\left(1+x_{1235}\right)}\to \frac{1+x_{123}}{\left(1+x_1\right) x_3}.
-\end{gather*}
-There is not any nice cancellation of terms at the level of $\bb2$ for this sum of functions. It would be exciting to find a representation for $\fd5$ which relied on very few $\bb2$ terms, but of course some relatively large number of terms will be necessary in order to full capture the $D_5$ symmetries. 
-
-Also, although we have not done a truly exhaustive search, based on extensive checks it does not seem likely that there is a representation that includes \emph{all} $\a3$'s in $D_5$ (with simple coefficients, at least).
-
-We do not include a representation for the piece of the function that cancels in the full $E_6$ sum, as the shortest representation we have found involves a cumbersome sum of 17 $\a3$'s. 
-
-\subsubsection*{Representing $R^{(2)}_7$ in terms of $\fd5$}
-
-
-The symmetries are $\sigma$ (period 7), $\tau$, and $\mathbb{Z}_2$ (both period 2) and can be represented as:
-\begin{align*}
-	\sigma:\quad &x_1\mapsto \frac{1}{x_6
-   \left(1+x_{534}\right)}, \quad x_2\mapsto \frac{1+x_{6534}}{x_5
-   \left(1+x_{34}\right)}, \quad x_3\mapsto
-   \frac{\left(1+x_{234}\right)
-   \left(1+x_{534}\right)}{x_3
-   \left(1+x_4\right)},\\ \\ 
-   &x_4\mapsto
-   \frac{1+x_{34}}{x_4}, \quad x_5\mapsto \frac{1+x_{1234}}{x_2
-   \left(1+x_{34}\right)}, \quad x_6\mapsto \frac{1}{x_1
-   \left(1+x_{234}\right)},\\ \\
-   \tau: \quad&x_1\mapsto \frac{x_5}{1+x_{65}},\quad x_2\mapsto
-   \left(1+x_5\right) x_6,\quad x_3\mapsto
-   \frac{\left(1+x_{12}\right)
-   \left(1+x_{65}\right)}{x_1 x_2 x_3 \left(1+x_4\right)
-   x_5 x_6},\\ \\ 
-   &x_4\mapsto x_4,\quad x_5\mapsto x_1
-   \left(1+x_2\right),\quad x_6\mapsto
-   \frac{x_2}{1+x_{12}},\\ \\
-   \mathbb{Z}_2:\quad &x_1 \leftrightarrow x_6, \quad x_2 \leftrightarrow x_5
-\end{align*}
-These are directly equivalent to $\Gr(4,7)$ cycle$^2$, flip, and parity ($\sigma = $ cycle$^2$ because the map for just a single cycle was too cumbersome to print).
-
-The simplest $D_5$ subalgebra of $E_6$ is obtained by freezing the $x_6$ node and then mutating once on $x_5$, at which point we have the seed cluster
-\begin{equation}\label{eq:d5ine6}
-\begin{gathered}
-\begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
-	(0,25) *+{x_1} ="1",
-	(50,25) *+{x_2} ="2",
-	(100,25) *+{\frac{x_3 x_5}{1+x_5}} ="3",
-	(150,0) *+{x_4} ="4",
-	(150,50) *+{\frac{1}{x_5}} ="5",
-	"1", {\ar"2"},
-	"2", {\ar"3"},
-	"3", {\ar"4"},
-	"3", {\ar"5"},
-\end{xy}
-\end{gathered}
-\end{equation}
-We'll refer to the cluster algebra generated by (\ref{eq:d5ine6}) as $D_5^{(0,0)}$. The remaining 13 $D_5$'s in $E_6$ are generated by applying $\sigma$ and $\tau$. We can now label each $D_5$ via the number of $\sigma$'s and $\tau$'s applied to $D_5^{(0,0)}$:
+makes $f_{D_5}^{---}$ an $A_4^{+-}$-constructible function:
 \begin{equation}
-	D_5^{(i,j)} = \sigma^{i}\tau^j(D_5^{(0,0)})
+	f_{A_4\subset D_5}^{---} = \sum_{D_5^{---}} f_{A_4}^{+-}(x_1\to x_2\to x_3 \to x_4)
 \end{equation}
-We do not have to consider $\mathbb{Z}_2$ because 
+where we have used a new function
+\begin{equation}\label{eq:fa4-def}
+	f_{A_4}^{+-} = \frac{1}{40}\sum_{A_4^{+-}}3f_{A_2}(x_1 \to x_2(1+x_3)) - f_{A_2}(x_2\to x_3(1+x_4)).
+\end{equation}
+Here we have used the notation $\sum_{A_4^{+-}}$ to denote the skew-dihedral sum over $A_4$, 
 \begin{equation}
-	\mathbb{Z}_2(D_5^{(0,0)}) = D_5^{(5,1)}.
-\end{equation}
-Note that by this we do not mean that $\sigma^5\tau$ acting on the cluster (\ref{eq:d5ine6}) equals $\mathbb{Z}_2$ acting on (\ref{eq:d5ine6}); instead $\mathbb{Z}_2$ acting on the complete $D_5$ algebra \emph{generated by} (\ref{eq:d5ine6}) is equal to $\sigma^5\tau$ acting on the same algebra.
+ 	\sum_{A_4^{+-}} = \sum_{i=0}^6\sum_{j=0}^1(-1)^j \sigma_{A_4}^i \tau_{A_4}^j.
+\end{equation} 
+$f_{A_4}^{+-}$ does not have an $A_3$-decomposition. 
 
-With this notation in place we can say that 
-\begin{equation}
-	R^{(2)}_7 = \sum_{i=0}^{6}\sum_{j=0}^{1} f_{D_5^{(i,j)}}.
-\end{equation}
-While this is the most technically correct way to phrase things, it is of course much more evocative to write
-\begin{equation}
-	R^{(2)}_7 = \sum_{D_5\subset E_6} f_{D_5},
-\end{equation}
-which is ill-defined up to the sign in front of each $\fd5$. 
+The $A_4\subset D_5$ representation of $R^{(2)}_7$ in particular is quite remarkable, and can be described as: 
+\begin{itemize}
+	\item evaluate $f_{A_4}^{+-}$ on all $A_4$ subalgebras of $\Gr(4,7)$,
+	\item add them together so that they are antisymmetric under the automorphisms of the $D_5$ subalgebras of $\Gr(4,7)$,
+	\item and the resulting function matches the non-classical portion of $R^{(2)}_7$.
+\end{itemize}
 
+\section{\pdfeq{A_5} Decompositions of \pdfeq{R^{(2)}_7}}\label{sec:a5-func}
 
-
-
-\section{The \pdfeq{A_5} Function}\label{sec:a5-func}
+We now turn to the other corank-1 subalgebra of $E_6$, $A_5$. The procedure for finding decompositions of $R^{(2)}_7$ in terms of $A_5$ subalgebras is identical to the previous section. 
 
 As discussed previously, there are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
 \begin{equation}
