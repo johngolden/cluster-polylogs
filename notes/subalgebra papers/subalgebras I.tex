@@ -1424,61 +1424,32 @@ The $A_4\subset D_5$ representation of $R^{(2)}_7$ in particular is quite remark
 
 We now turn to the other corank-1 subalgebra of $E_6$, $A_5$. The procedure for finding decompositions of $R^{(2)}_7$ in terms of $A_5$ subalgebras is identical to the previous section. 
 
-As discussed previously, there are 56 distinct $A_2$ subalgebras in $A_5$ (56 = $\genfrac(){0pt}{1}{8}{5}$ = number of distinct pentagons inside an octagon), they can be parameterized by:
-\begin{equation}
-\begin{split}
-	&\left\{x_1\to x_2,~~
-	x_2\to x_3\left(1+x_4\right),~~
-	x_2\left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right\} + \sigma_{A_5},\\
-	&\left\{x_2\to x_3,~~x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right\} + \sigma_{A_5} + \tau_{A_5} 
-   \end{split}
-\end{equation}
-where by ``$+\sigma_{A_5}$'' and ``$+\sigma_{A_5}+\tau_{A_5}$'' I mean ``+ cyclic copies'' and ``+ cyclic and flip copies,'' respectively. These correspond to the geometries
-\begin{center}
-\begin{tikzpicture}
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
-\begin{scope}[xshift=3cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
-\end{scope}
-\begin{scope}[xshift=6cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P4) -- (P5) -- (P7) -- cycle;
-\end{scope}
-\begin{scope}[yshift=-2.5cm,xshift=1.5cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P4) -- (P6) -- cycle;
-\end{scope}
-\begin{scope}[yshift=-2.5cm, xshift=4.5cm]
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
-\end{scope}
-\node[] at (9,0) (a) {(8 of each)};
-\node[] at (9,-2.5) (a) {(16 of each)};
-\end{tikzpicture}
-\end{center}
+As was the case with $D_5$, only the fully antisymmetric case $A_5$ generates a representation of $R^{(2)}_7$. This time there is one internal degree of freedom which cancels in the sum over the 7 $A_5$ subalgebras of $\Gr(4,7)$:
+\begin{align}
+	f_{A_5}^{--} = \sum_{A_5^{--}} 
+	& \frac{1}{2} c_1 f_{A_2}\left(x_2\to x_3 \left(1+x_4\right)\right)
+	+\left(-1-c_1\right) f_{A_2}\left(x_2\to x_3 \left(1+x_{45}\right)\right)\nl
+	&+\left(-\frac{1}{2}-c_1\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right)
+\end{align}
 
-The $A_5$ function is a sum over two of the classes of $A_2$ subalgebras, $x_2\to x_3\left(1+x_4\right)$ and $x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}$, appropriately antisymmetrized so that the overall $f_{A_5}$ picks up a minus sign under both $\sigma_{A_5}$ and $\tau_{A_5}$. Explicitly, this is written
+Following in complete analogy with the $D_5$ case, we can tune $c_1$ to decompose $f_{A_5}^{--}$ into either $A_3$ or $A_4$ functions. Unlike $D_5$, the $A_3$ representation employs the skew-symmetric $A_3$ function, $f_{A_3}^{+-}$. Setting $c_1 = -\frac{1}{2}$ gives
 \begin{equation}
-	f_{A_5} = \sum_{i=0}^7\sum_{j=0}^1(-1)^{i+j}\sigma_{A_5}^i\tau_{A_5}^j\left(\frac12 f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right) + f_{A_2}\left(x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}\right)\right).
+	f_{A_3\subset A_5}^{--} = -\frac{1}{160}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right).
 \end{equation}
-The factor of $\frac12$ in front of $f_{A_2}\left(x_2\to x_3\left(1+x_4\right)\right)$ is simply a symmetry factor, as it lives in an 8-cycle of $\{\sigma_{A_5},\tau_{A_5}\}$.
+The overall coefficient of $-\frac{1}{160}$ is simply a result of overcounting in the symmetric sum, as that $A_3$ has only 4 automorphic partners in $A_5$.
 
-The two types of $A_2$'s appearing in $f_{A_5}$ are:
-
+Setting $c_1 = -1$ makes $f_{A_5}^{--}$ an $A_4$-constructible function:
 \begin{equation}
-\begin{tikzpicture}
-\drawOctagon
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P7) -- cycle;
-\node[anchor=east] at (-1,0) (a) {$x_2 \to x_3(1+x_4):$};
-\begin{scope}[xshift=6cm]
-\drawOctagon
-\node[anchor=east] at (-1,0) (a) {$x_1 \left(1+x_2\right)\to \frac{x_2x_3}{1+x_2}:$};
-\draw[color=red] (P1) -- (P2) -- (P3) -- (P5) -- (P6) -- cycle;
-\end{scope}
-\end{tikzpicture}
+	f_{A_4\subset A_5}^{--} = -\frac{1}{20} \sum_{A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4).
 \end{equation}
+Remarkably, this is the same $f_{A_4}^{+-}$ function defined for the $D_5$ function in eq.~(\ref{eq:fa4-def}). In other words, we have \draftnote{temporarily ignoring the overall symmetry factors, which we can mess with later}
+\begin{align}
+	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5^{---}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) +C \\
+	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + C
+\end{align}
+where $C$ is again a function of classical polylogarithms and is the same for both the $D_5$ and $A_5$ representations. 
+
+
 
 \section{Conclusion}
 
