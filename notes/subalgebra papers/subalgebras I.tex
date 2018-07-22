@@ -28,11 +28,11 @@
 \def\nl{\nonumber\\}
 \def\nn{\nonumber}
 \def\x{\mathcal{X}}
-\def\xcoord{$\mathcal{X}$-coordinate }
-\def\xcoords{$\mathcal{X}$-coordinates }
+\def\xcoord{$\mathcal{X}$-coordinate}
+\def\xcoords{$\mathcal{X}$-coordinates}
 \def\a{\mathcal{A}}
-\def\acoord{$\mathcal{A}$-coordinate }
-\def\acoords{$\mathcal{A}$-coordinates }
+\def\acoord{$\mathcal{A}$-coordinate}
+\def\acoords{$\mathcal{A}$-coordinates}
 \def\draftnote#1{{\bf [#1]}}
 \def\flag{{\huge \color{red} \textinterrobang}}
 \def\pdfeq#1{\texorpdfstring{$#1$}{a}}
@@ -207,7 +207,7 @@ To motivate how cluster algebras address this problem, consider the following tr
 %We can immediately see the parallels with our $\Gr(2,5)$ situation (this is an example of the more general Pl\"ucker embedding which connects $\Gr(k,n)$ with projective space). 
 We can associate the line connecting points $i$ and $j$ with the Pl\"ucker coordinate $\ket{ij}$; if we further assign these lines length $\ket{ij}$, the resulting pentagon is cyclic (in the sense that all its vertices reside on a common circle) due to Ptolemy's theorem. Conversely, all cyclic $n$-gons represent a point in $\Gr_+(2,n)$. Note that the length of the three diagonals that are not present in this triangulation are determined by the length of the seven lines that are present (including edges). This makes clear why these three diagonals---the three eliminated above---are redundant for the purpose of determining whether a matrix is in $\Gr_+(2,5)$. 
 
-From the first relation in~\eqref{eq:plucker} we see that we could also have chosen to check the positivity of $\ket{24}$ instead of $\ket{13}$. This corresponds to choosing a different triangulation, which we get to by trading the latter diagonal for the former:
+From the first relation in~\eqref{eq:plucker} we see that we could have instead chosen to check the positivity of $\ket{24}$ rather than $\ket{13}$. This corresponds to choosing a different triangulation, which we get to by trading the latter diagonal for the former:
 \begin{equation}
 \begin{tikzpicture}
   \drawLabeledPentagon
@@ -247,7 +247,7 @@ Clusters can be defined to be quiver diagrams---namely, oriented graphs in which
 \end{tikzpicture} 
 \end{gathered} \ .
 \end{equation}
-The nodes of our cluster are then given by the lines of this triangulation (making the minors $\ket{ab}$ our cluster coordinates), and an arrow is assigned from $\ket{ab}$ to $\ket{cd}$ if the triangle orientations in eq. (\ref{eq:oriented-pentagon}) have segment $(ab)$ flowing into segment $(cd)$. This gives us the quiver
+The nodes of our cluster are then given by the lines of this triangulation (making the minors $\ket{ab}$ our cluster coordinates), where an arrow is assigned from $\ket{ab}$ to $\ket{cd}$ if the triangle orientations in~\eqref{eq:oriented-pentagon} have segment $(ab)$ flowing into segment $(cd)$. This gives us the quiver
 \begin{equation}\label{eq:gr25-seed}
 \begin{gathered}
 \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
@@ -269,7 +269,7 @@ The nodes of our cluster are then given by the lines of this triangulation (maki
 \end{xy}
 \end{gathered} \ ,
 \end{equation}
-where the boxes around the $\ket{ii+1}$ indicate that they are \emph{frozen}---they can never change because they aren't in the interior of a quadrilateral face. The variables living at the frozen nodes can be thought of as parameterizing the boundary of our space, and the mutable nodes represent parameterizations of the interior. One can also draw arrows (with partial weight) connecting these frozen nodes (see, for instance,~\cite{ArkaniHamed:2012nw}), but we will not keep track of these arrows. 
+where the boxes around the $\ket{ii+1}$ indicate that they are \emph{frozen}---they can never change because they aren't in the interior of a quadrilateral face. The variables living at the frozen nodes can be thought of as parameterizing the boundary of our space, and the mutable nodes represent parameterizations of the interior. One can also draw arrows (with partial weight) connecting these frozen nodes (see, for instance,~\cite{ArkaniHamed:2012nw}), but we will not keep track of them here. 
 
 
 We have now drawn our first cluster (also sometimes called a seed). The Pl\"ucker coordinates in this cluster are referred to as cluster $\a$-coordinates (sometimes also $\a$-variables), and they come in two flavors: mutable ($\ket{13}$ and $\ket{14}$) and frozen ($\ket{ii+1}$). The information encoded by the arrows can also be represented in terms of a skew-symmetric matrix
@@ -279,11 +279,11 @@ b_{i j} = (\# \text{arrows}\; i \to j) - (\# \text{arrows}\; j \to i)
 \end{equation}
 called the exchange matrix (or the signed adjacency matrix).
 
-The process of mutation, which we have described geometrically in terms of flipping diagonals, has a simple interpretation at the level of quivers. Given a quiver such as~\eqref{eq:gr25-seed}, we can choose any non-frozen node $k$ to mutate on (this is equivalent to picking which diagonal to flip). Mutation gives us back a new quiver in which the $\a$-coordinate $a_{k}$ has been sent to $a_{k}'$, where 
+The process of mutation, which we have described geometrically in terms of flipping diagonals, has a simple interpretation at the level of quivers. Given a quiver such as~\eqref{eq:gr25-seed}, we can choose any mutable node $k$ to mutate on (this is equivalent to picking which diagonal to flip). Mutation gives us back a new quiver in which the $\a$-coordinate $a_{k}$ has been sent to $a_{k}'$, where 
 \begin{equation}
   \label{eq:a-coord-mutation}
   a_{k} a_{k}' = \prod_{i \vert b_{i k} > 0} a_{i}^{b_{i k}} + \prod_{i \vert b_{i k} < 0} a_{i}^{-b_{i k}},
-\end{equation} (with the understanding that an empty product is set to one) and leaves the other cluster $\a$-coordinate unchanged. The arrows connecting the nodes in this new quiver are also modified by carrying out the following operations:
+\end{equation} (with the understanding that an empty product is set to one), while all other cluster $\a$-coordinates remain unchanged. The arrows connecting the nodes in this new quiver are also modified by carrying out the following operation:
 \begin{itemize}
 	\item for each path $i\to j \to k$, add an arrow $i\to j$,
 	\item reverse all arrows on the edges incident with $k$,
@@ -304,51 +304,53 @@ Mutation is an involution, so mutating on $a_k'$ will take you back to the origi
 
 In terms of these ingredients, a cluster algebra can be defined a set of clusters that is closed under mutation. This means that mutating on any non-frozen node of a cluster will generate a different cluster in the cluster algebra. One can thus generate a cluster algebra by starting with a seed such as~\eqref{eq:gr25-seed}, and iteratively mutating on all available nodes until the set of clusters closes (or you convince yourself that the cluster algebra is infinite). 
 
-It is common to refer to certain cluster algebras by particularly nice representative clusters, when the mutable notes of the corresponding quiver form an oriented Dynkin diagram. For instance, the Gr(2,5) cluster algebra is often referred to as  $A_2$, since the mutable part of the seed~\eqref{eq:gr25-seed} is given by $\ket{13}\to\ket{14}$. Thus, we will often speak interchangeably of the cluster algebras for $\Gr(2,5)$ and $A_2$. This is a slight abuse of notation as the $\Gr(2,5)$ cluster algebra corresponds specifically to the cluster algebra generated by the collection of frozen and mutable nodes in eq.~(\ref{eq:gr25-seed}), whereas an $A_2$ cluster algebra can in principle be dressed with any (non-zero) number of frozen nodes. We will see why this language can be useful in the next section.
+It is common to refer to certain cluster algebras by particularly nice representative clusters, when the mutable notes of the corresponding quiver form an oriented Dynkin diagram. For instance, the Gr(2,5) cluster algebra is often referred to as  $A_2$, since the mutable part of the seed~\eqref{eq:gr25-seed} is given by $\ket{13}\to\ket{14}$. Thus, we will often speak interchangeably of the cluster algebras for $\Gr(2,5)$ and $A_2$. This is a slight abuse of notation, as the $\Gr(2,5)$ cluster algebra corresponds specifically to the cluster algebra generated by the collection of frozen and mutable nodes in eq.~(\ref{eq:gr25-seed}), whereas an $A_2$ cluster algebra can in principle be dressed with any (non-zero) number of frozen nodes. We will see why this language is useful in the next section.
 
 \subsection{Cluster \texorpdfstring{$\mathcal{X}$}{X}-coordinates}
 
-Another important set of information encoded in cluster algebras are called Fock-Goncharov or $\x$-coordinates and were introduced in~\cite{FG03b}. As we will see in future sections, cluster \xcoords play a crucial role in connecting cluster algebras to polylogarithms and scattering amplitudes. While everything can be (and often is) phrased purely in terms of \acoords, we believe that emphasizing \xcoords allows for more direct connection with the full cluster algebraic structure. 
+Cluster algebras can also be formulated in terms of a different set of cluster coordinates, called Fock-Goncharov coordinates or $\x$-coordinates~\cite{FG03b}. As we will see in future sections, cluster \xcoords\ play a crucial role in connecting cluster algebras to polylogarithms and scattering amplitudes. While it is always possible to phrase results involving cluster algebras directly in terms of \acoords, \xcoords\ often allow for cluster-algebraic structure to be made more manifest. 
 
-Given a quiver described by the matrix $b$, the $\a$- and $\x$-coordinates are related as follows:
+Clusters formed out of \xcoords\ can be directly constructed out of clusters involving \acoords. Given a quiver described by the exchange matrix $b_{ij}$, the $\a$- and $\x$-coordinates are related by
 \begin{equation}
 	x_i = \prod_j a_j^{b_{ij}}. 	
 \end{equation} 
-For example, the quiver in eq.~(\ref{eq:gr25-seed}) has $\x$-coordinates 
-\begin{equation}\label{def:xcoordsA2}
-	\x_1 = \frac{\ket{12}\ket{34}}{\ket{14}\ket{23}}, \quad \x_2 = \frac{\ket{13}\ket{45}}{\ket{15}\ket{34}}.
+For example, the $\x$-coordinate cluster associated with~(\ref{eq:gr25-seed}) is formed by associating cluster \xcoords\ with all its mutable nodes, where these \xcoords\ are constructed by putting all Pl\"ucker coordinates that point to a node in the numerator, and all Pl\"ucker coordinates that are pointed to by that node in the denominator. That is, we get the $A_2$ quiver
+\begin{equation}
+	x_1 \to x_2\ ,
 \end{equation}
-In the pentagon-triangulation picture, these $\x$-coordinates describe overlapping quadrilaterals:
+where
+\begin{equation}\label{def:xcoordsA2}
+	x_1 = \frac{\ket{12}\ket{34}}{\ket{14}\ket{23}} \ , \quad x_2 = \frac{\ket{13}\ket{45}}{\ket{15}\ket{34}} \ .
+\end{equation}
+In the pentagon-triangulation picture, these $\x$-coordinates describe overlapping quadrilaterals, for instance
 \begin{equation}
 \begin{gathered}
 \begin{tikzpicture}
   \drawLabeledPentagon
   \draw[color=blue, thick] (P1) -- (P2) -- (P3) -- (P4) -- cycle;
-  \draw (2,0) node {$=\x_1,$};
+  \draw (2,0) node {$=x_1,$};
 \begin{scope}[xshift = 5cm]
   \drawLabeledPentagon
   \draw[color=blue, thick] (P1) -- (P3) -- (P4) -- (P5) -- cycle;
-  \draw (2,0) node {$=\x_2,$};
+  \draw (2,0) node {$=x_2,$};
 \end{scope}
 \end{tikzpicture} 
 \end{gathered}
 \end{equation}
-The mutation rules for the $\x$-coordinates are
+that come in one-to-one correspondence with the diagonals in a triangulation.
+
+Mutation rules for \xcoords\ are different than for \acoords, and are given by
 \begin{equation}
   \label{eq:x-coord-mutation}
   x_{i}' =
   \begin{cases}
     x_{k}^{-1}, &\quad i=k,\\
     x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k
-  \end{cases},
+  \end{cases}\ .
 \end{equation}
-For many applications in the rest of this work we will refer to cluster by their $\x$-coordinates alone, for example in this language we take the generic $A_2$ cluster algebra seed as 
-\begin{equation}
-	x_1 \to x_2.
-\end{equation}
-This again is a slight abuse of notation, in that it can be unclear, given a quiver, if one should use the \acoord mutation rules (\ref{eq:a-coord-mutation}) or \xcoord rules (\ref{eq:x-coord-mutation}). This ambiguity will be resolved in this work by that convention that if a quiver is given with no frozen nodes then it is referring to a collection of \xcoords. 
+Mutation still changes the arrows in the quiver diagram as it did in the case of \acoords.  Given just a quiver diagram, it can be unclear whether a given quiver should be mutated using the \acoord\ or \xcoord\ rules~\eqref{eq:a-coord-mutation} or~\eqref{eq:x-coord-mutation}. We adopt the convention in this work that if a quiver is given with no frozen nodes, it should be thought of as equipped with \xcoords.
 
-By continuing to mutate on alternating nodes (denoted below by \mbox{\color{red}{red}}) we generate the following sequence of clusters:
+Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clusters by mutation. Mutating on alternating nodes (denoted below by those colored \mbox{\color{red}{red}}) we generate the following sequence of clusters:
 \begin{align}
   x_1 &\to \color{red}{x_2} \nl
   \color{red}{x_1(1+x_2)} &\leftarrow \frac{1}{x_2} \nl
