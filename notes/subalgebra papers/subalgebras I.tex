@@ -194,9 +194,9 @@ To gain some intuition for this problem, let us explore the case of $\Gr_+(2,5)$
 	\ket{35} &= (\ket{25}\ket{34} + \ket{23}\ket{45})/\ket{24},
 \end{split}	 	
 \end{equation} 
-we can eliminate three of the nonadjacent minors---for instance, $\ket{24}$, $\ket{25}$, and $\ket{35}$---in terms of the remaining ${{5}\choose{2}} - 3 = 7$ minors. It can be checked that all further Pl\"ucker relations are implied by those in~\eqref{eq:plucker}, telling us that seven minors must be computed to determine if a matrix is in $\Gr_+(2,5)$. However, as should be clear, it is not sufficient to check the positivity of {\it any} seven (ordered) minors; only certain triples of minors can be eliminated. It would therefore be advantageous to have a method for generating all sets of minors that are sufficient to answer this question.
+we can eliminate three of the nonadjacent minors---for instance, $\ket{24}$, $\ket{25}$, and $\ket{35}$---in terms of the remaining ${{5}\choose{2}} - 3 = 7$. It can be checked that all further Pl\"ucker relations are implied by those in~\eqref{eq:plucker}, telling us that all seven remaining minors must be computed to determine if a matrix is in $\Gr_+(2,5)$. However, as should be clear, it is not sufficient to check the positivity of {\it any} seven (ordered) minors; only certain triples of minors can be eliminated. It would therefore be advantageous to have a method for generating all sets of minors that are sufficient to answer this question.
 
-To motivate how cluster algebras address this question, consider the following triangulation of the pentagon:
+To motivate how cluster algebras address this problem, consider the following triangulation of the pentagon:
 \begin{equation} \label{eq:pent_triangulation}
 \begin{tikzpicture}
   \drawLabeledPentagon
@@ -205,7 +205,9 @@ To motivate how cluster algebras address this question, consider the following t
 \end{tikzpicture} \ .
 \end{equation}
 %We can immediately see the parallels with our $\Gr(2,5)$ situation (this is an example of the more general Pl\"ucker embedding which connects $\Gr(k,n)$ with projective space). 
-To connect this triangulation to points in $\Gr_+(2,5)$, we associate the line connecting points $i$ and $j$ with the Pl\"ucker coordinate $\ket{ij}$. If we assign this line length $\ket{ij}$, the resulting pentagon is cyclic due to Ptolemy's theorem; more generally, all cyclic $n$-gons represent a point in $\Gr_+(2,n)$. Note that the length of the three diagonals that are not present in this triangulation are determined by the length of the seven lines that are (including edges). This makes clear why the seven minors identified above are sufficient for determining whether a matrix is in $\Gr_+(2,5)$. Moreover, from the first relation in~\eqref{eq:plucker} we see that we could have chosen to check the positivity of $\ket{24}$ instead of $\ket{13}$. This corresponds to choosing a different triangulation, which we get to by trading the latter diagonal for the former:
+We can associate the line connecting points $i$ and $j$ with the Pl\"ucker coordinate $\ket{ij}$; if we further assign these lines length $\ket{ij}$, the resulting pentagon is cyclic (in the sense that all its vertices reside on a common circle) due to Ptolemy's theorem. Conversely, all cyclic $n$-gons represent a point in $\Gr_+(2,n)$. Note that the length of the three diagonals that are not present in this triangulation are determined by the length of the seven lines that are present (including edges). This makes clear why these three diagonals---the three eliminated above---are redundant for the purpose of determining whether a matrix is in $\Gr_+(2,5)$. 
+
+From the first relation in~\eqref{eq:plucker} we see that we could also have chosen to check the positivity of $\ket{24}$ instead of $\ket{13}$. This corresponds to choosing a different triangulation, which we get to by trading the latter diagonal for the former:
 \begin{equation}
 \begin{tikzpicture}
   \drawLabeledPentagon
@@ -219,9 +221,9 @@ To connect this triangulation to points in $\Gr_+(2,5)$, we associate the line c
 \end{scope}
 \end{tikzpicture}  \ .
 \end{equation}
-More generally, we can pick any quadrilateral and flip the diagonal it contains to generate a different triangulation. Repeatedly performing these flips generates all possible triangulations of the pentagon, as can be seen in figure~\ref{fig:pent_triangulations}. Each triangulation provides a set of edges/minors whose positivity ensures that a matrix is in $\Gr_+(2,5)$.
+More generally, we can pick any quadrilateral face and flip the diagonal it contains to generate a different triangulation. Repeatedly performing these flips generates all possible triangulations of the pentagon, as can be seen in figure~\ref{fig:pent_triangulations}. Each triangulation provides a set of edges/minors whose positivity ensures that a matrix is in $\Gr_+(2,5)$. 
 
-Cluster algebras analagously address the same question for a larger set of algebraic varieties by considering {\it clusters} that are generated by an operation called {\it mutation}, just as triangulations of the pentagon are generated by flipping the diagonals of quadrilaterals. Let us now turn to the definition of these more general objects.
+In an analogous way, cluster algebras answer questions about positivity for a larger class of algebraic varieties (and in particular for all $\Gr_+(k,n)$) by considering {\it clusters} that can all be generated by an operation called {\it mutation}, just as all triangulations of the pentagon are generated by flipping the diagonals of quadrilateral faces. We now turn to the definition of these objects, by first considering how the example of $\Gr_+(2,5)$ can be rephrased in terms of cluster algebras.
 
 \begin{figure}[t] \label{fig:pent_triangulations}
   \centering
@@ -232,7 +234,7 @@ Cluster algebras analagously address the same question for a larger set of algeb
 
 \subsection{Clusters, Mutations, and Cluster ${\cal A}$-coordinates}
 
-We'll begin by working through the cluster algebra for $\Gr(2,5)$. Each cluster is labeled by a collection of coordinates, which in this case are the edges of the pentagon along with the diagonals of the particular triangulation. These coordinates are then connected via an orientation of the pentagon and all subtriangles, for example:
+Clusters can be defined to be quiver diagrams---namely, oriented graphs in which arrows connect different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type~\cite{}.} We can form a cluster of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles, such as
 \begin{equation}\label{eq:oriented-pentagon}
 \begin{gathered}
 \begin{tikzpicture}
@@ -243,9 +245,9 @@ We'll begin by working through the cluster algebra for $\Gr(2,5)$. Each cluster 
   \draw (0:0) node[rotate=144] {$\circlearrowleft$};
   \draw (162:.6) node[rotate=144] {$\circlearrowleft$};
 \end{tikzpicture} 
-\end{gathered}
+\end{gathered} \ .
 \end{equation}
-We can redraw this diagram as
+The nodes of our cluster are then given by the lines of this triangulation (making the minors $\ket{ab}$ our cluster coordinates), and an arrow is assigned from $\ket{ab}$ to $\ket{cd}$ if the triangle orientations in eq. (\ref{eq:oriented-pentagon}) have segment $(ab)$ flowing into segment $(cd)$. This gives us the quiver
 \begin{equation}\label{eq:gr25-seed}
 \begin{gathered}
 \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
@@ -265,25 +267,27 @@ We can redraw this diagram as
 	"3", {\ar"1"},
 	"1", {\ar"4"},
 \end{xy}
-\end{gathered}
+\end{gathered} \ ,
 \end{equation}
-In this quiver diagram, we have an arrow between two Pl\"uckers $\ket{ab} \to \ket{cd}$ if the triangle orientations in eq. (\ref{eq:oriented-pentagon}) have segment $(ab)$ flowing into segment $(cd)$. The boxes around the $\ket{ii+1}$ indicate that they are \emph{frozen} -- in other words, we never change the outer edges of the pentagon, only the diagonal elements. The variables living at the frozen nodes can be thought of as parameterizing the boundary of our space, and the mutable nodes represent parameterizations of the interior. And lastly it is unnecessary to draw the arrows connecting the outer edges, as that is redundant (and unchanging) information. 
+where the boxes around the $\ket{ii+1}$ indicate that they are \emph{frozen}---they can never change because they aren't in the interior of a quadrilateral face. The variables living at the frozen nodes can be thought of as parameterizing the boundary of our space, and the mutable nodes represent parameterizations of the interior. One can also draw arrows (with partial weight) connecting these frozen nodes (see, for instance,~\cite{ArkaniHamed:2012nw}), but we will not keep track of these arrows. 
 
-We have now drawn our first cluster (also sometimes called a seed). To review/introduce some terminology, the Pl\"uckers are called cluster $\a$-coordinates (sometimes also $\a$-variables), and they come in two flavors: mutable ($\ket{13}$ and $\ket{14}$) and frozen ($\ket{ii+1}$). The information of the arrows can be represented in terms of a skew-symmetric adjacency matrix
+
+We have now drawn our first cluster (also sometimes called a seed). The Pl\"ucker coordinates in this cluster are referred to as cluster $\a$-coordinates (sometimes also $\a$-variables), and they come in two flavors: mutable ($\ket{13}$ and $\ket{14}$) and frozen ($\ket{ii+1}$). The information encoded by the arrows can also be represented in terms of a skew-symmetric matrix
 \begin{equation}
-	b_{i j} = (\# \text{arrows}\; i \to j) - (\# \text{arrows}\; j \to i).
+b_{i j} = (\# \text{arrows}\; i \to j) - (\# \text{arrows}\; j \to i)
 \label{eq:bijdef}
 \end{equation}
+called the exchange matrix (or the signed adjacency matrix).
 
-The process of mutation, which we described geometrically in terms of flipping the diagonal, has a simple interpretation at the level of this quiver. In particular, given a quiver such as eq. (\ref{eq:gr25-seed}), chose a node $k$ with associated $\a$-coordinate $a_k$ to mutate on (this is equivalent to picking which diagonal to flip). Then draw a new quiver that changes $a_{k}$ to $a_{k}'$ defined by
+The process of mutation, which we have described geometrically in terms of flipping diagonals, has a simple interpretation at the level of quivers. Given a quiver such as~\eqref{eq:gr25-seed}, we can choose any non-frozen node $k$ to mutate on (this is equivalent to picking which diagonal to flip). Mutation gives us back a new quiver in which the $\a$-coordinate $a_{k}$ has been sent to $a_{k}'$, where 
 \begin{equation}
   \label{eq:a-coord-mutation}
   a_{k} a_{k}' = \prod_{i \vert b_{i k} > 0} a_{i}^{b_{i k}} + \prod_{i \vert b_{i k} < 0} a_{i}^{-b_{i k}},
-\end{equation} (with the understanding that an empty product is set to one) and leaves the other cluster coordinates unchanged. The arrows connecting the nodes in this new cluster are modified from the original cluster according to
+\end{equation} (with the understanding that an empty product is set to one) and leaves the other cluster $\a$-coordinate unchanged. The arrows connecting the nodes in this new quiver are also modified by carrying out the following operations:
 \begin{itemize}
 	\item for each path $i\to j \to k$, add an arrow $i\to j$,
 	\item reverse all arrows on the edges incident with $k$,
-	\item and remove any two-cycles that may have formed.
+	\item and remove any two-cycles (oppositely-oriented arrows) that may have formed.
 \end{itemize}
 This creates a new adjacency matrix $b_{ij}'$ via 
 \begin{equation}
@@ -296,11 +300,11 @@ This creates a new adjacency matrix $b_{ij}'$ via
     b_{i j} - b_{i k} b_{k j}, &\quad \text{if $b_{i k}, b_{k j} < 0$.}
   \end{cases}
 \end{equation}
-Mutation is an involution, so mutating on $a_k'$ will take you back to the original cluster (as flipping the same diagonal twice will take you back to where you started). 
+Mutation is an involution, so mutating on $a_k'$ will take you back to the original cluster (just as flipping the same diagonal twice will take you back to where you started). 
 
-For our purposes, \emph{a cluster algebra is a set of quivers closed under mutation}. This means that mutating on any node of any quiver will generate a different quiver in the cluster algebra. The general procedure is to start with a quiver such as eq. (\ref{eq:gr25-seed}), with some collection of frozen and unfrozen nodes in a connected quiver, and continue mutating on all available nodes until you either close your set or convince yourself that the cluster algebra is infinite. 
+In terms of these ingredients, a cluster algebra can be defined a set of clusters that is closed under mutation. This means that mutating on any non-frozen node of a cluster will generate a different cluster in the cluster algebra. One can thus generate a cluster algebra by starting with a seed such as~\eqref{eq:gr25-seed}, and iteratively mutating on all available nodes until the set of clusters closes (or you convince yourself that the cluster algebra is infinite). 
 
-We will end this brief introduction with a last piece of notation: cluster algebras are often referred to by particularly nice quiver types formed by their mutable nodes at some cluster. In the case of $\Gr(2,5)$, the mutable nodes of eq.~(\ref{eq:gr25-seed}) form an oriented $A_2$ Dynkin diagram, $\ket{13}\to\ket{14}$, and so we will often speak interchangeably of the cluster algebras for $\Gr(2,5)$ and $A_2$. This is a slight abuse of notation as the $\Gr(2,5)$ cluster algebra corresponds specifically to the cluster algebra generated by the collection of frozen and mutable nodes in eq.~(\ref{eq:gr25-seed}), whereas an $A_2$ cluster algebra is $a_1 \to a_2$ dressed with any (non-zero) number of frozen nodes. We will see how this language can be useful in the next section.
+It is common to refer to certain cluster algebras by particularly nice representative clusters, when the mutable notes of the corresponding quiver form an oriented Dynkin diagram. For instance, the Gr(2,5) cluster algebra is often referred to as  $A_2$, since the mutable part of the seed~\eqref{eq:gr25-seed} is given by $\ket{13}\to\ket{14}$. Thus, we will often speak interchangeably of the cluster algebras for $\Gr(2,5)$ and $A_2$. This is a slight abuse of notation as the $\Gr(2,5)$ cluster algebra corresponds specifically to the cluster algebra generated by the collection of frozen and mutable nodes in eq.~(\ref{eq:gr25-seed}), whereas an $A_2$ cluster algebra can in principle be dressed with any (non-zero) number of frozen nodes. We will see why this language can be useful in the next section.
 
 \subsection{Cluster \texorpdfstring{$\mathcal{X}$}{X}-coordinates}
 
