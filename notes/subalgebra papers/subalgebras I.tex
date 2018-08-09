@@ -393,7 +393,7 @@ It's worth noting that cluster \xcoords\ come equipped with a natural Poisson br
 \begin{equation}
 \{x_i, x_j \} = b_{ij} x_i x_j \ .
 \end{equation}
-This structure respects mutation, implying that the entry $b_{ij}$ (which counts the number of arrows from $x_i$ to $x_j$ in a given cluster's quiver) will be the same in all clusters containing both $x_i$ and $x_j$. The Poisson bracket (and associated Sklyanin bracket) will play a larger role in a forthcoming companion paper~\cite{}, so we defer further discussion of this structure to there.
+This structure respects mutation, implying that the entry $b_{ij}$ (which counts the number of arrows from $x_i$ to $x_j$ in a given cluster's quiver) will be the same in all clusters containing both $x_i$ and $x_j$. The Poisson bracket (and associated Sklyanin bracket) will play a larger role in a forthcoming companion paper~\cite{}, so we defer further discussion of this structure to there (see also~\cite{PoissonVarieties,Vergu:2015svm}).
 
 \subsection{Subalgebras and Associahedra}\label{sec:subalgebras_associahedra}
 
@@ -1217,7 +1217,7 @@ The $n$-particle MHV amplitude is invariant under the automorphism group of $\Gr
 
 \section{Cluster Polylogarithms and MHV Amplitudes} \label{sec:cluster_polylog_MHV_review}
 
-The infrared structure of planar ${\cal N} = 4$ SYM is captured to all orders by the BDS ansatz~\cite{}. In four- and five-particle kinematics the BDS ansatz also constitutes the full kinematic dependence of the amplitude; for six or more particles, it receives a dual-conformally invariant correction. In this case of the MHV amplitude, this correction is often computed in the form of the $n$-particle remainder function $R_n$, defined by
+The infrared structure of planar ${\cal N} = 4$ SYM is captured to all orders by the BDS ansatz~\cite{}. In four- and five-particle kinematics the BDS ansatz also provides the full finite part of the amplitude, while for six or more particles it is corrected by a dual-conformally invariant function~\cite{}. In the case of the MHV amplitude, this correction is often computed in the form of the $n$-particle remainder function $R_n$, defined by
 \begin{equation}
 \mathcal{A}_n^{\rm MHV}\ =\ \mathcal{A}_n^{\rm BDS} \, \times \, \exp(R_n)\,,
 \end{equation}
@@ -1225,11 +1225,28 @@ where $\mathcal{A}_n^{\rm BDS}$ is the BDS ansatz for $n$ particles. Like the am
 \begin{equation}
 R_n = 1 + g^4 R_n^{(2)} + g^6 R_n^{(3)} + \dots ,
 \end{equation}
-where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. We have used the fact that $R_n^{(1)} = 0$, since the BDS ansatz accounts for the one loop MHV amplitude. 
+where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. We have used the fact that $R_n^{(1)} = 0$, since the BDS ansatz accounts for the complete one loop MHV amplitude. 
 
-The remaining $L$-loop contributions to the remainder function are expected to be generalized polylogarithms of weight $2L$. These
+The remaining $L$-loop contributions to the remainder function are expected to be generalized polylogarithms~\cite{Chen,FBThesis,Gonch} of uniform transcendental weight $2L$. These can be defined recursively by
+\begin{equation} \label{eq:multiple_polylogs}
+\text{G}(a_1, \dots, a_n; z) = \int_0^z \frac{dt}{t-a_1} G(a_2,\dots,a_n; t), \hspace{0.8cm} \text{G}(\underbrace{0,\dots,0}_n;z) = \frac{\log^n z}{n!}\, ,
+\end{equation}
+where the transcendental weight is given by the total number of integrations. This is known to be true at two loops, due to an impressive all-$n$ computation that leveraged the superconformal symmetry of this theory~\cite{CaronHuot:2011ky}. It has also been borne out by explicit computation through six loops in six-particle kinematics~\cite{}, and through four loops in seven-particle kinematics~\cite{Dixon:2016nkn}.
 
-The symbol of the two-loop contribution to the remainder function is known to all $n$, due to an impressive computation that leveraged the superconformal symmetry of this theory~\cite{}.
+In addition to being polylogarithms of the form~\eqref{eq:multiple_polylogs}, these contributions to the remainder function exhibit a great deal of cluster-algebraic structure. For this reason, they were christened `cluster polylogarithms' in~\cite{Golden:2014xqa}---where these were defined to be functions whose symbol alphabet is composed of cluster \acoords, and whose Lie cobracket can be expressed in terms of cluster \xcoords\ (in a way that will be made precise below). We propose to refine this definition by requiring that cluster polylogarithms also respect the automorphism group and the cluster adjacency principle. We now turn to a description of the coproduct and cobracket operations on polylogarithms to make these properties precise. 
+
+\subsection{The Coproduct and Cobracket} \label{sec:coproduct}
+
+The class of generalized polylogarithms defined by~\eqref{eq:multiple_polylogs} is an exceedingly overcomplete space of functions. At high weight, this leads to 
+
+ iterated integrals whose kernel  
+
+Cobracket integrability condition:
+\begin{equation} \label{eq:integrability}
+	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
+\end{equation}
+
+
 
 \newpage
 Terminology guide (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subalgebra of $A$):
@@ -1241,15 +1258,11 @@ Terminology guide (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subal
 	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$.
 \end{itemize}
 
-\subsection{The Coproduct and Cobracket} \label{sec:coproduct}
-
-Cobracket integrability condition:
-\begin{equation} \label{eq:integrability}
-	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
-\end{equation}
 
 
 \subsection{Cluster-Algebraic Structure of MHV Amplitudes}\label{sec:cluster-algebra-R2n}
+
+Definition of remainder function.
 
 This is a review of \cite{Golden:2013xva,Golden:2014xqa,Golden:2014pua}. The essential idea is that $R^{(2)}_n$ ``depends'' only on \xcoords of $\Gr(4,n)$. This notion of dependence has multiple facets, such as 
 \begin{itemize}
