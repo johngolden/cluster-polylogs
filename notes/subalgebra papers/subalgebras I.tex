@@ -1225,7 +1225,7 @@ where $\mathcal{A}_n^{\rm BDS}$ is the BDS ansatz for $n$ particles. Like the am
 \begin{equation}
 R_n = 1 + g^4 R_n^{(2)} + g^6 R_n^{(3)} + \dots ,
 \end{equation}
-where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. We have here used the fact that $R_n^{(1)} = 0$, since the BDS ansatz accounts for the complete one loop MHV amplitude for all $n$. 
+where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. We have here used the fact that $R_n^{(1)} = 0$, since the BDS ansatz accounts for the complete one loop MHV amplitude at all $n$. 
 
 The remaining $L$-loop contributions to the remainder function are expected to be expressible in terms of generalized polylogarithms~\cite{Chen,FBThesis,Gonch} of uniform transcendental weight $2L$. This space is spanned by the functions
 \begin{equation} \label{eq:multiple_polylogs}
@@ -1233,11 +1233,17 @@ G(a_1, \dots, a_k; z) \equiv \int_0^z \frac{dt}{t-a_1} G(a_2,\dots,a_k; t), \hsp
 \end{equation}
 where $G(;z) \equiv 1$, and the transcendental weight of each function corresponds to its number of indices $k$. In particular, the remainder function is expected to be a pure function of this type, meaning that all its kinematic dependence appears in the indices $a_i$ and argument $z$, not in the rational prefactors multiplying these functions. This is known to be true at two loops, due to an impressive all-$n$ computation that leveraged the superconformal symmetry of this theory~\cite{CaronHuot:2011ky}, as well as through six loops in six-particle kinematics~\cite{} and through four loops in seven-particle kinematics~\cite{Dixon:2016nkn}. 
 
-In addition to being generalized polylogarithms, loop-level contributions to the remainder function exhibit a great deal of cluster-algebraic structure. For this reason, they were christened `cluster polylogarithms' in~\cite{Golden:2014xqa}, where this denoted the fact that their symbol is naturally expressible in terms of cluster \acoords, while their Lie cobracket is naturally expressible in terms of cluster \xcoords\ (in a way that will be made precise below). We propose that this definition be refined to include only functions that respect the automorphism group and the cluster adjacency principle. The rest of this section is devoted to making these properties precise, for which purpose we first describe the motivic structure of polylogarithms. 
+In addition to being generalized polylogarithms, loop-level contributions to the remainder function exhibit a great deal of cluster-algebraic structure. For this reason, they were christened `cluster polylogarithms' in~\cite{Golden:2014xqa}, where this was meant to denote the fact that their symbol is naturally expressible in terms of cluster \acoords, while their Lie cobracket is naturally expressible in terms of cluster \xcoords\ (in a way that will be made precise below). We propose that this definition be refined to include only functions that respect the automorphism group and the cluster adjacency principle of~\cite{}. The rest of this section is devoted to making these properties precise, for which purpose we first describe the motivic structure of polylogarithms. 
 
 \subsection{The Symbol and Cobracket} \label{sec:coproduct}
 
-The space of generalized polylogarithms defined by~\eqref{eq:multiple_polylogs} is exceedingly overcomplete. This is because $a_i$ and $z$ are allowed to be arbitrarily complicated algebraic functions, making it possible to express a given polylogarithm multiple ways. This can already be seen at the level of classical polylogarithms, which correspond to the cases
+The space of generalized polylogarithms defined by~\eqref{eq:multiple_polylogs} is colossally overcomplete. This is both because $a_i$ and $z$ are allowed to be arbitrarily complicated algebraic functions, and because these functions satisfy a shuffle algebra. Namely, when two polylogarithms share an argument $z$, their product can be re-expressed as the sum of functions 
+\begin{equation}
+G(a_1,\dots,a_{k_1};z)\ G(a_{{k_1}+1},\dots,a_{k_1+k_2};z)  = \sum_{\sigma \in \Sigma(k_1,k_2)} G(a_{\sigma(1)},\dots,a_{\sigma(k_1+k_2)};z),
+\end{equation}
+where $\Sigma(k_1,k_2)$ denotes all shuffles between the sets of integers $\{1,\dots,k_1\}$ and $\{k_1+1,\dots,k_1+k_2\}$ (that is, all ways of interleaving these two sets such that the ordering within each set is maintained). This shuffle algebra arises 
+
+This overcompleteness gives rise to a rich space of identities. This can already be seen at the level of classical polylogarithms, which correspond to the cases
 \begin{equation}
 \text{Li}_k(z) = - G(\underbrace{0,\dots,0}_{k-1},1;z) .
 \end{equation}
@@ -1255,10 +1261,18 @@ The entries of the resulting $k$-fold tensor product are referred to as symbol l
  
 The symbol also captures the analytic structure of polylogarithms, insofar as it encodes their (iterated) discontinuity structure. Namely, for generic indices $a_i$ and argument $z$, the branch cut structure of the general polylogarithm defined in~\eqref{eq:multiple_polylogs} is dictated by the symbol letters appearing in its first entry. These functions have nonzero monodromy when analytically continued around points where these symbol letters vanish or become infinite (sharing the monodromies of logarithms with these arguments), and are analytic everywhere else~\cite{Duhr:2012fh}. This monodromy can itself have branch cuts that the original function did not have, as encoded in the second entry of the symbol, \emph{ad infinitum}. For special values of $a_i$ and $z$, some of this information is lost due to the fact that higher-weight transcendental constants (such as Riemann $\zeta$ values) are in the kernel of the symbol~\cite{}. However, this information is retained by the coaction~\cite{}, and can be recovered by specifying the integration constant at a kinematic point~\cite{}. We defer consideration of these transcendental constants to a follow-up paper~\cite{}.
 
-In addition to the symbol, polylogarithms come equipped with a Lie cobracket structure $\delta$~\cite{Golden:2013xva}. It is calculated by
+In addition to the symbol, polylogarithms come equipped with a Lie cobracket structure~\cite{Golden:2013xva}. The cobracket $\delta$ can be calculated using the symbol projection operator 
 \begin{equation}
-\delta(f) \equiv (\rho \circ \Delta \circ \rho)(f)
+\rho(s_1 \otimes \cdots \otimes s_k ) = \frac{k-1}{k} \Big(\rho(s_1 \otimes \cdots \otimes s_{k-1}) \otimes s_k - \rho(s_2 \otimes \cdots \otimes s_{k}) \otimes s_1 \Big),
 \end{equation}
+where $\rho(s_1) \equiv s_1$. This operator projects onto the component of a symbol that cannot be written as a product of lower-weight polylogarithms.
+
+of a weight $k$ function $f$ can be calculated as
+\begin{equation}
+\delta(f) \equiv \sum_{i=1}^k (\rho_i \wedge \rho_{k-i})\rho(f),
+\end{equation}
+where the 
+
 The salient property of the cobracket here is that it isolates the component of any polylogarithm that can be written in terms of classical polylogarithms (with algebraic arguments). 
 
 Cobracket integrability condition:
