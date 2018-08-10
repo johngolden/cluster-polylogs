@@ -1217,7 +1217,7 @@ The $n$-particle MHV amplitude is invariant under the automorphism group of $\Gr
 
 \section{Cluster Polylogarithms and MHV Amplitudes} \label{sec:cluster_polylog_MHV_review}
 
-The infrared structure of planar ${\cal N} = 4$ SYM is captured to all orders by the BDS ansatz~\cite{}. In four- and five-particle kinematics the BDS ansatz also provides the full finite part of the amplitude, while for six or more particles it is corrected by a dual-conformally invariant function~\cite{}. In the case of the MHV amplitude, this correction is often computed in the form of the $n$-particle remainder function $R_n$, defined by
+The infrared structure of planar ${\cal N} = 4$ SYM is captured to all orders by the BDS ansatz~\cite{}. In four- and five-particle kinematics the BDS ansatz also completely accounts for the finite part of the amplitude, while for six or more particles it is corrected by a finite dual-conformally invariant function~\cite{}. In the case of the MHV amplitude, this correction is often computed in the form of the $n$-particle remainder function $R_n$, defined by
 \begin{equation}
 \mathcal{A}_n^{\rm MHV}\ =\ \mathcal{A}_n^{\rm BDS} \, \times \, \exp(R_n)\,,
 \end{equation}
@@ -1225,21 +1225,41 @@ where $\mathcal{A}_n^{\rm BDS}$ is the BDS ansatz for $n$ particles. Like the am
 \begin{equation}
 R_n = 1 + g^4 R_n^{(2)} + g^6 R_n^{(3)} + \dots ,
 \end{equation}
-where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. We have used the fact that $R_n^{(1)} = 0$, since the BDS ansatz accounts for the complete one loop MHV amplitude. 
+where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. We have here used the fact that $R_n^{(1)} = 0$, since the BDS ansatz accounts for the complete one loop MHV amplitude for all $n$. 
 
-The remaining $L$-loop contributions to the remainder function are expected to be generalized polylogarithms~\cite{Chen,FBThesis,Gonch} of uniform transcendental weight $2L$. These can be defined recursively by
+The remaining $L$-loop contributions to the remainder function are expected to be expressible in terms of generalized polylogarithms~\cite{Chen,FBThesis,Gonch} of uniform transcendental weight $2L$. This space is spanned by the functions
 \begin{equation} \label{eq:multiple_polylogs}
-\text{G}(a_1, \dots, a_n; z) = \int_0^z \frac{dt}{t-a_1} G(a_2,\dots,a_n; t), \hspace{0.8cm} \text{G}(\underbrace{0,\dots,0}_n;z) = \frac{\log^n z}{n!}\, ,
+G(a_1, \dots, a_k; z) \equiv \int_0^z \frac{dt}{t-a_1} G(a_2,\dots,a_k; t), \hspace{0.8cm} G(\underbrace{0,\dots,0}_k;z) \equiv \frac{\log^k z}{k!}\, ,
 \end{equation}
-where the transcendental weight is given by the total number of integrations. This is known to be true at two loops, due to an impressive all-$n$ computation that leveraged the superconformal symmetry of this theory~\cite{CaronHuot:2011ky}. It has also been borne out by explicit computation through six loops in six-particle kinematics~\cite{}, and through four loops in seven-particle kinematics~\cite{Dixon:2016nkn}.
+where $G(;z) \equiv 1$, and the transcendental weight of each function corresponds to its number of indices $k$. In particular, the remainder function is expected to be a pure function of this type, meaning that all its kinematic dependence appears in the indices $a_i$ and argument $z$, not in the rational prefactors multiplying these functions. This is known to be true at two loops, due to an impressive all-$n$ computation that leveraged the superconformal symmetry of this theory~\cite{CaronHuot:2011ky}, as well as through six loops in six-particle kinematics~\cite{} and through four loops in seven-particle kinematics~\cite{Dixon:2016nkn}. 
 
-In addition to being polylogarithms of the form~\eqref{eq:multiple_polylogs}, these contributions to the remainder function exhibit a great deal of cluster-algebraic structure. For this reason, they were christened `cluster polylogarithms' in~\cite{Golden:2014xqa}---where these were defined to be functions whose symbol alphabet is composed of cluster \acoords, and whose Lie cobracket can be expressed in terms of cluster \xcoords\ (in a way that will be made precise below). We propose to refine this definition by requiring that cluster polylogarithms also respect the automorphism group and the cluster adjacency principle. We now turn to a description of the coproduct and cobracket operations on polylogarithms to make these properties precise. 
+In addition to being generalized polylogarithms, loop-level contributions to the remainder function exhibit a great deal of cluster-algebraic structure. For this reason, they were christened `cluster polylogarithms' in~\cite{Golden:2014xqa}, where this denoted the fact that their symbol is naturally expressible in terms of cluster \acoords, while their Lie cobracket is naturally expressible in terms of cluster \xcoords\ (in a way that will be made precise below). We propose that this definition be refined to include only functions that respect the automorphism group and the cluster adjacency principle. The rest of this section is devoted to making these properties precise, for which purpose we first describe the motivic structure of polylogarithms. 
 
-\subsection{The Coproduct and Cobracket} \label{sec:coproduct}
+\subsection{The Symbol and Cobracket} \label{sec:coproduct}
 
-The class of generalized polylogarithms defined by~\eqref{eq:multiple_polylogs} is an exceedingly overcomplete space of functions. At high weight, this leads to 
+The space of generalized polylogarithms defined by~\eqref{eq:multiple_polylogs} is exceedingly overcomplete. This is because $a_i$ and $z$ are allowed to be arbitrarily complicated algebraic functions, making it possible to express a given polylogarithm multiple ways. This can already be seen at the level of classical polylogarithms, which correspond to the cases
+\begin{equation}
+\text{Li}_k(z) = - G(\underbrace{0,\dots,0}_{k-1},1;z) .
+\end{equation}
+\draftnote{description of five-term dilog identity, refer to further weight three/four identities~\cite{Golden:2013xva,GanglPolylogIdentities}}
 
- iterated integrals whose kernel  
+Fortunately, all identities between polylogarithms are (conjecturally) generated by shuffle and stuffle relations~\cite{2011arXiv1102.1312B,2015arXiv151206409B}. These are trivialized by the symbol map, which can be defined iteratively in terms of the total derivatives of these functions. Taking the total derivative of~\eqref{eq:multiple_polylogs}, we have
+\begin{equation} \label{eq:symbol_def}
+d G(a_1, \dots, a_k; z) = \sum_{i=1}^{k} G(a_1,\dots,\hat{a}_i,\dots,a_k; z)\ d\log \left( \frac{a_{k-i+1} - a_{k-i}}{a_{k-i+1} - a_{k-i+2}} \right)
+\end{equation} 
+where $a_0 \equiv z$ and $a_{k+1} \equiv 0$, and the notation $\hat{a}_i$ indicates this index should be omitted~\cite{GoncharovMixedTate}. The symbol map is then defined to be
+\begin{equation} \label{eq:symbol_def}
+\mathcal{S}\big(G(a_1, \dots, a_k; z)\big) \equiv \sum_{i=1}^{k} \mathcal{S}\big(G(a_1,\dots,\hat{a}_i,\dots,a_k; z) \big) \otimes \left( \frac{a_{k-i+1} - a_{k-i}}{a_{k-i+1} - a_{k-i+2}} \right).
+\end{equation} 
+The entries of the resulting $k$-fold tensor product are referred to as symbol letters. These symbol letters inherit the properties of (arguments of) logarithms, and can therefore be expanded into a multiplicatively independent basis of symbol letters (the `symbol alphabet'). Complicated polylogarithmic identities are thereby reduced to identities between logarithms, at the cost of losing information about the boundary of integration in~\eqref{eq:multiple_polylogs}.
+ 
+The symbol also captures the analytic structure of polylogarithms, insofar as it encodes their (iterated) discontinuity structure. Namely, for generic indices $a_i$ and argument $z$, the branch cut structure of the general polylogarithm defined in~\eqref{eq:multiple_polylogs} is dictated by the symbol letters appearing in its first entry. These functions have nonzero monodromy when analytically continued around points where these symbol letters vanish or become infinite (sharing the monodromies of logarithms with these arguments), and are analytic everywhere else~\cite{Duhr:2012fh}. This monodromy can itself have branch cuts that the original function did not have, as encoded in the second entry of the symbol, \emph{ad infinitum}. For special values of $a_i$ and $z$, some of this information is lost due to the fact that higher-weight transcendental constants (such as Riemann $\zeta$ values) are in the kernel of the symbol~\cite{}. However, this information is retained by the coaction~\cite{}, and can be recovered by specifying the integration constant at a kinematic point~\cite{}. We defer consideration of these transcendental constants to a follow-up paper~\cite{}.
+
+In addition to the symbol, polylogarithms come equipped with a Lie cobracket structure $\delta$~\cite{Golden:2013xva}. It is calculated by
+\begin{equation}
+\delta(f) \equiv (\rho \circ \Delta \circ \rho)(f)
+\end{equation}
+The salient property of the cobracket here is that it isolates the component of any polylogarithm that can be written in terms of classical polylogarithms (with algebraic arguments). 
 
 Cobracket integrability condition:
 \begin{equation} \label{eq:integrability}
@@ -1271,6 +1291,23 @@ This is a review of \cite{Golden:2013xva,Golden:2014xqa,Golden:2014pua}. The ess
 \end{itemize}
 
 Furthermore, there is the closely related object $\mathcal{E}^{(2)}_n$, which satisfies cluster adjacency, which we review now.
+
+\subsection{Cluster Adjacency}
+
+Cluster adjacency is a property of all Steinmann-satisfying amplitudes, and was first introduced in \cite{Drummond:2017ssj}. The original phrasing of this property is that the symbol of all Steinmann-satisfying integrals in $n$-particle kinematics, when fully expanded out in terms of \acoords, is of the form 
+\begin{equation}
+	\ldots \otimes \alpha_i \otimes \alpha_j\otimes \ldots 
+\end{equation}
+where $\alpha_i$ and $\alpha_j$ appear together in a cluster of $\Gr(4,n)$. This non-trivial property is a considerable constraint on the space of polylogarithm functions which can appear in amplitudes. 
+
+The original presentation of cluster adjacency was in terms of \acoords, but adjacency can also be phrased in terms of \xcoords. We will term these as cluster $\a$-adjacency and cluster $\x$-adjacency, respectively. 
+
+The benefit of $\a$-adjacency is that \acoords are multiplicatively independent and so any symbol in them will be unique. The same is of course not true for \xcoords: they satisfy numerous multiplicative identities and so there exists many equivalent representations of a given symbol in terms of \xcoords, and only some small subset of them may satisfy cluster $\x$- adjacency. 
+
+However, the benefit of \xcoords is that they have a unique Poisson bracket, whereas \acoords can appear in many different clusters together, each time with a different value for $b_{ij}$ connecting them. This ambiguity in the Poisson bracket for \acoords is equivalent to the ambiguity introduced by the multiplicative identities in the \xcoords.  
+
+While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so clear. However we have checked for all Grassmannian cluster algebras $\Gr(k\le4,n\le7)$ that $\a$-adjacency implies $\x$-adjacency, so we conjecture that the two phrasings of cluster adjacency are identical in constraining symbol space. \flag
+
 
 \subsection{The \pdfeq{A_2} function}
 We define the $A_2$ function as
@@ -1308,21 +1345,6 @@ This representation of $f_{A_2}$ therefore shares the following properties with 
 
 \draftnote {Could/should mention the other purely classical terms one could augment $f_{A_2}$ with.}
 
-\subsection{Cluster Adjacency}
-
-Cluster adjacency is a property of all Steinmann-satisfying amplitudes, and was first introduced in \cite{Drummond:2017ssj}. The original phrasing of this property is that the symbol of all Steinmann-satisfying integrals in $n$-particle kinematics, when fully expanded out in terms of \acoords, is of the form 
-\begin{equation}
-	\ldots \otimes \alpha_i \otimes \alpha_j\otimes \ldots 
-\end{equation}
-where $\alpha_i$ and $\alpha_j$ appear together in a cluster of $\Gr(4,n)$. This non-trivial property is a considerable constraint on the space of polylogarithm functions which can appear in amplitudes. 
-
-The original presentation of cluster adjacency was in terms of \acoords, but adjacency can also be phrased in terms of \xcoords. We will term these as cluster $\a$-adjacency and cluster $\x$-adjacency, respectively. 
-
-The benefit of $\a$-adjacency is that \acoords are multiplicatively independent and so any symbol in them will be unique. The same is of course not true for \xcoords: they satisfy numerous multiplicative identities and so there exists many equivalent representations of a given symbol in terms of \xcoords, and only some small subset of them may satisfy cluster $\x$- adjacency. 
-
-However, the benefit of \xcoords is that they have a unique Poisson bracket, whereas \acoords can appear in many different clusters together, each time with a different value for $b_{ij}$ connecting them. This ambiguity in the Poisson bracket for \acoords is equivalent to the ambiguity introduced by the multiplicative identities in the \xcoords.  
-
-While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so clear. However we have checked for all Grassmannian cluster algebras $\Gr(k\le4,n\le7)$ that $\a$-adjacency implies $\x$-adjacency, so we conjecture that the two phrasings of cluster adjacency are identical in constraining symbol space. \flag
 
 \section{Cluster subalgebra-constructibility}\label{sec:sub-constructibility} 
 
