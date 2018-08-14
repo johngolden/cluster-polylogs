@@ -1271,7 +1271,7 @@ where $\rho(s_1) \equiv s_1$. This projects onto the component of a symbol that 
 \end{align}
 This notation indicates that the projection operator $\rho$ is first applied to $f$, after which each term in the resulting sum is partitioned into a wedge product of weight $i$ and weight $k-i$ functions (either by splitting up the symbol into its first $i$ and last $k-i$ entries, or by taking the `$i,k-i$ component' of the coproduct); the projection operator is then applied to the entries in this wedge product separately. In general, the wedge product in~\eqref{eq:cobracket_def} involves spaces of different weight. Without loss of generality, we can put the cobracket of any function into a form where the first factor of the wedge product has weight equal to or higher than that of the second factor. We correspondingly denote by $\delta_{i,j}$ the component of the cobracket that involves a wedge product of weight $i$ and $j$ functions, in that order---but we emphasize that this includes contributions from all terms in~\eqref{eq:cobracket_def} that involve these weights in either order (wedge products with the opposite ordering are put into this form at the cost of a minus sign).
 
-In the context of two-loop amplitudes, the salient property of the cobracket is that it isolates the component of weight four polylogarithms that cannot be written in terms of classical polylogarithms. Under the action of $\rho$, classical polylogarithms are mapped to elements of the Bloch group $\text{B}_k$~\cite{Bloch:2000, Suslin:1990}, namely the algebra of polylogarithms modulo identities between classical polylogarithms. We denote these elements by
+In the context of two-loop amplitudes, the salient property of the cobracket is that it isolates the component of weight four polylogarithms that cannot be written in terms of classical polylogarithms. Under the action of $\rho$, classical polylogarithms are mapped to elements of the Bloch group $\text{B}_k$~\cite{Bloch:2000, Suslin:1990}, namely the algebra of polylogarithms modulo identities between classical polylogarithms. Following~\cite{Golden:2013xva}, we denote these elements by
 \begin{equation}
  \{ z \}_k  = \rho(-\text{Li}_k(-z)) \in \text{B}_k.
 \end{equation}
@@ -1279,19 +1279,28 @@ For instance, \draftnote{maybe show that this trivializes an identity?}. In this
 \begin{equation}
 \delta \big( \text{Li}_k(-z) \big) = - \{ z \}_{k-1} \wedge \{ z \}_1 .
 \end{equation}
-Note that, for the first time at weight four, there exists a component of the cobracket that is not mapped to by classical polylogarithms---namely, $\delta_{2,2}$. This is not true of of weight four polylogarithms in general, and in particular $\delta_{2,2} \big(R_n^{(2)} \big)$ is nonzero for $n\ge7$. 
+Note that, for the first time at weight four, there exists a component of the cobracket that is not mapped to by classical polylogarithms---namely, $\delta_{2,2}$. This is not true of of weight four polylogarithms in general, and in particular $\delta_{2,2} \big(R_n^{(2)} \big)$ is nonzero for $n\ge7$. However, it has been shown that any weight four function that \emph{is} annihilated by $\delta_{2,2}$ can be written in terms of classical polylogarithms (with potentially complicated arguments)~\cite{}.
 
-Cobracket integrability condition:
-\begin{equation} \label{eq:integrability}
-	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
-\end{equation}
+%Cobracket integrability condition:
+%\begin{equation} \label{eq:integrability}
+%	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
+%\end{equation}
+
+
+\subsection{Cluster-Algebraic Structure in Two-Loop MHV Amplitudes}\label{sec:cluster-algebra-R2n}
+
+As stated in the introduction, the two-loop MHV amplitudes of this theory exhibit different forms of cluster-algebraic structure at the level of their cobracket, their symbol, and as full functions. The first aspect of this structure, observed in~\cite{Golden:2013xva} and further explored in~\cite{Golden:2014xqa,Golden:2014xqf,Golden:2014pua}, concerns the building blocks that appear at each of these levels:
+\begin{itemize}
+\item[$\bullet$] The cobracket of $R^{(2)}_n$ can be written in terms of elements of the Block group that take the form $\{-\mathcal{X} \}_k$, where $\x$ is an \xcoord\ on $\Gr(4,n)$
+\item[$\bullet$] The symbol of $R^{(2)}_n$ can be expressed in terms of symbol letters drawn from the set of \acoords\ on $\Gr(4,n)$
+\item[$\bullet$] The `classical tail' of $R^{(2)}_n$ (that is, the part of the amplitude that is left after accounting for the nonclassical component captured by $\delta_{2,2}$) can be expressed in terms of (products of) classical polylogarithms taking the form $\text{Li}_k(-\x)$, where $\x$ is again an \xcoord\ on $\Gr(4,n)$
+\end{itemize}
+Each of these statements represents a surprising (and independent) fact about $R^{(2)}_n$. \draftnote{-last one is independent b/c there exist trilogs that are cluster-A functions but not cluster-X functions; -first one }  
+
 
 
 \newpage
 
-\subsection{Cluster-Algebraic Structure of MHV Amplitudes}\label{sec:cluster-algebra-R2n}
-
-Definition of remainder function.
 
 This is a review of \cite{Golden:2013xva,Golden:2014xqa,Golden:2014pua}. The essential idea is that $R^{(2)}_n$ ``depends'' only on \xcoords of $\Gr(4,n)$. This notion of dependence has multiple facets, such as 
 \begin{itemize}
@@ -1316,6 +1325,9 @@ The benefit of $\a$-adjacency is that \acoords are multiplicatively independent 
 However, the benefit of \xcoords is that they have a unique Poisson bracket, whereas \acoords can appear in many different clusters together, each time with a different value for $b_{ij}$ connecting them. This ambiguity in the Poisson bracket for \acoords is equivalent to the ambiguity introduced by the multiplicative identities in the \xcoords.  
 
 While $\x$-adjacency trivially implies $\a$-adjacency, the converse is not so clear. However we have checked for all Grassmannian cluster algebras $\Gr(k\le4,n\le7)$ that $\a$-adjacency implies $\x$-adjacency, so we conjecture that the two phrasings of cluster adjacency are identical in constraining symbol space. \flag
+
+\draftnote{Andrew notes}
+In fact, $\delta_{2,2}\big(R^{(2)}_n\big)$ also satisfies a form of cluster adjacency~\cite{Golden:2014pua}.
 
 
 \subsection{The \pdfeq{A_2} function}
