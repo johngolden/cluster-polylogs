@@ -1331,6 +1331,18 @@ In fact, $\delta_{2,2}\big(R^{(2)}_n\big)$ also satisfies a form of cluster adja
 
 
 \subsection{The \pdfeq{A_2} function}
+
+\begin{align}
+\{a\}_2 \wedge \{b\}_2 &= \delta_{2,2}\bigg( \text{Li}_{1, 3}\left(-a, -\frac{1 + b}{a} \right) \bigg) \\
+\{a\}_2 \wedge \{a/(1 + b)\}_2 &= \delta_{2,2} \bigg( \text{Li}_{1, 3}\left(-\frac{a}{1 + b}, -a \right) - \text{Li}_{1, 3}\left(-a, -\frac{a}{1 + b} \right)  \\ 
+&\hspace{5cm} - \text{Li}_{2,2}\left(-a, -\frac{a}{1 + b} \right)  \bigg)\nonumber
+\end{align}
+
+When $a$ and $b$ are taken to be the $A_2$ variables $\x_{i-1}$ and $\x_i$, $a/(1 + b) = \x_{i+1}$ so we can immediately promote the $\delta_{2,2}$ component of~\eqref{eq:A2_cobracket} to generalized polylogarithms
+
+\draftnote{identities that (I believe) imply an algorithmic way to promote $\delta_{2,2}\big(R_n^{(2)}\big)$ immediately to multiple polylogarithms (allowing us to come up with a precise notion of `classical tail')}
+
+
 We define the $A_2$ function as
 \begin{equation}\label{def:a2-function}
 \begin{split}
@@ -1340,6 +1352,8 @@ We define the $A_2$ function as
 \end{split}
 \end{equation}
 where the $\x_i$ are defined in terms of $x_1$ and $x_2$ as in eq.~(\ref{def:a2-xcoords}), and the skew-dihedral sum indicates subtracting the dihedral flip $\x_i \to \x_{6-i}$ and taking a cyclic sum $i=1$ to $5$.
+
+\draftnote{the inverse of an \xcoord\ is an \xcoord, therefore the inverses are notation artifacts}
 
 This representation of $f_{A_2}$ differs from that in \cite{Golden:2014xqa} in several key ways. Firstly, we have added classical polylogarithm terms in order to make $f_{A_2}$ adjacent in $A_2$:
 \begin{equation}
@@ -1353,7 +1367,7 @@ An additional benefit of this representation is that all arguments of the polylo
 \end{equation}
 
 Lastly, $f_{A_2}$ has $\Lambda^2\B_2$ and $\B_3 \otimes \mathbb{C}^*$ coproduct elements expressible in terms of \xcoords of $A_2$:
-\begin{equation}
+\begin{equation} \label{eq:A2_cobracket}
 	\delta\left(f_{A_2}\right) = -\sum_{\text{skew-dihedral}} \{-\x_{i-1}\}_2 \wedge \{-\x_{i+1}\}_2 + 3\{-\x_{i}\}_2 \wedge \{-\x_{i+1}\}_2 + \frac{5}{2}\{-\x_{i}\}_3 \otimes \x_{i+1}
 \end{equation}
 
