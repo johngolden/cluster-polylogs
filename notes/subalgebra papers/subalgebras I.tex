@@ -1038,7 +1038,7 @@ x_3 &= \frac{\ket{1245} \ket{1267} \ket{3456}}{\ket{1246} \ket{5(12)(34)(67)}}, 
  x_5 &= -\frac{\ket{1567}\ket{4(12)(35)(67)}}{\ket{1267} \ket{1345}\ket{4567}}, \quad \quad \quad x_6 = \frac{\ket{5(12)(34)(67)}}{\ket{1567}\ket{2345}}, \quad \nonumber
 \end{align}
 where we have made use of the notation
-\begin{equation}
+\begin{equation} \label{eq:twistor_intersection}
 \ket{a(bc)(de)(fg)} \equiv \ket{abde}\ket{acfg}-\ket{abfg}\ket{acde}.
 \end{equation}
 Any \acoord\ on $\Gr(4,7)$ can be expressed in terms of these \xcoords\ using the momentum twistor matrix 
@@ -1219,11 +1219,11 @@ The $n$-particle MHV amplitude is invariant under the automorphism group of $\Gr
 
 The BDS ansatz captures the infrared structure of planar ${\cal N} = 4$ SYM to all orders in the coupling~\cite{Bern:2005iz}. In four- and five-particle kinematics it also furnishes the complete finite part of the amplitude, while for six or more particles it must be corrected by a finite dual-conformally invariant function~\cite{Drummond:2007au,Bern:2008ap,Drummond:2008aq}. In the case of the MHV amplitude, this correction is often computed in the form of the $n$-particle remainder function $R_n$, defined by
 \begin{equation} \label{eq:remainder_function}
-\mathcal{A}_n^{\rm MHV}\ =\ \mathcal{A}_n^{\rm BDS} \, \times \, \exp(R_n)\,,
+\mathcal{A}_n^{\rm MHV}\ =\ \mathcal{A}_n^{\rm BDS}  \times \exp(R_n)\,,
 \end{equation}
 where $\mathcal{A}_n^{\rm BDS}$ is the BDS ansatz for $n$ particles. Like the amplitude, the remainder function can be expanded in the coupling
 \begin{equation}
-R_n = 1 + g^4 R_n^{(2)} + g^6 R_n^{(3)} + \dots ,
+R_n = g^4 R_n^{(2)} + g^6 R_n^{(3)} + g^8 R_n^{(4)} + \dots ,
 \end{equation}
 where $g^2 = \frac{g_{\text{YM}}^2 N_c}{16 \pi^2}$. In this expansion we have used the fact that $R_n^{(1)} = 0$, since the BDS ansatz encodes the complete one loop MHV amplitude at all $n$. 
 
@@ -1298,29 +1298,29 @@ The symbol and cobracket naturally stratify the study of two-loop amplitudes and
 
 %As observed in~\cite{Golden:2013xva} (and further explored in~\cite{Golden:2014xqa,Golden:2014xqf,Golden:2014pua})
 
-As mentioned in the introduction, the two-loop MHV amplitudes of this theory exhibit different forms of cluster-algebraic structure at the level of their cobracket, their symbol, and as full functions~\cite{Golden:2013xva,Golden:2014xqa,Golden:2014xqf,Golden:2014pua}. The first facet of this structure concerns the building blocks that appear at each level, which are found to lie within restricted classes:
+As outlined in the introduction, the two-loop MHV amplitudes of this theory exhibit different forms of cluster-algebraic structure at the level of their cobracket, their symbol, and as full functions~\cite{Golden:2013xva,Golden:2014xqa,Golden:2014xqf,Golden:2014pua}. The first facet of this structure concerns the building blocks that appear at each level, which are found to lie within restricted classes:
 \begin{itemize}
 \item[$\bullet$] The cobracket of $R^{(2)}_n$ can be written in terms of elements of the Block group taking the form $\{\mathcal{X}_i \}_k$, where $\x_i$ is an \xcoord\ on $\Gr(4,n)$
 \item[$\bullet$] The symbol of $R^{(2)}_n$ can be expressed in terms of symbol letters drawn from the set of \acoords\ on $\Gr(4,n)$
 \item[$\bullet$] The function $R^{(2)}_n$ can expressed entirely in terms of (products of) polylogarithms taking the form $\text{Li}_{n_1,\dots,n_d}(-\mathcal{X}_i,\dots,-\mathcal{X}_j)$, where each $\x_i$ is again an \xcoord\ on $\Gr(4,n)$
 \end{itemize}
-The physical meaning of the symbol alphabet restriction is clear, if unilluminating---the kinematic configurations in which these amplitudes are singular (due to internal propagators going on shell in the Feynman diagram expansion) coincide with the vanishing loci of certain cluster \acoords. Even so, it is not clear how (or if) this restriction follows from physical principles. In this respect, the positive Grassmannian formulation of this theory is suggestive, insofar as the integrands of these amplitudes are seen to develop physical singularities only where \acoords\ vanish \draftnote{or become infinite?}\draftnote{check}~\cite{ArkaniHamed:2012nw}. However, this does not preclude the emergence of new branch cuts during integration, as has already been observed in Feynman integrals contributing to non-MHV amplitudes in this theory~\cite{Bourjaily:2018aeq,Henn:2018cdp}. The physical meaning of the restricted functional form and cobracket structure exhibited by these amplitudes remains even more obscure. 
+The physical meaning of the symbol alphabet restriction is clear, if unilluminating---the kinematic configurations in which these amplitudes are singular (due to internal propagators going on shell in the Feynman diagram expansion \draftnote{maybe this doesn't explain singularities in $y_u$-type letters?}) coincide with the vanishing loci of certain cluster \acoords. Even so, it is not clear how (or if) this restriction follows from physical principles. In this respect, the positive Grassmannian formulation of this theory is suggestive, insofar as the integrands of these amplitudes are seen to develop physical singularities only where \acoords\ vanish \draftnote{or become infinite?}\draftnote{check}~\cite{ArkaniHamed:2012nw}. However, this does not preclude the emergence of new branch cuts during integration, as has already been observed in Feynman integrals contributing to non-MHV amplitudes in this theory~\cite{Bourjaily:2018aeq,Henn:2018cdp}. The physical meaning of the restricted functional form and cobracket structure exhibited by these amplitudes remains even more obscure. 
 
 Cluster algebras also seem to play a role in how these building blocks are assembled in amplitudes. In particular, it was recently observed that---when these amplitudes are normalized appropriately---the only cluster \acoords\ that appear in adjacent entries of their symbol are those that appear together in at least one cluster of $\Gr(4,n)$~\cite{Drummond:2017ssj}. This `cluster adjacency' principle is not enjoyed by the remainder function~\eqref{eq:remainder_function}, but by BDS-normalized amplitudes ${\cal E}_n$~\cite{Alday:2009dv,Yang:2010as,Caron-Huot:2016owq,Dixon:2016nkn}. These are defined by
-\begin{equation}
-\mathcal{A}_n^{\rm MHV}\ =\ \mathcal{A}_n^{\rm BDS-like} \, \times \, {\cal E}_n,
+\begin{equation} \label{eq:bds_like_normalized_amplitude}
+\mathcal{A}_n^{\rm MHV}\ =\ \mathcal{A}_n^{\rm BDS-like}  \times  {\cal E}_n,
 \end{equation}
 where $\mathcal{A}_n^{\rm BDS-like}$ is related to $\mathcal{A}_n^{\rm BDS}$ by the cusp anomalous dimension~\cite{Beisert:2006ez} 
 \begin{equation}
 \Gamma_{\text{cusp}} = 4 g^2- 8 \zeta_2 g^4 + \mathcal{O}(g^6)
 \end{equation}
 and a simple weight two polylogarithm $Y_n$ via
-\begin{equation}
+\begin{equation} \label{eq:bds_like_ansatz}
 \mathcal{A}_n^{\rm BDS-like} = \mathcal{A}_n^{\rm BDS} \times \exp\left( \frac{\Gamma_{\text{cusp}}}{4} Y_n \right).
 \end{equation}
 The function $Y_n$ corresponds to the part of the one-loop MHV amplitude that depends on three- and higher-particle Mandelstam invariants, where these invariants have been assembled into dual-conformally-invariant cross ratios (with the help of two-particle invariants). The BDS-like ansatz that remains only depends on two-particle invariants, yet accounts for the full infrared structure of these amplitudes. 
 
-Since the BDS-like ansatz depends only on two-particle invariants, the functions ${\cal E}_n$ directly inherit the Steinmann relations between three- and higher-particle invariants that are obeyed by the full amplitude~\cite{Steinmann,Steinmann2,Cahill:1973qp,Caron-Huot:2016owq,Dixon:2016nkn}. These relations tell us that \draftnote{check}
+The motivation for switching to this normalization is precisely this restricted kinematic dependence. Since the BDS-like ansatz depends only on two-particle invariants, the functions ${\cal E}_n$ directly inherit the Steinmann relations between three- and higher-particle invariants that are obeyed by the full amplitude~\cite{Steinmann,Steinmann2,Cahill:1973qp,Caron-Huot:2016owq,Dixon:2016nkn}. These relations tell us that \draftnote{check}
 \begin{equation} \label{eq:steinmann}
 \begin{rcases}
 \text{Disc}_{s_{j,\dots,j+p+q}}\left[\text{Disc}_{s_{i,\dots,i+p}} \big({\cal E}_n \big) \right] &= 0, \hspace{.3cm} \\
@@ -1330,17 +1330,40 @@ Since the BDS-like ansatz depends only on two-particle invariants, the functions
 \end{equation}
 where all indices should be considered mod $n$. Formulated in terms of symbol entries, this implies that the cluster \acoords\ $\ket{j-1,j,j+p+q-1,j+p+q}$ and $\ket{i-1,i,i+p-1,i+p}$ never appear next to each other in the first two entries of the symbol. In fact, it is believed that these constraints can be applied at all depths in the symbol, as these letters are never seen to appear next to each other~\cite{Caron-Huot:2016owq,Dixon:2016nkn,Caron-Huot:2018dsv,cosmic_galois_paper,all_orders_adjacency}. These generalized constraints have been termed the extended Steinmann relations, as they amount to applying the relations~\eqref{eq:steinmann} to all discontinuities of the amplitude in addition to the amplitude itself. 
 
-Thus, in all known cases, the function ${\cal E}_n$ obeys both the cluster adjacency principle and the extended Steinmann relations. These constraints take a similar form (restricting which symbol letters can appear in adjacent entries), and in fact are known to be equivalent in six-particle kinematics when applied to functions with physical branch cuts. It is therefore tempting to believe cluster adjacency follows from some set of physical principles that includes the extended Steinmann relations. However, it is not yet known whether these two conditions are equivalent at all $n$. 
+The fact that the functions ${\cal E}_n$ also obey the cluster adjacency principle is far more surprising. The constraints that follow from this principle take a form similar that of the extended Steinmann relations (restricting which symbol letters can appear in adjacent entries), and in fact are equivalent in six-particle kinematics when applied to functions with physical branch cuts. It is therefore tempting to believe cluster adjacency follows from some set of physical principles that includes the extended Steinmann relations. However, it is not yet known whether these two conditions are equivalent at all $n$. 
 
-Seeming to complicate this question of equivalence is the fact that the BDS-like ansatz only exists when $n$ is not a multiple of four. This is because no function satisfying the above description of $Y_n$ exists for these particle multiplicities~\cite{Yang:2010az,Dixon:2016nkn}. (Such a function not only exists for all other $n$, but is uniquely picked out by this description.) As such, any normalization that absorbs the infrared-divergent part of these amplitudes (where the number of scattering particles is a multiple of four) either depends on some three- or higher-particle Mandelstam invariants, or spoils the dual conformal invariance of the resulting normalized amplitude. Thus, for the purpose of understanding the relation between the extended Steinmann relations and the cluster adjacency principle, we need merely choose the latter horn of this dilemma. 
+Seeming to complicate this question of equivalence is the fact that the BDS-like ansatz \eqref{eq:bds_like_ansatz} only exists when $n$ is not a multiple of four. This is because no function satisfying the above description of $Y_n$ exists for these particle multiplicities~\cite{Yang:2010az,Dixon:2016nkn}. (Such a function not only exists for all other $n$, but is uniquely picked out by this description.) Stated another way, when $n$ is a multiple of four, any normalization that absorbs the infrared-divergent part of the amplitude either depends on some set of three- or higher-particle Mandelstam invariants, or spoils the dual conformal invariance of the resulting normalized amplitude. Thus, this complication is superficial---for the purpose of understanding the relation between the extended Steinmann relations and the cluster adjacency principle, we need merely choose the latter horn of this dilemma, and give up dual conformal invariance. 
 
-This issue first arises in eight-particle kinematics, where both cluster adjacency and the extended Steinmann relations are violated by the remainder function. However, it can be seen by direct computation that both sets of constraints are obeyed when the amplitude is instead normalized by a generalized BDS-like ansatz whose kinematic dependence is restricted to two-particle Mandelstam invariants, at the cost of dual conformal invariance~\cite{cluster_subalgebras_ii}. This provides further evidence that the extended Steinmann relations and the cluster adjacency principle are encoding the same information.
+This issue first arises in eight-particle kinematics. There it can be seen---by direct computation---that both sets of constraints are obeyed when the amplitude is normalized by a generalized BDS-like ansatz whose kinematic dependence is restricted to two-particle Mandelstam invariants~\cite{cluster_subalgebras_ii}. This provides further evidence that the extended Steinmann relations and the cluster adjacency principle are encoding the same information.
 
-While cluster adjacency was first observed in \acoords, it can also be formulated in terms of \xcoords. Unlike \acoords, which are multiplicatively independent, \xcoords\ satisfy numerous multiplicative identities. Thus, there will exist many representations of the same symbol in terms of \xcoords, whereas its representation in terms of \acoords\ is unique. In general, only a subset of these \xcoord\ representations will satisfy cluster adjacency. Moreover, while \xcoord\ adjacency trivially implies \acoord\ adjacency by the relation~\eqref{eq:x_from_a_coordinates}, the converse can not be true in general. This is because \acoords\ can express a larger class of functions than \xcoords, since the latter necessarily respect dual conformal symmetry. However, it can be checked that every dual-conformal-invariant symbol that satisfies \acoord\ adjacency in $\Gr(k\le4,n\le7)$ has an \xcoord\ adjacent representation. Although we are not sure how to prove this in general, we conjecture that this remains true for all dual-conformally-invariant symbols constructed on $\Gr(k,n)$, for general $k$ and $n$.  \flag
+While cluster adjacency was first observed in \acoords, it can also be formulated in terms of \xcoords. Unlike \acoords, which are multiplicatively independent, \xcoords\ satisfy numerous multiplicative identities. Thus, there will exist many representations of the same symbol in terms of \xcoords, whereas its representation in terms of \acoords\ is unique. In general, only a subset of these \xcoord\ representations will satisfy cluster adjacency (even if the \acoord\ representation does). Moreover, while \xcoord\ adjacency trivially implies \acoord\ adjacency by the relation~\eqref{eq:x_from_a_coordinates}, the converse can not be true in general. This is because \acoords\ can express a larger class of functions than \xcoords, since the latter necessarily respect dual conformal symmetry while the former do not. However, it can be checked that every dual-conformal-invariant symbol that satisfies \acoord\ adjacency in $\Gr(k\le4,n\le7)$ has an \xcoord\ adjacent representation. Although we are not sure how to prove this in general, we conjecture that this remains true for all dual-conformally-invariant symbols constructed on $\Gr(k,n)$, for general $k$ and $n$.  \draftnote{remind me why there was a flag here? -Andrew}
 
 %However, the benefit of \xcoords is that they have a unique Poisson bracket, whereas \acoords can appear in many different clusters together, each time with a different value for $b_{ij}$ connecting them. This ambiguity in the Poisson bracket for \acoords is equivalent to the ambiguity introduced by the multiplicative identities in the \xcoords.  
 
-The cobracket component $\delta_{2,2}\big(R^{(2)}_n\big)$ also satisfies its own form of cluster adjacency~\cite{Golden:2014pua}. Note that 
+The cobracket component $\delta_{2,2}\big(R^{(2)}_n\big)$ also satisfies its own form of cluster adjacency~\cite{Golden:2014pua}. Namely, this quantity can be expressed as a linear combination of terms taking the form $\{ v_{ijk} \}_2 \wedge \{ z^{\pm}_{pqr} \}_2$, where (using the notation defined in~\eqref{eq:twistor_intersection})
+\begin{equation}
+v_{ijk} = - \frac{\ket{i+1 (i,i+2) (j,j+1)(k,k+1)}}{\ket{i,i+1,k,k+1}\ket{i+1,i+2,j,j+1}},
+\end{equation}
+and
+\begin{align}
+z_{ijk}^+ &= \frac{\ket{i,j-1,j,j+1}\ket{i+1,k-1,k,k+1}-\ket{i+1,j-1,j,j+1}\ket{i,k-1,k,k+1}}{\ket{i,k-1,k,k+1}\ket{i+1,j-1,j,j+1}}, \nonumber \\
+z_{ijk}^- &= \frac{\ket{i,i+1,j,k}\ket{i-1,i,i+1,i+2}}{\ket{i-1,i,i+1,k}\ket{i,i+1,i+2,j}}.
+\end{align}
+As long as $i<j<k$ (considered mod $n$), the quantities $v_{ijk}$, $z_{ijk}^+$, and $z_{ijk}^-$ all constitute \xcoords, where $z_{ijk}^+$ and $z_{ijk}^-$ are also parity conjugate to each other. The coordinates $v_{ijk}$ were originally motivated by consideration of the location of physical branch cuts, while the $z_{ijk}^\pm$ were motivated by consideration of the final symbol entry of the remainder function, which is constrained to take the form $\ket{i-1,i,i+1,j}$ by dual superconformal symmetry~\cite{CaronHuot:2011kk}. However, for the present discussion, the pertinent point is that $\delta_{2,2}\big(R^{(2)}_n\big)$ can be expressed as a sum of terms $\{ v_{ijk} \}_2 \wedge \{ z^{\pm}_{pqr} \}_2$ in which $v_{ijk}$ and $z^{\pm}_{pqr}$ also occur together in a cluster. Importantly, this form of cobracket-level cluster adjacency isn't implied by the cluster \acoord\ adjacency observed in~\cite{Drummond:2017ssj}, as can be seen in the $A_2$ function we will define in the next subsection---this function satisfies cluster \acoord\ adjacency, but the \xcoords\ appearing in its $\delta_{2,2}$ cobracket component cannot be chosen to satisfy cobracket-level cluster adjacency.  \draftnote{seem right?}
+
+While this cobracket-level structure was originally observed in the remainder function, the same characterization carries over to the BDS-like normalized amplitude. This can be seen by combining equations~\eqref{eq:remainder_function},~\eqref{eq:bds_like_normalized_amplitude}, and~\eqref{eq:bds_like_ansatz} to express ${\cal E}_n$ in terms of $R_n$:
+\begin{align}
+{\cal E}_n &= \exp \left(R_n- \frac{\Gamma_{\text{cusp}}}{4} Y_n \right) \\
+&= 1 - Y_n g^2 + \left(R_n^{(2)} + 2 \zeta_2 Y_n + \frac{1}{2} Y_n^2 \right) g^4 + \mathcal{O}(g^6). \nonumber
+\end{align} 
+Thus, $\rho \big({\cal E}_n^{(2)}\big) = \rho \big(R_n^{(2)} \big)$, since these two functions differ only by products and terms involving transcendental constants. Correspondingly, the cobracket structure of the remainder function and the BDS-like normalized amplitude are identical. Moreover, the function $Y_n$ can always be expressed in terms of classical polylogarithms taking negative \xcoords\ as arguments \draftnote{check}. Thus, at the level of the cobracket, symbol, and as a full function, ${\cal E}^{(2)}_n$ can be expressed in terms of the same restricted sets of building blocks as $R^{(2)}_n$. To these observations we can now add:
+\begin{itemize}
+\item[$\bullet$] The cobracket component $\delta_{2,2}\big({\cal E}^{(2)}_n\big)$ can be expressed in 
+\item[$\bullet$] The adjacent entries of ${\cal E}^{(2)}_n$ 
+\end{itemize}
+In fact, there is more structure at the level of $\delta_{2,2}\big(R^{(2)}_n\big) = \delta_{2,2}\big({\cal E}^{(2)}_n\big)$...
+
+
 
 
 
@@ -1348,7 +1371,7 @@ The cobracket component $\delta_{2,2}\big(R^{(2)}_n\big)$ also satisfies its own
 \newpage
 
 
-\subsection{The \pdfeq{A_2} function}
+\subsection{Nonclassical Structure and the \pdfeq{A_2} function}
 
 \begin{align}
 \{a\}_2 \wedge \{b\}_2 &= \delta_{2,2}\bigg( \text{Li}_{1, 3}\left(-a, -\frac{1 + b}{a} \right) \bigg) \\
@@ -1407,7 +1430,7 @@ Terminology guide (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subal
 	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$.
 \end{itemize}
 
-
+Now we are in a position to formulate a more precise definition of cluster polylogarithms, at least at weight four...
 
 
 
