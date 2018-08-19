@@ -1356,42 +1356,33 @@ While this cobracket-level structure was originally observed in the remainder fu
 {\cal E}_n &= \exp \left(R_n- \frac{\Gamma_{\text{cusp}}}{4} Y_n \right) \\
 &= 1 - Y_n g^2 + \left(R_n^{(2)} + 2 \zeta_2 Y_n + \frac{1}{2} Y_n^2 \right) g^4 + \mathcal{O}(g^6). \nonumber
 \end{align} 
-Thus, $\rho \big({\cal E}_n^{(2)}\big) = \rho \big(R_n^{(2)} \big)$, since these two functions differ only by products and terms involving transcendental constants. Correspondingly, the cobracket structure of the remainder function and the BDS-like normalized amplitude are identical. Moreover, the function $Y_n$ can always be expressed in terms of classical polylogarithms taking negative \xcoords\ as arguments \draftnote{check}. Thus, at the level of the cobracket, symbol, and as a full function, ${\cal E}^{(2)}_n$ can be expressed in terms of the same restricted sets of building blocks as $R^{(2)}_n$. To these observations we can now add:
+Thus, $\rho \big({\cal E}_n^{(2)}\big) = \rho \big(R_n^{(2)} \big)$, since these two functions differ only by products and terms involving transcendental constants. Correspondingly, the cobracket structure of the remainder function and the BDS-like normalized amplitude are identical. Moreover, the function $Y_n$ can always be expressed in terms of classical polylogarithms taking negative \xcoords\ as arguments \draftnote{check}. Thus, at the level of its cobracket, its symbol, and as a full function, ${\cal E}^{(2)}_n$ can be expressed in terms of the same restricted building blocks as $R^{(2)}_n$. To these observations we can now add:
 \begin{itemize}
-\item[$\bullet$] The cobracket component $\delta_{2,2}\big({\cal E}^{(2)}_n\big)$ can be expressed in 
-\item[$\bullet$] The adjacent entries of ${\cal E}^{(2)}_n$ 
+\item[$\bullet$] The cobracket component $\delta_{2,2}\big({\cal E}^{(2)}_n\big)$ can be expressed as a linear combination of terms $\{ \x_i \}_2 \wedge \{ \x_j \}_2$, where $\x_i$ and $\x_j$ appear together in at least one cluster of $\Gr(4,n)$
+\item[$\bullet$] Pairs of \acoords\ only appear in adjacent entries of the symbol ${\cal S} \big({\cal E}^{(2)}_n\big)$ when they also appear together in at least one cluster of $\Gr(4,n)$
 \end{itemize}
-In fact, there is more structure at the level of $\delta_{2,2}\big(R^{(2)}_n\big) = \delta_{2,2}\big({\cal E}^{(2)}_n\big)$...
+As discussed above, the last statement can also be applied at $n$ that are multiples of four by going to a generalized BDS-like normalization in which only two-particle invariants appear in the normalizing function.
 
-
-
-
-
-
-\newpage
+As it turns out, there exists yet more structure in $\delta_{2,2}\big(R^{(2)}_n\big) = \delta_{2,2}\big({\cal E}^{(2)}_n\big)$. In particular, it was shown in~\cite{Golden:2014xqa} that this cobracket component can be decomposed into a sum over various $A_2$ subalgebras of $\Gr(4,n)$, by defining an $A_2$ function that can be evaluated on each of these subalgebras. Moreover, this $A_2$ function can be assembled into an $A_3$ function, in terms of which this cobracket component can similarly be decomposed. As this subalgebra decomposability will play a central role in what follows, we devote the next subsection to its description.
 
 
 \subsection{Nonclassical Structure and the \pdfeq{A_2} function}
 
-\begin{align}
-\{a\}_2 \wedge \{b\}_2 &= \delta_{2,2}\bigg( \text{Li}_{1, 3}\left(-a, -\frac{1 + b}{a} \right) \bigg) \\
-\{a\}_2 \wedge \{a/(1 + b)\}_2 &= \delta_{2,2} \bigg( \text{Li}_{1, 3}\left(-\frac{a}{1 + b}, -a \right) - \text{Li}_{1, 3}\left(-a, -\frac{a}{1 + b} \right)  \\ 
-&\hspace{5cm} - \text{Li}_{2,2}\left(-a, -\frac{a}{1 + b} \right)  \bigg)\nonumber
-\end{align}
-
-When $a$ and $b$ are taken to be the $A_2$ variables $\x_{i-1}$ and $\x_i$, $a/(1 + b) = \x_{i+1}$ so we can immediately promote the $\delta_{2,2}$ component of~\eqref{eq:A2_cobracket} to generalized polylogarithms
-
-\draftnote{identities that (I believe) imply an algorithmic way to promote $\delta_{2,2}\big(R_n^{(2)}\big)$ immediately to multiple polylogarithms (allowing us to come up with a precise notion of `classical tail')}
+%\begin{align}
+%\{a\}_2 \wedge \{b\}_2 &= \delta_{2,2}\bigg( \text{Li}_{1, 3}\left(-a, -\frac{1 + b}{a} \right) \bigg) \\
+%\{a\}_2 \wedge \{a/(1 + b)\}_2 &= \delta_{2,2} \bigg( \text{Li}_{1, 3}\left(-\frac{a}{1 + b}, -a \right) - \text{Li}_{1, 3}\left(-a, -\frac{a}{1 + b} \right)  \\ 
+%&\hspace{5cm} - \text{Li}_{2,2}\left(-a, -\frac{a}{1 + b} \right)  \bigg)\nonumber
+%\end{align}
+%When $a$ and $b$ are taken to be the $A_2$ variables $\x_{i-1}$ and $\x_i$, $a/(1 + b) = \x_{i+1}$ so we can immediately promote the $\delta_{2,2}$ component of~\eqref{eq:A2_cobracket} to generalized polylogarithms
+%\draftnote{identities that (I believe) imply an algorithmic way to promote $\delta_{2,2}\big(R_n^{(2)}\big)$ immediately to multiple polylogarithms (allowing us to come up with a precise notion of `classical tail')}
 
 
 We define the $A_2$ function as
-\begin{equation}\label{def:a2-function}
-\begin{split}
-	f_{A_2}(x_1 \to x_2)  = \sum_{\text{skew-dihedral}} &\Li_{2,2}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right) - \Li_{1,3}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right)+6 \Li_3\left(-\x_{i-1}\right) \log \left(\x_{i+1}\right)
-	\\&-\Li_2\left(-\x_{i-1}\right) \log \left(\x_{i+1}\right) \left(3 \log \left(\x_{i-1}\right)-\log \left(\x_i\right)+\log \left(\x_{i+1}\right)\right)
-	\\&+\frac{1}{2} \log \left(\x_{i-3}\right) \log \left(\x_i\right) \log^2\! \left(\x_{i-1}\right),
-\end{split}
-\end{equation}
+\begin{align}\label{def:a2-function}
+	f_{A_2}(x_1 \to x_2)  &= \sum_{\text{skew-dihedral}} \bigg[ \Li_{2,2}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right) - \Li_{1,3}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right) \nonumber \\
+	&\hspace{1.4cm} +6 \Li_3\left(-\x_{i-1}\right) \log \left(\x_{i+1}\right) +\frac{1}{2} \log \left(\x_{i-3}\right) \log \left(\x_i\right) \log^2\! \left(\x_{i-1}\right) {\color{white} \bigg|}\\
+	&\hspace{1.4cm} -\Li_2(-\x_{i-1}) \log (\x_{i+1}) \Big(3 \log (\x_{i-1})-\log (\x_i)+\log (\x_{i+1})\Big) \bigg] \nonumber
+\end{align}
 where the $\x_i$ are defined in terms of $x_1$ and $x_2$ as in eq.~(\ref{def:a2-xcoords}), and the skew-dihedral sum indicates subtracting the dihedral flip $\x_i \to \x_{6-i}$ and taking a cyclic sum $i=1$ to $5$.
 
 \draftnote{the inverse of an \xcoord\ is an \xcoord, therefore the inverses are notation artifacts}
