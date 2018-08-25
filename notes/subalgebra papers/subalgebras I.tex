@@ -355,14 +355,14 @@ Mutation rules for \xcoords\ are different than for \acoords, and are given by
 \end{equation}
 Mutation still changes the arrows in the quiver diagram as it did in the case of \acoords.  Given just a quiver diagram, it can sometimes be unclear whether a given quiver should be mutated using the \acoord\ or \xcoord\ rules~\eqref{eq:a-coord-mutation} or~\eqref{eq:x-coord-mutation}. We adopt the convention in this work that if a quiver is given with no frozen nodes, it should be thought of as equipped with \xcoords.
 
-Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clusters by mutation. Mutating on alternating nodes of our $A_2$ cluster~\eqref{eq:a2_x_seed}, we generate the following sequence of clusters (where the coordinates colored red are those that are mutated on to get to the cluster in the following line):
+Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clusters by mutation. Mutating on alternating nodes of our $A_2$ cluster~\eqref{eq:a2_x_seed} (starting with $x_2$), we generate the following sequence of clusters:
 \begin{align}
-  x_1 &\to \color{red}{x_2} \nl
-  \color{red}{x_1(1+x_2)} &\leftarrow \frac{1}{x_2} \nl
-  \frac{1}{x_1(1+x_2)} &\to \color{red}{\frac{x_2}{1+x_1+x_1 x_2}} \\
-  \color{red}{\frac{x_1 x_2}{1+x_1}} &\leftarrow \frac{1+x_1+x_1 x_2}{x_2} \nl
-  \frac{1+x_1}{x_1 x_2} &\to \color{red}{\frac{1}{x_1}} \nl
-  \color{red}{x_2} &\leftarrow x_1 \nl
+  x_1 &\to \color{black}{x_2} \nl
+  \color{black}{x_1(1+x_2)} &\leftarrow \frac{1}{x_2} \nl
+  \frac{1}{x_1(1+x_2)} &\to \color{black}{\frac{x_2}{1+x_1+x_1 x_2}} \\
+  \color{black}{\frac{x_1 x_2}{1+x_1}} &\leftarrow \frac{1+x_1+x_1 x_2}{x_2} \nl
+  \frac{1+x_1}{x_1 x_2} &\to \color{black}{\frac{1}{x_1}} \nl
+  \color{black}{x_2} &\leftarrow x_1 \nl
   &\ \ \vdots \nn
 \end{align}
 The series then repeats, with all arrows reversed. Note that (specifically in the case of $A_2$), if we label these $\x$-coordinates by
@@ -1238,6 +1238,16 @@ In addition to being generalized polylogarithms, loop-level contributions to the
 
 \subsection{The Symbol and Cobracket} \label{sec:coproduct}
 
+
+%Terminology guide (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subalgebra of $A$):
+%\begin{itemize}
+%	\item ``$\a$-polylog on $A$'': symbol alphabet is drawn from the \acoords of $A$,
+%	\item ``$\x$-polylog on $A$'': an $\a$-polylog on $A$ with non-zero cobracket (in both $\bb2$ and $\b3c$) and the cobracket arguments are drawn from the \xcoords of $A$,
+%	\item ``extended $\x$-polylog on $A$'': an $\a$-polylog on $A$ whose cobracket arguments are $\x$ and $1-\x$, where $\x$ are drawn from the \xcoords of $A$,
+%	\item ``automorphic $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that is invariant, up to an overal minus sign, under the automorphisms of $A$,
+%	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$.
+%\end{itemize}
+
 The space of generalized polylogarithms defined by~\eqref{eq:multiple_polylogs} is colossally overcomplete. This is because $a_i$ and $z$ are allowed to be arbitrarily complicated algebraic functions, and because these polylogarithms satisfy a shuffle and stuffle algebra. The shuffle algebra represents the fact that unordered integrations can be triangulated into a sum over iterated integrals~\cite{Duhr:2011zq,Duhr:2014woa}. In general, this means that when two polylogarithms share an argument $z$, their product can be re-expressed as the sum of functions 
 \begin{equation} \label{eq:shuffle_relation}
 G(a_1,\dots,a_{k_1};z)\ G(a_{{k_1}+1},\dots,a_{k_1+k_2};z)  = \sum_{\sigma \in \Sigma(k_1,k_2)} G(a_{\sigma(1)},\dots,a_{\sigma(k_1+k_2)};z),
@@ -1289,13 +1299,7 @@ Note that, for the first time at weight four, there exists a component of the co
 
 The symbol and cobracket naturally stratify the study of two-loop amplitudes and integrals that can be expressed as polylogarithms. The operator $\delta_{2,2}$ isolates the nonclassical component of these functions, while the symbol captures their analytic structure up to terms proportional to transcendental constants. In the case of MHV amplitudes in planar ${\cal N} = 4$ SYM, both objects turn out to distill intriguing cluster-algebraic structure that would otherwise be hard to see at the level of full functions. It is to this structure that we now turn.
 
-%Cobracket integrability condition:
-%\begin{equation} \label{eq:integrability}
-%	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
-%\end{equation}
-
-
-\subsection{Cluster-Algebraic Structure in Two-Loop MHV Amplitudes}\label{sec:cluster-algebra-R2n}
+\subsection{Cluster-Algebraic Structure in at Two Loops}\label{sec:cluster-algebra-R2n}
 
 %As observed in~\cite{Golden:2013xva} (and further explored in~\cite{Golden:2014xqa,Golden:2014xqf,Golden:2014pua})
 
@@ -1367,7 +1371,7 @@ As discussed above, the last statement can also be applied at $n$ that are multi
 As it turns out, there exists yet more structure in $\delta_{2,2}\big(R^{(2)}_n\big) = \delta_{2,2}\big({\cal E}^{(2)}_n\big)$. In particular, it was shown in~\cite{Golden:2014xqa} that this cobracket component can be decomposed into a sum over various $A_2$ subalgebras of $\Gr(4,n)$, by defining an $A_2$ function that can be evaluated on each of these subalgebras. Moreover, this $A_2$ function can be assembled into an $A_3$ function, in terms of which this cobracket component can similarly be decomposed. As this subalgebra decomposability will play a central role in what follows, we devote the next subsection to its description.
 
 
-\subsection{MHV Subalgebra Structure and the \pdfeq{A_2} function}
+\subsection{Subalgebra Structure and Cluster Polylogarithms}
 
 %\begin{align}
 %\{a\}_2 \wedge \{b\}_2 &= \delta_{2,2}\bigg( \text{Li}_{1, 3}\left(-a, -\frac{1 + b}{a} \right) \bigg) \\
@@ -1377,9 +1381,9 @@ As it turns out, there exists yet more structure in $\delta_{2,2}\big(R^{(2)}_n\
 %When $a$ and $b$ are taken to be the $A_2$ variables $\x_{i-1}$ and $\x_i$, $a/(1 + b) = \x_{i+1}$ so we can immediately promote the $\delta_{2,2}$ component of~\eqref{eq:A2_cobracket} to generalized polylogarithms
 %\draftnote{identities that (I believe) imply an algorithmic way to promote $\delta_{2,2}\big(R_n^{(2)}\big)$ immediately to multiple polylogarithms (allowing us to come up with a precise notion of `classical tail')}
 
-As we saw in section~\ref{sec:subalgebras_associahedra}, cluster algebras are endowed with subalgebras that can be generated by mutating on restricted sets of nodes. This motivates looking for physically relevant cluster polylogarithms on algebras other than $\Gr(4,n)$, when these algebras appear as subalgebras of the latter. Before we do so, let us return to the definition of these objects, which we are now in a position to make precise. Following~\cite{Golden:2014xqa}, we define cluster polylogarithms (at least through weight four) on the cluster algebra $\a$ to have the following properties:
+As we saw in section~\ref{sec:subalgebras_associahedra}, cluster algebras are endowed with subalgebras that can be generated by mutating on restricted sets of nodes. This motivates looking for physically relevant cluster polylogarithms on algebras other than $\Gr(4,n)$, when these algebras appear as subalgebras of the latter. Before we do so, let us return to the definition of these objects, which we are now in a position to make precise. Following~\cite{Golden:2014xqa}, we define cluster polylogarithms (at least through weight four) to have the following properties:
 \begin{quote}
-{\bf Cluster Polylogarithm}: A generalized polylogarithm $f$ is a cluster polylogarithm on $\a$ if
+{\bf Cluster Polylogarithm}: A generalized polylogarithm $f$ is a cluster polylogarithm on a cluster algebra $\a$ if
 \vspace{-.2cm}
  \begin{itemize}
  \item[(i)] the symbol alphabet of $f$ is composed of only \acoords\ on $\a$, 
@@ -1409,7 +1413,7 @@ for some rational coefficients $c_{ij}$. Moreover, the terms in this sum can the
 \begin{equation}
 f_{A_3}(x_1 \to x_2 \to x_3) \sim \sum_{(x_i\to x_j) \subset A_3} d_{ij}\ f_{A_2}(x_1 \to x_2),
 \end{equation}
-where the $d_{ij}$ are some rational coefficients that we treat in full detail in the next section. For now, we merely highlight the fact that these coefficients can be chosen in such a way that $\delta_{2,2}\big(f_{A_3} \big)$ contains only terms $\{\x_i\}_2 \otimes \{\x_j \}_2$ in which $\x_i$ and $\x_j$ appear together in at least one cluster of $\Gr(4,n)$. Then, there exists a decomposition of the form
+where the $d_{ij}$ are some rational coefficients that we treat in full detail in the next section. For now, we merely highlight the fact that these coefficients can be chosen in such a way that $\delta_{2,2}\big(f_{A_3} \big)$ contains only terms $\{\x_i\}_2 \otimes \{\x_j \}_2$ in which $\x_i$ and $\x_j$ appear together in at least one cluster of $\Gr(4,n)$. Then, there exists a decomposition
 \begin{equation} \label{eq:remainder_A3_deomposition}
 \delta_{2,2}\big( R_n^{(2)} \big) = \sum_{(x_i\to x_j \to x_k) \subset \Gr(4,n)} c_{ijk}\ \delta_{2,2} \big(f_{A_3}(x_1 \to x_2 \to x_3)\big).
 \end{equation}
@@ -1423,25 +1427,18 @@ Recall that the clusters of $A_2$ all take the form $1/\x_i\to \x_{i+1}$ in the 
    \\&\hspace{1.2cm}-2\big(\x_2\otimes\x_3\otimes\x_2\otimes\x_3+\x_2\otimes\x_3\otimes\x_4\otimes\x_3-\x_2\otimes\x_3\otimes\x_3\otimes\x_4 \big) \Big],
    %\big[ [2233]+[2321]+[2332]-2([2323]+[2343]-[2334]) \big]
 \end{align}
-we see that $f_{A_2}$ satisfies cluster \xcoord\ adjacency, and therefore also \acoord\ adjacency (recall that the symbol is insensitive to the difference between $\x_i$ and $1/\x_i$). Furthermore, $f_{A_2}$ is smooth and real-valued in the positive domain $x_1, x_2>0$. The $A_2$ cluster algebra plays a crucial role in endowing $f_{A_2}$ with this analytic behavior, as $\Li_{2,2}(x,y)$ and $\Li_{1,3}(x,y)$ have branch cuts in three locations, namely $x=1$, $y=1$, and $xy=1$. The first two branch cuts are trivially avoided as $-1/\x_i<0$ for $x_1,x_2>0$. However, the last branch cut is also avoided because of the exchange relation for $A_2$: 
+we see that $f_{A_2}$ satisfies cluster \xcoord\ adjacency, and therefore also \acoord\ adjacency (recall that the symbol is insensitive to the difference between $\x_i$ and $1/\x_i$). Note that this means any sum of $A_2$ functions evaluated on the subalgebras of some larger cluster algebra also respects cluster \acoord\ adjacency. At the level of a full function, $f_{A_2}$ is also smooth and real-valued in the positive domain $x_1, x_2>0$. The $A_2$ cluster algebra plays a crucial role in endowing $f_{A_2}$ with this analytic behavior, as $\Li_{2,2}(x,y)$ and $\Li_{1,3}(x,y)$ have branch cuts in three locations, namely $x=1$, $y=1$, and $xy=1$. The first two branch cuts are trivially avoided as $-1/\x_i<0$ for $x_1,x_2>0$. However, the last branch cut is also avoided because of the $A_2$ exchange relation: 
 \begin{equation}
 	0<\left(-\frac{1}{\x_{i-1}}\right)\left(-\frac{1}{\x_{i+1}}\right) = \frac{1}{1+\x_i}<1.
 \end{equation}
-Finally, we note that---just like $R_n^{(2)}$ and ${\cal E}_n^{(2)}$---$f_{A_2}$ is expressible entirely in terms of polylogarithms taking the form $\text{Li}_{n_1,\dots,n_d}(-\mathcal{X}_i,\dots,-\mathcal{X}_j)$, where each $\x_p$ is an \xcoord. This can be seen from the representation in~\eqref{def:a2-function} by recalling that \xcoords\ always occur in pairs---whenever $\x_i$ occurs as an \xcoord, so does $1/\x_i$---and since the arguments of the logarithms can all be put in this form at the cost of factors of $i \pi$.
+Finally, we note that (just like $R_n^{(2)}$ and ${\cal E}_n^{(2)}$) $f_{A_2}$ is expressible entirely in terms of polylogarithms taking the form $\text{Li}_{n_1,\dots,n_d}(-\mathcal{X}_i,\dots,-\mathcal{X}_j)$, where each $\x_p$ is an \xcoord. This can be seen from the representation in~\eqref{def:a2-function}, since the multiplicative inverses of \xcoords\ also always appear as \xcoords, and since the arguments of the logarithms can all be put in this form at the cost of factors of $i \pi$.
 
 \section{Cluster Subalgebra-Constructibility}\label{sec:sub-constructibility} 
 
-Terminology guide (let $A$ be a cluster algebra and $B_i$ be a co-rank $i$ subalgebra of $A$):
-\begin{itemize}
-	\item ``$\a$-polylog on $A$'': symbol alphabet is drawn from the \acoords of $A$,
-	\item ``$\x$-polylog on $A$'': an $\a$-polylog on $A$ with non-zero cobracket (in both $\bb2$ and $\b3c$) and the cobracket arguments are drawn from the \xcoords of $A$,
-	\item ``extended $\x$-polylog on $A$'': an $\a$-polylog on $A$ whose cobracket arguments are $\x$ and $1-\x$, where $\x$ are drawn from the \xcoords of $A$,
-	\item ``automorphic $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that is invariant, up to an overal minus sign, under the automorphisms of $A$,
-	\item ``adjacent $\a/\x$-polylog on $A$'': an $\a$- or $\x$-polylog on $A$ that satisfies cluster adjacency on $A$.
-\end{itemize}
+We now turn to a more systematic exploration of the space of cluster polylogarithms that are subalgebra-constructible in the same way that $R_n^{(2)}$ is constructible in terms of its $A_2$ and $A_3$ subalgebras. Our focus will be on functions that can be defined on $\Gr(4,7) \simeq E_6$ and its subalgebras, which are complex enough to admit nontrivial functional embeddings, but which can be exhaustively explored since they are all finite. All of the functions we consider will also appear in the subalgebras of $\Gr(4,n>7)$, and hence many of the techniques we utilize can also be applied to these infinite cluster algebras~\cite{Golden:2014xqa,cluster_subalgebras_ii}. We will be particularly interested in searching for further ways in which the nonclassical component of $R^{(2)}_{7}$ can be decomposed into its subalgebras, probing the extent to which $\mathcal{N}=4$ SYM knows about the rich subalgebra structure of $E_6$. 
 
 
-In this and future sections we will exhaustively explore ways in which $R^{(2)}_{7}$ can be expressed as a sum of cluster polylogarithms evaluated over subalgebras of $\Gr(4,7) \simeq E_6$. $E_6$ has a rich subalgebra structure, and it is interesting to ask how much $\mathcal{N}=4$ SYM ``knows'' about this structure. Furthermore, it is critical for these first explorations to that $E_6$ is a finite cluster algebra, allowing for an exhaustive search of subalgebra representations ($\Gr(4,6)$ is also finite but the corresponding amplitude is purely classical).
+\newpage 
 
 The main takeaways from this section are:
 \begin{enumerate}
@@ -1450,8 +1447,6 @@ The main takeaways from this section are:
 	\item Subalgebra-constructibility depends intricately on the automorphism structure of cluster algebras, and only a small collection of functions are subalgebra-constructible. 
 	\item We show that $R^{(2)}_7$ is subalgebra-constructible, and describe two novel representations which express this constructibility in terms of $D_5$ and $A_5$ subalgebras. 
 \end{enumerate}
-
-We begin with point 1. 
 
 \subsection{\pdfeq{A_2} functions are a basis for cluster polylogarithms}
 
@@ -1471,7 +1466,11 @@ Specifically, given the symbol for $F$, the algorithm for determining eq.~(\ref{
 \end{itemize}
 And again, matching beyond-the-symbol terms must be dealt with through other considerations. 
 
-In practice, then, then existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-4 cluster polylogarithms. While we do not have a rigorous proof for the fact that $f_{A_2}$ forms a basis for $B_2 \wedge B_2$ (beyond the explicit check through $E_6$), we can understand why this might be the case. Specifically, recall that the cobracket integrability condition, eq.~(\ref{eq:integrability}), requires relationships between the arguments of the cobrackets. Remarkably, the $A_2$ exchange relation
+In practice, then, then existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-4 cluster polylogarithms. While we do not have a rigorous proof for the fact that $f_{A_2}$ forms a basis for $B_2 \wedge B_2$ (beyond the explicit check through $E_6$), we can understand why this might be the case. Specifically, recall that the cobracket integrability condition,
+\begin{equation} \label{eq:integrability}
+	0 = \delta^2 f_4 = \delta(b_{22}) + \delta(b_{31})
+\end{equation}
+requires relationships between the arguments of the cobrackets. Remarkably, the $A_2$ exchange relation
 \begin{equation}
 	1+\x_i = \x_{i-1}\x_{i+1}
 \end{equation}
@@ -1799,7 +1798,7 @@ And finally $E_6$ gives
 
 \subsection{Subalgebra-constructibility of \pdfeq{R^{(2)}_7}}
 
-So far we have seen how we can bootstrap smaller cluster polylogarithms into bigger ones via automorphisms and subalgebra structures. One could continue in this vein, for example look for $D_4$-constructible functions, etc. A future goal of this research is to develop more refined symmetry arguments for why certain subalgebra chains produce valid cluster polylogarithms and other chains do not. 
+So far we have seen how we can bootstrap smaller cluster polylogarithms into bigger ones via automorphisms and subalgebra structures. One could continue in this vein, for example look for $D_4$-constructible functions, etc. It would be interested to understand why certain subalgebra chains produce valid cluster polylogarithms while others do not. 
 
 Rather than continuing to bootstrap our way up and explore all possibilities, we'll shift our focus to the target of $R^{(2)}_7$ and finding ways in which it can be decomposed in to functions on subalgebras. This is a top-down approach for finding new and interesting cluster polylogarithms, rather than the bottom-up approach we have been describing. 
 
