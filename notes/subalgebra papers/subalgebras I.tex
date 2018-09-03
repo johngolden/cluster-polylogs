@@ -353,25 +353,26 @@ Clusters formed out of \xcoords\ can be directly constructed out of clusters inv
 \begin{equation} \label{eq:x_from_a_coordinates}
 	x_i = \prod_j a_j^{b_{ij}}. 	
 \end{equation} 
-For example, the $\x$-coordinate cluster associated with~(\ref{eq:gr25-seed}) is formed by associating cluster \xcoords\ with all its mutable nodes, where these \xcoords\ are constructed by putting all Pl\"ucker coordinates that point to that node in the denominator, and all Pl\"ucker coordinates that are pointed to by that node in the numerator. That is, we get the $A_2$ quiver
+For example, the $\x$-coordinate cluster associated with~(\ref{eq:gr25-seed}) is formed by associating cluster \xcoords\ with all its mutable nodes, where these \xcoords\ are constructed by putting all Pl\"ucker coordinates that point to that node in the denominator, and all Pl\"ucker coordinates that are pointed to by that node in the numerator. That is, we get
 \begin{equation} \label{eq:a2_x_seed}
-	x_1 \to x_2 ,
+	\frac{\ket{14}\ket{23}}{\ket{12}\ket{34}} \to \frac{\ket{15}\ket{34}}{\ket{13}\ket{45}},
 \end{equation}
-where
-\begin{equation}\label{def:xcoordsA2}
-	x_1 = \frac{\ket{14}\ket{23}}{\ket{12}\ket{34}}  , \quad x_2 = \frac{\ket{15}\ket{34}}{\ket{13}\ket{45}}  .
+which takes the form of the generic $A_2$ quiver
+\begin{equation} \label{def:xcoordsA2}
+	x_1 \to x_2.
 \end{equation}
 In the pentagon-triangulation picture, these $\x$-coordinates describe overlapping quadrilaterals, for instance
 \begin{equation}
 \begin{gathered}
+ {\hspace{-.8cm}}
 \begin{tikzpicture}
   \drawLabeledPentagon
   \draw[color=blue, thick] (P1) -- (P2) -- (P3) -- (P4) -- cycle;
-  \draw (2,0) node {$=x_1,$};
+  \draw (2,0) node {\hspace{.8cm}$\sim$ \scalebox{1.44}{$\frac{\ket{14}\ket{23}}{\ket{12}\ket{34}}$},}; {\hspace{1cm}}
 \begin{scope}[xshift = 5cm]
   \drawLabeledPentagon
   \draw[color=blue, thick] (P1) -- (P3) -- (P4) -- (P5) -- cycle;
-  \draw (2,0) node {$=x_2,$};
+  \draw (2,0) node {\hspace{.8cm}$\sim$ \scalebox{1.44}{$\frac{\ket{15}\ket{34}}{\ket{13}\ket{45}}$},};
 \end{scope}
 \end{tikzpicture} 
 \end{gathered}
@@ -389,7 +390,7 @@ Mutation rules for \xcoords\ are different than for \acoords, and are given by
 \end{equation}
 Mutation still changes the arrows in the quiver diagram as it did in the case of \acoords.  Given just a quiver diagram, it can sometimes be unclear whether a given quiver should be mutated using the \acoord\ or \xcoord\ rules~\eqref{eq:a-coord-mutation} or~\eqref{eq:x-coord-mutation}. We adopt the convention in this work that if a quiver is given with no frozen nodes, it should be thought of as equipped with \xcoords.
 
-Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clusters by mutation. Mutating on alternating nodes of our $A_2$ cluster~\eqref{eq:a2_x_seed} (starting with $x_2$), we generate the following sequence of clusters:
+Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clusters by mutation. Mutating on alternating nodes of our $A_2$ cluster~\eqref{def:xcoordsA2} (starting with $x_2$), we generate the following sequence of clusters:
 \begin{align}
   x_1 &\to \color{black}{x_2} \nl
   \color{black}{x_1(1+x_2)} &\leftarrow \frac{1}{x_2} \nl
