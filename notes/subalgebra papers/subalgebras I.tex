@@ -1430,13 +1430,19 @@ Note that, for the first time at weight four, there exists a component of the co
 
 Lastly, it is often quite useful to employ the fact that the trivial cohomology of $\delta$ gives us an integrability condition,
 \begin{equation}\label{eq:def-cobracket-integrability}
-	\delta^2(f) = 0,
+	\delta^2\big(f\big) = 0,
 \end{equation}
 for any polylogarithm $f$. This condition implies an intricate relationship between the arguments of the Bloch group elements appearing in $\delta(f)$. For example, any weight 4 function $f$ satisfies
 \begin{equation}
-	\delta(\delta_{2,2}(f)) + \delta(\delta_{3,1}(f)) = 0.
+	\delta\big(\delta_{2,2}\big(f\big)\big) + \delta\big(\delta_{3,1}\big(f\big)\big) = 0,
 \end{equation}
-So, while $\delta_{2,2}$ serves the important and unique role of capturing the nonclassical contribution to a function, the $\delta_{3,1}$ component is important as well and can be thought of as serving as a bridge between the nonclassical and classical. 
+where
+\begin{align}
+\delta\big( \{x\}_3 \wedge \{ -1-y \}_1 \big)&= \{ x\}_2 \wedge \{-1-x \}_1 \wedge \{ -1-u \}_1 \\
+\delta\big( \{x\}_2 \wedge \{y\}_2 \big) &= \{ y\}_2 \wedge \{x\}_1 \wedge  \{-1-x\}_1 \\
+&\hspace{1cm} - \{x\}_2 \wedge  \{y\}_1 \wedge  \{-1-y\}_1. \nonumber 
+\end{align}
+So, while the $\delta_{2,2}$ component alone captures the nonclassical contribution to a function, this nonclassical contribution is liked to the classical contribution through its relation with the $\delta_{3,1}$ component. 
 
 The symbol and cobracket naturally stratify the study of two-loop amplitudes and integrals that can be expressed as polylogarithms. The operator $\delta_{2,2}$ isolates the nonclassical component of these functions, while the symbol captures their analytic structure up to terms proportional to transcendental constants. In the case of MHV amplitudes in planar ${\cal N} = 4$ SYM, both objects turn out to distill intriguing cluster-algebraic structure that would otherwise be hard to see at the level of full functions. It is to this structure that we now turn.
 
@@ -1578,7 +1584,10 @@ Finally, we note that (just like $R_n^{(2)}$ and ${\cal E}_n^{(2)}$) $f_{A_2}$ i
 
 \section{Cluster Subalgebra-Constructibility}\label{sec:sub-constructibility} 
 
-We now turn to a more systematic exploration of the space of cluster polylogarithms that are subalgebra-constructible in the same way that $R_n^{(2)}$ is constructible in terms of its $A_2$ and $A_3$ subalgebras. Our focus will be on functions that can be defined on $\Gr(4,7) \simeq E_6$ and its subalgebras, which are complex enough to admit nontrivial functional embeddings, but which can be exhaustively explored since they are all finite. All of the functions we consider will also appear in the subalgebras of $\Gr(4,n>7)$, and hence many of the techniques we utilize can also be applied to these infinite cluster algebras~\cite{Golden:2014xqa,cluster_subalgebras_ii}. We will be particularly interested in searching for further ways in which the nonclassical component of $R^{(2)}_{7}$ can be decomposed into its subalgebras, probing the extent to which $\mathcal{N}=4$ SYM knows about the rich subalgebra structure of $E_6$. 
+We now turn to a more systematic exploration of subalgebra-constructible cluster polylogarithms. We restrict our attention to functions that can be defined on $\Gr(4,7) \simeq E_6$ and its subalgebras, as this space is complex enough to admit nontrivial functional embeddings but can be explored exhaustively since it is finite. The techniques we utilize can also be applied to infinite cluster algebras (see, for example, ~\cite{Golden:2014xqa}), but we leave exploration of this kind to future work~\cite{cluster_subalgebras_ii}. To focus our investigations, we will in particular look for further ways the nonclassical component of $R^{(2)}_{7}$ can be decomposed into its subalgebras, thus probing the extent to which $\mathcal{N}=4$ SYM theory knows about the rich subalgebra structure of $E_6$. In the remainder of this and the following sections, we therefore ignore purely classical polylogarithms. However, it is our hope that the full space of subalgebra-constructible cluster polylogarithms will prove to be of more general interest to physicists and mathematicians.
+
+
+
 
 The main takeaways from this section are:
 \begin{enumerate}
@@ -1588,40 +1597,37 @@ The main takeaways from this section are:
 	\item We show that $R^{(2)}_7$ is subalgebra-constructible, and describe two novel representations which express this constructibility in terms of $D_5$ and $A_5$ subalgebras. 
 \end{enumerate}
 
-\subsection{\pdfeq{A_2} Functions are a Basis for Cluster Polylogarithms}
+\subsection{\pdfeq{A_2} Functions as a Basis for (Nonclassical) Cluster Polylogarithms}
 
-A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis the $\delta_{2,2}$ component of any weight-4 cluster polylogarithms for all cluster algebras \footnote{This has been checked for $E_6$ and all subalgebras contained therein.}. What this means is that given a weight-4 cluster polylogarithm $F$ that is associated with cluster algebra $\a$, there exists at least one decomposition of $F$ of the following form:
+A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis for the $\delta_{2,2}$ component of any weight-four cluster polylogarithms. (This property can be constructively realized for all cluster polylogarithms defined on $E_6$ or its subalgebras, but has not been shown in general.) That is, given a weight-four cluster polylogarithm $F$ defined on a cluster algebra $\a$, there exists some decomposition
 \begin{equation}\label{eq:a2-decomp}
-	F = \sum_{(x_i\to x_j) \subset \a} c_{ij} ~f_{A_2}(x_i \to x_j) + C, 
+	\delta_{2,2} \big(F\big) = \sum_{(x_i\to x_j) \subset \a} c_{ij} ~\delta_{2,2}\big(f_{A_2}(x_i \to x_j) \big), 
 \end{equation}
-where the sum ranges over all $A_2$ subalgebras of $\a$ and $C$ is a purely classical polylogarithm which also satisfies cluster adjacency on $\a$. While this decomposition may not seem remarkable at first glance, it has several key features which we highlight here:
-\begin{itemize}
-	\item The classical function $C$ can be written purely in terms of $\Li_{k}(-\x)$ for $k\le4$, where $\x$ is an \xcoord\ of $A$.
-	\item This decomposition can be determined, up to terms proportional to constants, algorithmically given only the \emph{symbol} for $F$.
-\end{itemize}
-Specifically, given the symbol for $F$, the algorithm for determining eq.~(\ref{eq:a2-decomp}) is: 
-\begin{itemize}
-	\item Solve for $c_{ij}$ such that $\delta_{2,2}\big(F - \sum c_{ij} ~f_{A_2}(x_i \to x_j)\big) = 0$, where again the sum is over all $A_2$ subalgebras of $\a$.
-	\item Once the $c_{ij}$ are fixed, the resulting function $C = F - \sum c_{ij} ~f_{A_2}(x_i \to x_j)$ can be fit to an ansatz of weight-4 functions composed of (products of) $\Li_{k\le4}(-\x)$ over all \xcoords\ of $\a$. 
-\end{itemize}
-Matching beyond-the-symbol terms must be dealt with through other considerations, such as analytic behavior and correct limits. See \cite{Golden:2014xqf} for an in-depth application of this algorithm. 
+where the sum ranges over all the $A_2$ subalgebras of $\a$. Given the symbol (or cobracket) of $F$, this decomposition is simple to compute (but may not be unique). 
 
-In practice, then, the existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-4 cluster polylogarithms. While we do not have a rigorous proof for the fact that $f_{A_2}$ forms a basis for $\delta_{2,2}$ (beyond the explicit check through $E_6$), we can understand why this might be the case. Specifically, recall that the cobracket integrability condition, eq.~(\ref{eq:def-cobracket-integrability}), requires some algebraic relationships between the arguments of the cobrackets. The $A_2$ exchange relation
+We can glean some intuition for the meaning of this decomposition from the cobracket integrability condition~\eqref{eq:def-cobracket-integrability}. This condition implies specific algebraic relationships between the arguments of the $\delta_{2,2}$ and $\delta_{3,1}$ cobracket components. In particular, the $A_2$ exchange relation
 \begin{equation}
 	1+\x_i = \x_{i-1}\x_{i+1}
 \end{equation}
-is a sufficient relationship to generate one solution to integrability, namely $f_{A_2}$. In contrast, the $A_1\times A_1$ cluster algebra has two algebraically distinct variables and so provides no solutions to integrability. 
+is sufficient to generate one solution to integrability, namely $f_{A_2}$. The decomposition~\eqref{eq:a2-decomp} thus tells us that \emph{all} solutions to the cobracket integrability relation can be interpreted as linear combinations of exchange relations on $A_2$ subalgebras. This hardly comes as a surprise, given that the only algebraic relations between cluster coordinates are generated by mutation, and that an $A_2$ subalgebra can be generated on any pair of connected nodes (we assume that the seed cluster is composed of algebraically independent coordinates).
 
-For any finite cluster algebra\footnote{The infinite case will be discussed in~\cite{}.}, \emph{all} algebraic relationships between cluster coordinates can be interpreted as an exchange relation for some $A_2$ subalgebra\footnote{Here we are assuming that the seed cluster is composed of algebraically independent coordinates.}. This is equivalent to the statement that all finite cluster algebras are composed of $A_2$ and $A_1 \times A_1$ subalgebras (equivalently, the associahedron is composed of squares and pentagons). Therefore, any solution to the cobracket integrability condition can be viewed as a sum of solutions deriving from different $A_2$ exchange relations, i.e. $f_{A_2}$ functions. While this does not constitute a proof that $f_{A_2}$ forms a basis for clsuter polylogarithms, it highlights the suggestive connection:
+%In contrast, the $A_1\times A_1$ cluster algebra has two algebraically distinct variables and so provides no solutions to integrability. 
+
+In practice, then, the existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-four cluster polylogarithms. 
+
+
+
+
+This is equivalent to the statement that all finite cluster algebras are composed of $A_2$ and $A_1 \times A_1$ subalgebras (equivalently, the associahedron is composed of squares and pentagons). Therefore, any solution to the cobracket integrability condition can be viewed as a sum of solutions deriving from different $A_2$ exchange relations, i.e. $f_{A_2}$ functions. While this does not constitute a proof that $f_{A_2}$ forms a basis for clsuter polylogarithms, it highlights the suggestive connection:
 \begin{itemize}
 	\item all cluster algebras can be decomposed in to  $A_2$ and $A_1\times A_1$ subalgebras and,
-	\item all weight-4 cluster polylogarithms can be decomposed in to $f_{A_2}$ and classical polyogarithms. 
+	\item all weight-four cluster polylogarithms can be decomposed in to $f_{A_2}$ and classical polyogarithms. 
 \end{itemize}
-The rest of this section will be focused on exploring extensions of this idea beyond $A_2$. Specifically, we'll start by exploring the space of cluster polylogarithms one can associate with the $A_3$ cluster algebra. Once we have these functions we can look at rank $>3$ algebras and ask: which weight-4 cluster polylogarithms can be decomposed in to ``$A_3$ functions''? More broadly, our goal is to understand to what extent one can construct cluster polylogarithms which mimic the subalgebra structure of their associate cluster algebra. From a purely mathematical standpoint we are motivated to study this question on the strength of the $f_{A_2}$ forming a basis. From a physics perspective we are motivated to study this question because, as we will show, $R^{(2)}_n$ exhibits this subalgebraic structure. 
+The rest of this section will be focused on exploring extensions of this idea beyond $A_2$. Specifically, we'll start by exploring the space of cluster polylogarithms one can associate with the $A_3$ cluster algebra. Once we have these functions we can look at rank $>3$ algebras and ask: which weight-four cluster polylogarithms can be decomposed in to ``$A_3$ functions''? More broadly, our goal is to understand to what extent one can construct cluster polylogarithms which mimic the subalgebra structure of their associate cluster algebra. From a purely mathematical standpoint we are motivated to study this question on the strength of the $f_{A_2}$ forming a basis. From a physics perspective we are motivated to study this question because, as we will show, $R^{(2)}_n$ exhibits this subalgebraic structure. 
 
 \subsection{\pdfeq{A_2}-constructibility}
 
-We begin bootstrapping our way up to polylogarithms associated with larger algebras by determine the space of weight-4 cluster polylogarithms associated with the $A_3$ cluster algebra. This is equivalent to asking: how many cluster polylogarithms can be constructed out of the $A_2$ subalgebras of $A_3$? 
+We begin bootstrapping our way up to polylogarithms associated with larger algebras by determine the space of weight-four cluster polylogarithms associated with the $A_3$ cluster algebra. This is equivalent to asking: how many cluster polylogarithms can be constructed out of the $A_2$ subalgebras of $A_3$? 
 
 Recall that there are six $A_2$ subalgebras in $A_3$, and as discussed in sec.~(\ref{sec:subalgebras_associahedra}), there are multiple ways to think of these subalgebras. The simplest is that these are the $\binom{6}{5}$ pentagons embeddable in a hexagon. These are also present as the six pentagonal faces in the $A_3$ associahedron, fig.~\ref{fig:a3-poly}. For this application it is most practical to list the six distinct $A_2$ seeds that appear in the 14 cluster generated by mutating on the standard $A_3$ seed, $x_1 \to x_2 \to x_3$:
 \begin{equation}\label{eq:a2-in-a3}
@@ -1687,7 +1693,7 @@ Therefore we see that, unlike the case of $A_2$, there are two functions one can
   A_3 & 0 & 1 & 0 & 1 \\  
 \end{array} 
 \end{equation}
-This displays the total number of non-classical weight-4 cluster polylogarithm functions associated with the $A_3$ cluster algebra with the given sign changes under the $\sigma$ and $\tau$ automorphisms. 
+This displays the total number of non-classical weight-four cluster polylogarithm functions associated with the $A_3$ cluster algebra with the given sign changes under the $\sigma$ and $\tau$ automorphisms. 
 
 \subsection{\pdfeq{A_2}-constructibility for Larger Algebras}\label{sec:a2-constructibility}
 
@@ -2087,21 +2093,25 @@ In this appendix we catalog the subalgebra structure for the finite connected cl
 
 When counting distinct subalgebras, we lump together all subalgebras which are labeled by the same mutable nodes. However the same subalgebra may appear multiple times but dressed by different frozen nodes -- these appear as distinct subpolytopes in the full associahedra. We have included the counts for both subpolytopes and distinct subalgebras. Also note that in our counting for \xcoords we have included both $x$ and $1/x$.\\ 
 
-{\Large\underline{\(A_2\)}:} \quad clusters: 5 \qquad $a$-coordinates: 5 \qquad $x$-coordinates: 10 \\
+{\Large\underline{\(A_2\)}:} \quad clusters: 5 \qquad $a$-coordinates: 5 \qquad $x$-coordinates: 10
 
+\vspace{.5cm}
 
-{\Large\underline{\(A_3\)}:} \quad clusters: 14 \qquad \(a\)-coordinates: 9 \qquad \(x\)-coordinates: 30 \\
+{\Large\underline{\(A_3\)}:} \quad clusters: 14 \qquad \(a\)-coordinates: 9 \qquad \(x\)-coordinates: 30 
 
+\begin{center}
 \begin{tabular}{ | l | l | l |}
 \multicolumn{1}{c}{Type} &  \multicolumn{1}{c}{Subpolytopes}  &  \multicolumn{1}{c}{Subalgebras} \\
 \hline \(A_2\) & 6 & 6 \\ 
 \hline \(A_1 \times A_1\) & 3 & 3 \\ 
 \hline
-\end{tabular} \\ \\
+\end{tabular} 
+\end{center} 
+\vspace{.5cm}
 
+{\Large \underline{\(A_4\)}:} \quad clusters: 42 \qquad \(a\)-coordinates: 14 \qquad \(x\)-coordinates: 70
 
-{\Large \underline{\(A_4\)}:} \quad clusters: 42 \qquad \(a\)-coordinates: 14 \qquad \(x\)-coordinates: 70\\ 
-
+\begin{center}
 \begin{tabular}{ | l | l | l |}
 \multicolumn{1}{c}{Type} &  \multicolumn{1}{c}{Subpolytopes}  &  \multicolumn{1}{c}{Subalgebras} \\
 \hline \(A_2\) & 28 & 21 \\ 
@@ -2110,10 +2120,13 @@ When counting distinct subalgebras, we lump together all subalgebras which are l
 \hline \(A_2 \times A_1\) & 7 & 7 \\ 
 \hline \(A_1 \times A_1 \times A_1\) & 0 & 0 \\ 
 \hline
-\end{tabular} \\ \\ 
+\end{tabular}
+\end{center} 
+\vspace{.5cm}
 
-{\Large\underline{\(D_4\)}:} \quad clusters: 50 \qquad \(a\)-coordinates: 16 \qquad \(x\)-coordinates: 104\\
+{\Large\underline{\(D_4\)}:} \quad clusters: 50 \qquad \(a\)-coordinates: 16 \qquad \(x\)-coordinates: 104
 
+\begin{center}
 \begin{tabular}{ | l | l | l |}
 \multicolumn{1}{c}{Type} &  \multicolumn{1}{c}{Subpolytopes}  &  \multicolumn{1}{c}{Subalgebras} \\
 \hline \(A_2\) & 36 & 36 \\ 
@@ -2122,10 +2135,15 @@ When counting distinct subalgebras, we lump together all subalgebras which are l
 \hline \(A_2 \times A_1\) & 0 & 0 \\ 
 \hline \(A_1 \times A_1 \times A_1\) & 4 & 4 \\ 
 \hline
-\end{tabular} \\ \\
+\end{tabular}
+\end{center}
+\vspace{.5cm}
 
-{\Large\underline{\(A_5\)}:} \quad clusters: 132 \qquad \(a\)-coordinates: 20 \qquad \(x\)-coordinates: 140\\
+\newpage 
 
+{\Large\underline{\(A_5\)}:} \quad clusters: 132 \qquad \(a\)-coordinates: 20 \qquad \(x\)-coordinates: 140
+
+\begin{center}
 \begin{tabular}{ | l | l | l |}
 \multicolumn{1}{c}{Type} &  \multicolumn{1}{c}{Subpolytopes}  &  \multicolumn{1}{c}{Subalgebras} \\
 \hline \(A_2\) & 120 & 56 \\ 
@@ -2140,11 +2158,13 @@ When counting distinct subalgebras, we lump together all subalgebras which are l
 \hline \(A_2 \times A_1 \times A_1\) & 0 & 0 \\ 
 \hline \(A_1 \times A_1 \times A_1 \times A_1\) & 0 & 0 \\ 
 \hline
-\end{tabular} \\ \\
+\end{tabular} 
+\end{center}
+\vspace{.5cm}
 
+{\Large\underline{\(D_5\)}:} \quad clusters: 182 \qquad \(a\)-coordinates: 25 \qquad \(x\)-coordinates: 260
 
-{\Large\underline{\(D_5\)}:} \quad clusters: 182 \qquad \(a\)-coordinates: 25 \qquad \(x\)-coordinates: 260\\
-
+\begin{center}
 \begin{tabular}{ | l | l | l |} 
 \multicolumn{1}{c}{Type} &  \multicolumn{1}{c}{Subpolytopes}  &  \multicolumn{1}{c}{Subalgebras} \\
 \hline \(A_2\) & 180 & 125 \\ 
@@ -2159,11 +2179,15 @@ When counting distinct subalgebras, we lump together all subalgebras which are l
 \hline \(A_2 \times A_1 \times A_1\) & 5 & 5 \\ 
 \hline \(A_1 \times A_1 \times A_1 \times A_1\) & 0 & 0 \\ 
 \hline
-\end{tabular} \\ \\ 
+\end{tabular}
+\end{center}
+\vspace{.5cm}
 
+\newpage
 
-{\Large\underline{\(E_6\)}:} \quad clusters: 833 \qquad \(a\)-coordinates: 42 \qquad \(x\)-coordinates: 770\\
+{\Large\underline{\(E_6\)}:} \quad clusters: 833 \qquad \(a\)-coordinates: 42 \qquad \(x\)-coordinates: 770
 
+\begin{center}
 \begin{tabular}{ | l | l | l |}
 \multicolumn{1}{c}{Type} &  \multicolumn{1}{c}{Subpolytopes}  &  \multicolumn{1}{c}{Subalgebras} \\
 \hline \(A_2\) & 1071 & 504 \\ 
@@ -2188,8 +2212,116 @@ When counting distinct subalgebras, we lump together all subalgebras which are l
 \hline \(A_1 \times A_1 \times A_1 \times A_1 \times A_1\) & 0 & 0 \\ 
 \hline
 \end{tabular}
+\end{center}
+\vspace{.5cm}
+
+\newpage
 
 \section{Cobracket Spaces in Finite Cluster Algebras}\label{appendix:cobrackets}
+
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c |  c |}
+\multicolumn{1}{c}{\multirow{2}{*}{Type}} & \multicolumn{1}{c}{\multirow{2}{*}{Cobracket-Adjacent}} & \multicolumn{4}{c}{Automorphic} \\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma^+ \tau^+$} & \multicolumn{1}{c}{$\sigma^+ \tau^-$} & \multicolumn{1}{c}{$\sigma^- \tau^+$} & \multicolumn{1}{c}{$\sigma^- \tau^-$} \\
+\hline \(A_2\) & 6 & 1 & 1 & 0 & 0 \\ 
+\hline \(A_3\) & 21  & 2 & 2 & 0 & 3 \\ 
+\hline \(A_4\) & 56 & 4 & 4 & 0 & 0 \\ 
+\hline \(D_4\) & 86   \\ 
+\hline \(A_5\) & 126 & 8 & 8 & 5 & 11 \\ 
+\hline \(D_5\) & -   \\ 
+\hline \(E_6\) & -  & - & - & - & -  \\ 
+\hline
+\end{tabular} 
+\end{center}
+
+Automorphic $D_4$ symbols
+
+\begin{center}
+\hspace{-1cm}\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^+ \tau_4^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{S_3}^+$} & \multicolumn{1}{c}{$\sigma_{S_3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\tau_{S_3}^+$ & 3 & 0 \\
+\cline{2-3} $\tau_{S_3}^-$ & 1 & 0 \\
+\cline{2-3}
+\end{tabular} 
+\hspace{.4cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^+ \tau_4^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{S_3}^+$} & \multicolumn{1}{c}{$\sigma_{S_3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\tau_{S_3}^+$ & 3 & 0 \\
+\cline{2-3} $\tau_{S_3}^-$ & 1 & 0 \\
+\cline{2-3}
+\end{tabular}
+\hspace{.4cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^- \tau_4^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{S_3}^+$} & \multicolumn{1}{c}{$\sigma_{S_3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\tau_{S_3}^+$ & 3 & 0 \\
+\cline{2-3} $\tau_{S_3}^-$ & 2 & 0 \\
+\cline{2-3}
+\end{tabular}
+\hspace{.4cm}
+\begin{tabular}{ c | c | c |}
+\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\sigma_4^- \tau_4^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\sigma_{S_3}^+$} & \multicolumn{1}{c}{$\sigma_{S_3}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\cline{2-3} $\tau_{S_3}^+$ & 3 & 0 \\
+\cline{2-3} $\tau_{S_3}^-$ & 0 & 0 \\
+\cline{2-3}
+\end{tabular}
+\end{center}
+
+Automorphic $D_5$ symbols
+
+\begin{center}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\sigma_{Z_2}^+$} & \multicolumn{1}{c}{$\sigma_{Z_2}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^+ \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\sigma_{Z_2}^+$} & \multicolumn{1}{c}{$\sigma_{Z_2}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^+}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\sigma_{Z_2}^+$} & \multicolumn{1}{c}{$\sigma_{Z_2}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\hspace{1.2cm}
+\begin{tabular}{| c | c |}
+\multicolumn{2}{c}{$\underline{\sigma^- \tau^-}$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\multicolumn{1}{c}{$\sigma_{Z_2}^+$} & \multicolumn{1}{c}{$\sigma_{Z_2}^-$} \\[-1em]
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
+\hline
+- & - \\
+\hline
+\end{tabular} 
+\end{center}
+
 
 \bibliographystyle{ieeetr}
 
