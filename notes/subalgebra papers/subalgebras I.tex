@@ -357,11 +357,11 @@ Cluster algebras can also be formulated in terms of a different set of cluster c
 
 Clusters formed out of \xcoords\ can be directly constructed out of clusters involving \acoords. Given a quiver equipped with $\a$-coordinates and described by the exchange matrix $b_{ij}$, we can compute an $\x$-coordinate to assign to each mutable node by
 \begin{equation} \label{eq:x_from_a_coordinates}
-	x_i = \prod_j a_j^{b_{ij}}. 	
+	x_i = \prod_j a_j^{b_{ji}}. 	
 \end{equation} 
 For example, the $\x$-coordinate cluster associated with~(\ref{eq:gr25-seed}) is formed by associating cluster \xcoords\ with all its mutable nodes, where these \xcoords\ are constructed by putting all Pl\"ucker coordinates that point to that node in the denominator, and all Pl\"ucker coordinates that are pointed to by that node in the numerator. That is, we get
 \begin{equation} \label{eq:a2_x_seed}
-	\frac{\ket{14}\ket{23}}{\ket{12}\ket{34}} \to \frac{\ket{15}\ket{34}}{\ket{13}\ket{45}},
+	\frac{\ket{12}\ket{34}}{\ket{14}\ket{23}} \to \frac{\ket{13}\ket{45}}{\ket{15}\ket{34}},
 \end{equation}
 which takes the form of the generic $A_2$ quiver
 \begin{equation} \label{def:xcoordsA2}
@@ -374,11 +374,11 @@ In the pentagon-triangulation picture, these $\x$-coordinates describe overlappi
 \begin{tikzpicture}
   \drawLabeledPentagon
   \draw[color=blue, thick] (P1) -- (P2) -- (P3) -- (P4) -- cycle;
-  \draw (2,0) node {\hspace{.8cm}$\sim$ \scalebox{1.44}{$\frac{\ket{14}\ket{23}}{\ket{12}\ket{34}}$},}; {\hspace{1cm}}
+  \draw (2,0) node {\hspace{.8cm}$\sim$ \scalebox{1.44}{$\frac{\ket{12}\ket{34}}{\ket{14}\ket{23}}$},}; {\hspace{1cm}}
 \begin{scope}[xshift = 5cm]
   \drawLabeledPentagon
   \draw[color=blue, thick] (P1) -- (P3) -- (P4) -- (P5) -- cycle;
-  \draw (2,0) node {\hspace{.8cm}$\sim$ \scalebox{1.44}{$\frac{\ket{15}\ket{34}}{\ket{13}\ket{45}}$},};
+  \draw (2,0) node {\hspace{.8cm}$\sim$ \scalebox{1.44}{$\frac{\ket{13}\ket{45}}{\ket{15}\ket{34}}$},};
 \end{scope}
 \end{tikzpicture} 
 \end{gathered}
@@ -464,9 +464,9 @@ Cluster algebras contain a rich and intricate subalgebra structure, which will p
 \scalebox{1.4}{$\Updownarrow$} \\ 
 \ \vspace{-.4cm} \ \\ 
 \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
-	(0,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{14}\ket{23}}{\ket{12}\ket{34}}$} ="0",
-	(75,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{15}\ket{34}}{\ket{13}\ket{45}}$} ="1",
-	(150,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{16}\ket{45}}{\ket{14}\ket{56}}$} ="2",
+	(0,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{12}\ket{34}}{\ket{14}\ket{23}}$} ="0",
+	(75,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{13}\ket{45}}{\ket{15}\ket{34}}$} ="1",
+	(150,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{14}\ket{56}}{\ket{16}\ket{45}}$} ="2",
 	"0", {\ar"1"},
 	"1", {\ar"2"},
 \end{xy}
@@ -874,7 +874,7 @@ where $l=n-k$ and
     \langle 1, \dotsc, i+j-l-1, i+1, \dotsc, k, k+j, \dotsc, n\rangle, \qquad &i >l-j+1.
   \end{cases}
 \end{equation}
-(Note that evaluating the above expression for $k=2$ will give a rotated version of~\eqref{eq:g2n-seed} and the instances of $\Gr(2,n)$ in the previous sections.) The cluster algebra on $\Gr(k,n)$ is therefore of rank $(n-k-1)(k-1)$, i.e.~the number of mutable nodes in~\eqref{eq:gkn-seed}. 
+(Note that evaluating the above expression for $k=2$ will not directly give~\eqref{eq:g2n-seed}, however the two are equivalent under a cyclic rotation and dihedral flip of the $n$-gon.) The cluster algebra on $\Gr(k,n)$ is therefore of rank $(n-k-1)(k-1)$, i.e.~the number of mutable nodes in~\eqref{eq:gkn-seed}. 
 
 %We have emphasized Grassmannian cluster algebras so far for two reasons: 1) the correspondence with triangulations and positive matrices make them easy to gain an intuition for and 2) the cluster algebra for $\Gr(4,n)$ is intimately connected to $n$-particle kinematics in $\mathcal{N}=4$ SYM. Let us now address point 2 a bit more in detail.
 
@@ -949,9 +949,9 @@ By construction, the \xcoords\ on $\Gr(4,n)$ derived from the seed~\eqref{eq:gkn
 \begin{equation*}
 \begin{gathered}
 \begin{xy} 0;<-.5pt,0pt>:<0pt,-.5pt>::
-	(0,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2345}\ket{1346}}{\ket{1234}\ket{3456}}$} ="1",
-	(0,100) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{3456}\ket{1246}}{\ket{2346}\ket{1456}}$} ="3",
-	(0,200) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1456}\ket{1236}}{\ket{1346}\ket{1256}}$} ="5",
+	(0,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1234}\ket{3456}}{\ket{2345}\ket{1346}}$} ="1",
+	(0,100) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2346}\ket{1456}}{\ket{3456}\ket{1246}}$} ="3",
+	(0,200) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1346}\ket{1256}}{\ket{1456}\ket{1236}}$} ="5",
 	"1", {\ar"3"},
 	"3", {\ar"5"},
 \end{xy}
@@ -969,10 +969,10 @@ This fact is especially propitious for loop-level amplitudes (and integrals) tha
 
 While amplitudes in planar ${\cal N}=4$ are not generically expected to have this property (and indeed, certain Feynman integrals have been computed that do not~\cite{Bourjaily:2018aeq,Henn:2018cdp}), an infinite class of amplitudes do---namely, all two-loop MHV amplitudes~\cite{CaronHuot:2011ky}, and all six- and seven-particle amplitudes computed to date~\cite{CaronHuot:2011kk,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn}. The significance of this property is illustrated by the two-loop, six-particle remainder function, which encodes the MHV amplitude. Namely, this function can be put in the form
 \begin{equation} \label{eq:R26cobracket}
-	R^{(2)}_6 = \sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 2345 \rangle \langle 1346 \rangle}{\langle 1234 \rangle \langle 3456 \rangle}\right) - \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right] + \dots,
-%	R^{(2)}_6 \stackrel{\delta}{=} \sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 2356 \rangle}{\langle 1236 \rangle \langle 2345 \rangle}\right) - \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right],
+	R^{(2)}_6 = -\sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 3456 \rangle}{\langle 2345 \rangle \langle 1346 \rangle}\right) + \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right] + \dots,
+%	R^{(2)}_6 = \sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 2356 \rangle}{\langle 1236 \rangle \langle 2345 \rangle}\right) - \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right],
 \end{equation}
-\draftnote{check normalization} where the cyclic sum is over all rotations of the four-bracket indices $i \rightarrow i+j$ for $0\leq j <6$, and the dots indicate this equality only holds up to products of lower-weight polylogarithms. This projection is well-defined and will be introduced, along with the $n$-particle remainder function, in section~\ref{sec:cluster_polylog_MHV_review}. Here we just emphasize the simplicity of this expression, which takes the form of classical polylogarithms with negative \xcoord\ arguments. (In particular, the argument of the first polylogarithm appears in figure~\ref{fig:g46-x-seed}, while the argument of the second polylogarithm appears after mutating on the top node of this cluster.) Moreover, the part of the expression we have dropped in~\eqref{eq:R26cobracket} can also expressed entirely in terms of products of classical polylogarithms with negative \xcoord\ arguments~\cite{Golden:2014xqf}. 
+where the cyclic sum is over all rotations of the four-bracket indices $i \rightarrow i+j$ for $0\leq j <6$, and the dots indicate this equality only holds up to products of lower-weight polylogarithms. This projection is well-defined and will be introduced, along with the $n$-particle remainder function, in section~\ref{sec:cluster_polylog_MHV_review}. Here we just emphasize the simplicity of this expression, which takes the form of classical polylogarithms with negative \xcoord\ arguments. (In particular, the argument of the first polylogarithm is the top node in figure~\ref{fig:g46-x-seed}, while the argument of the second polylogarithm is in the cluster generated by mutating on the top node of figure~\ref{fig:g46-x-seed}.) Moreover, the part of the expression we have dropped in~\eqref{eq:R26cobracket} can also expressed entirely in terms of products of classical polylogarithms with negative \xcoord\ arguments~\cite{Golden:2014xqf}. 
 
 This surprising property---of being expressible as polylogarithms with negative \xcoord\ arguments---is enjoyed by the remainder function at all $n$. However, for $n>6$ the remainder function has a nonclassical component, so generalized polylogarithms (in addition to classical polylogarithms) with negative \xcoord\ arguments also appear~\cite{}. Although this component represents the mathematically most complicated part of the remainder function, it was shown in~\cite{Golden:2014xqa} that it is decomposable into building blocks related to the $A_2$ and $A_3$ subalgebras of $\Gr(4,n)$. This allows the all-$n$ symbol computed in~\cite{CaronHuot:2011ky} to be systematically upgraded to a function, as was done for seven particles in~\cite{Golden:2014xqf}. In the later sections of this paper, we demonstrate the existence of further subalgebra structure in the nonclassical part of the seven-particle remainder function (we leave consideration of higher-point kinematics to future work~\cite{cluster_subalgebras_ii}). The \acoord\ and \xcoord\ seeds for $\Gr(4,7)$ are presented in figure~\ref{fig:g47-seed}.
 
@@ -1026,12 +1026,12 @@ Before turning to the remaining aspects of cluster algebras that we wish to deve
 \begin{equation*}
 \begin{gathered}
 \begin{xy} 0;<-.5pt,0pt>:<0pt,-.5pt>::
-	(0,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2346}\ket{1347}}{\ket{1234}\ket{3467}}$} ="1",
-	(220,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2345}\ket{3467}}{\ket{2347}\ket{3456}}$} ="2",
-	(0,100) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{3467}\ket{1247}}{\ket{2347}\ket{1467}}$} ="4",
-	(220,100) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2347}\ket{1467}\ket{3456}}{\ket{2346}\ket{1347}\ket{4567}}$} ="5",
-	(0,200) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1467}\ket{1237}}{\ket{1347}\ket{1267}}$} ="7",
-	(220,200) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1347}\ket{4567}\ket{1267}}{\ket{3467}\ket{1247}\ket{1567}}$} ="8",
+	(0,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1234}\ket{3467}}{\ket{2346}\ket{1347}}$} ="1",
+	(220,0) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2347}\ket{3456}}{\ket{2345}\ket{3467}}$} ="2",
+	(0,100) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2347}\ket{1467}}{\ket{3467}\ket{1247}}$} ="4",
+	(220,100) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{2346}\ket{1347}\ket{4567}}{\ket{2347}\ket{1467}\ket{3456}}$} ="5",
+	(0,200) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{1347}\ket{1267}}{\ket{1467}\ket{1237}}$} ="7",
+	(220,200) *+\txt{\fontsize{16pt}{16pt} $\frac{\ket{3467}\ket{1247}\ket{1567}}{\ket{1347}\ket{4567}\ket{1267}}$} ="8",
 	"1", {\ar"2"},
 	"4", {\ar"5"},
 	"7", {\ar"8"},
@@ -1070,7 +1070,7 @@ which corresponds to the cluster algebra on $\Gr(2,n{+}3)$. Each of the clusters
 
 Of particular interest is the cluster algebra generated by $A_3 \simeq \Gr(4,6)$, which describes six-particle scattering. By comparison with figure~\ref{fig:g46-x-seed}, we see that the \xcoords\ in the quiver~\eqref{def:An} act as coordinates on the space of momentum twistors, where they correspond to the functions
 \begin{equation}\label{eq:a3-seed-def}
-x_1 = \frac{\ket{2345}\ket{1346}}{\ket{1234}\ket{3456}}, \quad x_2 = \frac{\ket{3456}\ket{1246}}{\ket{2346}\ket{1456}}, \quad x_3 = \frac{\ket{1456}\ket{1236}}{\ket{1346}\ket{1256}}.
+x_1 = \frac{\ket{1234}\ket{3456}}{\ket{2345}\ket{1346}}, \quad x_2 = \frac{\ket{2346}\ket{1456}}{\ket{3456}\ket{1246}}, \quad x_3 = \frac{\ket{1346}\ket{1256}}{\ket{1456}\ket{1236}}.
 \end{equation}
 More generally, any \acoord\ in $\Gr(4,6)$ can be expressed in terms of the variables $x_1$, $x_2$, and $x_3$ by evaluation on the momentum twistor matrix
 \begin{equation} \label{eq:a3_momentum_twistor_matrix}
@@ -1085,15 +1085,17 @@ Z_{A_3} =
 \end{pmatrix}.
 \endgroup 
 \end{equation}
+\draftnote{change this for new (inverted) x-coords}
 The chief advantage of working directly in terms of cluster \xcoords\ such as $x_1$, $x_2$, and $x_3$ is that they trivialize all Pl\"ucker relations~\eqref{eq:plucker-rel}. Furthermore, cluster coordinates rationalize many of the square roots that appear when amplitudes and integrals are expressed in terms of dual conformally invariant cross ratios~\cite{Bourjaily:2018aeq}. For instance, in this chart the dual conformal cross ratios commonly used to express the six-particle amplitude evaluate to
 \begin{align} \label{eq:uvw_in_x}
-u &= \frac{\ket{6123}\ket{3456}}{\ket{6134}\ket{2356}} = \frac{x_2 x_3}{1+x_3+x_2 x_3}, \\ 
-v &= \frac{\ket{1234} \ket{4561}}{\ket{1245}\ket{3461}} =\frac{1}{1+x_2+x_1 x_2}, \\ 
-w &= \frac{\ket{2345} \ket{5612}}{\ket{2356}\ket{4512}} =\frac{x_1 x_2}{(1+x_2+x_1 x_2)(1+x_3+x_2 x_3)},
+u &= \frac{\ket{6123}\ket{3456}}{\ket{6134}\ket{2356}} = \frac{1}{1+x_2+x_2 x_3}, \\ 
+v &= \frac{\ket{1234} \ket{4561}}{\ket{1245}\ket{3461}} =\frac{x_1 x_2}{1+x_1+x_1 x_2}, \\ 
+w &= \frac{\ket{2345} \ket{5612}}{\ket{2356}\ket{4512}} =\frac{x_2 x_3}{(1+x_1+x_1 x_2)(1+x_2+x_2 x_3)},
 \end{align}
 which rationalizes the square root that appears in six-particle kinematics 
 \begin{equation}
-\sqrt{(1 - u - v - w)^2 - 4 u v w} = \frac{x_2 (1 - x_1 x_3)}{(1 + x_2 + x_1 x_2)(1 + x_3 + x_2 x_3)} .
+\sqrt{(1 - u - v - w)^2 - 4 u v w} = \frac{x_2 \left(1-x_1 x_3\right)}{\left(1+x_1+x_1
+   x_2\right) \left(1+x_2+x_2 x_3\right)} .
 \end{equation}
 Note that the cluster coordinate expressions~\eqref{eq:uvw_in_x} are rotated compared to those given elsewhere in the literature~\cite{Golden:2013xva,Parker:2015cia} even though both arise from a seed of the form~\eqref{def:An}; this reflects a differing convention for the seed of $\Gr(k,n)$.
 
@@ -1113,7 +1115,7 @@ The first nondegenerate Dynkin diagram of type $D_n$ is $D_4$, corresponding to 
 \end{equation}
 Note here that we no longer are treating $x_1, x_2, x_3$ as defined in eq.~(\ref{eq:a3-seed-def}), the $x_i$ in eq.~(\ref{eq:D4_quiver}) are all generic variables. This seed turns out to generate the same cluster algebra as $\Gr(3,6)$; in particular, starting from the seed in~\eqref{eq:gkn-seed} and mutating on the nodes initially labeled by $f_{13}$ and then $f_{23}$, one arrives at the \xcoord\ quiver~\eqref{eq:D4_quiver}, where
 \begin{equation}\label{eq:d4-seed-def}
-x_1 = \frac{\ket{234}\ket{135}}{\ket{123}\ket{345}}, \quad x_2 = \frac{\ket{125}\ket{356}}{\ket{156}\ket{235}}, \quad x_3 = \frac{\ket{156}\ket{345}}{\ket{135}\ket{456}}, \quad x_4 = \frac{\ket{123}\ket{156}}{\ket{126}\ket{135}}.
+x_1 = \frac{\ket{123}\ket{345}}{\ket{234}\ket{135}}, \quad x_2 = \frac{\ket{156}\ket{235}}{\ket{125}\ket{356}}, \quad x_3 = \frac{\ket{135}\ket{456}}{\ket{156}\ket{345}}, \quad x_4 = \frac{\ket{126}\ket{135}}{\ket{123}\ket{156}}.
 \end{equation}
 The corresponding momentum twistor matrix is given by
 \begin{equation}
@@ -1127,6 +1129,7 @@ Z_{D_4} =
  \end{pmatrix}
 \endgroup .
 \end{equation}
+\draftnote{change this for new (inverted) x-coords}
 Conversely, the cluster algebra generated by $D_5$,
 \begin{equation}\label{def:D5}
     \begin{gathered}
@@ -1165,9 +1168,12 @@ Finally, the cluster algebra $E_6$ is generated by the quiver
 \end{equation}
 This cluster algebra is equivalent to $\Gr(4,7)$, as can be seen by mutating the seed~\eqref{eq:gkn-seed} on nodes $f_{12}$, $f_{13}$, $f_{23}$, $f_{12}$, $f_{22}$, and then $f_{32}$. By comparison with~\eqref{def:E6}, we then have 
 \begin{align} \label{eq:E6_x_def}
-x_1 &= \frac{\ket{1237} \ket{1246}}{\ket{1234}\ket{1267}}, \hspace{13.03ex} \quad \quad x_2 = - \frac{\ket{4(12)(35)(67)}}{\ket{1247} \ket{3456}}, \quad \nonumber \\
-x_3 &= \frac{\ket{1245} \ket{1267} \ket{3456}}{\ket{1246} \ket{5(12)(34)(67)}}, \hspace{4.12ex} \quad \quad x_4 = -\frac{\ket{1234} \ket{4567}}{\ket{4(12)(35)(67)}}, \quad \\
- x_5 &= -\frac{\ket{1567}\ket{4(12)(35)(67)}}{\ket{1267} \ket{1345}\ket{4567}}, \quad \quad \quad x_6 = \frac{\ket{5(12)(34)(67)}}{\ket{1567}\ket{2345}}, \quad \nonumber
+x_1 &= \frac{\ket{1234}\ket{1267}}{\ket{1237} \ket{1246}}, \hspace{13.03ex} \quad \quad 
+x_2 = - \frac{\ket{1247} \ket{3456}}{\ket{4(12)(35)(67)}}, \quad \nonumber \\
+x_3 &= \frac{\ket{1246} \ket{5(12)(34)(67)}}{\ket{1245} \ket{1267} \ket{3456}}, \hspace{4.12ex} \quad \quad 
+x_4 = -\frac{\ket{4(12)(35)(67)}}{\ket{1234} \ket{4567}}, \quad \\
+x_5 &= -\frac{\ket{1267} \ket{1345}\ket{4567}}{\ket{1567}\ket{4(12)(35)(67)}}, \quad \quad \quad 
+x_6 = \frac{\ket{1567}\ket{2345}}{\ket{5(12)(34)(67)}}, \quad \nonumber
 \end{align}
 where we have made use of the notation
 \begin{equation} \label{eq:twistor_intersection}
@@ -1186,6 +1192,7 @@ Z_{E_6} =
 \end{pmatrix} ,
 \endgroup
 \end{equation}
+\draftnote{change this for new (inverted) x-coords}
 where we have introduced the notation
 \begin{equation} \label{eq:compound_x_def}
 	x_{i_1,\ldots, i_k} = \sum_{a=1}^k \prod_{b=1}^a x_{i_b} = x_{i_1}+x_{i_1}x_{i_2} + \ldots + x_{i_1}\cdots x_{i_k}.
