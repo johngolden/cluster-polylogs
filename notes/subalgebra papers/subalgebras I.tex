@@ -1981,27 +1981,27 @@ These redundancies make the representation of $\smash{\delta_{2,2} \big(R^{(2)}_
 \end{align}
 and
 \begin{align}
-\sum_{A_5\subset E_6} f_{A_5}(x_i \to \ldots) &\equiv \frac{1}{4} \sum_{i=0}^6\sum_{j=0}^1\sum_{k=0}^1 \ \mathbb{Z}_{2,E_6}^k \circ \tau_{E_6}^j \circ \sigma_{E_6}^i \Big(f_{A_5}(x_i \to \ldots) \Big) \\ 
+\sum_{A_5\subset E_6} f_{A_5}(x_i \to \ldots) &\equiv \frac{1}{4} \sum_{i=0}^6\sum_{j=0}^1\sum_{k=0}^1 \ \mathbb{Z}_{2,E_6}^k \circ \tau_{E_6}^j \circ \sigma_{E_6}^i \Big(f_{A_5}(x_i \to \ldots) \Big) \label{eq:A5_in_E6_sum} \\ 
 &= \sum_{i=0}^6 \ \sigma_{E_6}^i \Big(f_{A_5}(x_i \to \ldots) \Big). \nonumber
 \end{align}
 Thus---unlike in the case of smaller subalgebras, where nontrivial functions can be formed out of linear combinations of the same cluster polylogarithm evaluated on subalgebras in different orbits of the $E_6$ automorphism group---the number of $D_5$- and $A_5$-constructible functions in $E_6^{+++}$ is directly bounded by the number of $D_5$ and $A_5$ functions.
 
-\subsection{\pdfeq{D_5} Decompositions of \pdfeq{R^{(2)}_7}}\label{sec:d5-func}
+\subsection{The \pdfeq{D_5}-Constructibility of \pdfeq{R^{(2)}_7}}\label{sec:d5-func}
 
 We begin with $D_5$, the largest subalgebra of $E_6$ in terms of number of clusters. For each of the automorphism signatures in $D_5$ that admits a nontrivial space of (nonclassical) cluster polylogarithms, we insert a general ansatz of such functions into the sum~\eqref{eq:D5_in_E6_sum}. Referring back to table~\ref{table:a2-d5-counts}, we see there are four nontrivial cases to consider. Note that we do not restrict our ans\"atze to $D_5$ functions that respect cobracket-level cluster adjacency, because it is possible for functions that don't have this property to assemble into linear combinations that do when evaluated on the subalgebras of $E_6$ (as happens when $f_{A_3}^{--}$ is constructed out of $f_{A_2}$ functions). We then check to see if the nonclassical part of $R_7^{(2)}$ is in the span of any of these ansatz sums.
 
 Amazingly, there exists precisely one $D_5$ automorphism signature in terms of which $R_7^{(2)}$ can be decomposed: $R_7^{(2)}$ is $f_{D_5}^{---}$\!-constructible. Two free parameters remain in this decomposition, corresponding to two degrees of freedom that cancel in the sum~\eqref{eq:D5_in_E6_sum}. More concretely, we can decompose 
 \begin{align}
-\delta_{2,2}\big(R^{(2)}_7 \big) = \sum_{D_5\subset \Gr(4,7)} \delta_{2,2} \Big( f_{D_5}^{---}\left(
+\delta_{2,2}\big(R^{(2)}_7 \big) = \{const\} \sum_{D_5\subset \Gr(4,7)} \delta_{2,2} \Big( f_{D_5}^{---}\left(
 \begin{gathered}
     \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
       (0,20) *+{x_1} ="1",
       (30,20) *+{x_2} ="2",
-      (72,20) *+{\begin{aligned} \frac{ x_3 x_5 x_6}{x_{6,5}} \end{aligned}} ="3",
+      (72,20) *+{\begin{aligned} \frac{x_3 x_5}{1+x_5} \end{aligned}} ="3",
       (114,0) *+{\color{white} x} ="4",
       (114,40) *+{\color{white} x} ="5",
-      (136,0) *+{\begin{aligned} \frac{1}{x_6 (1 + x_5)} \end{aligned}} ="6",
-      (121,40) *+{\begin{aligned} \frac{x_{6,5}}{x_5}\end{aligned}} ="7",
+      (118,0) *+{x_4} ="6",
+      (118,34) *+{\begin{aligned} \frac{1}{x_5}\end{aligned}} ="7",
       "1", {\ar"2"},
       "2", {\ar"3"},
       "3", {\ar"4"},
@@ -2018,10 +2018,10 @@ f_{D_5}^{---}\left(
       (0,15) *+{x_1} ="1",
       (30,15) *+{x_2} ="2",
       (60,15) *+{x_3} ="3",
-      (90,0) *+{\color{white} x_i} ="4",
-      (90,30) *+{\color{white} x_i} ="5",
-      (90,2) *+{x_4} ="6",
-      (90,28) *+{x_5} ="7",
+      (90,-2) *+{\color{white} x_i} ="4",
+      (90,32) *+{\color{white} x_i} ="5",
+      (92,0) *+{x_4} ="6",
+      (92,30) *+{x_5} ="7",
       "1", {\ar"2"},
       "2", {\ar"3"},
       "3", {\ar"4"},
@@ -2029,52 +2029,44 @@ f_{D_5}^{---}\left(
     \end{xy}
     \end{gathered} 
 \right) &\equiv \sum_{D_5^{---}} \bigg[
-	\frac{1}{2} c_1 f_{A_2}\left(x_1\to x_2 \left(1+x_{34}\right)\right)+
-	\frac{1}{2} c_2 f_{A_2}\left(x_3\to x_4\right)+\nl
+	\frac{1}{2} c_1 f_{A_2}\big(x_1\to x_2 \left(1+x_{34}\right)\big)+
+	\frac{1}{2} c_2 f_{A_2}\big(x_3\to x_4\big)+\nl
 	&\hspace{-2cm} \left(-\frac{1}{2}+\frac{c_1}{2}\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right)+
 	\frac{1}{4} c_2 f_{A_2}\left(\frac{x_1 x_2 x_3}{1+x_{12}}\to x_4\right)+\nl
 	&\hspace{-2cm} \left(c_1-c_2\right) f_{A_2}\left(\frac{x_2 x_3}{1+x_2}\to x_4\right)+
-	\left(1-c_1\right) f_{A_2}\left(x_2\to x_3 \left(1+x_4\right)\right)+\nl
+	\left(1-c_1\right) f_{A_2}\big(x_2\to x_3 \left(1+x_4\right)\big)+\nl
 	&\hspace{-2cm} \left(\frac{1}{2}-c_1+\frac{3 c_2}{4}\right) f_{A_2}\left(x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) \bigg],
 \end{align}
 where we have introduced the shorthand
 \begin{equation}
 	\sum_{D_5^{---}} f = \sum_{i=0}^4\sum_{j=0}^1\sum_{k=0}^1 (-1)^{i+j+k}\  \sigma_{D_5}^i \circ \tau_{D_5}^j \circ \mathbb{Z}_{2,D_5}^k \big(f\big).
 \end{equation}
-The \xcoords\ in~\eqref{eq:R27_D5_decomposition} are the $E_6$ coordinates defined in~\eqref{eq:E6_x_def}, while the \xcoords\ in~\eqref{eq:fd5-init} should be thought of as $D_5$ coordinates that take different values when evaluated on the $D_5$ subalgebras of $E_6$. The coefficients $c_1$ and $c_2$ represent the two remaining degrees of freedom in our ansatz, which drop out of the sum~\eqref{eq:R27_D5_decomposition}.
+The \xcoords\ in~\eqref{eq:R27_D5_decomposition} are the $E_6$ coordinates defined in~\eqref{eq:E6_x_def}, while the \xcoords\ in~\eqref{eq:fd5-init} should be thought of as $D_5$ coordinates that take different values when evaluated on the $D_5$ subalgebras of $E_6$. (It is easy to see that the $E_6$ seed~\eqref{def:E6} doesn't contain any $D_5$ sub-quivers of the form~\eqref{def:D5}, but that mutating on the $x_5$ node will give rise to the $D_5$ sub-quiver in~\eqref{eq:R27_D5_decomposition}.) The coefficients $c_1$ and $c_2$ represent the two remaining degrees of freedom in our ansatz, which drop out of the sum~\eqref{eq:R27_D5_decomposition}.
 
-Clearly the coefficients $c_1$ and $c_2$ deserve more attention, but before this we turn to $A_5$\dots
+It is worth highlighting that $f_{D_5}^{---}$ does not satisfy cobracket-level cluster adjacency for generic values of $c_1$ and $c_2$; however, it can be given this property by choosing $c_2 = -\frac{6}{5} + \frac{8}{5} c_1$. \textbf{discussion of $7\to6$ collinear limit as motivation to choose other values}
 
-\subsection{\pdfeq{A_5} Decompositions of \pdfeq{R^{(2)}_7}}\label{sec:a5-func}
+There exist further physical and mathematical desiderata we might consider to motivate different choices for $c_1$ and $c_2$, one of which will be explored in section~\ref{sec:a4_a3_nestings}. But first we explore the possibility that $R^{(2)}_7$ is also $A_5$-constructible.
 
-We now turn to the other corank-1 subalgebra of $E_6$, $A_5$. The procedure for finding decompositions of $R^{(2)}_7$ in terms of $A_5$ subalgebras is identical to the previous section. 
+\subsection{The \pdfeq{A_5}-Constructibility of \pdfeq{R^{(2)}_7}}\label{sec:a5-func}
 
-As was the case with $D_5$, only the fully antisymmetric case $f_{A_5}^{--}$ generates a representation of $R^{(2)}_7$. This time there is one internal degree of freedom which cancels in the sum over the 7 $A_5$ subalgebras of $\Gr(4,7)$:
-\begin{align}
-	f_{A_5}^{--} = \sum_{A_5^{--}} 
-	& \frac{1}{2} c_1 f_{A_2}\left(x_2\to x_3 \left(1+x_4\right)\right)
-	+\left(-1-c_1\right) f_{A_2}\left(x_2\to x_3 \left(1+x_{45}\right)\right)\nl
-	&+\left(-\frac{1}{2}-c_1\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right)
-\end{align}
+We can check for $A_5$ decompositions of $R^{(2)}_7$ in the same way we checked for $D_5$ decompositions, using now the ansatz sum~\eqref{eq:A5_in_E6_sum}. Intriguingly, there is (again) precisely one automorphism signature in terms of which $R^{(2)}_7$ can be decompose, and it is (again) the totally antisymmetric choice $A_5^{--}$\!. This time there is a single internal degree of freedom that cancels in the sum~\eqref{eq:A5_in_E6_sum}. \
 
-Following in complete analogy with the $D_5$ case, we can tune $c_1$ to decompose $f_{A_5}^{--}$ into either $A_3$ or $A_4$ functions. Unlike $D_5$, the $A_3$ representation employs the skew-symmetric $A_3$ function, $f_{A_3}^{+-}$. Setting $c_1 = -\frac{1}{2}$ gives
+This decomposition is given explicitly by
 \begin{equation}
-	f_{A_3\subset A_5}^{--} = -\frac{1}{160}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right).
+\delta_{2,2}\big(R^{(2)}_7 \big) = \sum_{A_5\subset E_6} \delta_{2,2} \Big(f_{A_5}^{--} \left(x_1\to x_2\to \frac{x_3 x_5}{1+x_5} \to \frac{1}{x_5}  \to x_6 (1+x_5) \right) \Big), \label{eq:R27_A5_decomposition}
 \end{equation}
-The overall coefficient of $-\frac{1}{160}$ is simply a result of overcounting in the symmetric sum, as that $A_3$ has only 4 automorphic partners in $A_5$.
-
-Setting $c_1 = -1$ makes $f_{A_5}^{--}$ an $A_4$-constructible function:
-\begin{equation}
-	f_{A_4\subset A_5}^{--} = -\frac{1}{20} \sum_{A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4).
-\end{equation}
-Remarkably, this is the same $f_{A_4}^{+-}$ function defined for the $D_5$ function in eq.~(\ref{eq:fa4-def}). In other words, we have \draftnote{temporarily ignoring the overall symmetry factors, which we can mess with later}
+where the $A_5$ sum~\eqref{eq:A5_in_E6_sum} is taken over
 \begin{align}
-	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5^{---}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) +C \\
-	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + C
+	f_{A_5}^{--}\big( x_1\to x_2\to x_3 \to x_4  \to x_5 \big) \equiv \sum_{A_5^{--}} 
+	& \bigg[ \frac{1}{2} c_1 f_{A_2}\big(x_2\to x_3 \left(1+x_4\right)\big) + \nl
+	&\hspace{-1cm}\left(-1-c_1\right) f_{A_2}\big(x_2\to x_3 \left(1+x_{45}\right)\big) + \nl 
+	&\hspace{-1cm}\left(-\frac{1}{2}-c_1\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right) \bigg]. \label{eq:fa5-init}
 \end{align}
-where $C$ is again a function of classical polylogarithms and is the same for both the $D_5$ and $A_5$ representations. 
+As in the last section, the \xcoords\ in~\eqref{eq:R27_A5_decomposition} are the $E_6$ coordinates defined in~\eqref{eq:E6_x_def}, while the \xcoords\ in~\eqref{eq:fa5-init} are $A_5$ coordinates that take different values when evaluated on different $A_5$ subalgebras of $E_6$. Moreover, the $A_5$ quiver in~\eqref{eq:R27_A5_decomposition} can be generated by mutating on the $x_5$ node of~\eqref{def:E6} and freezing the node associated with $x_4$.
 
-\subsection{Nesting $A_4$ and $A_3$ Functions in $D_5$ and $A_5$}
+\dots
+
+\subsection{Nesting $A_4$ and $A_3$ Functions in $D_5$ and $A_5$} \label{sec:a4_a3_nestings}
 
 We can tune the remaining internal degrees of freedom, $c_1$ and $c_2$, to embed further subalgebra structure inside $f_{D_5}^{---}$. This follows exactly the same procedure for finding $D_5$-decompositions of $R^{(2)}_7$, instead now we are trying to find $A_4$-, $D_4$-, or $A_3$-decompositions of $f_{D_5}^{---}$. It turns out that there are two different possibilities: one of which involves $A_4$ subalgebras and the other involving $A_3$. We will review these decompositions now.
 
@@ -2115,26 +2107,51 @@ The $A_4\subset D_5$ representation of $R^{(2)}_7$ in particular is quite remark
 	\item add them together so that they are antisymmetric under the automorphisms of the $D_5$ subalgebras of $\Gr(4,7)$,
 	\item and the resulting function matches the nonclassical portion of $R^{(2)}_7$.
 \end{itemize}
+Following in complete analogy with the $D_5$ case, we can tune $c_1$ to decompose $f_{A_5}^{--}$ into either $A_3$ or $A_4$ functions. Unlike $D_5$, the $A_3$ representation employs the skew-symmetric $A_3$ function, $f_{A_3}^{+-}$. Setting $c_1 = -\frac{1}{2}$ gives
+\begin{equation}
+	f_{A_3\subset A_5}^{--} = -\frac{1}{160}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right).
+\end{equation}
+The overall coefficient of $-\frac{1}{160}$ is simply a result of overcounting in the symmetric sum, as that $A_3$ has only 4 automorphic partners in $A_5$.
+
+Setting $c_1 = -1$ makes $f_{A_5}^{--}$ an $A_4$-constructible function:
+\begin{equation}
+	f_{A_4\subset A_5}^{--} = -\frac{1}{20} \sum_{A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4).
+\end{equation}
+Remarkably, this is the same $f_{A_4}^{+-}$ function defined for the $D_5$ function in eq.~(\ref{eq:fa4-def}). In other words, we have \draftnote{temporarily ignoring the overall symmetry factors, which we can mess with later}
+\begin{align}
+	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5^{---}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) +C \\
+	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + C
+\end{align}
+where $C$ is again a function of classical polylogarithms and is the same for both the $D_5$ and $A_5$ representations. 
+
 
 
 \begin{figure}[t]   \centering
   \begin{tikzpicture}
-	\node (P1) at (0cm,.2cm) {$R_7^{(2)}$};
+  state/.style={circle, draw, minimum size=3cm}
+	\node (H1) at (0cm,.2cm) {\color{white} $,F^i,$};
+	\node (P1) at (0cm,.2cm) {$R_7^{(2)}\!\!$};
+	\node (H2) at (-2cm,-1.5cm) {\color{white} $,F^i,$};
 	\node (P2) at (-2cm,-1.5cm) {$f_{D_5}^{---}$};
+	\node (H3) at (2cm,-1.5cm) {\color{white} $,F^i,$};
 	\node (P3) at (2cm,-1.5cm) {$f_{A_5}^{--}$};
+	\node (H4) at (0cm,-3cm) {\color{white} $,F^i,$};
 	\node (P4) at (0cm,-3cm) {$f_{A_4}^{+-}$};
+	\node (H5) at (-3cm,-3.4cm) {\color{white} $,F^i,$};
 	\node (P5) at (-3cm,-3.4cm) {$f_{A_3}^{--}$};
+	\node (H6) at (3cm,-3.4cm) {\color{white} $,F^i,$};
 	\node (P6) at (3cm,-3.4cm) {$f_{A_3}^{+-}$};
+	\node (H7) at (0cm,-5.4cm) {\color{white} $,F^i,$};
 	\node (P7) at (0cm,-5.4cm) {$f_{A_2}^{--}$};
-	\draw[->] (P1) -- (P2);
-	\draw[->] (P1) -- (P3);
-	\draw[->] (P2) -- (P4);
-	\draw[->] (P3) -- (P4);
-	\draw[->] (P2) -- (P5);
-	\draw[->] (P3) -- (P6);
-	\draw[->] (P4) -- (P7);
-	\draw[->] (P5) -- (P7);
-	\draw[->] (P6) -- (P7);
+	\draw[->] (H1) -- (H2);
+	\draw[->] (H1) -- (H3);
+	\draw[->] (H2) -- (H4);
+	\draw[->] (H3) -- (H4);
+	\draw[->] (H2) -- (H5);
+	\draw[->] (H3) -- (H6);
+	\draw[->] (H4) -- (H7);
+	\draw[->] (H5) -- (H7);
+	\draw[->] (H6) -- (H7);
 \end{tikzpicture}
   \caption{blah}
 \label{fig:R27_decompositions}
