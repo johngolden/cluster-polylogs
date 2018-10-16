@@ -1597,11 +1597,11 @@ Finally, we note that (just like $R_n^{(2)}$ and ${\cal E}_n^{(2)}$) $f_{A_2}$ i
 
 \section{Nonclassical Cluster Polylogarithms}\label{sec:sub-constructibility} 
 
-We now turn to a more systematic exploration of the space of weight-four nonclassical cluster polylogarithms. We restrict our attention to functions that can be defined on $\Gr(4,7) \simeq E_6$ and its subalgebras, as this space is complex enough to give rise to an interesting space of functions, yet can be explored exhaustively. The techniques we utilize can also be applied to infinite cluster algebras (see for instance~\cite{Golden:2014xqa}), but we leave further exploration of this kind to future work~\cite{cluster_subalgebras_ii}. Before exploring the properties of this space of functions on $\Gr(4,7)$, we describe an efficient method for its generation using the $A_2$ function. We then describe how this method can be extended to more restricted spaces of functions---those that are subalgebra-constructible out of other cluster polylogarithms---which spaces we hope will prove to be of general interest to physicists and mathematicians. 
+We now turn to a more systematic exploration of the space of weight-four nonclassical cluster polylogarithms. We restrict our attention to functions that can be defined on $\Gr(4,7) \simeq E_6$ and its subalgebras, as this space is complex enough to give rise to an interesting space of functions, yet can be explored exhaustively. The techniques we utilize can also be applied to infinite cluster algebras (see for instance~\cite{Golden:2014xqa}), but we leave further exploration of this kind to future work~\cite{cluster_subalgebras_ii}. Before exploring the properties of this space of functions on $\Gr(4,7)$, we describe an efficient method for its generation using the $A_2$ function~\eqref{def:a2-function}. We then describe how this method can be extended to more restricted spaces of functions---those that are constructible out of smaller cluster polylogarithms evaluated on a cluster algebra's subalgebras. It is hoped that these subalgebra-constructible functions will prove to be of interest to physicists and mathematicians beyond the role they play in MHV amplitudes in planar ${\cal N}=4$ SYM theory. 
 
 \subsection{\pdfeq{A_2} Functions as a Basis}
 
-A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis for the $\delta_{2,2}$ component of any weight-four cluster polylogarithm. (This property can be constructively realized for all cluster polylogarithms defined on $E_6$ or its subalgebras, but has not been proven in general.) That is, given a weight-four cluster polylogarithm $F$ defined on a cluster algebra $\a$, there always exists some decomposition
+A remarkable (conjectured) property of $f_{A_2}$ is that it forms a complete basis for the $\delta_{2,2}$ component of any weight-four cluster polylogarithm \draftnote{should we cite one of your papers here?}. (This property can be constructively realized for all cluster polylogarithms defined on $E_6$ or its subalgebras, but has not been proven in general.) That is, given a weight-four cluster polylogarithm $F$ defined on a cluster algebra $\a$, there always exists some decomposition
 \begin{equation}\label{eq:a2-decomp}
 	\delta_{2,2} \big(F\big) = \sum_{(x_i\to x_j) \subset \a} c_{ij} ~\delta_{2,2}\big(f_{A_2}(x_i \to x_j) \big)
 \end{equation}
@@ -1622,24 +1622,24 @@ is sufficient to generate one solution to integrability, namely $f_{A_2}$. The d
 %\end{itemize}
 %The rest of this section will be focused on exploring extensions of this idea beyond $A_2$. Specifically, we'll start by exploring the space of cluster polylogarithms one can associate with the $A_3$ cluster algebra. Once we have these functions we can look at rank $>3$ algebras and ask: which weight-four cluster polylogarithms can be decomposed in to ``$A_3$ functions''? More broadly, our goal is to understand to what extent one can construct cluster polylogarithms which mimic the subalgebra structure of their associate cluster algebra. From a purely mathematical standpoint we are motivated to study this question on the strength of the $f_{A_2}$ forming a basis. From a physics perspective we are motivated to study this question because, as we will show, $R^{(2)}_n$ exhibits this subalgebraic structure. 
 
-In practice, then, the existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-four cluster polylogarithms. To illustrate this, let us consider the space of nonclassical $A_3$ cluster polylogarithms. This space could be computed by forming an ansatz of all possible cobracket components constructed out of cluster \xcoords, and then imposing the integrability condition~\eqref{eq:def-cobracket-integrability}. However, the decomposability conjecture~\eqref{eq:a2-decomp} reduces this computation to the simpler question: how many cluster polylogarithms can be constructed out of the $A_2$ subalgebras of $A_3$? 
+In practice, then, the existence (and uniqueness) of $f_{A_2}$ solves the problem of writing down weight-four cluster polylogarithms. To illustrate this, let us consider the space of nonclassical $A_3$ cluster polylogarithms. This space could be computed by forming an ansatz out of all possible cobracket components constructed from cluster \xcoords, and then imposing the integrability condition~\eqref{eq:def-cobracket-integrability}. However, the decomposability conjecture~\eqref{eq:a2-decomp} reduces this computation to the simpler question: how many cluster polylogarithms can be constructed out of the $A_2$ subalgebras of $A_3$? 
 
 Recall from section~\ref{sec:subalgebras_associahedra} that there are six $A_2$ subalgebras in $A_3$. To label these subalgebras, we choose a representative cluster from each one; in terms of $A_3$ coordinates (defined by the initial seed $x_1 \to x_2 \to x_3$), we take the set
 \begin{equation}\label{eq:a2-in-a3}
 \begin{gathered}
 	x_1 \longrightarrow x_2, \qquad \qquad
 	x_2 \longrightarrow x_3, \qquad \qquad
-	\frac{x_2}{1+x_{1,2}} \longrightarrow \frac{\left(1+x_1\right) x_3}{1+x_{1,2,3}},\\ \\
+	\frac{x_2}{1+x_{1,2}} \longrightarrow \frac{\left(1+x_1\right) x_3}{1+x_{1,2,3}},\\[0.8em]
 	\frac{x_1 x_2}{1+x_1} \longrightarrow x_3,\qquad \qquad
 	x_1 \left(1+x_2\right) \longrightarrow \frac{x_2 x_3}{1+x_2},\qquad \qquad
-	 x_1 \longrightarrow x_2 \left(1+x_3\right),
+	 x_1 \longrightarrow x_2 \left(1+x_3\right)
 \end{gathered}	
 \end{equation}
-each of which generates a distinct $A_2$ cluster algebra. We then construct an ansatz for the space of nonclassical $A_3$ functions out of $f_{A_2}$ functions evaluated on each of these subalgebras:
+Each of these seeds generates a distinct $A_2$ cluster algebra. We then construct an ansatz for the space of nonclassical $A_3$ functions by considering the span of $f_{A_2}$ evaluated on each of these subalgebras:
 \begin{equation}\label{eq:fa3-ansatz}
-	f_{A_3}\big(x_1\to x_2\to x_3 \big) = c_1 f_{A_2}\big(x_1 \to x_2\big) \ +\ \ldots \ +\ c_6 f_{A_2}\big(x_1\to x_2 \left(1+x_3\right)\big). 
+	f_{A_3}\big(x_1\to x_2\to x_3 \big) = c_1 f_{A_2}\big(x_1 \to x_2\big) \ +\ \ldots \ +\ c_6 f_{A_2}\big(x_1\to x_2 \left(1+x_3\right)\big)
 \end{equation}	
-Due to the properties inherited from $f_{A_2}$, the above ansatz already has a cluster-adjacent cobracket, a cluster-adjacent symbol, and is smooth and real-valued in the positive domain. All that remains is to find values for the $c_i$ such that $f_{A_3}$ is invariant (up to an overall sign) under the automorphisms of $A_3$. In this case, there are two automorphism group generators, $\sigma_{A_3}$ and $\tau_{A_3}$, which were defined in~\eqref{eq:def_An_automorphic_cycle} and~\eqref{eq:def_An_automorphic_flip}.  
+Due to the properties of $f_{A_2}$, the above ansatz already has a cluster-adjacent cobracket, a cluster-adjacent symbol, and is smooth and real-valued in the positive domain. All that remains is to find values for the coefficients $c_i$ such that $f_{A_3}$ is invariant (up to an overall sign) under the automorphisms of $A_3$. In this case, there are two automorphism group generators, $\sigma_{A_3}$ and $\tau_{A_3}$, which were defined in~\eqref{eq:def_An_automorphic_cycle} and~\eqref{eq:def_An_automorphic_flip}.  
 
 We first consider there case where $f_{A_3}$ is invariant under both $A_3$ automorphism generators, namely
 \begin{equation}\label{eq:fA3++}
@@ -1655,14 +1655,14 @@ In practice, this means we take the ansatz for $f_{A_3}$ in eq.~(\ref{eq:fa3-ans
 	f_{A_3}\left(\frac{1}{x_3} \to \frac{1}{x_2} \to \frac{1}{x_1}\right) = f_{A_3}(x_1\to x_2\to x_3).  
 \end{gathered}
 \end{equation}
-It turns out there is no nontrivial solution to this set of constraints. Conversely, allowing $f_{A_3}$ to pick up an overall minus sign when acted upon by $\tau_{A_3}$ and solving the constraints
+It turns out there is no nontrivial solution to this set of constraints. Conversely, allowing $f_{A_3}$ to pick up an overall minus sign when acted upon by $\tau_{A_3}$, we solve the constraints
 \begin{equation}
 \begin{gathered}
 	\sigma_{A_3}\big(f_{A_3}(x_1\to x_2\to x_3)\big) = f_{A_3}\big(x_1\to x_2\to x_3 \big),\\ \\[-1.2em]
 	 \tau_{A_3}\big(f_{A_3}(x_1\to x_2\to x_3)\big) = -f_{A_3}\big(x_1\to x_2\to x_3 \big),  \\ \\[-1.4em]
 \end{gathered}
 \end{equation}
-we find the solution 
+and find the solution 
 \begin{equation}
 	c_i = 1
 \end{equation}
@@ -1671,36 +1671,53 @@ we find the solution
 	f_{A_3}^{+-}(x_1\to x_2\to x_3) &= f_{A_2}(x_1 \to x_2) + \ldots + f_{A_2}(x_1\to x_2 \left(1+x_3\right)) \nonumber \\
 	&= \sum_{i=1}^6 \sigma_{A_3}^i\big(f_{A_2}(x_1\to x_2)\big),
 \end{align}
-where the superscripts on $f_{A_3}^{+-}$ label its behavior under $\sigma$ and $\tau$, respectively. (The superscript on $\sigma_{A_3}^i$ indicates how many times the operator $\sigma_{A_3}$ should be applied.) There are two remaining sign choices to check, $f_{A_3}^{-+}$ and $f_{A_3}^{--}$. We find only the trivial solution in the first case, while		
+where the superscripts on $f_{A_3}^{+-}$ label its behavior under $\sigma$ and $\tau$, respectively. (The superscript on $\sigma_{A_3}^i$ indicates how many times the operator $\sigma_{A_3}$ should be applied.) There are two remaining sign choices to check: $\sigma^-_{A_3}\tau^+_{A_3}$ and $\sigma^-_{A_3}\tau^-_{A_3}$. We find only the trivial solution in the first case, while		
 \begin{equation} \label{eq:fA3mm}
 	f_{A_3}^{--}(x_1\to x_2\to x_3) =\sum_{i=1}^6(-1)^i\sigma_{A_3}^i \big(f_{A_2}(x_1\to x_2)\big)
 \end{equation}
-turns out to be the unique $A_3$ function with this automorphism signature, up to an overall rescaling.
+turns out to be the unique $A_3$ function that picks up a minus sign under the action of both $A_3$ automorphism generators, up to an overall rescaling.
 
-Therefore, unlike the case of $A_2$, there are two functions one can associate with the $A_3$ cluster algebra: $f_{A_3}^{+-}$ and $f_{A_3}^{--}$. These functions arise purely from the interplay between the overall symmetries of the $A_3$ cluster algebra and the structure of the $A_2$ subalgebras in $A_3$, i.e. there has been no physics input so far. However, motivated by the properties of the two-loop MHV amplitudes, we can check one further aspect of these functions---whether or not they respect cobracket-level cluster adjacency. Recall that the function $f_{A_2}$ does not satisfy this property, while it was stated around equation~\eqref{eq:a3_func_tilde} that there exists an $f_{A_3}$ that does have this property---in fact, it was pointed out in~\cite{Golden:2014xqa} that there exists only such function. It is easy to check that indeed, only $f_{A_3}^{--}$ satisfies cobracket-level cluster adjacency, and that it matches the function reported in~\cite{Golden:2014xqa}. 
+Therefore, unlike the case of $A_2$, there are two functions one can associate with the $A_3$ cluster algebra: $f_{A_3}^{+-}$ and $f_{A_3}^{--}$. These functions arise purely from the interplay between the overall symmetries of the $A_3$ cluster algebra and the structure of the $A_2$ subalgebras in $A_3$, i.e. there has been no physics input so far. However, motivated by the properties of the two-loop MHV amplitudes, we can check one further aspect of these functions---whether or not they respect cobracket-level cluster adjacency. Recall that the function $f_{A_2}$ does not satisfy cobracket-level cluster adjacency, while it was stated around equation~\eqref{eq:a3_func_tilde} that there exists an $f_{A_3}$ that does have this property---in fact, it was pointed out in~\cite{Golden:2014xqa} that there exists only one such function. It is easy to check that indeed, only $f_{A_3}^{--}$ can be expressed in terms of cluster-adjacent cobrackets, and that it matches the function reported in~\cite{Golden:2014xqa}. 
 
 \subsection{Constructing all Cluster Polylogarithms in $\Gr(4,7)$} \label{sec:all_nonclassical_polylogs_gr47}
 
-It is a straightforward exercise to extend the construction outlined in the last subsection to any finite algebra (as well as to infinite algebras by specifying a set of $A_2$ subalgebras). In the case of $A_n$, the only automorphism generators remain $\sigma_n$ and $\tau_n$ (as defined in~\eqref{eq:def_An_automorphic_cycle} and~\eqref{eq:def_An_automorphic_flip}), and we find
-\begin{equation}\label{eq:an-func-counts}
-\begin{array}{ l | c | c | c | c }			
-  &\ \sigma^+\tau^+ \ &\ \sigma^+\tau^- \ & \ \sigma^-\tau^+ \ &\ \sigma^-\tau^- \ \\
-  \hline
-  A_2 & 0 & 1 \ (0) & 0 & 0 \\  
-  \hline
-  A_3 & 0 & 1 \ (0) & 0 & 1\ (1) \\  
-  \hline
-  A_4 & 0 & 3 \ (0) & 0 & 0 \\
-  \hline
-  A_5 & 2 \ (1) & 5 \ (1) & 2 \ (0) & 5 \ (3) 
-\end{array} 
-\end{equation}
-where each entry denotes the number of nonclassical weight-four cluster polylogarithms with a given automorphism signature, and the numbers in parentheses indicate how many of these functions additionally satisfy cobracket-level cluster adjacency. It is interesting to note that the automorphism signature $\sigma^+\tau^- $ admits at least one solution for each of these $A_n$, and in particular that it gives rise to the only nontrivial solutions in both $A_2$ and $A_4$. 
+\begin{table}
+\begin{center}
+\vspace{.2cm}
+Nonclassical $A_n$ Polylogarithms
+\vspace{.2cm}
 
-This procedure gets only slightly more complicated in the $D_n$ algebras, due to their larger automorphism groups. As discussed in section~\ref{sec:automorphisms}, the $D_4$ cluster algebra has as its automorphism group a product of dihedral and symmetric groups, $\smash{{\mathfrak D}_4\times S_3}$. The dihedral group is generated by a pair of operators $\smash{\sigma_{D_4}^{({\mathfrak D}_4)}}$ and $\tau^{({\mathfrak D}_4)}_{D_4}$, while the symmetric group is generated by a pair of operators $\smash{\sigma_{D_4}^{(S_3)}}$ and $\tau^{(S_3)}_{D_4}$. This gives rise to 16 possible automorphism signatures, which we impose on a general ansatz of $f_{A_2}$ functions evaluated on all 36 distinct $A_2$ subalgebras of $D_4$. Abbreviating the dihedral group generators as $\sigma_4$ and $\tau_4$, and the symmetric group generators as $\sigma_3$ and $\tau_3$, we find:
-\begin{equation}
+\begin{tabular}{ l | c | c | c | c }			
+\tikzmark{anTopLeft0}  & $\ \sigma^+\tau^+ \ $ & $ \ \sigma^+\tau^- \ $ & $ \ \sigma^-\tau^+ \ $ & $\ \sigma^-\tau^- \ $ \\
+  \hline
+  $A_2$ & 0 & 1 \ (0) & 0 & 0 \\  
+  \hline
+  $A_3$ & 0 & 1 \ (0) & 0 & 1\ (1) \\  
+  \hline
+  $A_4$ & 0 & 3 \ (0) & 0 & 0 \\
+  \hline
+  $A_5$ & 2 \ (1) & 5 \ (1) & 2 \ (0) & \ 5 \ (3) \tikzmark{anBottomRight0}
+\end{tabular} 
+\end{center}
+\begin{tikzpicture}[overlay, remember picture,decoration={markings,mark=at position .99 with {\arrow[scale=1.4,>=stealth]{>}}}]
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-.9cm]{pic cs:anTopLeft0}) rectangle ([yshift=-.4cm,xshift=.8cm]{pic cs:anBottomRight0}) ;
+\end{tikzpicture}
+\caption{The number of nonclassical weight-four cluster polylogarithms on the $A_{n\le5}$ cluster algebra, for each of the four possible automorphism signatures. The number of polylogarithms that additionally respect cobracket-level cluster adjacency is given in parentheses.} 
+\label{table:nonclassical_An_counts}
+\end{table}
+
+It is a straightforward exercise to extend the construction outlined in the last subsection to any finite algebra (as well as to infinite algebras by specifying a set of $A_2$ subalgebras). In the case of $A_n$, there are just the two automorphism generators $\sigma_n$ and $\tau_n$, which were given in~\eqref{eq:def_An_automorphic_cycle} and~\eqref{eq:def_An_automorphic_flip}. The results are summarized in Table~\ref{table:nonclassical_An_counts}, where each entry denotes the number of nonclassical weight-four cluster polylogarithms with a given automorphism signature, and the numbers in parentheses indicate how many of these functions additionally satisfy cobracket-level cluster adjacency. It is interesting to note that the automorphism signature $\sigma^+\tau^- $ admits at least one solution for each of these $A_n$, and in particular that it gives rise to the only nontrivial solutions in both $A_2$ and $A_4$. 
+
+This procedure gets only slightly more complicated in the $D_n$ algebras, due to their larger automorphism groups. As discussed in section~\ref{sec:automorphisms}, the automorphism group of $D_4$ is a product of dihedral and symmetric groups, $\smash{{\mathfrak D}_4\times S_3}$. The dihedral group $\smash{{\mathfrak D}_4}$ is generated by a pair of operators $\smash{\sigma_{D_4}^{({\mathfrak D}_4)}}$ and $\tau^{({\mathfrak D}_4)}_{D_4}$\!, while the symmetric group is generated by a pair of operators $\smash{\sigma_{D_4}^{(S_3)}}$ and $\tau^{(S_3)}_{D_4}$\!. This gives rise to 16 possible automorphism signatures, which we impose on a general ansatz of $f_{A_2}$ functions. The results are presented in Table~\ref{table:nonclassical_Dn_counts} (where the $\smash{{\mathfrak D}_4}$ generators are indicated by $\sigma_4$ and $\tau_4$, and the $S_3$ generators by $\sigma_3$ and $\tau_3$). In the same table we give the results for $D_5$, which has only the three automorphism generators $\sigma_{D_5}$, $\tau_{D_5}$, and $\mathbb{Z}_{2,D_5}$, corresponding to the automorphism group ${\mathfrak D}_5 \times \mathbb{Z}_2$. In both $D_4$ and $D_5$, we again see that the space of functions respecting automorphisms is remarkably constrained. There are no functions with odd signature under $\sigma^{({\mathfrak D}_4)}_{D_4}$\!, and only the signature $\sigma_4^+\tau_4^-\sigma_3^+\tau_3^+$ gives rise to more than one solution in $D_4$. In $D_5$, there are no functions that have opposite signature in $\sigma_{D_5}$ and $\mathbb{Z}_{2,D_5}$.
+
+\begin{table}
+\begin{center}
+\vspace{.2cm}
+Nonclassical $D_4$ Polylogarithms
+\vspace{.2cm}
+
 \begin{tabular}{ c | c | c |}
-\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\ \sigma_4^+ \tau_4^+ \ }$} \\[-1em]
+\multicolumn{1}{c}{\tikzmark{d4TopLeft0}} &\multicolumn{2}{c}{$\underline{\ \sigma_4^+ \tau_4^+ \ }$} \\[-1em]
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
 & $\sigma_3^+$ & \multicolumn{1}{c}{$\sigma_3^-$} \\[-1em]
 &  & \multicolumn{1}{c}{} \\
@@ -1732,17 +1749,15 @@ This procedure gets only slightly more complicated in the $D_n$ algebras, due to
  & $\sigma_3^+$ & \multicolumn{1}{c}{$\sigma_3^-$} \\[-1em]
  & & \multicolumn{1}{c}{} \\
 \cline{1-3} $\tau_3^+$ & 1 (0) & \multicolumn{1}{c}{0} \\
-\cline{1-3} $\tau_3^-$ & 0 & \multicolumn{1}{c}{0} 
+\cline{1-3} $\tau_3^-$ & 0 & \multicolumn{1}{c}{\ 0 \tikzmark{d4BottomRight0}} 
 \end{tabular}
+
+\vspace{.6cm}
+Nonclassical $D_5$ Polylogarithms
 \vspace{.2cm}
-\end{equation}
-Here we again see that the space of functions respecting automorphisms is remarkably constrained. There are no functions with odd signature under $\sigma^{({\mathfrak D}_4)}_{D_4}$, and only the signature $\sigma_4^+\tau_4^-\sigma_3^+\tau_3^+$ gives rise to more than one solution.
 
-
-$D_5$ is less symmetric than $D_4$, with only three generators in its automorphism group ${\mathfrak D}_5 \times \mathbb{Z}_2$. This means there are 8 possible automorphism signatures, and we find:
-\begin{equation}\label{table:a2-d5-counts}
 \begin{tabular}{ c | c |}
-\multicolumn{2}{c}{$\underline{\ \sigma^+ \tau^+\ }$} \\[-1em]
+\multicolumn{2}{c}{\tikzmark{d5TopLeft0} $\underline{\ \sigma^+ \tau^+\ }$} \\[-1em]
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
@@ -1774,15 +1789,28 @@ $D_5$ is less symmetric than $D_4$, with only three generators in its automorphi
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
 \hline
-0 & \multicolumn{1}{c}{7 (5)} \\
+0 & \multicolumn{1}{c}{\ 7 (5) \tikzmark{d5BottomRight0}} \\
 \end{tabular} 
-\end{equation}
-Again, there is interesting structure in this space, as there are no functions that. have opposite signature under $\sigma$ and $\mathbb{Z}_2$.
+\end{center}
+\begin{tikzpicture}[overlay, remember picture,decoration={markings,mark=at position .99 with {\arrow[scale=1.4,>=stealth]{>}}}]
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-1cm]{pic cs:d4TopLeft0}) rectangle ([yshift=-.4cm,xshift=.7cm]{pic cs:d4BottomRight0}) ;
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-.8cm]{pic cs:d5TopLeft0}) rectangle ([yshift=-.4cm,xshift=.7cm]{pic cs:d5BottomRight0}) ;
+\end{tikzpicture}
+\caption{The number of nonclassical weight-four cluster polylogarithms on the $D_4$ and $D_5$ cluster algebras, with each possible automorphism signature. The number of polylogarithms that additionally respect cobracket-level cluster adjacency is given in parentheses.}
+\label{table:nonclassical_Dn_counts}
+\end{table}
 
-Finally, we turn to $E_6$, which has as its automorphism group the dihedral group $D_{14}$ with generators $\sigma$, $\tau$, and $\mathbb{Z}_2$. $E_6$ is much larger than any of the cluster algebras considered above, with 504 distinct $A_2$ subalgebras. Even so, the space of automorphic functions defined on it remains surprisingly small:
-\begin{equation}
+
+Finally, we turn to $E_6$, which has the automorphism group ${\mathfrak D}_{14}$. This group has three generators---$\sigma_{E_6}$, $\tau_{E_6}$, and $\mathbb{Z}_{2,E_6}$. $E_6$ is much larger than any of the cluster algebras considered above, with 504 distinct $A_2$ subalgebras. Even so, the spaces of automorphic functions on it remains surprisingly small, as shown in Table~\ref{table:nonclassical_E6_counts}. It is especially surprising here that there are no odd solutions in $\sigma_{E_6}$. Of primary interest is the ${E_6}^{+++}$ space, as this space contains $R^{(2)}_7$, which will be our primary object of interest in section~\ref{sec:r27-sub-constructibility}. In particular, this function must be a linear combination of the 6 cluster polylogarithms in ${E_6}^{+++}$ that can be expressed in terms of cluster-adjacent cobrackets. 
+
+\begin{table}[b]
+\begin{center}
+\vspace{.2cm}
+Nonclassical $E_6$ Polylogarithms
+\vspace{.2cm}
+
 \begin{tabular}{ c | c |}
-\multicolumn{2}{c}{$\underline{\ \sigma^+ \tau^+\ }$} \\[-1em]
+\multicolumn{2}{c}{\tikzmark{e6TopLeft0} $\underline{\ \sigma^+ \tau^+\ }$} \\[-1em]
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
@@ -1814,10 +1842,14 @@ Finally, we turn to $E_6$, which has as its automorphism group the dihedral grou
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
 \hline
-0 & \multicolumn{1}{c}{0}
+0 & \multicolumn{1}{c}{\ 0 \tikzmark{e6BottomRight0}}
 \end{tabular} 
-\end{equation}
-It is especially surprising that there are no solutions that are odd under $\sigma$. At this point we also recall that $R^{(2)}_7$ is a cluster polylogarithm on $E_6\simeq \Gr(4,7)$ that is invariant under the full automorphism group (which combines the dihedral group corresponding to Bose symmetry with parity). Therefore the remainder function must be some linear combination of the 6 degrees of freedom in $f_{E_6}^{+++}$ that satisfy cluster-adjacency at the level of their cobracket. 
+\end{center}
+\begin{tikzpicture}[overlay, remember picture,decoration={markings,mark=at position .99 with {\arrow[scale=1.4,>=stealth]{>}}}]
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-1.2cm]{pic cs:e6TopLeft0}) rectangle ([yshift=-.4cm,xshift=.7cm]{pic cs:e6BottomRight0}) ;
+=\end{tikzpicture}
+\caption{The number of nonclassical weight-four cluster polylogarithms on the $E_6$ cluster algebra, with each of eight possible automorphism signatures. The number of polylogarithms that additionally respect cobracket-level cluster adjacency is given in parentheses.} \label{table:nonclassical_E6_counts}
+\end{table}
 
 We pause at this point to emphasize that the $A_2$-constructibility of all nonclassical cluster polylogarithms has been verified on each of the finite cluster algebras considered above, and its completeness only becomes conjectural on infinite cluster algebras. While it is clearly not possible to form an ansatz out of all $A_2$ subalgebras in an infinite cluster algebra such as $\Gr(4,8)$, this method can still be used to generate all nonclassical polylogarithms that are constructible out of (the automorphic completion of) any finite set of $A_2$ subalgebras. This proves sufficient in the case of the two-loop remainder function to all $n$~\cite{Golden:2014xqa}, and may prove sufficient in other cases of physical interest. 
 
@@ -1825,20 +1857,20 @@ We pause at this point to emphasize that the $A_2$-constructibility of all noncl
 
 Given that the space of nonclassical cluster polylogarithms coincides with the space of $A_2$-constructible functions, it is natural to ask whether other (even more special) spaces of functions are constructible out of other cluster polylogarithms. In fact, this has already been shown to be the case, since the nonclassical part of all two-loop MHV amplitudes can be constructed out of $f_{A_3}^{--}$ as defined in~\eqref{eq:fA3mm}~\cite{Golden:2014xqa}. This gives rise to an interesting nested structure, since $f_{A_3}^{--}$ is itself constructible out of $f_{A_2}$. More generally, in the functions constructed in section~\ref{sec:all_nonclassical_polylogs_gr47} there will be many instances of $A_2$ subalgebras assembling into larger subalgebras, and it remains an open question how intrinsically interesting such nested constructibility might be. 
 
-The procedure for constructing such spaces clearly proceeds just as in the case of $A_2$-constructibility. However, there are many spaces one can consider constructing, since multiple nonclassical cluster polylogarithms exist on larger algebras. We leave the exploration of compositely-constructible spaces to future work. For now, we just consider the example of functions constructible out of $f_{A_3}^{--}$, since all $R_n^{(2)}$ are believed to be in this class. We tabulate the space of $f_{A_3}^{--}$-constructible functions in table~\ref{table:nonclassical_A3_constructible_dimensions}.
+The procedure for constructing such spaces clearly proceeds just as in the case of $A_2$-constructibility. There are many spaces one can consider constructing on each cluster algebra, corresponding to the inclusion of different sets of functions defined on (possibly) different subalgebras. We leave the exploration of compositely-constructible spaces to future work. For now, we just consider the example of functions constructible out of $f_{A_3}^{--}$, since all $R_n^{(2)}$ are believed to be in this class. We tabulate the space of $f_{A_3}^{--}$-constructible functions in Table~\ref{table:nonclassical_A3_constructible_dimensions}.
 
 \begin{table}
 \begin{center}
-
+\vspace{.2cm}
 $A_3^{--}$-constructible $A_n$ Polylogarithms
 \vspace{.2cm}
 
 \begin{tabular}{ c |  c | c | c | c }      
-  & $\sigma^+\tau^+$ & $\sigma^+\tau^-$ & $\sigma^-\tau^+$ & $\sigma^-\tau^-$ \\
+\tikzmark{anTopLeft1}  & $\sigma^+\tau^+$ & $\sigma^+\tau^-$ & $\sigma^-\tau^+$ & $\sigma^-\tau^-$ \\
 \hline
 $f_{A_4} \in \text{span}\big(f_{A_3}^{--}\big)$ & 0 & 0 & 0 & 0 \\
 \hline
-$f_{A_5}  \in \text{span}\big(f_{A_3}^{--}\big)$ & 1 & 1 & 0 & 3
+$f_{A_5}  \in \text{span}\big(f_{A_3}^{--}\big)$ & 1 & 1 & 0 & \ 3 \tikzmark{anBottomRight1}
 \end{tabular} 
 
 \vspace{.6cm}
@@ -1846,7 +1878,7 @@ $A_3^{--}$-constructible $D_4$ Polylogarithms
 \vspace{.2cm}
 
 \begin{tabular}{ c | c | c |}
-\multicolumn{1}{c}{} &\multicolumn{2}{c}{$\underline{\ \sigma_4^+ \tau_4^+ \ }$} \\[-1em]
+\multicolumn{1}{c}{\tikzmark{d4TopLeft1}} &\multicolumn{2}{c}{$\underline{\ \sigma_4^+ \tau_4^+ \ }$} \\[-1em]
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
  & $\sigma_{3}^+$ & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
  &  & \multicolumn{1}{c}{} \\
@@ -1878,7 +1910,7 @@ $A_3^{--}$-constructible $D_4$ Polylogarithms
  & $\sigma_{3}^+$ & \multicolumn{1}{c}{$\sigma_{3}^-$} \\[-1em]
  & & \multicolumn{1}{c}{} \\
 \cline{1-3} $\mathbb{Z}_2^+$ & 0 & \multicolumn{1}{c}{0} \\
-\cline{1-3} $\mathbb{Z}_2^-$ & 0 & \multicolumn{1}{c}{0} 
+\cline{1-3} $\mathbb{Z}_2^-$ & 0 & \multicolumn{1}{c}{\ 0 \tikzmark{d4BottomRight1}} 
 \end{tabular}
 
 \vspace{.6cm}
@@ -1886,7 +1918,7 @@ $A_3^{--}$-constructible $D_5$ Polylogarithms
 \vspace{.2cm}
 
 \begin{tabular}{c | c |}
-\multicolumn{2}{c}{$\underline{\ \sigma^+ \tau^+ \ }$} \\[-1em]
+\multicolumn{2}{c}{\tikzmark{d5TopLeft1} $\underline{\ \sigma^+ \tau^+ \ }$} \\[-1em]
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
@@ -1918,7 +1950,7 @@ $A_3^{--}$-constructible $D_5$ Polylogarithms
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
 \hline
-0 & \multicolumn{1}{c}{5} 
+0 & \multicolumn{1}{c}{\ 5 \tikzmark{d5BottomRight1}} 
 \end{tabular} 
 
 \vspace{.6cm}
@@ -1926,7 +1958,7 @@ $A_3^{--}$-constructible $E_6$ Polylogarithms
 \vspace{.2cm}
 
 \begin{tabular}{ c | c |}
-\multicolumn{2}{c}{$\underline{\ \sigma^+ \tau^+\ }$} \\[-1em]
+\multicolumn{2}{c}{\tikzmark{e6TopLeft1} $\underline{\ \sigma^+ \tau^+\ }$} \\[-1em]
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
 & \multicolumn{1}{c}{} \\
@@ -1957,12 +1989,18 @@ $A_3^{--}$-constructible $E_6$ Polylogarithms
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
  $\mathbb{Z}_2^+$ & \multicolumn{1}{c}{$\mathbb{Z}_2^-$} \\[-1em]
  & \multicolumn{1}{c}{} \\
-\hline
-0 & \multicolumn{1}{c}{0} 
+\hline 
+0 & \multicolumn{1}{c}{\ 0 \tikzmark{e6BottomRight1}} 
 \end{tabular} 
-
 \end{center}
-\caption{blah}
+\begin{tikzpicture}[overlay, remember picture,decoration={markings,mark=at position .99 with {\arrow[scale=1.4,>=stealth]{>}}}]
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-2.2cm]{pic cs:anTopLeft1}) rectangle ([yshift=-.4cm,xshift=.9cm]{pic cs:anBottomRight1}) ;
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-1cm]{pic cs:d4TopLeft1}) rectangle ([yshift=-.4cm,xshift=.7cm]{pic cs:d4BottomRight1}) ;
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-.8cm]{pic cs:d5TopLeft1}) rectangle ([yshift=-.4cm,xshift=.7cm]{pic cs:d5BottomRight1}) ;
+    \draw [dashed,rounded corners=1cm] ([yshift=1.2cm,xshift=-.8cm]{pic cs:e6TopLeft1}) rectangle ([yshift=-.4cm,xshift=.7cm]{pic cs:e6BottomRight1}) ;
+\end{tikzpicture}
+
+\caption{The number of $f_{A_3}^{--}$-constructible cluster polylogarithms on the $E_6$ cluster algebra and its subalgebras, with each possible automorphism signature.}
 \label{table:nonclassical_A3_constructible_dimensions}
 \end{table}
 
@@ -1988,7 +2026,7 @@ Thus---unlike in the case of smaller subalgebras, where nontrivial functions can
 
 \subsection{The \pdfeq{D_5}-Constructibility of \pdfeq{R^{(2)}_7}}\label{sec:d5-func}
 
-We begin with $D_5$, the largest subalgebra of $E_6$ in terms of number of clusters. For each of the automorphism signatures in $D_5$ that admits a nontrivial space of (nonclassical) cluster polylogarithms, we insert a general ansatz of such functions into the sum~\eqref{eq:D5_in_E6_sum}. Referring back to table~\ref{table:a2-d5-counts}, we see there are four nontrivial cases to consider. Note that we do not restrict our ans\"atze to $D_5$ functions that respect cobracket-level cluster adjacency, because it is possible for functions that don't have this property to assemble into linear combinations that do when evaluated on the subalgebras of $E_6$ (as happens when $f_{A_3}^{--}$ is constructed out of $f_{A_2}$ functions). We then check to see if the nonclassical part of $R_7^{(2)}$ is in the span of any of these ansatz sums.
+We begin with $D_5$, the largest subalgebra of $E_6$ in terms of number of clusters. For each of the automorphism signatures in $D_5$ that admits a nontrivial space of (nonclassical) cluster polylogarithms, we insert a general ansatz of such functions into the sum~\eqref{eq:D5_in_E6_sum}. Referring back to Table~\ref{table:nonclassical_Dn_counts}, we see there are four nontrivial cases to consider. Note that we do not restrict our ans\"atze to $D_5$ functions that respect cobracket-level cluster adjacency, because it is possible for functions that don't have this property to assemble into linear combinations that do when evaluated on the subalgebras of $E_6$ (as happens when $f_{A_3}^{--}$ is constructed out of $f_{A_2}$ functions). We then check to see if the nonclassical part of $R_7^{(2)}$ is in the span of any of these ansatz sums.
 
 Amazingly, there exists precisely one $D_5$ automorphism signature in terms of which $R_7^{(2)}$ can be decomposed: $R_7^{(2)}$ is $f_{D_5}^{---}$\!-constructible. Two free parameters remain in this decomposition, corresponding to two degrees of freedom that cancel in the sum~\eqref{eq:D5_in_E6_sum}. More concretely, we can decompose 
 \begin{align}
@@ -1997,11 +2035,12 @@ Amazingly, there exists precisely one $D_5$ automorphism signature in terms of w
     \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
       (0,20) *+{x_1} ="1",
       (30,20) *+{x_2} ="2",
-      (72,20) *+{\begin{aligned} \frac{x_3 x_5}{1+x_5} \end{aligned}} ="3",
+      (80,20) *+{\color{white} xxxxxxx} ="3",
       (114,0) *+{\color{white} x} ="4",
       (114,40) *+{\color{white} x} ="5",
-      (118,0) *+{x_4} ="6",
-      (118,34) *+{\begin{aligned} \frac{1}{x_5}\end{aligned}} ="7",
+      (72,20) *+{\begin{aligned} \frac{x_3 x_5}{1+x_5} \end{aligned}} ="6",
+      (118,0) *+{x_4} ="7",
+      (118,34) *+{\begin{aligned} \frac{1}{x_5}\end{aligned}} ="8",
       "1", {\ar"2"},
       "2", {\ar"3"},
       "3", {\ar"4"},
@@ -2053,7 +2092,7 @@ We can check for $A_5$ decompositions of $R^{(2)}_7$ in the same way we checked 
 
 This decomposition is given explicitly by
 \begin{equation}
-\delta_{2,2}\big(R^{(2)}_7 \big) = \sum_{A_5\subset E_6} \delta_{2,2} \Big(f_{A_5}^{--} \left(x_1\to x_2\to \frac{x_3 x_5}{1+x_5} \to \frac{1}{x_5}  \to x_6 (1+x_5) \right) \Big), \label{eq:R27_A5_decomposition}
+\delta_{2,2}\big(R^{(2)}_7 \big) = \{ const \} \sum_{A_5\subset E_6} \delta_{2,2} \Big(f_{A_5}^{--} \left(x_1\to x_2\to \frac{x_3 x_5}{1+x_5} \to \frac{1}{x_5}  \to x_6 (1+x_5) \right) \Big), \label{eq:R27_A5_decomposition}
 \end{equation}
 where the $A_5$ sum~\eqref{eq:A5_in_E6_sum} is taken over
 \begin{align}
@@ -2474,7 +2513,6 @@ $E_6$ Automorphism Signatures
     \draw [dashed,shorten >=0.14cm,postaction={decorate}] ([yshift=1cm,xshift=1cm]{pic cs:e6bottomRight2}) [bend right] to[out=-100,in=-100] ([yshift=0.08cm,xshift=.16cm]{pic cs:e6tablePosition2}) ;
 \end{tikzpicture}
 
-
 \caption{Number of nonclassical weight-four cluster polylogarithms on various finite cluster algebras, prior to considerations of their automorphism group and after requiring specific automorphism signatures. The number of polylogarithms that can also be made to satisfy cobracket-level cluster adjacency is given in parentheses.}
 \label{table:nonclassical_dimensions}
 \end{table}
@@ -2637,7 +2675,7 @@ $E_6$ Automorphism Signatures
 \label{table:total_dimensions}
 \end{table}
 
-In this appendix we collect the dimensions of weight-four cluster polylogarithm spaces defined on various finite cluster algebras. In table~\ref{table:nonclassical_dimensions} we record the number of cluster polylogarithms that have nonzero $\delta_{2,2}$ cobracket, as considered in section~\ref{sec:sub-constructibility}. As done there, we record the number of functions that can additionally be made to respect cobracket-level cluster adjacency in parentheses. We also include the total number of functions that can be defined on these cluster algebras without requiring any definite behavior under the automorphism group. In table~\ref{table:total_dimensions} we record the same information, but for weight-four cluster polylogarithms with any nonzero cobracket component. 
+In this appendix we collect the dimensions of weight-four cluster polylogarithm spaces defined on various finite cluster algebras. In Table~\ref{table:nonclassical_dimensions} we record the number of cluster polylogarithms that have nonzero $\delta_{2,2}$ cobracket, as considered in section~\ref{sec:sub-constructibility}. As done there, we record the number of functions that can additionally be made to respect cobracket-level cluster adjacency in parentheses. We also include the total number of functions that can be defined on these cluster algebras without requiring any definite behavior under the automorphism group. In Table~\ref{table:total_dimensions} we record the same information, but for weight-four cluster polylogarithms with any nonzero cobracket component. 
 
 
 \newpage
