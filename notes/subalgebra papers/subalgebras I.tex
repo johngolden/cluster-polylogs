@@ -2020,7 +2020,7 @@ Since $f_{A_3}^{--}$ satisfies cobracket-level cluster adjacency, all functions 
 
 \section{Subalgebra-Constructibility and \pdfeq{R^{(2)}_7}} \label{sec:r27-sub-constructibility}
 
-Having seen the extent to which the $E_6$ cluster algebra admits nontrivial functional embeddings, we turn to the study of $R^{(2)}_{7}$\!. Specifically, we explore the ways in which the nonclassical part of this function is subalgebra-constructible, thus probing the extent to which $\mathcal{N}=4$ sYM theory knows about the rich subalgebra structure of $E_6$. It is already known that $R^{(2)}_7$ is $A_2$- and $A_3$-constructible in terms of the functions defined in~\eqref{def:a2-function} and~\eqref{eq:fA3mm}~\cite{Golden:2014xqa}. Using the techniques of section~\ref{sec:sub-constructibility}, we can ask this question systematically for any set of cluster polylogarithms defined on a subalgebra of $E_6$.
+Having seen the extent to which the $E_6$ cluster algebra admits nontrivial functional embeddings, we turn to the study of $R^{(2)}_{7}$\!. Specifically, we explore the ways in which the nonclassical part of this function is subalgebra-constructible, thus probing the extent to which $\mathcal{N}=4$ sYM theory ``knows'' about the rich subalgebra structure of $E_6$. It is already known that $R^{(2)}_7$ is $A_2$- and $A_3$-constructible in terms of the functions defined in~\eqref{def:a2-function} and~\eqref{eq:fA3mm}~\cite{Golden:2014xqa}. Using the techniques of section~\ref{sec:sub-constructibility}, we can ask this question systematically for any set of cluster polylogarithms defined on a subalgebra of $E_6$.
 
 We will in particular be interested in the largest subalgebras of $E_6$---namely, $D_5$ and $A_5$---as $D_5$- and $A_5$-constructible functions are not subject to the same amount of representational ambiguity as functions that are constructible out of smaller subalgebras. For instance, while there are 1071 subpolytopes of the $E_6$ associahedron that correspond to $A_2$ subalgebras, only 504 of these give rise to distinct cluster algebras. Moreover, there exist 56 identities between the instances of $f_{A_2}$ evaluated on these 504 subalgebras~\cite{Golden:2014xqa}. Similarly, out of 476 distinct $A_3$ subpolytopes, only 364 give rise to distinct cluster algebras, and there are $169$ identities between the instances of $f_{A_3}^{--}$ evaluated on these subalgebras. These redundancies make the representation of $\smash{\delta_{2,2} \big(R^{(2)}_7\big)}$ in terms of either $f_{A_2}$ or $f_{A_3}^{--}$ far from unique. Correspondingly, it is hard to assign a clear geometric interpretation to these decompositions on the $E_6$ associahedron, since the $A_2$ function associated with any specific subpolytope can be traded for $A_2$ functions associated with other subpolytopes (and similarly for $f_{A_3}^{--}$). 
 
@@ -2094,12 +2094,53 @@ where we have introduced the shorthand
 \end{equation}
 The \xcoords\ in~\eqref{eq:R27_D5_decomposition} are the $E_6$ coordinates defined in~\eqref{eq:E6_x_def}, while the \xcoords\ in~\eqref{eq:fd5-init} should be thought of as $D_5$ coordinates that take different values when evaluated on the $D_5$ subalgebras of $E_6$. (It is easy to see that the $E_6$ seed~\eqref{def:E6} doesn't contain any $D_5$ sub-quivers of the form~\eqref{def:D5}, but that mutating on the $x_5$ node will give rise to a quiver containing the $D_5$ quiver seen in~\eqref{eq:R27_D5_decomposition}.) The coefficients $c_1$ and $c_2$ represent the two remaining degrees of freedom in our ansatz, which drop out of the sum~\eqref{eq:R27_D5_decomposition}.
 
-It is worth highlighting that $f_{D_5}^{---}$ does not satisfy cobracket-level cluster adjacency for generic values of $c_1$ and $c_2$; however, it can be given this property by choosing $c_2 = -\frac{6}{5} + \frac{8}{5} c_1$. 
+We are now allowed to tune the remaining parameters $c_1$ and $c_2$ in order to endow $f_{D_5}^{---}$ with additional properties. In continuing with the theme of subalgebra-constructibility we can look for decompositions of $f_{D_5}^{---}$ in terms of subalgebras of $D_5$. This follows exactly the same procedure for finding $D_5$-decompositions of $R^{(2)}_7$, instead now we are trying to find $A_4$-, $D_4$-, or $A_3$-decompositions of $f_{D_5}^{---}$. It turns out that there are two different possibilities: one of which involves $A_4$ subalgebras and the other involving $A_3$.
+
+It is worth highlighting that $f_{D_5}^{---}$ does not satisfy cobracket-level cluster adjacency for generic values of $c_1$ and $c_2$; however, it can be given this property by choosing
+\begin{equation}
+	c_2 = -\frac{6}{5} + \frac{8}{5} c_1.
+\end{equation}
+This choice of parameters makes $f_{D_5}^{---}$ an $A_3$-constructible function:
+\begin{align}
+	f_{A_3\subset D_5}^{---} = \frac{1}{10}\sum_{D_5^{---}}
+	&\left(-3+4 c_1\right) f_{A_3}^{--}\left(x_1\to x_2\to x_3 \left(1+x_4\right)\right)
+	+\left(6-3 c_1\right) f_{A_3}^{--}\left(x_1\to x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) \nl
+	&+\left(2-c_1\right) f_{A_3}^{--}\left(x_2\to x_3 \left(1+x_4\right)\to x_5\right)+\left(\frac{1}{2}
+	-\frac{3 c_1}{2}\right) f_{A_3}^{--}\left(\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5\right) \nl
+	&+\left(-1+\frac{c_1}{2}\right) f_{A_3}^{--}\left(\frac{1}{x_4}\to \frac{x_2 x_3 \left(1+x_4\right)}{1+x_2}\to x_5\right).
+\end{align}
+The cobracket-level cluster adjacency of $f_{A_3\subset D_5}^{---}$ is thus manifest, as $f_{A_3}^{--}$ is the simplest function exhibiting this property.
+
+The $A_4$-decomposition of $f_{D_5}^{---}$ is obtained by setting
+\begin{equation}
+	c_1 = \frac{3}{5}, \qquad c_2 = 0,
+\end{equation}
+which then allows us to write
+\begin{equation}
+	f_{A_4\subset D_5}^{---} = \sum_{D_5^{---}} f_{A_4}^{+-}(x_1\to x_2\to x_3 \to x_4)
+\end{equation}
+where we have used a new function
+\begin{equation}\label{eq:fa4-def}
+	f_{A_4}^{+-} = \frac{1}{40}\sum_{A_4^{+-}}3f_{A_2}(x_1 \to x_2(1+x_3)) - f_{A_2}(x_2\to x_3(1+x_4)).
+\end{equation}
+Here we have used the notation $\sum_{A_4^{+-}}$ to denote the skew-dihedral sum over $A_4$, 
+\begin{equation}
+ 	\sum_{A_4^{+-}}f = \sum_{i=0}^6\sum_{j=0}^1(-1)^j \sigma_{A_4}^i \circ \tau_{A_4}^j(f).
+\end{equation} 
+Regrettably $f_{A_4}^{+-}$ does not admit an $A_3$-representation, and so does not satisfy cobracket-level adjacency. Still, from a symmetry perspective this $A_4\subset D_5$ representation of $R^{(2)}_7$ is quite remarkable, and can be described as: 
+\begin{itemize}
+	\item evaluate $f_{A_4}^{+-}$ on all $A_4$ subalgebras of $\Gr(4,7)$,
+	\item add them together with appropriate signs such that they forms groupings which are antisymmetric under the automorphisms of the various $D_5$ subalgebras of $\Gr(4,7)$,
+	\item and the resulting function matches the nonclassical portion of $R^{(2)}_7$.
+\end{itemize}
+It would be interesting to understand or provide some better motivation for the particular form of $f_{A_4}^{+-}$.
+
+Having provided cluster algebraic motivations for certain propitious choices of $c_1$ and $c_2$, we now examine whether $f_{D_5}^{---}$ can be endowed with interesting behaviour under kinematic limits. In particular, we know that the nonclassical portion of $R^{(2)}_7$ must vanish under the $7\to6$ collinear limit, as $R^{(2)}_6$ is purely classical. It would be nice if each of the 14 $f_{D_5}^{---}$ functions vanished individually in this limit. 
 
 \draftnote{discussion of $7\to6$ collinear limit as motivation to choose other values}
 \draftnote{other interesting kinematic limits}
 
-There exist further physical and mathematical desiderata we might consider to motivate different choices for $c_1$ and $c_2$, one of which will be explored in section~\ref{sec:a4_a3_nestings}. But first we explore the possibility that $R^{(2)}_7$ is also $A_5$-constructible.
+Having now exhausted the different $D_5$-based representations of $R^{(2)}_7$ we now turn to $A_5$.
 
 \subsection{The \pdfeq{A_5}-Constructibility of \pdfeq{R^{(2)}_7}}\label{sec:a5-func}
 
@@ -2120,55 +2161,8 @@ wherein we have used the notation
 \begin{equation}
 \sum_{A_5^{--}} f = \sum_{i=0}^7 \sum_{j=0}^1 (-1)^{i+j} \ \sigma_{A_5}^i \circ \tau_{A_5}^j \big(f \big).
 \end{equation}
-As in the last subsection, the \xcoords\ in~\eqref{eq:R27_A5_decomposition} are the $E_6$ coordinates defined in~\eqref{eq:E6_x_def}, while the \xcoords\ in~\eqref{eq:fa5-init} are $A_5$ coordinates that take different values when evaluated on different $A_5$ subalgebras of $E_6$. The initial $A_5$ quiver in~\eqref{eq:R27_A5_decomposition} can be generated by mutating on the $x_5$ node of~\eqref{def:E6} and freezing the node associated with $x_4$.
+As in the last subsection, the \xcoords\ in~\eqref{eq:R27_A5_decomposition} are the $E_6$ coordinates defined in~\eqref{eq:E6_x_def}, while the \xcoords\ in~\eqref{eq:fa5-init} are $A_5$ coordinates that take different values when evaluated on different $A_5$ subalgebras of $E_6$. The initial $A_5$ quiver in~\eqref{eq:R27_A5_decomposition} can be generated by mutating on the $x_5$ node of~\eqref{def:E6} and freezing the node associated with $x_4$. 
 
-\draftnote{properties of $A_5$ function, kinematic limits}
-\draftnote{comment on the number of $E_6$ functions that are simultaneously $A_5$- and $D_5$-construcible}
-
-\subsection{Nesting $A_4$ and $A_3$ Functions in $D_5$ and $A_5$} \label{sec:a4_a3_nestings}
-
-The free coefficients in a general ansatz of $D_5$-constructible $E_6^{+++}$ functions thus represent purely `$D_5$' degrees of freedom (and similarly for $A_5$). This makes these decompositions especially rigid compared to decompositions into smaller subalgebras, where there are ansatz degrees of freedom representing the relative weight of subalgebras fitting into different orbits of the $E_6$ automorphism group. 
-
-
-We can tune the remaining internal degrees of freedom, $c_1$ and $c_2$, to embed further subalgebra structure inside $f_{D_5}^{---}$. This follows exactly the same procedure for finding $D_5$-decompositions of $R^{(2)}_7$, instead now we are trying to find $A_4$-, $D_4$-, or $A_3$-decompositions of $f_{D_5}^{---}$. It turns out that there are two different possibilities: one of which involves $A_4$ subalgebras and the other involving $A_3$. We will review these decompositions now.
-
-Setting 
-\begin{equation}
-	c_2 = -\frac{6}{5} + \frac{8}{5} c_1
-\end{equation}
-and leaving $c_1$ free makes $f_{D_5}^{---}$ an $A_3^{--}$-constructible function:
-\begin{align}
-	f_{A_3\subset D_5}^{---} = \frac{1}{10}\sum_{D_5^{---}}
-	&\left(-3+4 c_1\right) f_{A_3}^{--}\left(x_1\to x_2\to x_3 \left(1+x_4\right)\right)
-	+\left(6-3 c_1\right) f_{A_3}^{--}\left(x_1\to x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) \nl
-	&+\left(2-c_1\right) f_{A_3}^{--}\left(x_2\to x_3 \left(1+x_4\right)\to x_5\right)+\left(\frac{1}{2}
-	-\frac{3 c_1}{2}\right) f_{A_3}^{--}\left(\frac{1}{x_4}\to x_3 \left(1+x_4\right)\to x_5\right) \nl
-	&+\left(-1+\frac{c_1}{2}\right) f_{A_3}^{--}\left(\frac{1}{x_4}\to \frac{x_2 x_3 \left(1+x_4\right)}{1+x_2}\to x_5\right).
-\end{align}
-There is no $A_3^{+-}$ representation. Setting 
-\begin{equation}
-	c_1 = \frac{3}{5}, \qquad c_2 = 0,
-\end{equation}
-makes $f_{D_5}^{---}$ an $A_4^{+-}$-constructible function:
-\begin{equation}
-	f_{A_4\subset D_5}^{---} = \sum_{D_5^{---}} f_{A_4}^{+-}(x_1\to x_2\to x_3 \to x_4)
-\end{equation}
-where we have used a new function
-\begin{equation}\label{eq:fa4-def}
-	f_{A_4}^{+-} = \frac{1}{40}\sum_{A_4^{+-}}3f_{A_2}(x_1 \to x_2(1+x_3)) - f_{A_2}(x_2\to x_3(1+x_4)).
-\end{equation}
-Here we have used the notation $\sum_{A_4^{+-}}$ to denote the skew-dihedral sum over $A_4$, 
-\begin{equation}
- 	\sum_{A_4^{+-}} = \sum_{i=0}^6\sum_{j=0}^1(-1)^j \sigma_{A_4}^i \tau_{A_4}^j.
-\end{equation} 
-$f_{A_4}^{+-}$ does not have an $A_3$-decomposition. 
-
-The $A_4\subset D_5$ representation of $R^{(2)}_7$ in particular is quite remarkable, and can be described as: 
-\begin{itemize}
-	\item evaluate $f_{A_4}^{+-}$ on all $A_4$ subalgebras of $\Gr(4,7)$,
-	\item add them together so that they are antisymmetric under the automorphisms of the $D_5$ subalgebras of $\Gr(4,7)$,
-	\item and the resulting function matches the nonclassical portion of $R^{(2)}_7$.
-\end{itemize}
 Following in complete analogy with the $D_5$ case, we can tune $c_1$ to decompose $f_{A_5}^{--}$ into either $A_3$ or $A_4$ functions. Unlike $D_5$, the $A_3$ representation employs the skew-symmetric $A_3$ function, $f_{A_3}^{+-}$. Setting $c_1 = -\frac{1}{2}$ gives
 \begin{equation}
 	f_{A_3\subset A_5}^{--} = -\frac{1}{160}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right).
@@ -2179,16 +2173,17 @@ Setting $c_1 = -1$ makes $f_{A_5}^{--}$ an $A_4$-constructible function:
 \begin{equation}
 	f_{A_4\subset A_5}^{--} = -\frac{1}{20} \sum_{A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4).
 \end{equation}
-Remarkably, this is the same $f_{A_4}^{+-}$ function defined for the $D_5$ function in eq.~(\ref{eq:fa4-def}). In other words, we have \draftnote{temporarily ignoring the overall symmetry factors, which we can mess with later}
-\begin{align}
-	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5^{---}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) +C \\
-	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + C
-\end{align}
-where $C$ is again a function of classical polylogarithms and is the same for both the $D_5$ and $A_5$ representations. 
+Remarkably, this is the same $f_{A_4}^{+-}$ function defined for the $D_5$ function in eq.~(\ref{eq:fa4-def}). We will discuss the implications of this in the next subsection, for now let us address the question of the behavior of $f_{A_5}^{--}$ in the $7\to6$ collinear limit.
 
 
+\draftnote{kinematic limits}
 
-\begin{figure}[t]   \centering
+\subsection{Comparison of \pdfeq{D_5}- and \pdfeq{A_5}-representations}
+
+The results of the previous sections can be summarized in fig.~\ref{fig:R27_decompositions}, which lists the different routes of decomposition for $R^{(2)}_7$.
+
+
+\begin{figure}[t] \centering
   \begin{tikzpicture}
   state/.style={circle, draw, minimum size=3cm}
 	\node (H1) at (0cm,.2cm) {\color{white} ${}^i_j F^i_j$};
@@ -2215,12 +2210,20 @@ where $C$ is again a function of classical polylogarithms and is the same for bo
 	\draw[->] (H5) -- (H7);
 	\draw[->] (H6) -- (H7);
 \end{tikzpicture}
-  \caption{blah}
+  \caption{Different ways in which $R^{(2)}_7$ can be constructed out of functions applied to subalgebras of $\Gr(4,7)$.}
 \label{fig:R27_decompositions}
 \end{figure}
 
+The fact that both $f_{A_5}^{--}$ and $f_{D_5}^{---}$ can be decomposed in terms of the same $f_{A_4}^{+-}$ function is unexpected and allows for a particularly compact representation of this remainder function. Specifically, we have \draftnote{fix overall factor}
+\begin{align}
+	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5^{---}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) +C \\
+	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5^{--}} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + C
+\end{align}
+where $C$ is again a purely classical cluster polylogarithm on $\Gr(4,7)$ and is the same for both the $D_5$ and $A_5$ representations. 
 
+\draftnote{comment on the number of $E_6$ functions that are simultaneously $A_5$- and $D_5$-constructible}
 
+As we have seen throughout this section, different subalgebra decompositions make different properties of the remainder function manifest: the $A_2^{--}\subset A_4^{+-}\subset A_5^{--}$ representation makes the vanishing collinear limit manifest term-by-term, whereas the $A_2^{--}\subset A_3^{--}\subset D_5^{---}$ representation explicitly satisfies cobracket-level adjacency. While it might be wished that a single representation would encapsulate all of these properties, it is perhaps better that $R^{(2)}_7$ ``requires'' the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
 
 \section{Conclusion}
 
@@ -2237,7 +2240,7 @@ where $C$ is again a function of classical polylogarithms and is the same for bo
 
 \section*{Acknowledgements}
 
-We thank Jacob Bourjaily, James Drummond, Henriette Elvang, and Marcus Spradlin for illuminating discussion. This project has received funding from an ERC Starting Grant \mbox{(No.\ 757978)} and a grant from the Villum Fonden (AJM). The authors are grateful to the Kavli Institute for Theoretical Physics (National Science Foundation grant NSF PHY11-25915) for hospitality. 
+We thank Jacob Bourjaily, James Drummond, Henriette Elvang, and Marcus Spradlin for illuminating discussion. This project has received funding from an ERC Starting Grant \mbox{(No.\ 757978)}, a grant from the Villum Fonden (AJM), and the support of a Van Loo Postdoctoral Fellowship (JG). The authors are grateful to the Kavli Institute for Theoretical Physics (National Science Foundation grant NSF PHY11-25915) for hospitality. 
 
 
 \appendix
