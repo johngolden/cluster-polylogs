@@ -179,7 +179,7 @@ While the (nonclassical part of the) two-loop MHV amplitudes in planar ${\cal N}
 
 In a forthcoming companion paper, we use this technology to construct the full eight-point remainder function in terms of cluster polylogarithms. That is, we describe methods for searching for decompositions of the nonclassical part of $R_n^{(2)}$ even when $\Gr(4,n)$ is infinite, and then---using such a decomposition---systematically construct the classical and beyond-the-symbol components of $R_8^{(2)}$ using the techniques described in~\cite{Golden:2014xqf}. We also show that there exists a `generalized BDS-like ansatz' that preserves all Steinmann and cluster adjacency relations in eight-particle kinematics (and for all multiplicities that are a mutliple of 4), despite the nonexistence of the standard BDS-like ansatz for these numbers of particles (this normalization is also discussed in section~\ref{sec:cluster-algebra-R2n} of the present work).
 
-This paper is organized as follows. In section~\ref{sec:brief_intro} we provide a self-contained introduction to cluster algebras and the principle ways in which they have appeared in ${\cal N} =4$ sYM theory. While this section will largely constitute review for those familiar with recent developments at the intersection of these topics, the discussion of automorphisms in section~\ref{sec:automorphisms} will be new to even those familiar with the physics literature. In section~\ref{sec:cluster_polylog_MHV_review} we discuss some of the tools relevant for working with polylogarithms, particularly their associated coaction and Lie cobracket. We then recap the ways in which the coproduct and cobracket of the two-loop MHV amplitudes in planar ${\cal N} =4$ sYM theory have been found to exhibit curious cluster-algebraic properties. In section~\ref{sec:sub-constructibility} we turn to the more general space of cluster polylogarithms, and initiate a systematic exploration of the nonclassical functions in this space, showing (in the case of finite cluster algebras) that it is comprised of surprisingly few functions. Finally, as an application of this technology, we explore the ways in which these functions can be used to express the two-loop seven-point MHV amplitude in section~\ref{sec:r27-sub-constructibility}. In particular, we show that this amplitude admits a (nested) decomposition in terms of cluster polylogarithms defined on cluster algebras of every rank smaller than that of $\Gr(4,7)$, and thereby identy cluster polylogarithms of physical interest on the $D_5$, $A_5$, and $A_4$ cluster algebras in addition to the functions already known to be of interest on the $A_3$ and $A_2$ algebras. 
+This paper is organized as follows. In section~\ref{sec:brief_intro} we provide a self-contained introduction to cluster algebras and the principle ways in which they have appeared in ${\cal N} =4$ sYM theory. While this section will largely constitute review for those familiar with recent developments at the intersection of these topics, the discussion of automorphisms in section~\ref{sec:automorphisms} will be new to even those familiar with the physics literature. In section~\ref{sec:cluster_polylog_MHV_review} we discuss some of the tools relevant for working with polylogarithms, particularly their associated coaction and Lie cobracket. We then recap the ways in which the coproduct and cobracket of the two-loop MHV amplitudes in planar ${\cal N} =4$ sYM theory have been found to exhibit curious cluster-algebraic structure. In section~\ref{sec:sub-constructibility} we turn to the more general space of cluster polylogarithms, and initiate a systematic exploration of the nonclassical functions in this space, showing (in the case of finite cluster algebras) that there are surprisingly few such functions. Finally, as an application of this technology, we explore the ways in which these functions can be used to express the two-loop seven-point MHV amplitude in section~\ref{sec:r27-sub-constructibility}. In particular, we show that this amplitude admits a (nested) decomposition in terms of cluster polylogarithms defined on cluster algebras of every rank smaller than that of $\Gr(4,7)$, and thereby identy cluster polylogarithms of physical interest on the $D_5$, $A_5$, and $A_4$ cluster algebras in addition to the functions already known to be of interest on the $A_3$ and $A_2$ algebras. 
 
 We also include two appendices. Appendix~\ref{appendix:subalgebras} tabulates all the subalgebras of $\Gr(4,7)$, while appendix~\ref{appendix:cobrackets} tabulates the number of independent functions that have a nonzero Lie cobracket on each of these finite cluster algebras.
 
@@ -196,7 +196,7 @@ We also include two appendices. Appendix~\ref{appendix:subalgebras} tabulates al
 
 \section{A Brief Introduction to Cluster Algebras} \label{sec:brief_intro}
 
-Cluster algebras were first introduced by Fomin and Zelevinsky \cite{1021.16017} as a tool for identifying which algebraic varieties come equipped with a natural notion of positivity, and what quantities determine this positivity. As a consequence, they appear in the study of the positive Grassmannian $\Gr_{+}(k,n)$, i.e.~the space of $k\times n$ matrices where all ordered $k\times k$ minors are positive. This means they also appear in the study of planar ${\cal N} = 4$ sYM theory, where the integrands of amplitudes are encoded to all orders by $\Gr_+(4,n)$~\cite{ArkaniHamed:2012nw}.
+Cluster algebras were first introduced by Fomin and Zelevinsky \cite{1021.16017} as a tool for identifying which algebraic varieties come equipped with a natural notion of positivity, and what quantities determine this positivity. As a consequence, they naturally appear in the study of the positive Grassmannian $\Gr_{+}(k,n)$, i.e.~the space of $k\times n$ matrices where all ordered $k\times k$ minors are positive. They correspondingly also appear in the study of planar ${\cal N} = 4$ sYM theory, since the integrands in this theory are encoded to all orders by $\Gr_+(4,n)$~\cite{ArkaniHamed:2012nw}.
 
 A simple example of the type of questions cluster algebras help address is: how many matrix minors are sufficient to specify a point in $\Gr_+(k,n)$? In other words, given a $k \times n$ matrix, how many of its minors do we have to calculate to know if it is in $\Gr_+(k,n)$? These minors are not all independent; they satisfy identities known as Pl\"ucker relations,
 \begin{equation}
@@ -246,7 +246,7 @@ From the first relation in~\eqref{eq:plucker} we see that we could have instead 
 \end{equation}
 We have highlighted in blue the fact that both diagonals are framed by the same quadrilateral face. More generally, we can pick any quadrilateral face and flip the diagonal it contains to generate a different triangulation. Repeatedly performing these flips generates all possible triangulations of the pentagon, as can be seen in figure~\ref{fig:pent_triangulations}. Each triangulation provides a set of edges/minors whose positivity ensures that a matrix is in $\Gr_+(2,5)$. 
 
-In an analogous way, cluster algebras answer questions about positivity for a larger class of algebraic varieties (and in particular for all $\Gr_+(k,n)$) by considering {\it clusters} that can all be generated by an operation called {\it mutation}, just as all triangulations of the pentagon are generated by flipping the diagonals of quadrilateral faces. We now turn to the definition of these objects, by first considering how the example of $\Gr_+(2,5)$ can be rephrased in terms of cluster algebras.
+In an analogous way, cluster algebras answer questions about positivity for a larger class of algebraic varieties (and in particular for all $\Gr_+(k,n)$) by considering `clusters' that can all be generated by an operation called `mutation' just as all triangulations of the pentagon are generated by flipping the diagonals of quadrilateral faces. We now turn to the definition of these objects, by first considering how the example of $\Gr_+(2,5)$ can be rephrased in terms of cluster algebras.
 
 \begin{figure}[t]   \centering
   \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
@@ -282,14 +282,14 @@ In an analogous way, cluster algebras answer questions about positivity for a la
 	\draw[color=red] (P3) -- (P5);
 	\end{scope}
 \end{tikzpicture}
-  \caption{Mutating on the red chord moves you clockwise around the figure.}
+  \caption{All possible triangulations of the pentagon. Mutating on the red chord moves you clockwise around the figure.}
 \label{fig:pent_triangulations}
 \end{figure}
 
 
 \subsection{Clusters, Mutations, and Cluster ${\cal A}$-coordinates}
 
-Clusters can be thought of as quiver diagrams---namely, oriented graphs equipped with arrows connecting different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type.} We can form a cluster of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles, such as
+Clusters can be defined to be quiver diagrams---namely, oriented graphs equipped with arrows connecting different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type.\flag{citation?}} We can form one of the clusters of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles such as
 \begin{equation}\label{eq:oriented-pentagon}
 \begin{gathered}
 \begin{tikzpicture}
@@ -324,10 +324,10 @@ The nodes of our cluster are then given by the lines of this triangulation (maki
 \end{xy}
 \end{gathered} ,
 \end{equation}
-where the boxes around the $\ket{ii+1}$ indicate that they are \emph{frozen}---they can never change because they aren't in the interior of a quadrilateral face. The variables living at the frozen nodes can be thought of as parameterizing the boundary of our space, while the mutable nodes represent parameterizations of the interior. One can also draw arrows (with partial weight) connecting these frozen nodes (see, for instance,~\cite{ArkaniHamed:2012nw}), but we will not keep track of them here. 
+where the boxes around the $\ket{ii+1}$ indicate that they are \emph{frozen}---they can never change because they aren't in the interior of a quadrilateral face. One can also draw arrows (with partial weight) connecting these frozen nodes (see, for instance,~\cite{ArkaniHamed:2012nw}), but we will not keep track of them in the present work. 
 
 
-We have now drawn our first cluster (also sometimes called a seed). The Pl\"ucker coordinates in this cluster are referred to as cluster $\a$-coordinates (sometimes also $\a$-variables), and they come in two flavors: mutable (for example, $\ket{13}$ and $\ket{14}$ above) and frozen ($\ket{ii+1}$ above). In any quiver, the information encoded by the arrows can also be represented in terms of a skew-symmetric matrix
+We have now drawn our first cluster (also sometimes called a seed). The Pl\"ucker coordinates in this cluster are referred to as cluster $\a$-coordinates, and they come in two flavors: mutable (for example, $\ket{13}$ and $\ket{14}$ above) and frozen ($\ket{ii+1}$ above). In any quiver, the information encoded by the arrows can also be represented in terms of a skew-symmetric matrix
 \begin{equation}
 b_{i j} = (\# \text{ of arrows}\; i \to j) - (\# \text{ of arrows}\; j \to i)
 \label{eq:bijdef}
@@ -338,11 +338,11 @@ The process of mutation, which we have described geometrically in terms of flipp
 \begin{equation}
   \label{eq:a-coord-mutation}
   a_{k} a_{k}' = \prod_{i \vert b_{i k} > 0} a_{i}^{b_{i k}} + \prod_{i \vert b_{i k} < 0} a_{i}^{-b_{i k}},
-\end{equation} (with the understanding that an empty product is set to one), while all other cluster $\a$-coordinates remain unchanged. The arrows connecting the nodes in this new quiver are also modified by carrying out the following operation:
+\end{equation} (with the understanding that an empty product is set to one), while all other cluster $\a$-coordinates remain unchanged. The arrows connecting the nodes in this new quiver are also modified by carrying out the following sequence of operations:
 \begin{itemize}
 	\item for each path $i\to k \to j$, add an arrow $i\to j$,
 	\item reverse all arrows on the edges incident with $k$,
-	\item and remove any two-cycles (oppositely-oriented arrows) that may have formed.
+	\item remove any two-cycles (oppositely-oriented arrows) that may have formed.
 \end{itemize}
 This creates a new adjacency matrix $b_{ij}'$ via 
 \begin{equation}
@@ -396,7 +396,7 @@ In the pentagon-triangulation picture, these $\x$-coordinates describe overlappi
 \vspace{-1.4cm}
 \end{gathered}
 \end{align}
-which come in one-to-one correspondence with the diagonals in a triangulation.
+which come in one-to-one correspondence with the diagonals in a (single) triangulation.
 
 Mutation rules for \xcoords\ are different than for \acoords, and are given by
 \begin{equation}
@@ -420,10 +420,10 @@ Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clust
   &\ \ \vdots \nn
 \end{align}
 The series then repeats, with all arrows reversed. Note that (specifically in the case of $A_2$), if we label these $\x$-coordinates by
-\begin{equation}\label{def:a2-xcoords}
-  \x_1 = 1/x_1, \quad \x_2 = x_2, \quad \x_3 = x_1(1+x_2), \quad 
-  \x_4 = \frac{1+x_1+x_1 x_2}{x_2}, \quad \x_5 = \frac{1+x_1}{x_1 x_2},
-\end{equation}
+\begin{gather}\label{def:a2-xcoords}
+  \x_1 = 1/x_1, \qquad \qquad \x_2 = x_2, \qquad \qquad \x_3 = x_1(1+x_2), \\ 
+  \x_4 = \frac{1+x_1+x_1 x_2}{x_2}, \qquad \qquad \x_5 = \frac{1+x_1}{x_1 x_2}, \nonumber
+\end{gather}
 the mutation rule in~\eqref{eq:x-coord-mutation} takes the simple form
 \begin{equation}\label{eq:exchange-relation}
   1+\x_i = \x_{i-1}\x_{i+1},
@@ -435,11 +435,11 @@ A very useful feature of cluster \xcoords\ is that they come equipped with a nat
 \begin{equation}
 \{x_i, x_j \} = b_{ij} x_i x_j \ .
 \end{equation}
-This structure respects mutation, implying that the entry $b_{ij}$ (which counts the number of arrows from $x_i$ to $x_j$ in a given cluster's quiver) will be the same in all clusters containing both $x_i$ and $x_j$. The Poisson bracket (and associated Sklyanin bracket) will play a larger role in a forthcoming companion paper~\cite{cluster_subalgebras_ii}, so we defer further discussion of this structure to there (for existing discussions in the literature, see also~\cite{PoissonVarieties,Vergu:2015svm}).
+This structure respects mutation, implying that the entry $b_{ij}$ (which counts the number of arrows from $x_i$ to $x_j$ in a given cluster's quiver) will be the same in all clusters containing both $x_i$ and $x_j$. The Poisson bracket (and associated Sklyanin bracket) will play a larger role in forthcoming work~\cite{cluster_subalgebras_ii,all_orders_adjacency}, so we defer further discussion of this structure (for existing discussions in the literature, see~\cite{PoissonVarieties,Vergu:2015svm}).
 
 \subsection{Subalgebras and Associahedra}\label{sec:subalgebras_associahedra}
 
-Cluster algebras contain a rich and intricate subalgebra structure, which will play a central role in our analysis. It is simple to illustrate how these subalgebras arise by considering $\Gr(2,6)$, which triangulates the hexagon. In figure~\ref{eq:gr26-seed} we give the seed cluster for $\Gr(2,6)$ in the triangulation, \acoord, and \xcoord\ representations, respectively. Since the mutable nodes take the form of an $A_3$ Dynkin diagram, we often speak of $\Gr(2,6)$ and $A_3$ interchangeably, just as we did with $\Gr(2,5) \simeq A_2$. 
+Cluster algebras contain a rich and intricate subalgebra structure, which will play a central role in our analysis. It is simple to illustrate how these subalgebras arise by considering $\Gr(2,6)$, which triangulates the hexagon. In figure~\ref{eq:gr26-seed} we give the seed cluster for $\Gr(2,6)$ in the triangulation, \acoord, and \xcoord\ representations. Since the mutable nodes take the form of an $A_3$ Dynkin diagram, we often speak of $\Gr(2,6)$ and $A_3$ interchangeably, just as we did with $\Gr(2,5) \simeq A_2$. 
 
 \begin{figure}
 \begin{equation*}
@@ -620,7 +620,7 @@ Similarly, if we disallow mutation on the chord $\ket{14}$ (and $\frac{\ket{13}\
 \end{tikzpicture}
 \end{gathered} \ .
 \end{equation}
-In appendix~\ref{appendix:subalgebras} we have tabulated the number of such $A_2$ and $A_1 \times A_1$ subalgebras in $A_3$, as well as the subalgebras of other cluster algebras that are relevant to seven-particle scattering in planar ${\cal N} = 4$. There it will be found that there are in fact six $A_2$ subalgebras and three $A_1 \times A_1$ subalgebras of $A_3$ (the remaining subalgebras do not involve the cluster in figure~\ref{eq:gr26-seed}).
+In appendix~\ref{appendix:subalgebras} we have tabulated the number of such $A_2$ and $A_1 \times A_1$ subalgebras in $A_3$, as well as the subalgebras of other cluster algebras that appear in $\Gr(4,7)$. There it will be found that there are in fact six $A_2$ subalgebras and three $A_1 \times A_1$ subalgebras of $A_3$.
 
 This subalgebra structure can be nicely visualized by constructing an object known as the associahedron (or the Stasheff polytope) of a given cluster algebra. The vertices of this polytope each represent a cluster, while its edges represent the mutations that map these clusters into each other. For instance, figure \ref{fig:pent_triangulations} corresponds to the $\Gr(2,5) \simeq A_2$ associahedron, which also coincidentally takes the form of a pentagon. Note that every node has valency two since each cluster has two mutable vertices.
 
@@ -744,11 +744,11 @@ This subalgebra structure can be nicely visualized by constructing an object kno
 
 Similarly, the associahedron of $\Gr(2,6) \simeq A_3$ is given in figure~\ref{fig:a3-poly}. It has 14 vertices, corresponding to the 14 clusters of $\Gr(2,6)$, each with valency three. These vertices assemble into three square faces and six pentagonal faces---corresponding exactly to  the three $A_1 \times A_1$ subalgebras and the six $A_2$ subalgebras of $A_3$. This makes it easy to read off the subalgebra structure of $A_3$ directly. 
 
-In $A_3$, it turns out that each of the faces corresponds to a distinct subalgebra. Associahedra for larger cluster algebras become quite complicated, and it is often the case that distinct faces (or higher-dimensional polytopes) correspond to identical subalgebras. As an example, the associahedron of $\Gr(4,7)\simeq E_6$, which will be the focus of much of the rest of this paper, is shown in figure~\ref{fig:e6-poly}. It has 833 vertices, each of valence 6, and 1071 pentagons corresponding to $A_2$ subalgebras; however, only 504 of these $A_2$ subalgebras are distinct.
+In $A_3$, it turns out that each of the faces corresponds to a distinct subalgebra. Associahedra for larger cluster algebras become quite complicated, and it is often the case that distinct faces (or higher-dimensional polytopes) correspond to identical subalgebras. As an example, the associahedron of $\Gr(4,7)$, which will be the focus of much of the rest of this paper, is shown in figure~\ref{fig:e6-poly}. It has 833 vertices, each of valence 6, and 1071 pentagons corresponding to $A_2$ subalgebras; however, only 504 of these $A_2$ subalgebras are distinct.
 
 \begin{figure}[t]  \centering
   \includegraphics[scale=0.25]{e6-associahedron}
-  \caption{The associahedron for $E_6\simeq\Gr(4,7)$.}
+  \caption{The associahedron for $\Gr(4,7) \simeq E_6$.}
   \label{fig:e6-poly}
 \end{figure}
 
@@ -806,7 +806,7 @@ So far we have leaned heavily on the correspondence between the triangulations o
 Here one sees that $\Gr(2,n) \simeq A_{n-3}$. 
 
 
-For $\Gr(k>2,n)$, there is no longer a simple connection with triangulations or Dynkin diagrams. However, as shown by Scott \cite{1088.22009} there exists a generalization of eq.~(\ref{eq:g2n-seed}) valid for all $\Gr(k,n)$:
+For $\Gr(k>2,n)$, there is no longer a simple connection with triangulations or Dynkin diagrams. However, there exists a generalization of eq.~(\ref{eq:g2n-seed}) valid for all $\Gr(k,n)$~\cite{1088.22009}:
 \begin{equation}\label{eq:gkn-seed}
 \begin{gathered}
 \begin{xy} 0;<-.5pt,0pt>:<0pt,-.5pt>::
@@ -887,7 +887,7 @@ where $l=n-k$ and
     \langle 1, \dotsc, i+j-l-1, i+1, \dotsc, k, k+j, \dotsc, n\rangle, \qquad &i >l-j+1.
   \end{cases}
 \end{equation}
-(Note that evaluating the above expression for $k=2$ will not directly give~\eqref{eq:g2n-seed}, however the two are equivalent under a cyclic rotation and dihedral flip of the $n$-gon.) The cluster algebra on $\Gr(k,n)$ is therefore of rank $(n-k-1)(k-1)$, i.e.~the number of mutable nodes in~\eqref{eq:gkn-seed}. 
+(Note that evaluating the above expression for $k=2$ will not directly give~\eqref{eq:g2n-seed}; the two are equivalent after a cyclic rotation and dihedral flip of the $n$-gon.)\draftnote{check} The cluster algebra on $\Gr(k,n)$ is therefore of rank $(n-k-1)(k-1)$, i.e.~the number of mutable nodes in~\eqref{eq:gkn-seed}. 
 
 %We have emphasized Grassmannian cluster algebras so far for two reasons: 1) the correspondence with triangulations and positive matrices make them easy to gain an intuition for and 2) the cluster algebra for $\Gr(4,n)$ is intimately connected to $n$-particle kinematics in $\mathcal{N}=4$ sYM. Let us now address point 2 a bit more in detail.
 
@@ -895,7 +895,7 @@ The cluster algebra on $\Gr(4,n)$ naturally appears in planar $\mathcal{N}=4$ sY
 \begin{equation}
 p_i^{\alpha \dot \alpha} = \lambda_i^\alpha \tilde \lambda_i^{\dot \alpha} = x_i^{\alpha \dot \alpha} - x_{i+1}^{\alpha \dot \alpha} \, , \label{eq:dual_coordiantes}
 \end{equation}
-where $x_{n+1}^{\alpha \dot \alpha} \equiv x_1^{\alpha \dot \alpha}$. These coordinates describe the cusps of a light-like Wilson loop dual to the amplitude; as a result, the original amplitude respects an additional superconformal symmetry that is associated with these dual coordinates (up to an anomaly associated with the cusps of the Wilson loop, which is accounted for by the BDS ansatz)~\cite{Bern:2005iz,Drummond:2007au,Bern:2008ap,Drummond:2008aq,Drummond:2006rz,Bern:2006ew,Bern:2007ct,Alday:2007hr,Drummond:2008vq}. In terms of the quantities in~\eqref{eq:dual_coordiantes}, we can further define momentum twistors $Z_i$
+where $x_{n+1}^{\alpha \dot \alpha} \equiv x_1^{\alpha \dot \alpha}$. These coordinates describe the cusps of a light-like Wilson loop dual to the amplitude; as a result, the original amplitude respects an additional superconformal symmetry that is associated with these dual coordinates (up to an anomaly associated with the cusps of the Wilson loop, which is accounted for by the BDS ansatz)~\cite{Bern:2005iz,Drummond:2007au,Bern:2008ap,Drummond:2008aq,Drummond:2006rz,Bern:2006ew,Bern:2007ct,Alday:2007hr,Drummond:2008vq}. In terms of the quantities in~\eqref{eq:dual_coordiantes}, we can define momentum twistors 
 \begin{equation}
 Z^R_i = (\lambda_i^\alpha, x_i^{\beta \dot \alpha} \lambda_{i \beta}) \, ,
 \end{equation}
@@ -925,7 +925,7 @@ where $\epsilon_{\alpha \beta}$ is the Levi-Civita tensor. In dual-conformally i
 \end{equation}
 Note that the two-particle Mandelstams $s_{i,i+1}$ correspond to the frozen nodes of~\eqref{eq:gkn-seed}, while higher-particle Mandelstams and more general (polynomials of) Pl\"ucker coordinates can appear as mutable nodes.
 
-By construction, the \xcoords\ on $\Gr(4,n)$ derived from the seed~\eqref{eq:gkn-seed} respect dual-conformal invariance. Both mutation rules~\eqref{eq:a-coord-mutation} and~\eqref{eq:x-coord-mutation} preserve this property (and commute with the translation~\eqref{eq:x_from_a_coordinates}), ensuring that all \xcoords\ are dual conformal invariants. Such invariants cannot be formed in four- or five-particle kinematics, due to an insufficient number of non-lightlike separated points (since we are in massless kinematics, $x_{ii+1}^2 = 0$ for all $i$). This fact shows up in the seed~\eqref{eq:gkn-seed} as $\Gr(4,n<6)$ having no mutable nodes (and therefore no \xcoords). For $n>5$, there are $3(n-5)$ mutable nodes in $\Gr(4,n)$, matching the number of algebraically independent dual conformal invariants that can be formed out of $n$ massless particles~\cite{}\flag. %For more than six particles, this is fewer than the number of multiplicatively independent dual conformal invariants due to . , $n(n-3)/2$. 
+By construction, the \xcoords\ on $\Gr(4,n)$ derived from the seed~\eqref{eq:gkn-seed} respect dual-conformal invariance. Both mutation rules~\eqref{eq:a-coord-mutation} and~\eqref{eq:x-coord-mutation} preserve this property (and commute with the translation~\eqref{eq:x_from_a_coordinates}), ensuring that all \xcoords\ are dual conformal invariants. Such invariants cannot be formed in four- or five-particle kinematics, due to an insufficient number of non-lightlike separated points (since we are in massless kinematics, $x_{ii+1}^2 = 0$ for all $i$). This fact shows up in the seed~\eqref{eq:gkn-seed} as $\Gr(4,n<6)$ having no mutable nodes (and therefore no \xcoords). For $n>5$, there are $3(n-5)$ mutable nodes in $\Gr(4,n)$, matching the number of algebraically independent dual conformal invariants that can be formed out of $n$ massless particles. 
 
 \begin{figure}[t]
 \centering
@@ -985,11 +985,11 @@ While amplitudes in planar ${\cal N}=4$ are not generically expected to have thi
 	R^{(2)}_6 = -\sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 3456 \rangle}{\langle 2345 \rangle \langle 1346 \rangle}\right) + \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right] + \dots,
 %	R^{(2)}_6 = \sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 2356 \rangle}{\langle 1236 \rangle \langle 2345 \rangle}\right) - \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right],
 \end{equation}
-where the cyclic sum is over all rotations of the four-bracket indices $i \rightarrow i+j$ for $0\leq j <6$, and the dots indicate this equality only holds up to products of lower-weight polylogarithms. This projection is well-defined and will be introduced, along with the $n$-particle remainder function, in section~\ref{sec:cluster_polylog_MHV_review}. Here we just emphasize the simplicity of this expression, which takes the form of classical polylogarithms with negative \xcoord\ arguments. (In particular, the argument of the first polylogarithm is the top node in figure~\ref{fig:g46-x-seed}, while the argument of the second polylogarithm is in the cluster generated by mutating on that node.) Moreover, the part of the expression we have dropped in~\eqref{eq:R26cobracket} can also expressed entirely in terms of products of classical polylogarithms with negative \xcoord\ arguments~\cite{Golden:2014xqf}. 
+where the cyclic sum is over all rotations of the four-bracket indices $i \rightarrow i+j$ for $0\leq j <6$, and the dots indicate this equality only holds up to products of lower-weight polylogarithms. This projection is well-defined and will be introduced, along with the $n$-particle remainder function, in section~\ref{sec:cluster_polylog_MHV_review}. Here we just emphasize the simplicity of this expression, which takes the form of classical polylogarithms with negative \xcoord\ arguments. (In particular, the argument of the first polylogarithm is the top node in figure~\ref{fig:g46-x-seed}, while the argument of the second polylogarithm is in the cluster generated by mutating on that node.)\draftnote{check} Moreover, the part of the expression we have dropped in~\eqref{eq:R26cobracket} can also expressed entirely in terms of products of classical polylogarithms with negative \xcoord\ arguments~\cite{Golden:2014xqf}. 
 
-This surprising property---of being expressible as polylogarithms with negative \xcoord\ arguments---is enjoyed by the remainder function at all $n$. However, for $n>6$ the remainder function has a nonclassical component, so generalized polylogarithms (in addition to classical polylogarithms) with negative \xcoord\ arguments also appear~\cite{Golden:2013xva}. Although this component represents the mathematically most complicated part of the remainder function, it was shown in~\cite{Golden:2014xqa} that it is decomposable into building blocks related to the $A_2$ and $A_3$ subalgebras of $\Gr(4,n)$. This allows the all-$n$ symbol computed in~\cite{CaronHuot:2011ky} to be systematically upgraded to a function, as was done for seven particles in~\cite{Golden:2014xqf}. In the later sections of this paper, we demonstrate the existence of further subalgebra structure in the nonclassical part of the seven-particle remainder function (we leave consideration of higher-point kinematics to future work~\cite{cluster_subalgebras_ii}). The \acoord\ and \xcoord\ seeds for $\Gr(4,7)$ are presented in figure~\ref{fig:g47-seed}.
+This surprising property---of being expressible as polylogarithms with negative \xcoord\ arguments---is enjoyed by the two-loop MHV amplitude at all $n$. However, for $n>6$ these amplitudes have a nonclassical component, so generalized polylogarithms (in addition to classical polylogarithms) with negative \xcoord\ arguments also appear~\cite{Golden:2013xva}. Although this component represents the mathematically most complicated part of the remainder function, it was shown in~\cite{Golden:2014xqa} that it is decomposable into building blocks related to the $A_2$ and $A_3$ subalgebras of $\Gr(4,n)$. This allows the all-$n$ symbol computed in~\cite{CaronHuot:2011ky} to be systematically upgraded to a function, as was done for seven particles in~\cite{Golden:2014xqf}. In the later sections of this paper, we demonstrate the existence of further subalgebra structure in the nonclassical part of the seven-particle MHV amplitude (leaving higher-point kinematics to future work~\cite{cluster_subalgebras_ii}). The \acoord\ and \xcoord\ seeds for the cluster algebra relevant to seven-particle scattering, $\Gr(4,7)$, are presented in figure~\ref{fig:g47-seed}.
 
-Before turning to the remaining aspects of cluster algebras that we wish to develop, we note that plabic graphs---which are dual to the clusters we've been describing---encode a great deal more about planar ${\cal N}=4$ than we have had reason to touch on. In particular, \draftnote{boundaries---a subset of which are our subalgebras (?)}. We refer interested readers to the exposition of this rich structure given in~\cite{ArkaniHamed:2012nw}.
+Before turning to the remaining aspects of cluster algebras that we wish to develop, we note that plabic graphs---which are dual to the clusters we've been describing---encode a great deal more about planar ${\cal N}=4$ than we have had reason to touch on. We refer interested readers to the exposition of this rich structure given in~\cite{ArkaniHamed:2012nw}.
 
 \begin{figure}
 \centering
@@ -1073,7 +1073,7 @@ The procedure of writing down an oriented oriented quiver, dressing it with coor
 
 %\footnote{There is a further distinction in the infinite case between cluster algebras which contain a finite number of quiver types (dressed in an infinite number of ways with distinct cluster coordinates), and those which contain infinitely many quivers as well as coordinates.} 
 
-Fortunately, Fomin and Zelevinksy classified all finite cluster algebras in \cite{1054.17024}. In particular, they showed that a cluster algebra is of finite type if and only if the mutable part of at least one of its clusters takes the form of an oriented, simply-laced Dynkin diagram: $A_n$, $D_n$, or $E_{n\le8}$.  As we will primarily be interested in subalgebras of the cluster algebra on $\Gr(4,7)$, we here focus on the cases where $n < 6$ (and on the case of $E_6 \simeq \Gr(4,7)$ itself). 
+Fortunately, all finite cluster algebras were classified in~\cite{1054.17024}. In particular, it was shown that a cluster algebra is of finite type if and only if the mutable part of at least one of its clusters takes the form of an oriented, simply-laced Dynkin diagram: $A_n$, $D_n$, or $E_{n\le8}$.  As we will primarily be interested in subalgebras of the cluster algebra on $\Gr(4,7)$, we here focus on the cases where $n < 6$ (and on the case of $E_6 \simeq \Gr(4,7)$ itself). 
 
 As mentioned above, cluster algebras of type $A_n$ can be generated by the seed
 \begin{equation}\label{def:An}
@@ -1096,9 +1096,9 @@ Z_{A_3} =
 0 & 1 & 1 & 0 & -x_1 x_2 & 0 \\
 0 & 0 & 1 & 1 & x_1 x_2 x_3 & 0
 \end{pmatrix}
-\endgroup 
+\endgroup .
 \end{equation}
-The chief advantage of working directly in terms of cluster \xcoords\ such as $x_1$, $x_2$, and $x_3$ is that they trivialize all Pl\"ucker relations~\eqref{eq:plucker-rel}. Furthermore, cluster coordinates rationalize many of the square roots that appear when amplitudes and integrals are expressed in terms of dual-conformally-invariant cross ratios~\cite{Bourjaily:2018aeq}. For instance, in this chart the dual conformal cross ratios commonly used to express the six-particle amplitude (see, for example~\cite{Goncharov:2010jf,Dixon:2011pw,Dixon:2013eka}) evaluate to
+The chief advantage of working directly in terms of cluster \xcoords\ such as $x_1$, $x_2$, and $x_3$ is that they trivialize all Pl\"ucker relations~\eqref{eq:plucker-rel}. Furthermore, cluster coordinates rationalize many of the square roots that appear when amplitudes and integrals are expressed in terms of dual-conformally-invariant cross ratios~\cite{Bourjaily:2018aeq}. For instance, in this chart the dual conformal cross ratios commonly used to express the six-particle amplitude evaluate to
 \begin{align} \label{eq:uvw_in_x}
 u &= \frac{\ket{6123}\ket{3456}}{\ket{6134}\ket{2356}} = \frac{1}{1+x_2+x_2 x_3}, \\ 
 v &= \frac{\ket{1234} \ket{4561}}{\ket{1245}\ket{3461}} =\frac{x_1 x_2}{1+x_1+x_1 x_2}, \\ 
@@ -1109,7 +1109,7 @@ which rationalizes the well-known square root that appears in these cross ratios
 \sqrt{(1 - u - v - w)^2 - 4 u v w} = \frac{x_2 \left(1-x_1 x_3\right)}{\left(1+x_1+x_1
    x_2\right) \left(1+x_2+x_2 x_3\right)} .
 \end{equation}
-Note that the cluster coordinate expressions~\eqref{eq:uvw_in_x} are rotated compared to those given elsewhere in the literature~\cite{Golden:2013xva,Parker:2015cia} even though both arise from a seed of the form~\eqref{def:An}; this reflects a differing convention for the seed of $\Gr(k,n)$.
+Note that the cluster coordinate expressions~\eqref{eq:uvw_in_x} are rotated compared to those given elsewhere in the literature (for example,~\cite{Golden:2013xva,Parker:2015cia}) even though both arise from an \xcoord\ seed of the form~\eqref{def:An}; this reflects a differing convention for the seed of $\Gr(k,n)$.
 
 The first nondegenerate Dynkin diagram of type $D_n$ is $D_4$, corresponding to the seed quiver
 \begin{equation} \label{eq:D4_quiver}
@@ -1125,7 +1125,7 @@ The first nondegenerate Dynkin diagram of type $D_n$ is $D_4$, corresponding to 
     \end{xy}
     \end{gathered} .
 \end{equation}
-Note here that we no longer are treating $x_1, x_2, x_3$ as defined in eq.~(\ref{eq:a3-seed-def}), the $x_i$ in eq.~(\ref{eq:D4_quiver}) are all generic variables. This seed turns out to generate the same cluster algebra as $\Gr(3,6)$; in particular, starting from the seed in~\eqref{eq:gkn-seed} and mutating on the nodes initially labeled by $f_{13}$ and then $f_{23}$, one arrives at the \xcoord\ quiver~\eqref{eq:D4_quiver}, where
+(Note here that the variables $x_1$, $x_2$, and $x_3$ are not the same as those defined by \eqref{eq:a3-seed-def}; we apologize for using the variables $x_i$ ubiquitously, but hope their meaning is always clear from context.) This seed turns out to generate the same cluster algebra as $\Gr(3,6)$; in particular, starting from the seed in~\eqref{eq:gkn-seed} and mutating on the nodes initially labeled by $f_{13}$ and then $f_{23}$\draftnote{check}, one arrives at the \xcoord\ quiver~\eqref{eq:D4_quiver}, where
 \begin{equation}\label{eq:d4-seed-def}
 x_1 = \frac{\ket{123}\ket{345}}{\ket{234}\ket{135}}, \quad x_2 = \frac{\ket{156}\ket{235}}{\ket{125}\ket{356}}, \quad x_3 = \frac{\ket{135}\ket{456}}{\ket{156}\ket{345}}, \quad x_4 = \frac{\ket{126}\ket{135}}{\ket{123}\ket{156}}.
 \end{equation}
@@ -1157,7 +1157,7 @@ Conversely, the cluster algebra generated by $D_5$,
     \end{xy}
     \end{gathered} ,
 \end{equation}
-is not equivalent to the cluster algebra on any Grassmannian (once again, ignore the notational overlap with eq.~(\ref{eq:d4-seed-def}) and treat all of the $x_i$ as generic variables). However, it appears as a subalgebra of any $\Gr(k,n)$ with rank greater than five. The $D_4$ cluster algebra consists of 50 clusters, 16 \acoords, and 104 \xcoords, while $D_5$ has 182 clusters, 25 \acoords, and 260 \xcoords. 
+is not equivalent to the cluster algebra on any Grassmannian. However, it appears as a subalgebra of any $\Gr(k,n)$ with rank greater than five. The $D_4$ cluster algebra consists of 50 clusters, 16 \acoords, and 104 \xcoords, while $D_5$ has 182 clusters, 25 \acoords, and 260 \xcoords. 
 
 Finally, the cluster algebra $E_6$ is generated by the quiver
 \begin{equation}\label{def:E6}
@@ -1177,7 +1177,7 @@ Finally, the cluster algebra $E_6$ is generated by the quiver
     \end{xy}
     \end{gathered} .
 \end{equation}
-This cluster algebra is equivalent to $\Gr(4,7)$, as can be seen by mutating the seed~\eqref{eq:gkn-seed} on nodes $f_{12}$, $f_{13}$, $f_{23}$, $f_{12}$, $f_{22}$, and then $f_{32}$. By comparison with~\eqref{def:E6}, we then have 
+This cluster algebra is equivalent to $\Gr(4,7)$, as can be seen by mutating the seed~\eqref{eq:gkn-seed} on nodes $f_{12}$, $f_{13}$, $f_{23}$, $f_{12}$, $f_{22}$, and then $f_{32}$.\draftnote{check} By comparison with~\eqref{def:E6}, we then have 
 \begin{align} \label{eq:E6_x_def}
 x_1 &= \frac{\ket{1234}\ket{1267}}{\ket{1237} \ket{1246}}, \hspace{13.03ex} \quad \quad 
 x_2 = - \frac{\ket{1247} \ket{3456}}{\ket{4(12)(35)(67)}}, \quad \nonumber \\
@@ -1257,7 +1257,7 @@ To see that this is an indirect automorphism, consider
 \begin{align}
   \tau_{A_2}(1/\x_1 \to \x_2) =&~1/\x_5 \to \x_4 \ .
 \end{align}
-Inverting the cluster coordinates on the right hand side and reversing the arrow, we get back to $\x_5 \leftarrow 1/\x_4$, which was one of the original clusters of $A_2$. $\tau$ can also be interpreted as the dihedral flip of the pentagon. 
+Inverting the cluster coordinates on the right hand side and reversing the arrow, we get back to $\x_5 \leftarrow 1/\x_4$, which was one of the original clusters of $A_2$. The operation generated by $\tau_{A_2}$ can be interpreted as the dihedral flip of the pentagon. 
 
 It is useful to think of indirect automorphisms as generating a ``mirror'' or ``flipped'' version of the original cluster algebra, where the total collection of $\x$-coordinates is the same, but their Poisson bracket has flipped sign. The existence of this flip then can be seen as resulting from the arbitrary choice of overall sign for the exchange matrix $b_{ij}$; picking the other sign would have generated the same cluster-algebraic structure, but with different labels for the nodes. Indirect automorphisms capture the superficiality of this notation change.
 
@@ -1362,9 +1362,9 @@ Finally, the automorphism group of $E_6 \simeq \Gr(4,7)$ is the dihedral group $
     x_6\to \frac{x_2}{1+x_{1,2}}.
 \end{split}  
 \end{equation}
-In the language of $\Gr(4,7)$, these generators respectively correspond to cycling momentum twistor indices $Z_i \to Z_{i+1}$, flipping momentum twistor indices $Z_i \to Z_{8-i}$, and parity. 
+In the language of $\Gr(4,7)$, these generators respectively correspond to cycling momentum twistor indices $Z_i \to Z_{i+1}$, flipping momentum twistor indices $Z_i \to Z_{8-i}$, and parity conjugation. 
 
-The polylogarithmic part of the $n$-particle MHV amplitude is invariant under parity transformations, as well as the dihedral group that represents Bose symmetry. These symmetries directly translate to automorphisms of the cluster algebra on $\Gr(4,n)$. However, it turns out the nonclassical part of these amplitudes can also be decomposed into building blocks that respect the automorphism group certain subalgebras of $\Gr(4,n)$. Making this statement precise will be the focus of much of the remainder of this paper. 
+The polylogarithmic part of the $n$-particle MHV amplitude is invariant under parity transformations, as well as the dihedral group that represents Bose symmetry. These symmetries directly translate to automorphisms of the cluster algebra on $\Gr(4,n)$. However, it turns out the nonclassical part of these amplitudes can also be decomposed into building blocks that respect the automorphism group of certain subalgebras of $\Gr(4,n)$. Making this statement precise will be the focus of much of the remainder of this paper. 
 
 \section{Cluster Polylogarithms and MHV Amplitudes} \label{sec:cluster_polylog_MHV_review}
 
@@ -2239,7 +2239,9 @@ We thank Jacob Bourjaily, James Drummond, Henriette Elvang, and Marcus Spradlin 
 \section{Counting Subalgebras of Finite Cluster Algebras}\label{appendix:subalgebras}
 In this appendix we catalog the subalgebra structure of $\Gr(4,7) \simeq E_6$ and all its finite connected subalgebras, namely $A_2$, $A_3$, $A_4$, $D_4$, $A_5$, and $D_5$. We include both the number of subalgebras and subpolytopes (of the associahedron) that occur in each algebra. We only consider subalgebras to be distinct when they differ in at least one of their mutable nodes, but count identical subalgebras as distinct subpolytopes when they are connected to different frozen nodes. Note also that we consider the \xcoords\ $x$ and $1/x$ to be distinct.
 
+\enlargethispage{\baselineskip}
 \begin{center}
+\vspace{.1cm}
 {\qquad \qquad \Large{\(A_2\)} \hfill} 
 
 \qquad Clusters: 5 \quad --- \quad  \acoords: 5 \quad --- \quad \xcoords: 10 \hfill
@@ -2289,7 +2291,6 @@ In this appendix we catalog the subalgebra structure of $\Gr(4,7) \simeq E_6$ an
 \hline \(A_1 \times A_1 \times A_1\) & 4 & 4 \\ 
 \hline
 \end{tabular}
-\vspace{.5cm}
 
 \newpage 
 
@@ -2535,7 +2536,7 @@ $E_6$ Automorphism Signatures
 \label{table:nonclassical_dimensions}
 \end{table}
  
-\noindent\parbox{\textwidth}{Table~\ref{table:nonclassical_dimensions} we first record the number of cluster polylogarithms that have a nonzero $\delta_{2,2}$ cobracket component, as considered in section~\ref{sec:sub-constructibility}. We tabulate the number of functions on each cluster algebras both before and after requiring a specific automorphism \parfillskip=0pt}
+\noindent\parbox{\textwidth}{Table~\ref{table:nonclassical_dimensions} we first record the number of cluster polylogarithms that have a nonzero $\delta_{2,2}$ cobracket component, as considered in section~\ref{sec:sub-constructibility}. We tabulate the number of functions on each cluster algebra both before and after requiring a specific automorphism \parfillskip=0pt}
 
 \begin{table}[t]
 \begin{center}
