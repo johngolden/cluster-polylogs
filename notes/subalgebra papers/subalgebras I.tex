@@ -289,7 +289,7 @@ In an analogous way, cluster algebras answer questions about positivity for a la
 
 \subsection{Clusters, Mutations, and Cluster ${\cal A}$-coordinates}
 
-Clusters can be defined to be quiver diagrams---namely, oriented graphs equipped with arrows connecting different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type.\flag{do you have a citation we can put here?}} We can form one of the clusters of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles such as
+Clusters can be defined to be quiver diagrams---namely, oriented graphs equipped with arrows connecting different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type.} We can form one of the clusters of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles such as
 \begin{equation}\label{eq:oriented-pentagon}
 \begin{gathered}
 \begin{tikzpicture}
@@ -1072,8 +1072,6 @@ Before turning to the remaining aspects of cluster algebras that we wish to deve
 \subsection{Finite Cluster Algebras}\label{sec:finite-algebras}
 
 The procedure of writing down an oriented oriented quiver, dressing it with coordinates, and iteratively mutating on all non-frozen nodes using either the $\a$-coordinate or $\x$-coordinate mutation rule will always produce a cluster algebra. However, generic quivers give rise to exceedingly complicated cluster algebras---in fact, for a wide class of seeds, mutation will generate an infinite numbers of clusters. For the remainder of this paper we will mostly restrict our attention to finite cluster algebras, leaving the consideration of infinite algebras to future work. 
-
-%\footnote{There is a further distinction in the infinite case between cluster algebras which contain a finite number of quiver types (dressed in an infinite number of ways with distinct cluster coordinates), and those which contain infinitely many quivers as well as coordinates.} 
 
 Fortunately, all finite cluster algebras were classified in~\cite{1054.17024}. In particular, it was shown that a cluster algebra is of finite type if and only if the mutable part of at least one of its clusters takes the form of an oriented, simply-laced Dynkin diagram: $A_n$, $D_n$, or $E_{n\le8}$.  As we will primarily be interested in subalgebras of the cluster algebra on $\Gr(4,7)$, we here focus on the cases where $n < 6$ (and on the case of $E_6 \simeq \Gr(4,7)$ itself). 
 
@@ -2205,12 +2203,12 @@ where $\smash{f_{A_4}^{+-}}$ is the \emph{same} function that appeared in the $A
 
 The results of the previous sections are summarized in figure \ref{fig:R27_decompositions}. The fact that the two most canonical decompositions of $R^{(2)}_7$ involve functions that are themselves canonically decomposable in terms of the same $A_4$ function is highly unexpected. In equation form, this interlinked structure can be summarized as
 \begin{align}
-	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots \\
-	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots
+	R^{(2)}_7 &= {\color{white} - }\frac{1}{5} \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots \\
+	& = -  \frac{1}{5}  \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots
 \end{align}
-where the trailing dots indicate that this equality holds up to the contribution of purely classical polylogarithms. In fact, the classical contribution is the \emph{same} in both lines, as strict equality holds between the two nested sums over $f_{A_4}^{+-}$.\draftnote{how is this reconciled with wildly different number of terms?}
+where the trailing dots indicate that this equality holds up to the contribution of purely classical polylogarithms. In fact, the required classical contribution is the \emph{same} in both lines, as strict equality holds between the two nested sums over $f_{A_4}^{+-}$ (including the minus sign in front of the second). This in itself is rather phenomenal 
 
-In addition to this tightly interlinked pair of decompositions, both $f_{D_5}^{---}$ and $f_{A_5}^{--}$ admit $A_3$ decompositions. As discussed above, each of these decompositions makes some property of the remainder function manifest at the expense of others---for instance, any $A_5^{--}$ representation makes the vanishing of the nonclassical component of this amplitude in collinear limits manifest term-by-term, whereas the $A_2 \subset A_3 \subset D_5 \subset E_6$ representation manifestly satisfies cobracket-level cluster adjacency. While it might have been hoped that a single decomposition would exhibit all the the nice mathematical features of the remainder function at once, it is perhaps better that $R^{(2)}_7$ ``requires'' nearly the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
+In addition to this tightly interlinked pair of decompositions, both $f_{D_5}^{---}$ and $f_{A_5}^{--}$ admit $A_3$ decompositions. As discussed above, each of these decompositions makes some property of the remainder function manifest at the expense of others---for instance, any $A_5^{--}$ representation makes the vanishing of the nonclassical component of this amplitude in collinear limits manifest term-by-term, whereas the $A_2 \subset A_3 \subset D_5 \subset E_6$ representation manifestly satisfies cobracket-level cluster adjacency when phrased in terms of $f_{A_3}^{--}$ or $f_{A_3\subset D_5}^{---}$. While it might have been hoped that a single decomposition would exhibit all the the nice mathematical features of the remainder function at once, it is perhaps better that $R^{(2)}_7$ ``requires'' nearly the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
 
 The only subalgebra of $\Gr(4,7)$ we have not had reason to touch on yet is $D_4$. \draftnote{why no $D_4$ decomposition?}
 
@@ -2696,7 +2694,7 @@ $E_6$ Automorphism Signatures
     \draw [dashed,shorten >=0.14cm,postaction={decorate}] ([yshift=1cm,xshift=1cm]{pic cs:e6bottomRight3}) [bend right] to[out=-100,in=-100] ([yshift=0.08cm,xshift=.16cm]{pic cs:e6tablePosition3}) ;
 \end{tikzpicture}
 
-\caption{The number of weight-four cluster polylogarithms on various finite cluster algebras that have nonzero cobrackets, prior to considerations of their automorphism group and after requiring specific automorphism signatures. The number of polylogarithms that can also be made to satisfy cobracket-level cluster adjacency is given in parentheses.}
+\caption{The number of weight-four cluster polylogarithms on various finite cluster algebras that have nonzero cobrackets, prior to consideration of their automorphism group and after requiring specific automorphism signatures. The number of polylogarithms that can also be made to satisfy cobracket-level cluster adjacency is given in parentheses.}
 \label{table:total_dimensions}
 \end{table}
 \vspace{1cm}
