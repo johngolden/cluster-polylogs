@@ -146,7 +146,7 @@ Stanford University, Stanford, CA 94309, USA}
 
 \affiliation{\footnotesize $^4$ Niels Bohr International Academy, Blegdamsvej 17, 2100 Copenhagen, Denmark}
 
-\abstract{We review various aspects of cluster algebras and the ways in which they appear in the study of loop-level amplitudes in planar ${\cal N} = 4$ supersymmetric Yang-Mills theory. In particular, we highlight the different forms of cluster-algebraic structure that appear in this theory's two-loop MHV amplitudes at the function, symbol, and Lie cobracket level, and recount how the `nonclassical' part of these amplitudes can be decomposed into specific functions evaluated on the $A_2$ or $A_3$ subalgebras of $\Gr(4,n)$. We then extend this line of inquiry by searching for other subalgebras over which these amplitudes can be decomposed. We focus on the case of seven-particle kinematics, where we show that the nonclassical part of the two-loop MHV amplitude is also constructible out of functions evaluated on the $D_5$, $A_5$, and $A_4$ subalgebras of $\Gr(4,7)$. Unlike the $A_2$ and $A_3$ decompositions of this amplitude, these decompositions take a canonical form, and exhibit an interlinked }
+\abstract{We review various aspects of cluster algebras and the ways in which they appear in the study of loop-level amplitudes in planar ${\cal N} = 4$ supersymmetric Yang-Mills theory. In particular, we highlight the different forms of cluster-algebraic structure that appear in this theory's two-loop MHV amplitudes---considered as functions, symbols, and at the level of their Lie cobracket---and recount how the `nonclassical' part of these amplitudes can be decomposed into specific functions evaluated on the $A_2$ or $A_3$ subalgebras of $\Gr(4,n)$. We then extend this line of inquiry by searching for other subalgebras over which these amplitudes can be decomposed. We focus on the case of seven-particle kinematics, where we show that the nonclassical part of the two-loop MHV amplitude is also constructible out of functions evaluated on the $D_5$ and $A_5$ subalgebras of $\Gr(4,7)$, and that these decompositions are themselves decomposable in terms of the same $A_4$ function. These nested decompositions take an especially canonical form, which is dictated in each case by constraints arising from the automorphism group of the parent algebra.}
 
 % While the forms of cluster-algebraic structure that have been seen in this theory's amplitudes are too simple to extend beyond low loop orders and particle multiplicities, it is hoped that they point to the existence of some more general combinatorial structure that extends to all amplitudes in this theory. 
 
@@ -289,7 +289,7 @@ In an analogous way, cluster algebras answer questions about positivity for a la
 
 \subsection{Clusters, Mutations, and Cluster ${\cal A}$-coordinates}
 
-Clusters can be defined to be quiver diagrams---namely, oriented graphs equipped with arrows connecting different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type.\flag{do you have a citation we can put here?}} We can form one of the clusters of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles such as
+Clusters can be defined to be quiver diagrams---namely, oriented graphs equipped with arrows connecting different nodes---in which each node is assigned a cluster coordinate.\footnote{Here and throughout, we are implicitly restricting ourselves to skew-symmetric cluster algebras of geometric type.} We can form one of the clusters of $\Gr(2,5)$ out of our original triangulation~\eqref{eq:pent_triangulation} by assigning an orientation to the pentagon and all subtriangles such as
 \begin{equation}\label{eq:oriented-pentagon}
 \begin{gathered}
 \begin{tikzpicture}
@@ -411,15 +411,15 @@ Mutation still changes the arrows in the quiver diagram as it did in the case of
 
 Just as with $\a$-coordinate clusters, we can generate all $\x$-coordinate clusters by mutation. Mutating on alternating nodes of our $A_2$ cluster~\eqref{def:xcoordsA2} (starting with $x_2$), we generate the following sequence of clusters:
 \begin{align}
-  x_1 &\to \color{black}{x_2} \nl
-  \color{black}{x_1(1+x_2)} &\leftarrow \frac{1}{x_2} \nl
-  \frac{1}{x_1(1+x_2)} &\to \color{black}{\frac{x_2}{1+x_1+x_1 x_2}} \\
-  \color{black}{\frac{x_1 x_2}{1+x_1}} &\leftarrow \frac{1+x_1+x_1 x_2}{x_2} \nl
-  \frac{1+x_1}{x_1 x_2} &\to \color{black}{\frac{1}{x_1}} \nl
-  \color{black}{x_2} &\leftarrow x_1 \nl
+  x_1 &\to x_2 \nl
+  x_1(1+x_2) &\leftarrow \frac{1}{x_2} \nl
+  \frac{1}{x_1(1+x_2)} &\to \frac{1+x_1+x_1 x_2}{x_2} \\
+  \frac{1+x_1}{x_1 x_2} &\leftarrow \frac{x_2}{1+x_1+x_1 x_2} \nl
+  \frac{x_1 x_2}{1+x_1} &\to \frac{1}{x_1} \nl
+  x_2 &\leftarrow x_1 \nl
   &\ \ \vdots \nn
 \end{align}
-The series then repeats, with all arrows reversed. Note that (specifically in the case of $A_2$), if we label these $\x$-coordinates by
+\draftnote{this was wrong, I needed to invert coordinates. Check and delete draftnote} The series then repeats, with all arrows reversed. Note that (specifically in the case of $A_2$), if we label these $\x$-coordinates by
 \begin{gather}\label{def:a2-xcoords}
   \x_1 = 1/x_1, \qquad \qquad \x_2 = x_2, \qquad \qquad \x_3 = x_1(1+x_2), \\ 
   \x_4 = \frac{1+x_1+x_1 x_2}{x_2}, \qquad \qquad \x_5 = \frac{1+x_1}{x_1 x_2}, \nonumber
@@ -549,7 +549,7 @@ We therefore refer to the collection of clusters that involve this pentagon as a
 
 It should be clear, upon referring back to the mutation rules~\eqref{eq:a-coord-mutation} and~\eqref{eq:x-coord-mutation}, that this $A_2$ subaglebra is truly identical to what we have been calling $\Gr(2,5)$. That is, neither the $\a$- or $\x$-coordinate mutation rule (or the rule for constructing the $\x$-coordinate cluster out of the $\a$-coordinate one) depends on nodes further than a single arrow away from the node on which one is mutating. Correspondingly, this subalgebra doesn't know about the existence of nodes involving point/column 6. (In the \xcoord\ case, the coordinate associated with the newly frozen node will change when one mutates on the node it is connected to, but the presence of this frozen node does not effect the coordinates appearing in the $A_2$ subalgebra itself.) We consider two subalgebras to be identical when the clusters they appear in only differ by nodes that have no effect on the mutable nodes of the subalgebra.  
 
-What if we instead disallow mutation on the chord $\ket{13}$ (and the corresponding $\x$-coordinate node $\frac{\ket{12}\ket{34}}{\ket{23}\ket{14}}$)? Dropping the nodes that play no role in any of the mutations that remain gives rise to the effective quiver
+What if we instead disallow mutation on the chord $\ket{13}$ (and the corresponding $\x$-coordinate node $\frac{\ket{12}\ket{34}}{\ket{14}\ket{23}}$)? Dropping the nodes that play no role in any of the mutations that remain gives rise to the effective quiver
 \begin{equation}\label{eq:gr26-subalgebra-seed}
 \begin{gathered}
 \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
@@ -889,7 +889,7 @@ where $l=n-k$ and
     \langle 1, \dotsc, i+j-l-1, i+1, \dotsc, k, k+j, \dotsc, n\rangle, \qquad &i >l-j+1.
   \end{cases}
 \end{equation}
-(Note that evaluating the above expression for $k=2$ will not directly give~\eqref{eq:g2n-seed}; the two are equivalent after a cyclic rotation and dihedral flip of the $n$-gon.)\draftnote{check} The cluster algebra on $\Gr(k,n)$ is therefore of rank $(n-k-1)(k-1)$, i.e.~the number of mutable nodes in~\eqref{eq:gkn-seed}. 
+(Note that evaluating the above expression for $k=2$ will not directly give~\eqref{eq:g2n-seed}; the two are equivalent after a cyclic rotation and dihedral flip of the $n$-gon.)\draftnote{I find that, rather, it's a cyclic rotation and then just flipping the arrows on \eqref{eq:g2n-seed}. Do you agree?} The cluster algebra on $\Gr(k,n)$ is therefore of rank $(n-k-1)(k-1)$, i.e.~the number of mutable nodes in~\eqref{eq:gkn-seed}. 
 
 %We have emphasized Grassmannian cluster algebras so far for two reasons: 1) the correspondence with triangulations and positive matrices make them easy to gain an intuition for and 2) the cluster algebra for $\Gr(4,n)$ is intimately connected to $n$-particle kinematics in $\mathcal{N}=4$ sYM. Let us now address point 2 a bit more in detail.
 
@@ -984,10 +984,10 @@ This fact is especially propitious for loop-level amplitudes (and integrals) tha
 
 While amplitudes in planar ${\cal N}=4$ are not generically expected to have this property (and indeed, certain Feynman integrals have been computed that do not~\cite{Bourjaily:2018aeq,Henn:2018cdp}), an infinite class of amplitudes do---namely, all two-loop MHV amplitudes~\cite{CaronHuot:2011ky}, and all six- and seven-particle amplitudes computed to date~\cite{CaronHuot:2011kk,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn}. The significance of this property is illustrated by the two-loop, six-particle remainder function, which encodes the MHV amplitude. Namely, this function can be put in the form
 \begin{equation} \label{eq:R26cobracket}
-	R^{(2)}_6 = -\sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 3456 \rangle}{\langle 2345 \rangle \langle 1346 \rangle}\right) + \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right] + \dots,
+	R^{(2)}_6 = -\sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 3456 \rangle}{\langle 2345 \rangle \langle 1346 \rangle}\right) - \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1234 \rangle \langle 1456 \rangle}{\langle 1246 \rangle \langle 1345 \rangle}\right) \right] + \dots,
 %	R^{(2)}_6 = \sum_{\text{cyclic}} \left[ \text{Li}_4\left(-\frac{\langle 1234 \rangle \langle 2356 \rangle}{\langle 1236 \rangle \langle 2345 \rangle}\right) - \frac{1}{4} \text{Li}_4 \left(-\frac{\langle 1246 \rangle \langle 1345 \rangle}{\langle 1234 \rangle \langle 1456 \rangle}\right) \right],
 \end{equation}
-where the cyclic sum is over all rotations of the four-bracket indices $i \rightarrow i+j$ for $0\leq j <6$, and the dots indicate this equality only holds up to products of lower-weight polylogarithms. This projection is well-defined and will be introduced, along with the $n$-particle remainder function, in section~\ref{sec:cluster_polylog_MHV_review}. Here we just emphasize the simplicity of this expression, which takes the form of classical polylogarithms with negative \xcoord\ arguments. (In particular, the argument of the first polylogarithm is the top node in figure~\ref{fig:g46-x-seed}, while the argument of the second polylogarithm is in the cluster generated by mutating on that node.)\draftnote{check} Moreover, the part of the expression we have dropped in~\eqref{eq:R26cobracket} can also expressed entirely in terms of products of classical polylogarithms with negative \xcoord\ arguments~\cite{Golden:2014xqf}. 
+where the cyclic sum is over all rotations of the four-bracket indices $i \rightarrow i+j$ for $0\leq j <6$, and the dots indicate this equality only holds up to products of lower-weight polylogarithms. This projection is well-defined and will be introduced, along with the $n$-particle remainder function, in section~\ref{sec:cluster_polylog_MHV_review}. Here we just emphasize the simplicity of this expression, which takes the form of classical polylogarithms with negative \xcoord\ arguments. (In particular, the argument of the first polylogarithm is the top node in figure~\ref{fig:g46-x-seed}, while the argument of the second polylogarithm appears in the cluster generated by mutating on that node.) Moreover, the part of the expression we have dropped in~\eqref{eq:R26cobracket} can also expressed entirely in terms of products of classical polylogarithms with negative \xcoord\ arguments~\cite{Golden:2014xqf}. 
 
 This surprising property---of being expressible as polylogarithms with negative \xcoord\ arguments---is enjoyed by the two-loop MHV amplitude at all $n$. However, for $n>6$ these amplitudes have a nonclassical component, so generalized polylogarithms (in addition to classical polylogarithms) with negative \xcoord\ arguments also appear~\cite{Golden:2013xva}. Although this component represents the mathematically most complicated part of the remainder function, it was shown in~\cite{Golden:2014xqa} that it is decomposable into building blocks related to the $A_2$ and $A_3$ subalgebras of $\Gr(4,n)$. This allows the all-$n$ symbol computed in~\cite{CaronHuot:2011ky} to be systematically upgraded to a function, as was done for seven particles in~\cite{Golden:2014xqf}. In the later sections of this paper, we demonstrate the existence of further subalgebra structure in the nonclassical part of the seven-particle MHV amplitude (leaving higher-point kinematics to future work~\cite{cluster_subalgebras_ii}). The \acoord\ and \xcoord\ seeds for the cluster algebra relevant to seven-particle scattering, $\Gr(4,7)$, are presented in figure~\ref{fig:g47-seed}.
 
@@ -1073,8 +1073,6 @@ Before turning to the remaining aspects of cluster algebras that we wish to deve
 
 The procedure of writing down an oriented oriented quiver, dressing it with coordinates, and iteratively mutating on all non-frozen nodes using either the $\a$-coordinate or $\x$-coordinate mutation rule will always produce a cluster algebra. However, generic quivers give rise to exceedingly complicated cluster algebras---in fact, for a wide class of seeds, mutation will generate an infinite numbers of clusters. For the remainder of this paper we will mostly restrict our attention to finite cluster algebras, leaving the consideration of infinite algebras to future work. 
 
-%\footnote{There is a further distinction in the infinite case between cluster algebras which contain a finite number of quiver types (dressed in an infinite number of ways with distinct cluster coordinates), and those which contain infinitely many quivers as well as coordinates.} 
-
 Fortunately, all finite cluster algebras were classified in~\cite{1054.17024}. In particular, it was shown that a cluster algebra is of finite type if and only if the mutable part of at least one of its clusters takes the form of an oriented, simply-laced Dynkin diagram: $A_n$, $D_n$, or $E_{n\le8}$.  As we will primarily be interested in subalgebras of the cluster algebra on $\Gr(4,7)$, we here focus on the cases where $n < 6$ (and on the case of $E_6 \simeq \Gr(4,7)$ itself). 
 
 As mentioned above, cluster algebras of type $A_n$ can be generated by the seed
@@ -1127,7 +1125,7 @@ The first nondegenerate Dynkin diagram of type $D_n$ is $D_4$, corresponding to 
     \end{xy}
     \end{gathered} .
 \end{equation}
-(Note here that the variables $x_1$, $x_2$, and $x_3$ are not the same as those defined by \eqref{eq:a3-seed-def}; we apologize for using the variables $x_i$ ubiquitously, but hope their meaning is always clear from context.) This seed turns out to generate the same cluster algebra as $\Gr(3,6)$; in particular, starting from the seed in~\eqref{eq:gkn-seed} and mutating on the nodes initially labeled by $f_{13}$ and then $f_{23}$\draftnote{check}, one arrives at the \xcoord\ quiver~\eqref{eq:D4_quiver}, where
+(Note here that the variables $x_1$, $x_2$, and $x_3$ are not the same as those defined by \eqref{eq:a3-seed-def}; we apologize for using the variables $x_i$ ubiquitously, but hope their meaning is always clear from context.) This seed turns out to generate the same cluster algebra as $\Gr(3,6)$; in particular, starting from the seed in~\eqref{eq:gkn-seed} and mutating on the nodes initially labeled by $f_{13}$ and then $f_{23}$, one arrives at the \xcoord\ quiver~\eqref{eq:D4_quiver}, where
 \begin{equation}\label{eq:d4-seed-def}
 x_1 = \frac{\ket{123}\ket{345}}{\ket{234}\ket{135}}, \quad x_2 = \frac{\ket{156}\ket{235}}{\ket{125}\ket{356}}, \quad x_3 = \frac{\ket{135}\ket{456}}{\ket{156}\ket{345}}, \quad x_4 = \frac{\ket{126}\ket{135}}{\ket{123}\ket{156}}.
 \end{equation}
@@ -1179,7 +1177,7 @@ Finally, the cluster algebra $E_6$ is generated by the quiver
     \end{xy}
     \end{gathered} .
 \end{equation}
-This cluster algebra is equivalent to $\Gr(4,7)$, as can be seen by mutating the seed~\eqref{eq:gkn-seed} on nodes $f_{12}$, $f_{13}$, $f_{23}$, $f_{12}$, $f_{22}$, and then $f_{32}$.\draftnote{check} By comparison with~\eqref{def:E6}, we then have 
+This cluster algebra is equivalent to $\Gr(4,7)$, as can be seen by mutating the seed~\eqref{eq:gkn-seed} on nodes $f_{12}$, $f_{13}$, $f_{23}$, $f_{12}$, $f_{22}$, and then $f_{32}$. By comparison with~\eqref{def:E6}, we then have 
 \begin{align} \label{eq:E6_x_def}
 x_1 &= \frac{\ket{1234}\ket{1267}}{\ket{1237} \ket{1246}}, \hspace{13.03ex} \quad \quad 
 x_2 = - \frac{\ket{1247} \ket{3456}}{\ket{4(12)(35)(67)}}, \quad \nonumber \\
@@ -1328,8 +1326,7 @@ have the automorphism group ${\mathfrak D}_n \times \mathbb{Z}_2$, with generato
     &x_4\to \frac{1+x_{1,2,3}}{x_1 x_2 x_3 x_4},~~
     x_5\to \frac{1+x_{1,2,3}}{x_1 x_2 x_3 x_5}, \nonumber \\[2ex]
   \tau_{D_5}:\quad 
-    &x_1\to x_1,~~
-    x_2\to \frac{1+x_1}{x_1 x_2 (1+x_3 x_5+x_{3,4,5})},~~
+    &x_2\to \frac{1+x_1}{x_1 x_2 (1+x_3 x_5+x_{3,4,5})},~~
     x_3\to \frac{x_3 x_4 x_5}{(1+x_{3,4}) (1+x_{3,5})},\\
     &x_4\to \frac{1+x_3 x_5+x_{3,4,5}}{x_4},~~
     x_5\to \frac{1+x_3 x_5+x_{3,4,5}}{x_5}, \nonumber \\[2ex]
@@ -1346,15 +1343,14 @@ Finally, the automorphism group of $E_6 \simeq \Gr(4,7)$ is the dihedral group $
     &x_4\to \frac{1+x_{3,4}}{x_4},~~
     x_5\to \frac{1+x_{1,2,3,4}}{x_2 (1+x_{3,4})},~~
     x_6\to \frac{1}{x_1 (1+x_{2,3,4})},\nonumber \\[2ex]
-  \mathbb{Z}_{2,E_6}:\quad 
-    &x_1\to x_6, \quad x_2\to x_5, \quad x_3 \to x_3, \quad x_4 \to x_4, \quad x_5\to x_2, \quad x_6\to x_1, \\[2ex]
   \tau_{E_6}:\quad
     &x_1\to \frac{x_5}{1+x_{6,5}},~~
     x_2\to (1+x_5) x_6,~~
-    x_3\to \frac{(1+x_{1,2}) (1+x_{6,5})}{x_1 x_2 x_3 x_5 x_6 (1+x_4)}, \nonumber \\
-    &x_4\to x_4,~~
-    x_5\to x_1 (1+x_2),~~
-    x_6\to \frac{x_2}{1+x_{1,2}}. \nonumber
+    x_3\to \frac{(1+x_{1,2}) (1+x_{6,5})}{x_1 x_2 x_3 x_5 x_6 (1+x_4)},  \\
+    &x_5\to x_1 (1+x_2),~~
+    x_6\to \frac{x_2}{1+x_{1,2}}. \nonumber \\[2ex]
+  \mathbb{Z}_{2,E_6}:\quad 
+    &x_1\to x_6, \quad x_2\to x_5, \quad x_5\to x_2, \quad x_6\to x_1, \nonumber
 \end{align}
 In the language of $\Gr(4,7)$, these generators respectively correspond to cycling momentum twistor indices $Z_i \to Z_{i+1}$, flipping momentum twistor indices $Z_i \to Z_{8-i}$, and parity conjugation. 
 
@@ -1473,7 +1469,7 @@ The symbol and cobracket naturally stratify the study of two-loop amplitudes and
 
 As outlined in the introduction, the two-loop MHV amplitudes of this theory exhibit different forms of cluster-algebraic structure at the level of their cobracket, their symbol, and as full functions~\cite{Golden:2013xva,Golden:2014xqa,Golden:2014xqf,Golden:2014pua}. The first facet of this structure concerns the building blocks that appear at each level, which are found to lie within restricted classes:
 \begin{itemize}
-\item[$\bullet$] The cobracket of $R^{(2)}_n$ can be written in terms of elements of the Block group taking the form $\{x_i \}_k$, where $x_i$ is an \xcoord\ on $\Gr(4,n)$ \draftnote{this does extend to weight 1, right?}
+\item[$\bullet$] The cobracket of $R^{(2)}_n$ can be written in terms of elements of the Block group taking the form $\{x_i \}_k$, where $x_i$ is an \xcoord\ on $\Gr(4,n)$
 \item[$\bullet$] The symbol of $R^{(2)}_n$ can be expressed in terms of symbol letters drawn from the set of \acoords\ on $\Gr(4,n)$
 \item[$\bullet$] The function $R^{(2)}_n$ can expressed entirely in terms of (products of) polylogarithms taking the form $\text{Li}_{n_1,\dots,n_d}(-x_i,\dots,-x_j)$, where each $x_p$ is again an \xcoord\ on $\Gr(4,n)$
 \end{itemize}
@@ -1493,7 +1489,7 @@ and a simple weight two polylogarithm $Y_n$ via
 \end{equation}
 The function $Y_n$ corresponds to the part of the one-loop MHV amplitude that depends on three- and higher-particle Mandelstam invariants, where these invariants have been assembled into dual-conformally-invariant cross ratios (with the help of two-particle invariants). The BDS-like ansatz that remains only depends on two-particle invariants, yet accounts for the full infrared structure of these amplitudes. 
 
-The motivation for switching to the BDS-like normalization is precisely this restricted kinematic dependence. Since the BDS-like ansatz depends only on two-particle invariants, the functions ${\cal E}_n$ directly inherit the Steinmann relations between three- and higher-particle invariants that are obeyed by the full amplitude~\cite{Steinmann,Steinmann2,Cahill:1973qp,Caron-Huot:2016owq,Dixon:2016nkn}. These relations tell us that \draftnote{check}
+The motivation for switching to the BDS-like normalization is precisely this restricted kinematic dependence. Since the BDS-like ansatz depends only on two-particle invariants, the functions ${\cal E}_n$ directly inherit the Steinmann relations between three- and higher-particle invariants that are obeyed by the full amplitude~\cite{Steinmann,Steinmann2,Cahill:1973qp,Caron-Huot:2016owq,Dixon:2016nkn}. These relations tell us that
 \begin{equation} \label{eq:steinmann}
 \begin{rcases}
 \text{Disc}_{s_{j,\dots,j+p+q}}\left[\text{Disc}_{s_{i,\dots,i+p}} \big({\cal E}_n \big) \right] &= 0, \hspace{.3cm} \\
@@ -1540,14 +1536,6 @@ As it turns out, there exists yet more structure in $\delta_{2,2}\big(R^{(2)}_n\
 
 
 \subsection{Subalgebra Structure and Cluster Polylogarithms}
-
-%\begin{align}
-%\{a\}_2 \wedge \{b\}_2 &= \delta_{2,2}\bigg( \text{Li}_{1, 3}\left(-a, -\frac{1 + b}{a} \right) \bigg) \\
-%\{a\}_2 \wedge \{a/(1 + b)\}_2 &= \delta_{2,2} \bigg( \text{Li}_{1, 3}\left(-\frac{a}{1 + b}, -a \right) - \text{Li}_{1, 3}\left(-a, -\frac{a}{1 + b} \right)  \\ 
-%&\hspace{5cm} - \text{Li}_{2,2}\left(-a, -\frac{a}{1 + b} \right)  \bigg)\nonumber
-%\end{align}
-%When $a$ and $b$ are taken to be the $A_2$ variables $\x_{i-1}$ and $\x_i$, $a/(1 + b) = \x_{i+1}$ so we can immediately promote the $\delta_{2,2}$ component of~\eqref{eq:A2_cobracket} to generalized polylogarithms
-%\draftnote{identities that (I believe) imply an algorithmic way to promote $\delta_{2,2}\big(R_n^{(2)}\big)$ immediately to multiple polylogarithms (allowing us to come up with a precise notion of `classical tail')}
 
 As we saw in section~\ref{sec:subalgebras_associahedra}, cluster algebras are endowed with subalgebras that can be generated by mutating on restricted sets of nodes. This motivates looking for physically relevant cluster polylogarithms on algebras other than $\Gr(4,n)$, when these algebras appear as subalgebras of the latter. Before we do so, let us return to the definition of these objects, which we are now in a position to make precise. Following~\cite{Golden:2014xqa}, we define cluster polylogarithms (at least through weight four) to have the following properties:
 \begin{quote}
@@ -2051,7 +2039,7 @@ We begin with $D_5$, the largest subalgebra of $E_6$ in terms of its number of c
 
 Amazingly, there exists precisely one $D_5$ automorphism signature in terms of which $R_7^{(2)}$ can be decomposed---the totally odd signature $\sigma_{D_5}^- \tau_{D_5}^- \mathbb{Z}_{2,D_5}^-$. Two free parameters remain in this decomposition, corresponding to two degrees of freedom that cancel in the sum~\eqref{eq:D5_in_E6_sum}. More concretely, we can decompose 
 \begin{align}
-\delta_{2,2}\big(R^{(2)}_7 \big) = \{const\} \sum_{D_5\subset \Gr(4,7)} \delta_{2,2} \Big( f_{D_5}^{---}\left(
+\delta_{2,2}\big(R^{(2)}_7 \big) = \frac{1}{20} \sum_{D_5\subset \Gr(4,7)} \delta_{2,2} \Big( f_{D_5}^{---}\left(
 \begin{gathered}
     \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
       (0,20) *+{x_1} ="1",
@@ -2090,10 +2078,10 @@ f_{D_5}^{---}\left(
     \end{gathered} 
 \right) &\equiv \sum_{D_5^{---}} \bigg[
 	\frac{1}{2} c_1 f_{A_2}\big(x_1\to x_2 \left(1+x_{34}\right)\big)\nl
-	&\hspace{-4cm} + \left(-\frac{1}{2}+\frac{c_1}{2}\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right)+
+	&\hspace{-4cm} - \left(\frac{1}{2}-\frac{c_1}{2}\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right) + 
 	\frac{1}{4} c_2 f_{A_2}\left(\frac{x_1 x_2 x_3}{1+x_{12}}\to x_4\right)\nl
 	&\hspace{-4cm}+ \left(c_1-c_2\right) f_{A_2}\left(\frac{x_2 x_3}{1+x_2}\to x_4\right)+
-	\left(1-c_1\right) f_{A_2}\big(x_2\to x_3 \left(1+x_4\right)\big) \\
+	\left(1-c_1 \right) f_{A_2}\big(x_2\to x_3 \left(1+x_4\right)\big) \\
 	&\hspace{-4cm}+ \left(\frac{1}{2}-c_1+\frac{3 c_2}{4}\right) f_{A_2}\left(x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right) +
 	\frac{1}{2} c_2 f_{A_2}\big(x_3\to x_4\big) \bigg] \nonumber
 \end{align}
@@ -2105,7 +2093,7 @@ Unlike in the sums~\eqref{eq:D5_in_E6_sum} and~\eqref{eq:A5_in_E6_sum}---where t
 
 It is natural to ask whether the parameters $c_1$ and $c_2$ can be chosen in such a way that $f_{D_5}^{---}$ is endowed with additional nice properties. For instance, $f_{D_5}^{---}$ does not satisfy cobracket-level cluster adjacency for generic values of $c_1$ and $c_2$, but it can be given this property by choosing $c_2 = -\frac{6}{5} + \frac{8}{5} c_1$. As discussed in section~\ref{sec:nested_cluster_polylogs}, this necessarily makes $f_{D_5}^{---}$ itself an $A_3$-constructible function:
 \begin{align}
-	f_{A_3\subset D_5}^{---} = \{ const \} \frac{1}{10}\sum_{D_5^{---}}\bigg[ 
+	f_{A_3\subset D_5}^{---} = - \frac{1}{10}\sum_{D_5^{---}}\bigg[ 
 	&\left(6-3 c_1\right) f_{A_3}^{--}\left(x_1\to x_2 \left(1+x_3\right)\to \frac{x_3 x_4}{1+x_3}\right)  \nonumber \\[-.34cm]
 	&+ \left(-3+4 c_1\right) f_{A_3}^{--}\big(x_1\to x_2\to x_3 \left(1+x_4\right)\big)  \nl
 	&+ \left(2-c_1\right) f_{A_3}^{--}\big(x_2\to x_3 \left(1+x_4\right)\to x_5\big) \nl
@@ -2120,11 +2108,11 @@ It turns out there is one additional way $f_{D_5}^{---}$ can be decomposed. An $
 \end{align}
 where again we only sum over direct automorphisms, as the indirect automorphism $\tau_{D_5}$ maps to the flipped associahedron. Choosing both signs to be negative to match the automorphism signature of $f_{D_5}^{---}$, we have
 \begin{align}
-	f_{A_4\subset D_5}^{---} &= \{ const \} \sum_{A_4 \subset D_5 } f_{A_4}^{+-}(x_1\to x_2\to x_3 \to x_4) 
+	f_{A_4\subset D_5}^{---} &= \sum_{A_4 \subset D_5 } f_{A_4}^{+-}(x_1\to x_2\to x_3 \to x_4) 
  \end{align}
 in terms of the new $A_4$ function
 \begin{equation}\label{eq:fa4-def}
-	f_{A_4}^{+-} = \frac{1}{40}\sum_{A_4^{+-}} \Big( 3 f_{A_2} \big(x_1 \to x_2(1+x_3) \big) - f_{A_2} \big(x_2\to x_3(1+x_4) \big) \Big),
+	f_{A_4}^{+-} = \frac{1}{10}\sum_{A_4^{+-}} \Big( 3 f_{A_2} \big(x_1 \to x_2(1+x_3) \big) - f_{A_2} \big(x_2\to x_3(1+x_4) \big)  \Big),
 \end{equation}
 where we have used the shorthand
 \begin{equation}
@@ -2139,14 +2127,14 @@ Having considered some cluster-algebraic motivations for choosing certain values
 We now turn our attention to $A_5$ decompositions of $R^{(2)}_7$, using the ansatz sum~\eqref{eq:A5_in_E6_sum}. Intriguingly, there is (again) precisely one automorphism signature in terms of which $\delta_{2,2}\big(R^{(2)}_7\big)$ can be decomposed---and it is (again) the totally antisymmetric signature $\sigma_{A_5}^-\tau_{A_5}^-$. This time there is a single internal degree of freedom that cancels in the sum~\eqref{eq:A5_in_E6_sum}. This decomposition can be written explicitly as
 \begin{align}
 \delta_{2,2}\big(R^{(2)}_7 \big) &= \label{eq:R27_A5_decomposition}\\ 
-&\hspace{-1cm}\{ const \} \sum_{A_5\subset E_6} \delta_{2,2} \Big(f_{A_5}^{--} \left(x_1 \to x_2 \to \frac{x_3 x_5 x_6}{1+x_{6,5}} \to \frac{1}{x_6 (1+x_5)}  \to \frac{1+x_{6,5}}{x_5} \right) \Big), \nonumber 
+&\hspace{-1cm}\frac{1}{20} \sum_{A_5\subset E_6} \delta_{2,2} \Big(f_{A_5}^{--} \left(x_1 \to x_2 \to \frac{x_3 x_5 x_6}{1+x_{6,5}} \to \frac{1}{x_6 (1+x_5)}  \to \frac{1+x_{6,5}}{x_5} \right) \Big), \nonumber 
 \end{align}
 where the $A_5$ sum~\eqref{eq:A5_in_E6_sum} is taken over the function
 \begin{align}
 	f_{A_5}^{--}\big( x_1\to x_2\to x_3 \to x_4  \to x_5 \big) \equiv \sum_{A_5^{--}} 
 	& \bigg[ \frac{1}{2} c_1 f_{A_2}\big(x_2\to x_3 \left(1+x_4\right)\big)  \label{eq:fa5-init}  \\[-.4cm]
-	&\ + \left(-1-c_1\right) f_{A_2}\big(x_2\to x_3 \left(1+x_{45}\right)\big)  \nonumber \\ 
-	&\ + \left(-\frac{1}{2}-c_1\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right) \bigg] \nonumber
+	&\ - \left(1+ c_1\right) f_{A_2}\big(x_2\to x_3 \left(1+x_{4,5}\right)\big)  \nonumber \\ 
+	&\ - \left(\frac{1}{2} + c_1\right) f_{A_2}\left(\frac{x_1 x_2}{1+x_1}\to x_3 \left(1+x_4\right)\right) \bigg] \nonumber
 \end{align}
 and we have introduced the notation
 \begin{equation}
@@ -2158,15 +2146,15 @@ Let us first address $f_{A_5}^{--}$'s collinear limits. In this case, the noncla
 
 Luckily, we can find preferred values for $c_1$ by requiring $f_{A_5}^{--}$ to be either $A_3$- or $A_4$-constructible. It becomes $A_3$-constructible if we choose $c_1 = -\frac{1}{2}$, but this time in terms of the function $f_{A_3}^{+-}$. Specifically, we find
 \begin{equation}
-	f_{A_3\subset A_5}^{--} = -\frac{1}{160}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right),
+	f_{A_3\subset A_5}^{--} = \frac{1}{8}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right).
 \end{equation}
-where the larger denominator results from the fact $f_{A_3}^{+-}$ only has four distinct automorphic images in this sum (of course, $f_{A_3}^{+-}$ evaluates to a larger number of distinct functions on the other $A_3$ subalgebras of $A_5$). If we instead choose $c_1 = -1$, $f_{A_5}^{--}$ becomes $A_4$-constructible. Analogous to the $D_5$ case, there is only a single orbit of $A_4$ subalgebras in $A_5$, implying that this decomposition must take the form 
+If we instead choose $c_1 = -1$, $f_{A_5}^{--}$ becomes $A_4$-constructible. Analogous to the $D_5$ case, there is only a single orbit of $A_4$ subalgebras in $A_5$, implying that this decomposition must take the form 
 \begin{equation}
 \sum_{A_4 \subset A_5} f_{A_4}(x_i \to \ldots) = \sum_{i=0}^7 \ (\pm1)^i  \ \sigma_{A_5}^i \Big(f_{A_4}(x_i \to \ldots) \Big) \label{eq:A4_in_A5_sum}.
 \end{equation}
 Choosing the minus sign in this sum, we find the unique decomposition
 \begin{equation}
-	f_{A_4\subset A_5}^{--} = \{ const \} \sum_{A_4 \subset A_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4),
+	f_{A_4\subset A_5}^{--} = - \sum_{A_4 \subset A_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4),
 \end{equation}
 where $\smash{f_{A_4}^{+-}}$ is the \emph{same} function that appeared in the $A_4$ decomposition of $\smash{f_{D_5}^{---}}$\!. As in the $D_5$ case, it is worth emphasizing that this decomposition is not equivalent to summing over all $A_4$ subalgebras in $E_6$ with some special choice of signs; there are not enough $A_4$ subalgebras in $A_5$ (or, equivalently, not enough $A_5$ subalgebras in $E_6$) for this nested decomposition to involve all the $A_4$ subalgebras in $E_6$.
 
@@ -2205,27 +2193,27 @@ where $\smash{f_{A_4}^{+-}}$ is the \emph{same} function that appeared in the $A
 
 The results of the previous sections are summarized in figure \ref{fig:R27_decompositions}. The fact that the two most canonical decompositions of $R^{(2)}_7$ involve functions that are themselves canonically decomposable in terms of the same $A_4$ function is highly unexpected. In equation form, this interlinked structure can be summarized as
 \begin{align}
-	R^{(2)}_7 &= \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots \\
-	& = \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots
+	R^{(2)}_7 &=  {\color{white} - } \frac{1}{20} \sum_{D_5\subset \Gr(4,7)} \sum_{A_4\subset D_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots \label{eq:r27_a4_d5_e6_decomposition} \\
+	& = - \frac{1}{20}  \sum_{A_5\subset \Gr(4,7)} \sum_{A_4\subset A_5} f_{A_4}^{+-}(x_1\to x_2 \to x_3 \to x_4) + \dots \label{eq:r27_a4_a5_e6_decomposition}
 \end{align}
-where the trailing dots indicate that this equality holds up to the contribution of purely classical polylogarithms. In fact, the classical contribution is the \emph{same} in both lines, as strict equality holds between the two nested sums over $f_{A_4}^{+-}$.\draftnote{how is this reconciled with wildly different number of terms?}
+where the trailing dots indicate that this equality holds up to the contribution of purely classical polylogarithms, and we have left the signs in these sums implicit.\footnote{Furthermore, these overall signs result from evaluating the $D_5$ and $A_5$ sums on  the same initial clusters chosen in~\eqref{eq:R27_D5_decomposition} and~\eqref{eq:R27_A5_decomposition}.} In fact, the required classical contribution is the \emph{same} in both lines, as strict equality holds between the two nested sums over $f_{A_4}^{+-}$ (including the minus sign in the first line). This in itself is rather phenomenal, as the the sum in~\eqref{eq:r27_a4_d5_e6_decomposition} involves 140 terms, while the sum in~\eqref{eq:r27_a4_a5_e6_decomposition} involves only 56.\draftnote{comment about this as an identity? Or just a 'we leave further study of this identity to future work'?}
 
-In addition to this tightly interlinked pair of decompositions, both $f_{D_5}^{---}$ and $f_{A_5}^{--}$ admit $A_3$ decompositions. As discussed above, each of these decompositions makes some property of the remainder function manifest at the expense of others---for instance, any $A_5^{--}$ representation makes the vanishing of the nonclassical component of this amplitude in collinear limits manifest term-by-term, whereas the $A_2 \subset A_3 \subset D_5 \subset E_6$ representation manifestly satisfies cobracket-level cluster adjacency. While it might have been hoped that a single decomposition would exhibit all the the nice mathematical features of the remainder function at once, it is perhaps better that $R^{(2)}_7$ ``requires'' nearly the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
+In addition to this tightly interlinked pair of decompositions, both $f_{D_5}^{---}$ and $f_{A_5}^{--}$ admit $A_3$ decompositions. As discussed above, each of these decompositions makes some property of the remainder function manifest at the expense of others---for instance, the $A_5^{--}$ representation makes the vanishing of the nonclassical component of this amplitude in collinear limits manifest term-by-term, whereas the $A_2 \subset A_3 \subset D_5 \subset E_6$ representation manifestly satisfies cobracket-level cluster adjacency when phrased in terms of $f_{A_3}^{--}$ or $f_{A_3\subset D_5}^{---}$. While it might have been hoped that a single decomposition would exhibit all the the nice mathematical features of the remainder function at once, it is perhaps better that $R^{(2)}_7$ ``requires'' nearly the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
 
-The only subalgebra of $\Gr(4,7)$ we have not had reason to touch on yet is $D_4$. \draftnote{why no $D_4$ decomposition?}
+The only subalgebra of $\Gr(4,7)$ we have not had reason to touch on yet is $D_4$. There are in fact 4 $D_4$-constructible functions in $E_6$ that have signature $\sigma_{E_6}^+ \tau_{E_6}^+ \mathbb{Z}_{2,E_6}^+$. However, none of these functions can be put in a form that respects cobracket-level cluster adjacency, precluding any $D_4$ decomposition of $R_{7}^{(2)}\!$. Loosely, this can be though of as arising from an incompatibility between the automorphism groups of $D_4$ and $A_3$ when respectively embedded in $E_6$.
 
 While the mathematical features of each nonclassical decomposition are easy to check, their physical meaning remains more obscure. It would be interesting to find kinematic limits that cleanly isolate individual instances of the cluster polylogarithms these decompositions make use of, but---as the number of subalgebras in every decomposition is greater than the dimension of seven-particle kinematics---this would require intricate cancellations between the remaining cluster polylogarithms, making such limits hard to engineer. Soft and collinear limits are of particularly little use here, as the nonclassical part of the six-particle amplitude is zero. Moreover, while it is in principle no problem to consider singular limits, only the finite term will survive in such limits, as large logs will get projected out by the cobracket. (While we could also study these cluster polylogarithms as full functions, this doesn't seem particularly meaningful since all the expressions presented in this paper only hold up to undetermined classical contributions.)  We correspondingly defer the consideration of further kinematic limits to future work involving the full analytic form of the eight-particle amplitude~\cite{cluster_subalgebras_ii}.
 
 
 \section{Conclusion}
 
-We have explored the space of nonclassical cluster polylogarithms on $\Gr(4,7)$ and its subalgebras, and have shown that---while this space is relatively small---it admits a natural geometric construction that gives rise to interesting sequences of nested functional embeddings. The seven-particle two-loop MHV amplitude seems almost specially engineered to take advantage of this subalgebra structure, insofar as its nonclassical component can be decomposed into cluster polylogarithms defined on almost every type of subalgebra appearing in $\Gr(4,7)$, excluding only $D_4$. The decompositions associated with the corank-one subalgebras $D_5$ and $A_5$ are especially canonical, as are the further decompositions of the associated $D_5$ and $A_5$ cluster polylogarithms into their $A_4$ subalgebras, as the form of each of these decompositions is uniquely dictated by the automorphism group of the parent algebra. These decompositions identify new cluster polylogarithms of that are of special physical interest, supplementing the $A_2$ and $A_3$ cluster polylogarithms previously identified in~\cite{Golden:2014xqa}. It is natural to ask whether higher-point MHV amplitudes can also be decomposed into these new cluster polylogarithms, as is known to be the case for the $A_2$ and $A_3$ functions; we will take one step towards addressing this question in a forthcoming paper~\cite{cluster_subalgebras_ii}.
+We have explored the space of nonclassical cluster polylogarithms on $\Gr(4,7)$ and its subalgebras, and have shown that---while this space is relatively small---it admits a natural geometric construction that gives rise to interesting sequences of nested functional embeddings. The seven-particle two-loop MHV amplitude seems almost specially engineered to take advantage of this subalgebra structure, insofar as its nonclassical component can be decomposed into cluster polylogarithms defined on almost every type of subalgebra appearing in $\Gr(4,7)$, excluding only $D_4$. The decompositions associated with the corank-one subalgebras $D_5$ and $A_5$ are especially canonical, as are the further decompositions of the associated $D_5$ and $A_5$ cluster polylogarithms into their $A_4$ subalgebras, as the form of each of these decompositions is uniquely dictated by the automorphism group of the parent algebra. These decompositions identify new cluster polylogarithms that are of special physical interest, supplementing the $A_2$ and $A_3$ cluster polylogarithms previously identified in~\cite{Golden:2014xqa}. It is natural to ask whether higher-point MHV amplitudes can also be decomposed into these new cluster polylogarithms, as is known to be the case for the $A_2$ and $A_3$ functions; we will take one step towards addressing this question in a forthcoming paper~\cite{cluster_subalgebras_ii}.
 
 It would be interesting to try and extend this type of construction to the NMHV sector, where R-invariants also appear in the amplitude. There is a natural way to associate a subalgebra of $\Gr(4,n)$ to each R-invariant~\cite{Drummond:2018dfd}, allowing these subalgebras to (potentially) enter the decomposition of the polylogarithms these R-invariants multiply. More generally, although we have not attempted to explore (or even define) the space of cluster polylogarithms beyond weight four, it is hoped that some form of subalgebra constructibility can be extended to higher weight (and higher loops). 
 
-While we have almost entirely worked at the level of the nonclassical component of the cobracket in this paper, it can also be asked whether these amplitudes are decomposable into functions defined on their subalgebras before applying this projection. It is not hard to show that the symbol of $R_6^{(2)}$ (as well as that of ${\cal E}_6^{(2)}$) is not subalgebra-constructible in this way---the six-particle two-loop MHV amplitude is intrinsically an $A_3$ polylogarithm. While it is possible that the $A_2$ and $A_1 \times A_1$ subalgebras of $\Gr(4,6)$ are too simple to permit such a decomposition while larger subalgebras in $\Gr(4,n>6)$ would prove sufficiently complex, it seems more likely that the cobracket projection is essential to distilling the part of the amplitude that can be decomposed in this way. The fact that it is the mathematically most complicated component of these amplitudes that is easiest to compute to all $n$ (as was done in~\cite{Golden:2014pua}) still calls out for some physical explanation.
+While we have almost entirely worked at the level of the nonclassical component of the cobracket, it can also be asked whether these amplitudes are decomposable into functions defined on their subalgebras before applying this projection. It is not hard to show that the symbol of $R_6^{(2)}$ (as well as that of ${\cal E}_6^{(2)}$) is not subalgebra-constructible in this way---the six-particle two-loop MHV amplitude is intrinsically an $A_3$ polylogarithm. While it is possible that the $A_2$ and $A_1 \times A_1$ subalgebras of $\Gr(4,6)$ are too simple to permit such a decomposition while larger subalgebras in $\Gr(4,n>6)$ would prove sufficiently complex, it seems more likely that the cobracket projection is essential to distilling the part of the amplitude that can be decomposed in this way. The fact that it is the mathematically most complicated component of these amplitudes that is easiest to compute to all $n$ (as was done in~\cite{Golden:2014pua}) still calls out for some physical explanation.
 
-More speculatively, it can be hoped that the pervasiveness of cluster-algebraic structure exhibited by polylogarithmic amplitudes in planar ${\cal N} = 4$ sYM theory points to the existence of some more general combinatorial structure underlying all amplitudes in this theory, including those that involve algebraic roots and/or functions beyond polylogarithms. Much of the cluster-algebraic structure seen in the polylogarithmic case is exposed by the coaction, which distills these functions down to information about their integration kernels. Notably then, it is possible to formulate coactions on more general periods---such as elliptic polylogarithms---that appear in generic quantum field theories~\cite{2015arXiv151206410B,Abreu:2017enx,Abreu:2017mtm,Broedel:2017kkb,Caron-Huot:2018dsv,Broedel:2018iwv}. While much of the loop integration technology required for dealing with generic Feynman integrals remains to be developed, we can still study the higher-genus and higher-dimensional varieties that appear in the integration contours of Feynman integrals contributing to planar ${\cal N} = 4$ sYM theory (see for example~\cite{Bourjaily:2017bsb,Bourjaily:2018ycu,Bourjaily:2018yfy}) in an attempt to generalize the geometric and algebraic picture provided by cluster algebras beyond the case of polylogarithms.
+More speculatively, it can be hoped that the pervasiveness of cluster-algebraic structure exhibited by polylogarithmic amplitudes in planar ${\cal N} = 4$ sYM theory points to the existence of some more general combinatorial structure underlying all amplitudes in this theory, including those that involve algebraic roots and/or functions beyond polylogarithms. Much of the cluster-algebraic structure seen in the polylogarithmic case is exposed by the coaction, which distills these functions down to information about their integration kernels. Notably then, it is possible to formulate coactions on more general periods that appear in quantum field theory, such as elliptic polylogarithms~\cite{2015arXiv151206410B,Abreu:2017enx,Abreu:2017mtm,Broedel:2017kkb,Caron-Huot:2018dsv,Broedel:2018iwv}. While much of the loop integration technology required for dealing with generic Feynman integrals remains to be developed, we can already begin to study the higher-genus and higher-dimensional varieties that appear in the integration contours contributing to planar ${\cal N} = 4$ sYM theory (see for example~\cite{2009arXiv0910.0114B,Bourjaily:2017bsb,Bourjaily:2018ycu,Bourjaily:2018yfy}). Hopefully, understanding these (seemingly always Calabi-Yau) geometries will provide salient hints for how the geometric and algebraic picture provided by cluster algebras can be generalized beyond the case of polylogarithms.
 
 
 %coaction (in the guise of the symbol) can be thought of as breaking down polylogarithms into (a sum over) a sequence of genus zero curves associated with the zero locus of the denominator in their integration kernel~\eqref{eq:multiple_polylogs}, higher-genus and higher-dimensional varieties also generically appear in the integration contours of amplitudes in generic quantum field theories (including planar ${\cal N} = 4$ sYM theory~\cite{}) and will thus play some role in .
@@ -2696,7 +2684,7 @@ $E_6$ Automorphism Signatures
     \draw [dashed,shorten >=0.14cm,postaction={decorate}] ([yshift=1cm,xshift=1cm]{pic cs:e6bottomRight3}) [bend right] to[out=-100,in=-100] ([yshift=0.08cm,xshift=.16cm]{pic cs:e6tablePosition3}) ;
 \end{tikzpicture}
 
-\caption{The number of weight-four cluster polylogarithms on various finite cluster algebras that have nonzero cobrackets, prior to considerations of their automorphism group and after requiring specific automorphism signatures. The number of polylogarithms that can also be made to satisfy cobracket-level cluster adjacency is given in parentheses.}
+\caption{The number of weight-four cluster polylogarithms on various finite cluster algebras that have nonzero cobrackets, prior to consideration of their automorphism group and after requiring specific automorphism signatures. The number of polylogarithms that can also be made to satisfy cobracket-level cluster adjacency is given in parentheses.}
 \label{table:total_dimensions}
 \end{table}
 \vspace{1cm}
