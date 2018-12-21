@@ -156,9 +156,6 @@ Stanford University, Stanford, CA 94309, USA}
 \maketitle
 \hypersetup{pageanchor=true}
 
-
-\maketitle
-
 \section{Introduction}
 
 Multi-loop scattering amplitudes in the planar limit of ${\cal N} = 4$ supersymmetric Yang-Mills (sYM) theory exhibit a great deal of intriguing mathematical structure. Much of this structure, at least at low loops and particle multiplicity, seems to be intimately tied to the cluster algebras associated with the Grassmannian Gr(4,$n$)~\cite{ArkaniHamed:2012nw,Golden:2013xva,Bourjaily:2012gy}. This is especially true in the maximally-helicity-violating (MHV) sector, where amplitudes have been computed at high loop orders in six- and seven-particle kinematics~\cite{Dixon:2013eka,Dixon:2014voa,Drummond:2014ffa,Caron-Huot:2016owq,Dixon:2016nkn}, and algorithms exist for calculating two loop amplitudes for any number of particles~\cite{CaronHuot:2011ky,Golden:2014xqf}. Remarkably, each of the branch cuts in these amplitudes ends at the vanishing locus of some cluster coordinate on Gr(4,$n$)~\cite{Golden:2013xva,Golden:2013lha,Golden:2014xqa,Golden:2014pua}, and---even more strikingly---their iterated discontinuities vanishes unless sequentially taken in coordinates that appear together in a cluster of Gr(4,$n$)~\cite{Drummond:2017ssj}. All six- and seven-particle next-to-MHV (NMHV) amplitudes that have currently been computed in this theory share these remarkable properties~\cite{CaronHuot:2011kk,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn,Dixon:2016apl,Drummond:2018dfd}, as do certain classes of Feynman integrals~\cite{Drummond:2010cz,Drummond:2017ssj,Bourjaily:2018aeq,Henn:2018cdp}, some of which have been computed to all loop orders~\cite{Caron-Huot:2018dsv}. While this collection of amplitudes and integrals represents the simplest this theory has to offer, it remains suggestive that cluster algebras combinatorially realize these salient aspects of their analytic structure, thereby encoding locality in a non-obvious way.
@@ -191,7 +188,7 @@ Cluster algebras were first introduced by Fomin and Zelevinsky \cite{1021.16017}
 A simple example of the type of questions cluster algebras help address is: if one were to check just the positivity of a set of matrix minors (not their actual value), what are the minimal sets of minors that suffice to determine whether a point is in $\Gr_+(k,n)$? These minors are not all independent; they satisfy identities known as Pl\"ucker relations, for example
 \begin{equation}
   \label{eq:plucker-rel}
-  \ket{abI} \ket{cdI} = \ket{acI} \ket{bdI} + \ket{adI}\ket{bcI},
+  \ket{abI} \ket{cdI} = \ket{acI} \ket{bdI} - \ket{adI}\ket{bcI},
 \end{equation}
 where each Pl\"ucker coordinate $\ket{i_1,\ldots,i_k}$ corresponds to the minor of columns $i_1, \ldots,i_k$, and $I$ is a multi-index object with $k-2$ entries.
 
@@ -420,7 +417,7 @@ A very useful feature of cluster \xcoords\ is that they come equipped with a nat
 \begin{equation}
 \{x_i, x_j \} = b_{ij} x_i x_j .
 \end{equation}
-This structure respects mutation, implying that the entry $b_{ij}$ (which counts the number of arrows from $x_i$ to $x_j$ in a given cluster's quiver) will be the same in all clusters containing both $x_i$ and $x_j$. The Poisson bracket (and associated Sklyanin bracket) will play a larger role in forthcoming work~\cite{cluster_subalgebras_ii}, so we defer further discussion of this structure (for existing discussions in the literature, see~\cite{PoissonVarieties,Vergu:2015svm}).
+This structure respects mutation, implying that the entry $b_{ij}$ (which counts the number of arrows from $x_i$ to $x_j$ in a given cluster's quiver) will be the same in all clusters containing both $x_i$ and $x_j$. The Poisson bracket (and associated Sklyanin bracket) will play a larger role in forthcoming work~\cite{cluster_subalgebras_ii}, so we defer further discussion of this structure (for existing discussions in the literature, see~\cite{GSV,Vergu:2015svm}).
 
 \subsection{Subalgebras and Cluster Polytopes}\label{sec:subalgebras_cluster_polytopes}
 
@@ -540,7 +537,7 @@ What if we instead disallow mutation on the chord $\ket{13}$ (and the correspond
 \begin{xy} 0;<1pt,0pt>:<0pt,-1pt>::
 	(25,0) *+{\langle 14\rangle} ="0",
 	(75,0) *+{\langle 15\rangle} ="1",
-	(125,0) *+{\framebox[5ex]{$\langle 15\rangle$}} ="2",
+	(125,0) *+{\framebox[5ex]{$\langle 16\rangle$}} ="2",
 	(125,40) *+{\framebox[5ex]{$\langle 56\rangle$}} ="3",
 	(75,40) *+{\framebox[5ex]{$\langle 45\rangle$}} ="4",
 	(25,40) *+{\framebox[5ex]{$\langle 34\rangle$}} ="5",
@@ -1049,7 +1046,7 @@ Before turning to the remaining aspects of cluster algebras that we wish to deve
 
 \subsection{Finite Cluster Algebras}\label{sec:finite-algebras}
 
-The procedure of writing down an oriented oriented quiver, dressing it with coordinates, and iteratively mutating on all non-frozen nodes using either the $\a$-coordinate or $\x$-coordinate mutation rule will always produce a cluster algebra. However, generic quivers give rise to exceedingly complicated cluster algebras---in fact, for a wide class of seeds, mutation will generate an infinite numbers of clusters. For the remainder of this paper we will mostly restrict our attention to finite cluster algebras, leaving the consideration of infinite algebras to future work. 
+The procedure of writing down an oriented quiver, dressing it with coordinates, and iteratively mutating on all non-frozen nodes using either the $\a$-coordinate or $\x$-coordinate mutation rule will always produce a cluster algebra. However, generic quivers give rise to exceedingly complicated cluster algebras---in fact, for a wide class of seeds, mutation will generate an infinite numbers of clusters. For the remainder of this paper we will mostly restrict our attention to finite cluster algebras, leaving the consideration of infinite algebras to future work. 
 
 Fortunately, all finite cluster algebras were classified in~\cite{1054.17024}. In particular, it was shown that a cluster algebra is of finite type if and only if the mutable part of at least one of its clusters takes the form of an oriented, simply-laced Dynkin diagram: $A_n$, $D_n$, or $E_{n\le8}$.  As we will primarily be interested in subalgebras of the cluster algebra on $\Gr(4,7)$, we here focus on the cases where $n < 6$ (and on the case of $E_6 \simeq \Gr(4,7)$ itself). 
 
@@ -1057,7 +1054,7 @@ As mentioned above, cluster algebras of type $A_n$ can be generated by the seed
 \begin{equation}\label{def:An}
   x_1\to x_2\to \ldots \to x_n \ ,
 \end{equation}
-which corresponds to the cluster algebra on $\Gr(2,n{+}3)$. Each of the clusters in these algebras can be though as triangulating an $(n+3)$-gon, where the \acoords\ correspond to chords and the \xcoords\ to quadrilateral faces. This makes the counting easy: the number of clusters for $A_n$ is given by the Catalan number $C(n+1)$, the number of distinct \acoords\ is $\binom{n+3}{2}-n$, and the number of distinct \xcoords\ is $2\binom{n+3}{4}$. Any smaller polygon embedded into the $(n+3)$-gon gives rise to a subalgebra; for example, there are $56=\binom{8}{5}$ pentagonal embeddings in an octagon, so there are 56 $A_2$ subalgebras in $A_5$. 
+which corresponds to the cluster algebra on $\Gr(2,n{+}3)$. Each of the clusters in these algebras can be though as triangulating an $(n+3)$-gon, where the \acoords\ correspond to chords and the \xcoords\ to quadrilateral faces. This makes the counting easy: the number of clusters for $A_n$ is given by the Catalan number $C(n+1)$, the number of distinct (mutable) \acoords\ is $\binom{n+3}{2}-n$, and the number of distinct \xcoords\ is $2\binom{n+3}{4}$. Any smaller polygon embedded into the $(n+3)$-gon gives rise to a subalgebra; for example, there are $56=\binom{8}{5}$ pentagonal embeddings in an octagon, so there are 56 $A_2$ subalgebras in $A_5$. 
 
 Of particular interest is the cluster algebra generated by $A_3 \simeq \Gr(4,6)$, which describes six-particle scattering. By comparison with figure~\ref{fig:g46-x-seed}, we see that the \xcoords\ in the quiver~\eqref{def:An} act as coordinates on the space of momentum twistors, where they correspond to the functions
 \begin{equation}\label{eq:a3-seed-def}
@@ -1201,7 +1198,7 @@ An example of a direct automorphism on $A_2$ is given by
   \sigma_{A_2}:\quad \mathcal{X}_i \to \mathcal{X}_{i+1},
 \end{equation}
 where we are using the coordinates introduced in ~\eqref{def:a2-xcoords}. This automorphism cycles the five clusters $1/\x_i\to \x_{i+1}$ amongst themselves. The action of this automorphism can also be recast as
-\begin{equation}
+\begin{equation} \label{eq:a2_sigma_x}
   \sigma_{A_2}:\quad x_1\to \frac{1}{x_2},~~ x_2\to x_1(1+x_2),
 \end{equation}
 using the \xcoords\ $x_1$ and $x_2$ that appear in~\eqref{def:An}. This is of course equivalent to the cyclic symmetry of the pentagon. 
@@ -1216,12 +1213,12 @@ Cluster algebras are also endowed with what we call indirect automorphisms, whic
 \end{itemize}
 \end{quote}
 $A_2$ is also equipped with an indirect automorphism generated by
-\begin{equation}
+\begin{equation} \label{eq:a2_tau_X}
   \tau_{A_2}:\quad \mathcal{X}_i \to \mathcal{X}_{6-i},
 \end{equation}
 where indices are understood to be mod 5. This can be recast in term of $x_1$ and $x_2$ as
-\begin{equation}
-  \tau_{A_2}:\quad x_1 \to \frac{1}{x_2}, ~~x_2 \to \frac{1}{x_1}.
+\begin{equation} \label{eq:a2_tau_x}
+  \tau_{A_2}:\quad  x_1 \to \frac{x_1 x_2}{1 + x_1}, ~~x_2 \to \frac{1 + x_1 + x_1 x_2}{x_2}.
 \end{equation}
 To see that this is an indirect automorphism, consider $\tau_{A_2}(1/\x_1 \to \x_2) = 1/\x_5 \to \x_4$. Inverting the cluster coordinates on the right hand side and reversing the arrow, we get back to $\x_5 \leftarrow 1/\x_4$, which was one of the original clusters of $A_2$. The operation generated by $\tau_{A_2}$ can be interpreted as the dihedral flip of the pentagon. 
 
@@ -1235,7 +1232,7 @@ of length $n+3$ and a flip generator
 \begin{equation} \label{eq:def_An_automorphic_flip}
   \tau_{A_n}: \quad x_1 \to \frac{1}{x_n},~~x_2 \to \frac{1}{x_{n-1}},~\ldots~, \quad x_n\to\frac{1}{x_1}
 \end{equation}
-of length $2$. In $\sigma_{A_n}$ we have introduced the notation
+of length $2$. (Note that these definitions don't exactly match~\eqref{eq:a2_sigma_x} or~\eqref{eq:a2_tau_x} when $n$ is 2, but produce a pair of equally valid generators.) In $\sigma_{A_n}$ we have introduced the notation
 \begin{equation} \label{eq:compound_x_def}
 	x_{i_1,\ldots, i_k} \equiv \sum_{a=1}^k \prod_{b=1}^a x_{i_b} = x_{i_1}+x_{i_1}x_{i_2} + \ldots + x_{i_1}\cdots x_{i_k},
 \end{equation}
@@ -1405,7 +1402,7 @@ In this language, the action of the cobracket on classical polylogarithms is giv
 \delta \big( \text{Li}_k(-z) \big) &= - \{ z \}_{k-1} \wedge \{ z \}_1 , \quad k>2 , \\
 \delta \big( \text{Li}_2(-z) \big) &= - \{ 1 + z \}_{1} \wedge \{ z \}_1.
 \end{align}
-Note that, for the first time at weight four, there exists a component of the cobracket that is not mapped to by classical polylogarithms---namely, $\delta_{2,2}(\text{Li}_4(-z))=0$. This is not true of of weight four polylogarithms in general, and in particular $\delta_{2,2} \big(R_n^{(2)} \big)$ is nonzero for $n\ge7$. However, it has been shown that any weight four function that \emph{is} annihilated by $\delta_{2,2}$ can be written in terms of classical polylogarithms (with potentially complicated arguments)~\cite{G91a,2008arXiv0809.3984D,GanglPolylogIdentities,2018arXiv180107816G,2018arXiv180308585G}. The converse is worth stating as well: any function with non-zero $\delta_{2,2}$ must involve a nonclassical polylogarithm of weight 4. 
+Note that, for the first time at weight four, there exists a component of the cobracket that is not mapped to by classical polylogarithms---namely, $\delta_{2,2}(\text{Li}_4(-z))=0$. This is not true of weight four polylogarithms in general, and in particular $\delta_{2,2} \big(R_n^{(2)} \big)$ is nonzero for $n\ge7$. However, it has been shown that any weight four function that \emph{is} annihilated by $\delta_{2,2}$ can be written in terms of classical polylogarithms (with potentially complicated arguments)~\cite{G91a,2008arXiv0809.3984D,GanglPolylogIdentities,2018arXiv180107816G,2018arXiv180308585G}. The converse is worth stating as well: any function with non-zero $\delta_{2,2}$ must involve a nonclassical polylogarithm of weight 4. 
 
 Lastly, it is often quite useful to employ the fact that the trivial cohomology of $\delta$ gives us an integrability condition,
 \begin{equation}\label{eq:def-cobracket-integrability}
@@ -2157,7 +2154,7 @@ The results of the previous sections are summarized in figure \ref{fig:R27_decom
 \end{align}
 where the trailing dots indicate that this equality holds up to the contribution of purely classical polylogarithms, and we have left the signs in these sums implicit. As emphasized previously, the required classical contribution is the \emph{same} in both lines, as strict equality holds between the two nested sums over $f_{A_4}^{+-}$ (including the minus sign in the second line, for the orientations chosen above). This equality does not stem from any complicated polylogarithm identities, but is rather a direct consequence of the arrangement of these subalgebras within $\Gr(4,7)$. It is perhaps suggestive to interpret the equivalence of these two decompositions as coming from the fact that they are different subalgebraic ``coverings'' of the same object, namely $\Gr(4,7)$.
 
-In addition to this tightly interlinked pair of decompositions, both $f_{D_5}^{---}$ and $f_{A_5}^{--}$ admit $A_3$ decompositions. As discussed above, each of these decompositions makes some property of the remainder function manifest at the expense of others---for instance, the $f_{A_5}^{--}$ representation makes the vanishing of the nonclassical component of this amplitude in collinear limits manifest term-by-term, whereas the $A_2 \subset A_3 \subset D_5 \subset \Gr(4,7)$ representation manifestly satisfies cobracket-level cluster adjacency when phrased in terms of $f_{A_3}^{--}$ or $f_{A_3\subset D_5}^{---}$. While it might have been hoped that a single decomposition would exhibit all the the nice mathematical features of the remainder function at once, it is perhaps better that $R^{(2)}_7$ ``requires'' nearly the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
+In addition to this tightly interlinked pair of decompositions, both $f_{D_5}^{---}$ and $f_{A_5}^{--}$ admit $A_3$ decompositions. As discussed above, each of these decompositions makes some property of the remainder function manifest at the expense of others---for instance, the $f_{A_5}^{--}$ representation makes the vanishing of the nonclassical component of this amplitude in collinear limits manifest term-by-term, whereas the $A_2 \subset A_3 \subset D_5 \subset \Gr(4,7)$ representation manifestly satisfies cobracket-level cluster adjacency when phrased in terms of $f_{A_3}^{--}$ or $f_{A_3\subset D_5}^{---}$. While it might have been hoped that a single decomposition would exhibit all the nice mathematical features of the remainder function at once, it is perhaps better that $R^{(2)}_7$ ``requires'' nearly the full breadth of the subalgebra structure of $\Gr(4,7)$ in order to express all of its intricate behavior. 
 
 The only subalgebra of $\Gr(4,7)$ we have not had reason to touch on yet is $D_4$. Interestingly, there exists exactly one $D_4$-constructible function in $E_6$ that has signature $\sigma_{E_6}^+ \tau_{E_6}^+ \mathbb{Z}_{2,E_6}^+$ and respects cobracket-level cluster adjacency. However, this function fails to vanish (or be well-defined) in the $7\to6$ collinear limit, and so cannot be directly related to $R_{7}^{(2)}\!$. Still, the uniqueness of this function is itself intriguing and may merit further study.
 
@@ -2176,7 +2173,7 @@ More speculatively, it can be hoped that the pervasiveness of cluster-algebraic 
 
 \section*{Acknowledgements}
 
-We thank Jacob Bourjaily, Lance Dixon, James Drummond, Henriette Elvang, Matt von Hippel, Marcus Spradlin, and Matthias Wilhelm for illuminating discussion. We also thank Jacob Bourjaily, James Drummond, and Marcus Spradlin for comments on the manuscript. This project has received funding from an ERC Starting Grant \mbox{(No.\ 757978)}, a grant from the Villum Fonden (AJM), and the support of a Van Loo Postdoctoral Fellowship (JG). The authors are grateful to the Kavli Institute for Theoretical Physics (National Science Foundation grant NSF PHY11-25915) for hospitality. 
+We thank Jacob Bourjaily, Lance Dixon, James Drummond, Henriette Elvang, Matt von Hippel, Marcus Spradlin, and Matthias Wilhelm for illuminating discussion. We also thank Jacob Bourjaily, James Drummond, Andrea Orta, and Marcus Spradlin for comments on the manuscript. This project has received funding from an ERC Starting Grant \mbox{(No.\ 757978)}, a grant from the Villum Fonden (AJM), and the support of a Van Loo Postdoctoral Fellowship (JG). The authors are grateful to the Kavli Institute for Theoretical Physics (National Science Foundation grant NSF PHY11-25915) for hospitality. 
 
 
 \appendix
