@@ -55,8 +55,8 @@ generateSeedA[dynkin1_,dynkin2_]:=comb[generateSeedA[dynkin1],generateSeedA[dynk
 
 fGrSeed[k_,n_][i_,j_]:=br@@Join[Table[ll,{ll,i+1,k}],Table[ll,{ll,k+j,i+j+k-1}]]/;i<=n-k-j+1
 fGrSeed[k_,n_][i_,j_]:=br@@Join[Table[ll,{ll,1,i+j-n+k-1}],Table[ll,{ll,i+1,k}],Table[ll,{ll,k+j,n}]]/;i>n-k-j+1
-generateSeedA[Gr[k_,n_]]:=clA[Flatten[Table[fGrSeed[k,n][ii,jj],{ii,k-1},{jj,2,n-k}]],Flatten[Join[Table[fGrSeed[k,n][ii,1],{ii,k-1}],Table[fGrSeed[k,n][k,jj],{jj,n-k}],{br@@Range[k]}]]][Module[{currentMatrix=ConstantArray[0,{k (n-k)+1,k (n-k) +1}]},Do[currentMatrix=ReplacePart[currentMatrix,{(ii-1)*(n-k-1)+jj,(ii-1)*(n-k-1)+jj+1}->1],{ii,k-1},{jj,n-k-2}];Do[currentMatrix=ReplacePart[currentMatrix,{ii*(n-k-1)+jj,(ii-1)*(n-k-1)+jj}->1],{ii,k-2},{jj,n-k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(ii-1)*(n-k-1)+jj,ii*(n-k-1)+jj-1}->1],{ii,k-2},{jj,2,n-k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(k-1)*(n-k-1)+ii,(ii-1)*(n-k-1)+1}->1],{ii,k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(k-1)*(n-k)+1+ii,(k-2)*(n-k-1)+ii}->1],{ii,n-k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(ii-1)*(n-k-1)+1,(k-1)*(n-k-1)+1+ii}->1],{ii,k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(k-2)*(n-k-1)+ii,(k-1)*(n-k)+ii}->1],{ii,2,n-k-1}];currentMatrix=ReplacePart[currentMatrix,{n-k-1,k*(n-k)+1}->1];currentMatrix\[Transpose]-currentMatrix]]
-
+generateSeedA[Gr[k_,n_]]:=clA[Flatten[Table[fGrSeed[k,n][ii,jj],{ii,k-1},{jj,2,n-k}]],Flatten[Join[Table[fGrSeed[k,n][ii,1],{ii,k-1}],Table[fGrSeed[k,n][k,jj],{jj,n-k}],{br@@Range[k]}]]][Module[{currentMatrix=ConstantArray[0,{k(n-k)+1,k(n-k)+1}]},Do[currentMatrix=ReplacePart[currentMatrix,{(ii-1)*(n-k-1)+jj,(ii-1)*(n-k-1)+jj+1}->1],{ii,k-1},{jj,n-k-2}];Do[currentMatrix=ReplacePart[currentMatrix,{ii*(n-k-1)+jj,(ii-1)*(n-k-1)+jj}->1],{ii,k-2},{jj,n-k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(ii-1)*(n-k-1)+jj,ii*(n-k-1)+jj-1}->1],{ii,k-2},{jj,2,n-k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(k-1)*(n-k-1)+ii,(ii-1)*(n-k-1)+1}->1],{ii,k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(k-1)*(n-k)+1+ii,(k-2)*(n-k-1)+ii}->1],{ii,n-k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(ii-1)*(n-k-1)+1,(k-1)*(n-k-1)+1+ii}->1],{ii,k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(k-2)*(n-k-1)+ii,(k-1)*(n-k)+ii}->1],{ii,2,n-k-1}];currentMatrix=ReplacePart[currentMatrix,{n-k-1,k*(n-k)+1}->1];Do[currentMatrix=ReplacePart[currentMatrix,{(n-k-1)*(k-1)+1+ii,(n-k-1)*(k-1)+ii}->1/2],{ii,k-1}];Do[currentMatrix=ReplacePart[currentMatrix,{(n-k)*(k-1)+ii,(n-k)*(k-1)+1+ii}->1/2],{ii,n-k-1}];currentMatrix=ReplacePart[currentMatrix,{k*(n-k)+1,(n-k-1)*(k-1)+1}->1/2];currentMatrix=ReplacePart[currentMatrix,{k*(n-k)+1,k*(n-k)}->1/2];currentMatrix\[Transpose]-currentMatrix]]
+   
 generateSeedX[clX[a__][B_?SquareMatrixQ]]:=clX[a][B]
 generateSeedX[dynkinA[1]]:=clX[{x1}][{{0}}]
 generateSeedX[dynkinA[n_]]:=clX[Table[Symbol["x"<>ToString[ii]],{ii,n}]][Append[Prepend[Table[ReplacePart[ReplacePart[ConstantArray[0,n],ii-1->-1],ii+1->1],{ii,2,n-1}],ReplacePart[ConstantArray[0,n],2->1]],ReplacePart[ConstantArray[0,n],n-1->-1]]]
@@ -95,9 +95,9 @@ clBasis[{a__},{f1___,f2_,f3_,f4___}][x_,xf_][B_?SquareMatrixQ]:=(clBasis[{a},{f1
 mutate[cl[a__][x__][B_?SquareMatrixQ],{k_}]:=mutate[cl[a][x][B],k]
 mutate[clA[a__][B_?SquareMatrixQ],{k_}]:=mutate[clA[a][B],k]
 mutate[clX[x__][B_?SquareMatrixQ],{k_}]:=mutate[clX[x][B],k]
-mutate[cl[a__][x__][B_?SquareMatrixQ],{kInit__,k_}]:=mutate[cl[a][x][B],{kInit,k}]=mutate[mutate[cl[a][x][B],{kInit}],k]
-mutate[clA[a__][B_?SquareMatrixQ],{kInit__,k_}]:=mutate[clA[a][B],{kInit,k}]=mutate[mutate[clA[a][B],{kInit}],k]
-mutate[clX[x__][B_?SquareMatrixQ],{kInit__,k_}]:=mutate[clX[x][B],{kInit,k}]=mutate[mutate[clX[x][B],{kInit}],k]
+mutate[cl[a__][x__][B_?SquareMatrixQ],{kInit__,k_}]:=(*mutate[cl[a][x][B],{kInit,k}]=*)mutate[mutate[cl[a][x][B],{kInit}],k]
+mutate[clA[a__][B_?SquareMatrixQ],{kInit__,k_}]:=(*mutate[clA[a][B],{kInit,k}]=*)mutate[mutate[clA[a][B],{kInit}],k]
+mutate[clX[x__][B_?SquareMatrixQ],{kInit__,k_}]:=(*mutate[clX[x][B],{kInit,k}]=*)mutate[mutate[clX[x][B],{kInit}],k]
 mutate[cl[a_][x_][B_?SquareMatrixQ],k_]:=cl[ReplacePart[a,k->newVarA[a,B,k]]][newVarsX[x,B,k]][\[Mu][B,k]]
 mutate[clA[a_][B_?SquareMatrixQ],k_]:=clA[ReplacePart[a,k->newVarA[a,B,k]]][\[Mu][B,k]]
 mutate[clX[x_][B_?SquareMatrixQ],k_]:=clX[newVarsX[x,B,k]][\[Mu][B,k]]
