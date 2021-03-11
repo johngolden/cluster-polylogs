@@ -1,0 +1,1091 @@
+\pdfoutput=1
+\documentclass[11pt]{article}
+\usepackage{jheppub}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{scalerel}
+\usepackage{mathtools}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage[all]{xy}
+
+\usetikzlibrary{calc}
+
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\sgn}{sgn}
+
+\newcommand{\fwboxL}[2]{\text{\makebox[#1][l]{$#2$}}}
+
+\def\ket#1{\langle #1 \rangle}
+\def\nl{\nonumber\\}
+\def\nn{\nonumber}
+\def\x{\mathcal{X}}
+\def\xcoord{$\mathcal{X}$-coordinate }
+\def\xcoords{$\mathcal{X}$-coordinates }
+\def\a{\mathcal{A}}
+\def\acoord{$\mathcal{A}$-coordinate }
+\def\acoords{$\mathcal{A}$-coordinates }
+\def\draftnote#1{{\bf [#1]}}
+\def\flag{{\huge \color{red} \textinterrobang}}
+\def\pdfeq#1{\texorpdfstring{$#1$}{a}}
+
+
+\def\drawPentagon{
+\coordinate (P1) at (90:1);
+\coordinate (P2) at (18:1);
+\coordinate (P3) at (306:1);
+\coordinate (P4) at (234:1);
+\coordinate (P5) at (162:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+}
+
+\def\drawLabeledPentagon{
+\coordinate (P1) at (90:1);
+\coordinate (P2) at (18:1);
+\coordinate (P3) at (306:1);
+\coordinate (P4) at (234:1);
+\coordinate (P5) at (162:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+\draw (0,1.2) node {1};
+\draw (1,.3) node[anchor=west] {2};
+\draw (.5,-.9) node[anchor=west] {3};
+\draw (-.5,-.9) node[anchor=east] {4};
+\draw (-1,.3) node[anchor=east] {5};
+}
+
+\def\drawOctagon{
+\coordinate (P1) at (45:1);
+\coordinate (P2) at (90:1);
+\coordinate (P3) at (135:1);
+\coordinate (P4) at (180:1);
+\coordinate (P5) at (225:1);
+\coordinate (P6) at (270:1);
+\coordinate (P7) at (315:1);
+\coordinate (P8) at (359:1);
+\draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- (P7) -- (P8) -- cycle;
+}
+
+
+\def\mand#1{\scaleto{s}{4.6pt}_{\scaleto{#1}{5.2pt}}}
+\def\EthreeJ{{}^{{\{a,b\}}_3} {\cal E}_8}
+\def\EfourJ{{}^{{\{a,b\}}_4} {\cal E}_8}
+\def\LiOneCalX#1#2{\text{Li}_1(-\mathfrak{X}_{#1,#2})}
+\def\LiOneBarCalX#1#2{\text{Li}_1(-\overline{\mathfrak{X}}_{#1,#2})}
+
+\newcommand{\cP}{{\cal P}}
+\def\lr{\leftrightarrow}
+
+\title{The Remainder Function for Eight and Nine Particles} 
+
+\author{John~Golden$^{1,2}$}
+\author{and Andrew~J.~McLeod$^{2,3,4}$}
+
+
+\affiliation{$^1$ Leinweber Center for Theoretical Physics and
+Randall Laboratory of Physics, Department of Physics,
+University of Michigan
+Ann Arbor, MI 48109, USA}
+
+\affiliation{$^2$ Kavli Institute for Theoretical Physics, 
+UC Santa Barbara, Santa Barbara, CA 93106, USA}
+
+\affiliation{$^3$ SLAC National Accelerator Laboratory,
+Stanford University, Stanford, CA 94309, USA}
+
+\affiliation{$^4$ Niels Bohr International Academy, Blegdamsvej 17, 2100 Copenhagen, Denmark}
+
+\abstract{Two-loop MHV amplitudes in planar ${\cal N} = 4$ supersymmetric Yang Mills theory are known to exhibit many intriguing forms of cluster-algebraic structure. We leverage this structure to upgrade the differential of the eight- and nine-particle amplitudes to complete analytic functions. This is done by systematically projecting onto the components of these amplitudes that exhibit different functional forms, and matching each component to an ansatz of multiple polylogarithms with negative cluster-coordinate arguments. The remaining additive constant is determined analytically by comparing the collinear limit of each amplitude to known lower-multiplicity results.}
+
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Many of the recent advances in our understanding of scattering amplitudes have come from studying explicit examples. This has been especially true in the planar limit of ${\cal N}=4$ super-Yang-Mills (sYM) theory~\cite{Brink:1976bc,Gliozzi:1976qd}, where nontrivial amplitudes have been computed to high loop order in six- and seven-particle kinematics~\cite{CaronHuot:2011kk,Dixon:2014iba,Drummond:2014ffa,Dixon:2015iva,Caron-Huot:2016owq,Dixon:2016nkn,Drummond:2018caf,Caron-Huot:2019vjl,Caron-Huot:2020bkp,Dixon:2020cnr}, and methods exist for calculating the symbol of certain two-loop amplitudes to all particle multiplicity~\cite{CaronHuot:2011ky,He:2020lcu}. With the benefit of this concrete data, a number of unexpected analytic~\cite{Caron-Huot:2016owq,Caron-Huot:2019bsq}, cluster-algebraic~\cite{Golden:2013xva,Golden:2014pua,Golden:2014xqa,Drummond:2017ssj,Drummond:2019cxm,Arkani-Hamed:2019rds,Henke:2019hve}, number-theoretic~\cite{Caron-Huot:2019bsq}, and positivity~\cite{Arkani-Hamed:2014dca,Dixon:2016apl} properties have been discovered, which have in turn stimulated the development of increasingly advanced computational techniques~\cite{Golden:2014pua,Caron-Huot:2020bkp}. The success of these explorations clearly motivates a similarly in-depth study of amplitudes involving eight and more particles, especially as new algebraic and analytic features are known to arise in these higher-point amplitudes. 
+% (some of which, notably, seem to generalize to non-supersymmetric quantum field theories~\cite{Anastasiou:2013srw,Panzer:2016snt,Schnetz:2017bko,Abreu:2020jxa}). 
+
+Only a handful of results involving more than seven particles are known beyond one loop in planar $\mathcal{N} = 4$ sYM theory. Most notably, these include the symbol of the two-loop maximally-helicity-violating (MHV) amplitude at all particle multiplicity~\cite{CaronHuot:2011ky} and the symbol of the next-to-MHV (NMHV) amplitude at eight points~\cite{Zhang:2019vnm}. A number of eight-point Feynman integrals are also known at two (and higher) loops~\cite{Bourjaily:2018aeq,Henn:2018cdp} and the symbol alphabet of the two-loop NMHV amplitude is understood to all multiplicity~\cite{He:2020vob}. Moreover, (numerical results, results on wilson loop side, tropical/cluster algebra properties\dots)
+
+\cite{He:2020lcu}
+\cite{He:2020uxy}
+
+% of a few amplitudes are known beyond one loop. However, the $\overline{Q}$-equation has led to many powerful new results. 
+%While a great deal is known about the integrands contributing to planar $\mathcal{N} = 4$ sYM theory at all particle multiplicity~\cite{ArkaniHamed:2010kv,ArkaniHamed:2010gh,ArkaniHamed:2012nw,Bourjaily:2015jna},  
+
+
+
+
+
+In this paper, we focus on the two-loop MHV amplitudes in planar $\mathcal{N}=4$ sYM theory for eight and nine particles. Once normalized in the infrared by the BDS ansatz~\cite{Bern:2005iz}, these amplitudes respect both a superconformal symmetry and a dual superconformal symmetry~\cite{Drummond:2007au,Drummond:2006rz,Bern:2006ew,Bern:2007ct,Alday:2007he}, the latter of which is naturally associated with light-like polygonal Wilson loops to which these amplitudes are dual~\cite{Drummond:2007au,Alday:2007hr,Drummond:2007aua,Brandhuber:2007yx,Drummond:2007cf,Bern:2008ap,Drummond:2008aq}. The finite part of the $n$-particle amplitude is then encoded in the remainder function $R_n$, which depends only on dual-conformally-invariant (DCI) cross-ratios of Mandelstam invariants and smoothly deforms to $R_{n{-}1}$ in collinear limits.
+
+The symbols of the eight- and nine-particle remainder functions were computed in~\cite{CaronHuot:2011ky} and are known to exhibit a number of intriguing cluster-algebraic properties. For instance, their logarithmic branch points all coincide with the vanishing loci of cluster coordinates in $\Gr(4,n)$~\cite{Golden:2013xva}. Moreover, their Lie cobrackets can be written as linear combinations of terms in which all Bloch group elements are associated with coordinates that appear together in a cluster of this cluster algebra~\cite{Golden:2014pua}. In fact, the most complicated component of their cobracket---the component encoding the nonclassical part of these functions---can be expressed entirely in terms of simple polylogarithms associated with the $A_2$ or $A_3$ subalgebras of $\Gr(4,n)$~\cite{Golden:2014xqa}. It is further expected that the remaining (nonclassical) components of  each remainder function should be expressible in terms of classical polylogarithms with negative cluster coordinate arguments~\cite{Golden:2014xqf}. However, the full functional form of these amplitudes has not been explicitly computed for more than seven particles. 
+
+In this paper, we leverage these special cluster-algebraic properties to determine the full analytic form of the eight and nine particle amplitudes---the first complete two-loop amplitudes known in this theory for these numbers of particles. We do this using the techniques developed in~\cite{Golden:2014xqa,Golden:2014xqf,Golden:2018gtk,Golden:2019kks}, which involve matching the various components of $R_n$ that exhibit different functional forms to appropriate ans\"atze. This allows us to determine the full polylogarithmic form of $R_8$ and $R_9$ up to an additive constant, which can be determined by computing the collinear limit of these functions and matching them to known lower-multiplicity results. 
+
+As part of this analysis, we investigate whether the nonclassical parts of $R_8$ and $R_9$ can be decomposed into functions associated with the larger subalgebras of $\Gr(4,8)$ and $\Gr(4,9)$. In~\cite{Golden:2018gtk}, it was shown that the nonclassical part of $R_7$ could be decomposed into functions associated with the $A_4$, $A_5$, and $D_5$ subalgebras of $\Gr(4,7)$, in addition to the $A_2$ and $A_3$ decompositions found in~\cite{Golden:2014xqa}. We find here that $R_8$ can be decomposed in terms of the same $A_5$ function as $R_7$. Moreover, each $R_{n<10}$ admits a unique decomposition in terms of the $f_{A_3}^{+-}$ function of~\cite{Golden:2014xqa}, which has a different signature under the $A_3$ automorphism group than the original $A_3$ function identified in~\cite{Golden:2014xqa}. This leads us to expect that a unique decomposition of the nonclassical part of $R_n$ into $f_{A_3}^{+-}$ exists for all $n$.
+
+
+We adopt the notation of~\cite{Golden:2018gtk} for all the cluster polylogarithms we use
+
+With the analytic form of $R_8$ and $R_9$ in hand, we \dots
+
+Comparison to numerical algorithm for computing the two-loop Wilson loop remainder function~\cite{Anastasiou:2009kna,Brandhuber:2009da} \dots
+  
+ 
+This paper is organized as follows. We first 
+ 
+ somewhere cite ~\cite{1021.16017}
+ 
+ follow the strategy first outlined in~\cite{Golden:2014xqf}.
+ 
+%and are expected to be resummable into finite-coupling expressions due to integrability~\cite{Beisert:2010jr}. 
+
+
+
+%\begin{enumerate}
+%\item[-] emphasize the fact that promoting symbols to functions is hard---only a few other instances in the literature (don't forget  this is done Regge limits as well---cite)
+%\item[-] must talk about the importance of automorphisms
+%\item[-] also, discuss the relation between cluster {$\cal A$}-adjacency and cluster {$\cal X$}-adjacency --- can we prove these have to be equivalent by using the conversion $x\sim a^b$ between the two (since this translation is valid on any cluster)?
+%\item[-] could in principle check our function against MRK predictions
+%\item[-] should point out somewhere that the cobracket is the same for the remainder function and bds-like normalized amplitudes---and that the same bootstrap procedure could be carried out for either quantity. However, we carry it out on the remainder function because there's no clear (unique) bds-like normalized amplitude to bootstrap
+%\item[-] talk about state of the art; high loop orders at 6 and 7 points, but very few results beyond there
+%\end{enumerate}
+
+
+
+%Give all due credit to~\cite{Golden:2014xqf}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Amplitudes in Planar $\mathcal{N}=4$ sYM Theory}
+\label{sec:amplitudes_review}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We begin by recalling some facts about scattering amplitudes in planar $\mathcal{N} = 4$ sYM theory. In addition to positive- and negative-helicity gluons, this theory involves six scalars and four fermions of each helicity. These fields all transform in the adjoint representation of the $SU(N)$ gauge group, and can be combined into on-shell superfields 
+\begin{equation}
+\Phi = G^+ + \eta^A \Gamma_A + \frac{1}{2!} \eta^A \eta^B S_{AB} + \frac{1}{3!} \eta^A \eta^B \eta^C \epsilon_{ABCD} \overline{\Gamma}^D + \frac{1}{4!} \eta^A \eta^B \eta^C \eta^D \epsilon_{ABCD} G^-\, ,
+\end{equation}
+where $G^\pm$ denote positive- and negative-helicity gluons, $\Gamma_A$ and $\smash{\overline{\Gamma}^A}$ identify gluinos and anti-gluinos, and $\smash{S_{AB} = \frac{1}{2} \epsilon_{ABCD} \overline{S}^{CD}}$ represent complex scalars. The R-symmetry indices on these on-shell states transform in the fundamental  representation of $SU(4)$, and are contracted with Gra{\ss}mann variables $\eta^A$ and the Levi-Civita tensor $\epsilon_{ABCD}$. In terms of superfields, amplitudes with different field content can be combined into a single superamplitude $\mathcal{A}_n(\Phi_1,\dots,\Phi_n)$, which naturally stratifies into sectors in which helicity conservation is violated by differing amounts. Namely, 
+\begin{align}
+\mathcal{A}_n = \mathcal{A}_n^{\text{MHV}} +  \mathcal{A}_n^{\text{NMHV}}  \dots + \mathcal{A}_n^{\overline{\text{MHV}}} \, ,
+\end{align}
+where the component $\mathcal{A}^{\text{N$^{k}$MHV}}$ collects together all terms of degree $4k{+}8$ in the Gra{\ss}mann variables $\eta^A$. In this paper, we will only study the MHV ($k=0$) component of the superamplitude, which describes (for instance) all-gluon scattering in which all but two gluons have positive helicity (in a convention in which all particles are outgoing). For more background on superfields and superamplitudes, see~\cite{Drummond:2010km,Elvang:2013cua}. 
+
+We further specialize to the planar limit of this theory~\cite{tHooft:1973alw}, where the rank $N$ of the gauge group is sent to infinity while the product $g_{\text{YM}}^2 N$ involving the gauge theory coupling $g_{\text{YM}}$ is held constant. In this limit, multi-trace color structures are suppressed by factors of $1/N^2$, so the leading contribution to the MHV amplitude becomes
+\begin{align}
+\mathcal{A}_n^{\text{MHV}}  \propto \sum_{\sigma \in S_n/Z_n} \text{Tr}\big( T^{a_{\sigma(1)}} \cdots T^{a_{\sigma(n)}}  \big)  \mathcal{A}_{n,\sigma}^{\text{MHV}} \,+\, \mathcal{O}(1/N^2)\, , 
+\end{align}
+where $T^{a_i}$ is an $SU(N)$ generator representing the color of the $i^\text{th}$ external particle, and the sum is over all non-cyclically-related permutations of the $n$ external particles. The color-stripped amplitude $\mathcal{A}_{n,\sigma}^{\text{MHV}}$ gathers together all single-trace contributions to the amplitude that are planar with respect to the ordering $\sigma$. Without loss of generality, we focus on the color-stripped amplitude associated with the identity permutation $\sigma = \text{id}$, which collects all contributions in which the external particles are ordered from $1$ to $n$. 
+%(For further details about this color decomposition, see for instance~\cite{Dixon:2011xs}.)
+%We will henceforth drop the superscript $\sigma$, and assume without loss of generality that our external particles are ordered from $1$ to $n$. 
+
+%\subsection{Infrared Divergences, Dual Conformal Symmetry, and Momentum Twistors}
+
+We study $\mathcal{A}_n^{\text{MHV}}$ at the origin of moduli space, where all fields are massless and the amplitude is infrared-divergent. These divergences are captured by the BDS ansatz $\mathcal{A}_n^{\text{BDS}}$~\cite{Bern:2005iz}, allowing us to define a finite $n$-particle remainder function $R_n$ via the equation
+\begin{align}
+\mathcal{A}_{n,\,\text{id}}^{\text{MHV}} = \mathcal{A}_n^{\text{BDS}} \times \exp\left( R_n \right)  \, . \label{eq:remainder_def}
+\end{align}
+By construction, the BDS ansatz captures the complete one-loop amplitude, so perturbative contributions to the remainder function first occur at two loops:
+\begin{equation}
+R_n = \sum_{L = 2}^\infty g^{2L} R_n^{(L)} \, ,
+\end{equation}
+where $\smash{g^2 = \frac{g^2_{\text{YM}} N}{16 \pi^2}}$.\footnote{DOUBLE CHECK THIS IS OUR CONVENTION} In fact, the remainder function is exactly zero for four and five particles due to dual conformal symmetry, while for six or more particles it takes the form of a finite and DCI transcendental function~\cite{Drummond:2006rz, Bern:2006ew, Drummond:2007aua, Bern:2007ct,Nguyen:2007ya, Alday:2007hr, Bern:2008ap, Drummond:2008vq}.
+
+In combination with planarity, dual conformal invariance strongly constrains the kinematic dependence of the nonzero contributions to the remainder function. Namely, these contributions can only depend on DCI cross-ratios of planar Mandelstam invariants $s_{i,\dots,j} = (p_i + p_{i+1} + \dots p_{j})^2$, where $p_i$ is the momentum associated with the $i^{\text{th}}$ external particle. These are often expressed in terms of squared differences of dual coordinates, 
+\begin{align}
+x_{ij}^2 = (x_j - x_i)^2 = (p_i+ \dots + p_{j-1})^2 = s_{i,\dots,j-1},
+\end{align}
+where the second equality follows from the definition of the dual coordinates via the relation $p_i = x_{i+1} - x_i$, and all indices are taken modulo $n$ (so we have $x_{n+i} = x_i$). Ratios of these squared differences are DCI whenever the same indices appear in the numerator and the denominator, for example in $(x_{ij}^2 x_{kl}^2)/(x_{ik}^2 x_{jl}^2)$.  
+
+Four-dimensional dual points $x_i$ naturally live in a six-dimensional embedding space, and there correspondingly exists a Gram determinant relation between any seven of them. A convenient way to satisfy all of these relations is to work in terms of momentum twistors~\cite{Hodges:2009hk}, which provide a minimal parametrization of $n$-particle kinematic space. Pragmatically, momentum twistors can be thought of as the columns of a generic $4\! \times \! n$ matrix, modulo the left-action of the projective linear group (encoding dual conformal invariance) and the rescaling of any column by a nonzero complex number (encoding the little group). DCI cross-ratios are related to the entries of this matrix via the map
+\begin{align}
+x_{ij}^2 = \frac{\text{det}(Z_{i-1} Z_i Z_{j-1} Z_j)}{\text{det}(Z_{i-1} Z_i I_\infty) \text{det}(Z_{j-1} Z_j I_\infty)}  \, ,
+\end{align} 
+where $Z_i$ is the $i^\text{th}$ column of the momentum twistor matrix, and $I_\infty$ is the line in momentum-twistor space corresponding to a point at infinity in dual coordinates. While the determinants involving $I_\infty$ break dual conformal invariance, they drop out of DCI cross-ratios. 
+
+More complicated DCI ratios can be formed out of (polynomials of) generic minors of $Z$, which are usually denoted by the four-brackets
+\begin{equation} \label{eq:four_bracket_def}
+\langle i j k l \rangle = \text{det}(Z_i Z_j Z_k Z_l) \, .
+\end{equation}
+Redundancies between (polynomials and ratios of) these minors are captured by Pl\"ucker relations, such as
+\begin{equation}
+  \label{eq:plucker-rel}
+  \ket{abcd} \ket{efcd} = \ket{aecd} \ket{bfcd} - \ket{afcd}\ket{becd} \, .
+\end{equation}
+All Pl\"ucker relations are satisfied when four-brackets are evaluated on an explicit momentum twistor parametrization. Helpfully, these parameterizations also rationalize large classes of algebraic roots that appear in standard cross-ratio parametrizations~\cite{Bourjaily:2018aeq}. 
+
+%(as we will do in section~\ref{sec:collinear_limits})
+%For more details on the relation between external momenta, dual points, and momentum twistors, see for example~\cite{ArkaniHamed:2012nw,Golden:2013xva}; see also~\cite{Bourjaily:2012gy} for a Mathematica implementation of some useful tools related to momentum twistor matrices.
+
+Finally, let us mention that the momentum twistor matrix $Z$ can be more formally thought of as an element of the quotient of the Grassmannian $\Gr(4,n)$ by rescalings of its columns~\cite{ArkaniHamed:2012nw},
+\begin{equation}
+Z \in \Gr(4,n)/GL(1)^{n-1} \, .
+\end{equation}
+This connection between planar kinematics and $\Gr(4,n)$ will prove important in what follows, as Grassmannians are naturally endowed with a cluster structure~\cite{Golden:2013xva}. In particular, the $\Gr(4,n)$ cluster algebra gives rise to a preferred set of  coordinates (and collections of coordinates) that seem to encode crucial features of the analytic structure of the two-loop remainder function. However, before exploring this connection further, we turn to a description of the types of transcendental functions that appear in these amplitudes.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivic Aspects of Multiple Polylogarithms}
+\label{sec:motivic_aspects_polylogs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+While the remainder function is expected to depend on increasingly complicated types of functions at large multiplicities and high loop orders~\cite{Paulos:2012nu,CaronHuot:2012ab,Nandan:2013ip,Chicherin:2017bxc,Bourjaily:2017bsb,Bourjaily:2018ycu,Bourjaily:2019hmc}, it can be expressed in terms of multiple polylogarithms at two loops~\cite{CaronHuot:2011ky}. This is propitious, as our understanding of polylogarithmic functions has advanced greatly over the last two decades. In particular, the symbol and the coaction~\cite{Goncharov:2001iea,Brown:2009qja,Goncharov:2010jf,Brown1102.1312,Brown:2015fyf} allow the analytic structure of polylogarithms to be systematically analyzed, and can moreover be used to expose all functional identities between them~\cite{Goncharov:2005sla,2011arXiv1101.4497D,Brown:2011ik,Duhr:2011zq,Duhr:2012fh}.\footnote{Note that the coaction can only be used to find all identities between polylogarithms if the algebraic identities between their symbol letters are also under control; this can prove nontrivial in practice, as seen for instance in~\cite{Bourjaily:2019igt}.} This control has proven to be increasingly useful as physical constraints on the analytic structure of amplitudes (and related quantities) have become better understood (see for instance~\cite{Bloch:2010gk,Abreu:2014cla,Bloch:2015efx,Abreu:2017ptx,Caron-Huot:2019bsq,Bourjaily:2019exo,Bourjaily:2020wvq,Benincasa:2020aoj,Dixon:2020bbt}). In the case of the two-loop remainder function, it has also led to the discovery of the various types of cluster-algebraic structure, which we will review in section~\ref{sec:cluster_algebraic_structure} and which will comprise an essential part of our analysis in section~\ref{sec:r28_and_r29}. %to determine $R_8^{(2)}$ and $R_9^{(2)}$. 
+
+%as the analytic structure of multiple polylogarithms can be systematically understood by studying their motivic avatars, which are under good theoretical control. In particular, the discontinuity structure of these functions can be systematically analyzed using the symbol~\cite{Goncharov:2010jf} (and more generally the motivic coaction~\cite{Gonch2,Brown:2011ik,Duhr:2011zq,Duhr:2012fh}), which decomposes polylogarithms into a tensor product of simpler functions without losing information about their analytic structure (up to terms involving transcendental constants). Moreover, this technology can be used to expose all functional relations between motivic polylogarithms, as long as all algebraic identities between the arguments of the logarithms appearing in the symbol are understood~\cite{2011arXiv1101.4497D}.\footnote{Note, however, that understanding these algebraic identities .}\footnote{Since identities that hold between motivic polylogarithms also hold between the original non-motivic functions, we won't go out of our way to distinguish these two types of objects.} In this section we review 
+
+%---which are complex transcendental functions defined on branched Riemann surfaces---
+
+%As such, the next section reviews multiple polylogarithms and the some of the properties of these functions that will prove useful in our analysis in section~\ref{sec:r28_and_r29}.
+
+%For instance, the six- and seven-particle remainder functions---which have been bootstrapped through seven loops~\cite{DelDuca:2009au,DelDuca:2010zg,Dixon:2013eka,Dixon:2014voa,Caron-Huot:2016owq,Dixon:2016apl,Caron-Huot:2019vjl,Caron-Huot:2020bkp} and four loops~\cite{Drummond:2014ffa,Dixon:2016nkn,Drummond:2018caf}, respectively---are expected to be polylogarithmic to all loop orders. 
+
+Multiple polylogarithms generalize classical polylogarithms to iterated integrals over more general logarithmic kernels. They often appear in the notation
+\begin{equation} \label{eq:G_notation}
+G_{a_1,\dots, a_w}(z) = \int_0^z \frac{dt}{t-a_1} G_{a_2,\dots, a_w}(z)\, ,
+\end{equation}
+where $G(z) = 1$ and the variables $a_i$ and $z$ are complex variables. (In the case of the remainder function, the $z$ and $a_i$ variables will be algebraic functions of DCI cross-ratios.) When all of the $a_i$ are zero, this integral diverges and is instead defined to be
+\begin{equation}
+\quad G_{\fwboxL{27pt}{{\underbrace{0,\dots,0}_{w}}}}(z) = \frac{\log^w z}{w!} \, .
+\end{equation}
+These functions form a shuffle algebra, by means of which products of polylogarithms with the same argument can be rewritten as linear combinations of polylogarithms involving more indices~\cite{Ree:1958}. Importantly, the shuffle algebra conserves the total number of indices appearing in each term. This conserved quantity, which encodes the number of integrations appearing in the definition of each polylogarithm, is referred to as that function's transcendental weight. 
+
+Multiple polylogarithms can also be defined in terms of nested sums. This gives rise to the alternate notation
+\begin{align} \label{eq:Li_notation}
+\text{Li}_{n_1,\dots,n_d}(z_1,\dots, z_d) &\equiv \sum_{0 < m_1 < \dots < m_d} \frac{z_1^{m_1} \cdots z_d^{m_d}}{m_1^{n_1} \cdots m_d^{n_d}} \, ,
+\end{align}
+which reproduces the definition of the classical polylogarithm when the depth $d$ is one. In this notation, it becomes clear that multiple polylogarithms also obey a stuffle algebra, corresponding to the freedom to split up unordered sums into nested ones. Like the shuffle algebra, the stuffle algebra respects transcendental weight. We can relate the sum definition to the integral one using
+\begin{align}
+\text{Li}_{n_1,\dots,n_d}(z_1,\dots, z_d) = (-1)^d G_{\fwboxL{28pt}{\underbrace{0,\dots,0}_{n_d-1}},\frac{1}{z_d},\fwboxL{13pt}{\,\dots},\fwboxL{29pt}{\,\underbrace{0,\dots,0}_{n_1-1}},\frac{1}{z_1 \cdots z_d}}(1) \, .
+\end{align}
+We will make use of both of these notations, as they prove useful for different purposes. 
+
+In what follows, we only review the motivic aspects of polylogarithms that we will make use of in our eight- and nine-point computation. In particular, we forego a complete characterization of the coaction, and focus on just the symbol (which corresponds to the maximally iterated coaction) and the Lie cobracket. We refer the interested reader to~\cite{Duhr:2014woa} for a more complete review of these topics.
+
+
+
+
+%In this section we review this symbol and coaction technology, which we will make use of when we reconstruct the eight- and nine-particle amplitudes. In particular, after recalling the general formulation of these structures, we discuss how projection operators can be constructed to isolate the components of generic weight-four polylogarithms that take a different functional form. These projection operators will help us to build up the functional forms of $R_8$ and $R_9$ systematically by breaking the problem into easily manageable pieces.
+
+%\begin{equation}
+%G_{a_1,\dots, a_n}(z) = \int_0^z \frac{dt}{t-a_1} G_{a_2,\dots, a_n}(z)\,, \quad G_{\fwboxL{27pt}{{\underbrace{0,\dots,0}_{p}}}}(z) = \frac{\log^p z}{p!}  \, ,
+%\end{equation}
+
+\subsection{The Symbol}
+
+The symbol map decomposes a generic polylogarithm into a tensor product of logarithms~\cite{Goncharov:2010jf}. It can be iteratively defined in terms of a polylogarithm's total derivatives. For instance, the total differential of the function $G_{a_1, \fwboxL{13pt}{\,\dots}, a_w}(z)$ is given by
+\begin{equation} \label{eq:total_differential_G}
+d G_{a_1, \fwboxL{13pt}{\,\dots}, a_w}(z) = \sum_{i=1}^{k} G_{a_1,\fwboxL{13pt}{\,\dots},\,\hat{a}_i,\fwboxL{13pt}{\,\dots},\,a_w}(z) \ d\log \left( \frac{a_{w-i+1} - a_{w-i}}{a_{w-i+1} - a_{w-i+2}} \right)\, ,
+\end{equation} 
+where $a_0 \equiv z$ and $a_{w+1} \equiv 0$, and the notation $\hat{a}_i$ indicates this index should be omitted~\cite{GoncharovMixedTate,Duhr:2011zq}. The symbol of this function is then defined by promoting the $d\log$s in~\eqref{eq:total_differential_G} to new tensor factors, via the recursive definition  
+\begin{equation} \label{eq:symbol_def}
+\mathcal{S}\big(G_{a_1, \fwboxL{13pt}{\,\dots}, a_w}(z)\big) \equiv \sum_{i=1}^{w} \mathcal{S}\big(G_{a_1,\fwboxL{13pt}{\,\dots},\,\hat{a}_i,\fwboxL{13pt}{\,\dots},\,a_w}(z) \big) \otimes \left( \frac{a_{w-i+1} - a_{w-i}}{a_{w-i+1} - a_{w-i+2}} \right)\, .
+\end{equation} 
+This recursion terminates once all indices have been dropped, with $\mathcal{S}(G(z)) = 1$.
+
+The algebraic functions that appear in different entries of the symbol are referred to as symbol letters. These letters inherit the distributive properties of (arguments of) logarithms, and can therefore be expanded into a multiplicatively independent basis of symbol letters, referred to as a symbol alphabet. The symbol map thus reduces (potentially complicated) polylogarithmic identities to identities between logarithms, at the cost of losing information about higher-weight transcendental constants and the integration contour of the original polylogarithm. In particular, all terms involving factors of $i\pi$ must be dropped from the symbol, as these terms correspond to deformations of the original integration contour around logarithmic branch points.
+ 
+The symbol captures key information about the analytic structure of polylogarithms, insofar as it encodes their iterated discontinuity structure. Namely, for generic $a_i$ and $z$, these functions have logarithmic branch points only where the letters in the first entry of their symbol become zero or infinite. However, the discontinuity of a polylogarithm can have new logarithmic branch points when new symbol letters appear in the second entry of its symbol (and similarly for further iterated discontinuities). In this sense, the symbol keeps track of all of a polylogarithm's nonzero sequences of discontinuities. 
+
+%While much of the information about a function is encoded in its symbol, it   
+
+%To upgrade a symbol to a function requires determining the   In practice, this
+
+\subsection{The Lie Cobracket and Projection Operators}
+\label{sec:lie_cobracket}
+
+While the symbol encodes a great deal of information about a function, it does not tell us everything we might want to know; for instance, it does not allow us to extract numerics. Thus, we are often in the position of wanting to upgrade the symbol of a function to a complete polylogarithmic expression. While this can prove hard in general, certain information about the polylogarithm that corresponds to a given symbol can be discerned with the use of the Lie cobracket~\cite{Golden:2013xva}. 
+
+The cobracket of a symbol $S$ of weight $w$ can be computed as
+\begin{equation} \label{eq:cobracket_def}
+\delta(S) \equiv \sum_{i=1}^{w-1} (\rho_i \wedge \rho_{w-i})\rho(S) \, ,
+\end{equation}
+where
+\begin{equation}
+\rho(s_1 \otimes \cdots \otimes s_w ) = \frac{w-1}{w} \Big(\rho(s_1 \otimes \cdots \otimes s_{w-1}) \otimes s_w - \rho(s_2 \otimes \cdots \otimes s_{w}) \otimes s_1 \Big) \, 
+\end{equation}
+and $\rho(s_1) \equiv s_1$. The notation in~\eqref{eq:cobracket_def} should be understood to mean that $\rho$ is first applied to $S$, after which each term in the resulting sum is partitioned into a wedge product by splitting up the symbol into its first $i$ and last $w{-}i$ entries; the operator $\rho$ is then applied to the two factors of this wedge product separately. The cobracket thus gives rise to a sum of wedge products involving different transcendental weights. We use the notation $\delta_{i,j}(S)$ to denote all contributions to the cobracket coming from terms that involve a wedge product between factors of weight $i$ and $j$. 
+
+Through weight four, any polylogarithm can be expressed in terms of (products of) classical polylogarithms $\Li_k(z)$ with $k \leq 4$, and nonclassical polylogarithms of the form $\Li_{k,4-k}(x,y)$. The cobracket $\delta$ is useful because it separates out the contribution to a symbol coming from these different types of functions. For instance, the operator $\rho$ projects out the part of a symbol that can be written as products of lower-weight classical polylogarithms. In particular, when it acts on the classical polylogarithm $\Li_k(z)$, it maps it to an element of the Bloch group $\text{B}_k$~\cite{Bloch:2000, Suslin:1990}, or the algebra of polylogarithms modulo identities between classical polylogarithms. We denote these elements by
+\begin{align}
+ \{ z \}_k  &\equiv \rho(-\text{Li}_k(-z)) \in \text{B}_k, \quad k>1, \\
+ \{ z \}_1  &\equiv \rho(\log(z)) \hspace{.675cm} \in \text{B}_1.
+\end{align}
+At weight four, the cobracket further separates out contributions coming from different types of polylogarithms. More specifically, the $\delta_{2,2}$ component is only sensitive to contributions from nonclassical polylogarithms $\Li_{k,4-k}(x,y)$, while the $\delta_{3,1}$ component encodes contributions from both nonclassical polylogarithms as well as weight-four classical polylogarithms $\Li_4(z)$~\cite{G91a,2008arXiv0809.3984D,GanglPolylogIdentities,2018arXiv180107816G,2018arXiv180308585G}. 
+
+As we will discuss in more detail in section~\ref{sec:r28_and_r29}, these facts allow the nonclassical part of the remainder function to be matched to an appropriate ansatz of nonclassical polylogarithms at the level of the $\delta_{2,2}$ cobracket. Assuming this can be done, the $\delta_{3,1}$ component can then be used to isolate additional contributions coming from the weight-four classical polylogarithms. Note that this classical contribution is not by itself well-defined, since there exist many nonclassical weight-four polylogarithms with the same $\delta_{2,2}$ component but different $\delta_{3,1}$ components. However, any weight-four function whose complete cobracket matches that of the original symbol provides a valid functional representation of the symbol, up to products of lower-weight functions.  
+
+Further projection operators can be defined to isolate and determine the lower-weight products of classical polylogarithms. For instance, consider the contribution involving products of weight-two classical polylogarithms, $\Li_2(x) \Li_2(y)$. To determine this component, we define an operator
+\begin{equation}
+\delta_{\Li_2 \Li_2} (S)= (\rho_2 \wedge \rho_2)\, S \, , \label{eq:proj_op_1}
+\end{equation}
+which means we apply $\rho$ to the first two entries and last two entries of the symbol separately. It is not hard to check that this operator will project out all products of classical polylogarithms except for $\Li_2(x) \Li_2(y)$. It will not project out contributions from $\Li_{k,4-k}(x,y)$ or $\Li_4(z)$, but we assume some functional representation of this weight-four contribution is known and can be subtracted off before computing $\delta_{\Li_2 \Li_2}$. In a similar manner, products of the form $\Li_3(x) \log y$ can be isolated using the operator
+\begin{equation}
+\delta_{\Li_3 \log} (S)= (\rho_3 \wedge \text{id})\, S \,  \label{eq:proj_op_2} 
+\end{equation}
+(again, up to contributions from $\Li_{k,4-k}(x,y)$ or $\Li_4(z)$).  Having isolated these contributions, we can try to match them to appropriate ans{\"a}tze at function level.
+
+We would also like to isolate contributions to the symbol coming from functions of the form $\Li_2(x) \log y  \log z$. To do so, we define the operator
+\begin{equation}
+\delta_{\Li_2 \log \log} (S)= (\rho_2 \wedge \text{id})\, S \, . \label{eq:proj_op_3}
+\end{equation}
+This operator is less precise than the other projection operators; in addition to contributions from $\Li_{k,4-k}(x,y)$ and $\Li_4(z)$, it lets through contributions from $\Li_2(x) \Li_2(y)$ and $\Li_3(x) \log y$. However, we assume again that functional representations of these contributions have been determined and can subtracted off along with the weight-four contributions. 
+
+Assuming each of the preceding components of the symbol have been matched by appropriate functions, the problem now reduces to matching products of logarithms. This final component is the easiest to upgrade to function level, since it merely requires unshuffling the logarithms that appear directly in the symbol.  
+ 
+The projection operators~\eqref{eq:proj_op_1}-\eqref{eq:proj_op_3}, in combination with the different components of the cobracket, allow us to split up the problem of upgrading a symbol to a function into smaller intermediate steps. This can prove necessary when considering large symbols. In extreme cases, the problem of matching a symbol to a function can be split up even further by focusing on terms that involve specific Bloch group elements. We will make use of this strategy in section~\ref{sec:r28_and_r29}, and describe it in more detail there. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cluster-Algebraic Aspects of \pdfeq{R_n^{(2)}}}
+\label{sec:cluster_algebraic_structure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The analytic structure of the two-loop remainder function has been observed to exhibit many surprising features that seem most elegantly expressed in the language of $\Gr(4,n)$ cluster algebras.  In this section, we give a brief overview of some of this structure, with an emphasis on those aspects that will allow us to construct $R_8^{(2)}$\! and $R_9^{(2)}$\! in the next section. We refer the reader to~\cite{Golden:2018gtk} for a more comprehensive review of cluster algebras and their connection to amplitudes in planar $\mathcal{N} = 4$ sYM theory. 
+
+Let us begin by recalling the definition of the $\Gr(4,n)$ cluster algebra, and how it is generated. The initial seed cluster for $\Gr(4,n)$ can be chosen to be~\cite{1088.22009}
+
+\begin{equation}\label{eq:g4n-seed}
+\begin{gathered}
+\begin{xy} 0;<-.5pt,0pt>:<0pt,-.5pt>::
+	(-100,0) *+{\framebox[10ex]{$\ket{1,2,3,4}$}} ="-1",
+	(0,0) *+{f_{1l}} ="0",
+	(75,0) *+{\color{white} f_{00}} ="1",
+	(150,0) *+{f_{13}} ="2",
+	(225,0) *+{f_{12}} ="3",
+	(300,0) *+{\framebox[5ex]{$f_{11}$}} ="4",
+	(0,75) *+{f_{2l}} ="5",
+	(75,75) *+{\color{white} f_{00}} ="6",
+	(150,75) *+{f_{23}} ="7",
+	(225,75) *+{f_{22}} ="8",
+	(300,75) *+{\framebox[5ex]{$f_{21}$}} ="9",
+	(0,150) *+{f_{3l}} ="10",
+	(75,150) *+{\color{white} f_{00}} ="11",
+	(150,150) *+{f_{33}} ="12",
+	(225,150) *+{f_{32}} ="13",
+	(300,150) *+{\framebox[5ex]{$f_{31}$}} ="14",
+	(0,225) *+{\framebox[5ex]{$f_{4l}$}} ="15",
+	(75,225) *+{\color{white} f_{00}} ="16",
+	(150,225) *+{\framebox[5ex]{$f_{43}$}} ="17",
+	(225,225) *+{\framebox[5ex]{$f_{42}$}} ="18",
+	(300,225) *+{\framebox[5ex]{$f_{41}$}} ="19",
+	(75,0) *+{\cdots} ="01",
+	(75,75) *+{\cdots} ="06",
+	(75,144) *+{\cdots} ="011",
+	(75,225) *+{\cdots} ="016",
+	"-1", {\ar"0"},
+	"0", {\ar"1"},
+	"0", {\ar"5"},
+	"6", {\ar"0"},
+	"1", {\ar"2"},
+	"2", {\ar"3"},
+	"2", {\ar"7"},
+	"8", {\ar"2"},
+	"3", {\ar"4"},
+	"3", {\ar"8"},
+	"9", {\ar"3"},
+	"5", {\ar"6"},
+	"6", {\ar"7"},
+	"7", {\ar"8"},
+	"8", {\ar"9"},
+	"13", {\ar"7"},
+	"7", {\ar"12"},
+	"8", {\ar"13"},
+	"5", {\ar"10"},
+	"14", {\ar"8"},
+	"10", {\ar"15"},
+	"12", {\ar"17"},
+	"19", {\ar"13"},
+	"18", {\ar"12"},
+	"13", {\ar"18"},
+	"17", {\ar"11"},
+	"16", {\ar"10"},
+	"13", {\ar"14"},
+	"12", {\ar"13"},
+	"11", {\ar"12"},
+	"10", {\ar"11"},
+	"7", {\ar"1"},
+	"11", {\ar"5"},
+	"12", {\ar"6"},
+	"1", {\ar"6"},
+	"6", {\ar"11"},
+	"11", {\ar"16"},
+\end{xy}
+\end{gathered} 
+\end{equation}
+where $l=n-4$ and 
+\begin{equation}
+  f_{i j} =
+  \begin{cases}
+    \langle i+1, \dotsc, 4, j + 4, \dotsc, i+j+3\rangle, \qquad &i \leq l-j+1,\\
+    \langle 1, \dotsc, i+j-l-1, i+1, \dotsc, 4, j+4, \dotsc, n\rangle, \qquad &i >l-j+1.
+  \end{cases}
+\end{equation}
+The minors associated with the nodes of this cluster identify an initial set of cluster $\a$-coordinates, while the arrows define an exchange matrix 
+\begin{equation}
+b_{i j} = (\# \text{ of arrows}\; i \to j) - (\# \text{ of arrows}\; j \to i) \, .
+\label{eq:bijdef}
+\end{equation}
+The nodes associated with boxed $\a$-coordinates are considered frozen, while all other nodes can be mutated on to generate new clusters. Mutating on node $k$ alters the arrows in a cluster via the following sequence of operations:
+\begin{itemize}
+	\item[(1)] for each sequence of arrows $i\to k \to j$, add a new arrow $i\to j$,
+	\item[(2)] reverse all arrows on edges incident with $k$,
+	\item[(3)] remove any two-cycles that have appeared.
+\end{itemize}
+Algebraically, this generates a new adjacency matrix 
+\begin{equation}
+  \label{eq:b-mutation}
+  b'_{i j} =
+  \begin{cases}
+    -b_{i j}, &\quad \text{if $k \in \lbrace i, j\rbrace$,}\\
+    b_{i j}, &\quad \text{if $b_{i k} b_{k j} \leq 0$,}\\
+    b_{i j} + b_{i k} b_{k j}, &\quad \text{if $b_{i k}, b_{k j} > 0$,}\\
+    b_{i j} - b_{i k} b_{k j}, &\quad \text{if $b_{i k}, b_{k j} < 0$.}
+  \end{cases}
+\end{equation}
+Mutation also generates new $\a$-coordinates. Denoting the $\a$-coordinate associated with node $i$ by $a_i$, mutation on node $k$ trades the original coordinate $a_k$ for $a_k'$, defined via the relation
+\begin{equation}
+  \label{eq:a-coord-mutation}
+  a_{k} a_{k}' = \prod_{i \vert b_{i k} > 0} a_{i}^{b_{i k}} + \prod_{i \vert b_{i k} < 0} a_{i}^{-b_{i k}},
+\end{equation} 
+where empty products are set to 1. All other cluster $\a$-coordinates remain unchanged. 
+
+Mutation is an involution, so mutating twice on node $k$ has no net effect. However, mutating on different sequences  of nodes gives rise to new clusters and $\a$-coordinates. The $\Gr(4,n)$ cluster algebra is defined to be a set of all clusters that can be generated by~\eqref{eq:g4n-seed} via some sequence of mutations. For $n \le 7$, only a finite number of clusters can be generated, while an infinite number can be generated for $n\ge8$. 
+
+In addition to cluster $\a$-coordinates, cluster algebras give rise to what are called cluster $\x$-coordinates. The $\x$-coordinate associated with a mutable node $i$ is given by
+\begin{equation} \label{eq:x_from_a_coordinates}
+	x_i = \prod_j a_j^{b_{ji}}. 	
+\end{equation} 
+Mutation rules for \xcoords are different than for $\a$-coordinates; when mutating on node $k$, these coordinates change as 
+\begin{equation}
+  \label{eq:x-coord-mutation}
+  x_{i}' =
+  \begin{cases}
+    x_{k}^{-1}, &\quad i=k,\\
+    x_{i} (1+x_{k}^{\sgn b_{i k}})^{b_{i k}}, &\quad i \neq k ,
+  \end{cases}
+\end{equation}
+while the arrows change just as they did for $\a$-coordinates. Note that the translation between $\a$-coordinates and $\x$-coordinates in~\eqref{eq:x_from_a_coordinates} commutes with mutation. 
+
+Because of the inclusion of the frozen nodes in~\eqref{eq:g4n-seed}, the ratios of matrix minors defined by~\eqref{eq:x_from_a_coordinates} are invariant under the rescaling of any column of the underlying matrix. These $\x$-coordinates consequently respect dual conformal symmetry when evaluated on momentum twistor matrices. Since, moreover, the set of $3n{-}15$ $\x$-coordinates found in any cluster of $\Gr(4,n)$ are algebraically independent, cluster algebras give rise to many convenient parameterizations of $n$-particle DCI kinematic space. As we now review, these coordinates also naturally lend themselves to the description of the analytic properties of the two-loop remainder function, making them especially advantageous coordinates in terms of which to formulate these amplitudes. 
+
+%We emphasize that most of these cluster-algebraic properties do not extend to all polylogarithmic amplitudes in planar $\mathcal{N}=4$ sYM theory, since (for instance) algebraic branch points are known to occur~\cite{Prlina:2017azl,Zhang:2019vnm}. However, this structure provides us with a useful computational handle by which to understand the two-loop MHV amplitude to all orders. Thus, in the next two sections we review of the aspects of polylogarithms that allow us to isolate this cluster-algebraic structure, and the properties of (infinite) cluster algebras that will be salient to our study of the two-loop remainder function for eight and nine particles.  
+
+
+\subsection{The Subalgebra Constructibility of \pdfeq{\delta_{2,2}\big(R_n^{(2)} \big)}}
+
+Surprising connections between the analytic structure of $R_n^{(2)}$\! and the $\Gr(4,n)$ cluster algebra already appear at the level of the cobracket. For instance, in~\cite{Golden:2014pua} it was shown that the cobracket of $R_n^{(2)}$\! can be put in the form
+\begin{equation} \label{eq:cobracket_decomp}
+\delta\big(R^{(2)}_n\big) = \sum_{i,j} \Big(c_{ij} \, \{x_i\}_2 \wedge \{x_j\}_2 + d_{ij} \, \{x_i\}_3 \wedge \{x_j\}_1 \Big) \, ,
+\end{equation}
+where $c_{ij}$ and $d_{ij}$ are some rational coefficients, and the arguments $x_i$ and $x_j$ that appear in elements of the Bloch group are cluster $\x$-coordinates. More surprisingly, the sum over $i$ and $j$ can be restricted to span over only coordinates $x_i$ and $x_j$ that appear together in some cluster of $\Gr(4,n)$.\footnote{Note that this `cobracket-level cluster adjacency' neither implies nor is implied by the similar property of cluster adjacency observed at the level of the symbol in~\cite{Drummond:2017ssj}.}
+
+It has also been observed that the $\delta_{2,2}$ component of the cobracket can be decomposed into a single function evaluated on different subalgebras of $\Gr(4,n)$~\cite{Golden:2014xqa}. For instance, there always exists a decomposition of the form
+\begin{equation} \label{eq:a2_decomp}
+	\delta_{2,2} \big(R_n^{(2)}\big) = \!\! \sum_{(x_i\to x_j) \subset \Gr(4,n)} \!\!\! e_{ij} ~\delta_{2,2}\big(f^{--}_{A_2}(x_i \to x_j) \big) \, ,
+\end{equation}
+for some set of rational coefficients $e_{ij}$, where the sum is over a finite number of the $A_2$ subalgebras of $\Gr(4,n)$, each labelled by one of their constituent clusters $x_i \to x_j$. The function $f^{--}_{A_2}$ evaluated on these $A_2$ subalgebras is a weight-four polylogarithm, which (following~\cite{Golden:2018gtk}) we define to be
+\begin{align}\label{def:a2-function}
+        f^{--}_{A_2}(x_1 \to x_2)  &= \sum_{\text{skew-dihedral}} \bigg[ \Li_{2,2}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right) - \Li_{1,3}\left(-\frac{1}{\x_{i-1}},-\frac{1}{\x_{i+1}}\right)  \\
+        &\hspace{1.1cm} -6 \Li_3\left(-\x_{i-1}\right) \log \left(\x_{i+1}\right) -\frac{1}{2} \log \left(\x_{i-2}\right) \log^2\! \left(\x_i\right) \log \left(\x_{i+1}\right)  {\color{white} \bigg|} \nonumber \\
+        &\hspace{1.1cm} +\Li_2(-\x_{i-1}) \Big(3 \log (\x_{i-1})\log (\x_{i+1})+\log \big(\x_{i-2}/\x_{i+2}\big)\log (\x_{i+2})\Big) \bigg], \nonumber
+\end{align}
+where 
+\begin{gather}\label{def:a2-xcoords}
+  \x_1 = 1/x_1, \qquad \qquad \x_2 = x_2, \qquad \qquad \x_3 = x_1(1+x_2), \\ 
+  \x_4 = \frac{1+x_1+x_1 x_2}{x_2}, \qquad \qquad \x_5 = \frac{1+x_1}{x_1 x_2}, \nonumber
+\end{gather}
+are five of the cluster $\x$-coordinates generated by the $A_2$ seed cluster $x_1 \to x_2$. The skew-dihedral sum is taken by summing $i$ from 1 to 5, and subtracting off the same quantity in which $\x_i \to \x_{6-i}$.
+
+The function $f^{--}_{A_2}$ has a number of notable features. Both the arguments of the Bloch group elements that appear in its Lie cobracket and the letters that appear in its symbol alphabet consist of cluster $\x$-coordinate arguments drawn from $\Gr(4,n)$. 
+%Lie cobracket can be expressed in terms of Bloch group elements with cluster $\x$-coordinate arguments, while its symbol alphabet consists of $\x$-coordinates. Moreover, this symbol respects cluster adjacency, meaning that it can be put in a form where $\x$-coordinates only appear in adjacent entries if they also appear together in a cluster. 
+It is also a smooth and real-valued function for positive values of the cluster coordinates $x_1, x_2>0$, and respects the automorphism group of the $A_2$ cluster algebra. This group has two generators,
+\begin{align}
+  \sigma_{A_2}:&\quad x_1\to \frac{1}{x_2},~~ x_2\to x_1(1+x_2), \\
+  \tau_{A_2}:&\quad  x_1 \to \frac{x_1 x_2}{1 + x_1}, ~~x_2 \to \frac{1 + x_1 + x_1 x_2}{x_2},
+\end{align}
+both of which map $f_{A_2}^{--}$ back to minus itself (this is the reason for the superscript in the function's name). 
+
+While the decomposition in~\eqref{eq:a2_decomp} is special, it is not unique, nor is this type of decomposition unique to $A_2$ subalgebras. However, only a handful of nonclassical polylogarithms can appear in decompositions of this type, due to the requirement that they respect the automorphism group of the cluster algebra on which they are defined. Despite this, a surprising number of nonclassical decompositions of the two-loop remainder function seem to exist. For instance, the web of nested decompositions depicted in Figure~\ref{fig:R27_decompositions} were found for $\smash{\delta_{2,2}\big( R_7^{(2)}\big)}$ in~\cite{Golden:2018gtk}. In this diagram, each function $f_\mathcal{A}^{s_1 \dots s_n}$ represents a weight-four polylogarithm defined on the cluster algebra $\a$, which has signature $s_i$ under the action of the $i^\text{th}$ generator of the automorphism group of $\a$. An arrow $\smash{f_\mathcal{A}^{s_1 \dots s_n} \to f_\mathcal{A^\prime}^{s_1^\prime \dots s_m^\prime}}$ indicates that the $\delta_{2,2} \big(\smash{f_\mathcal{A}^{s_1 \dots s_n}}\big)$ can be decomposed into instances of $\smash{f_\mathcal{A^\prime}^{s_1^\prime \dots s_m^\prime}}$ evaluated on the subalgebras $\a^\prime \subset \a$. Note that some sequence of arrows leads from every one of the functions in this diagram to $f_{A_2}^{--}$, implying that they can be all be decomposed in terms of the function defined in~\eqref{def:a2-function}. We refer to the original paper for the definition of the other functions appearing in this diagram. 
+
+%In section~\ref{sec:subalgebra_constructibility} we will look for further examples of this type of subalgebra constructibility, focusing on the eight- and nine-particle amplitudes. While finding such decompositions in these cases is trickier than at seven points since the cluster algebras associated with these higher-point amplitudes are infinite, we will see there that decompositions involving many of the functions in Figure~\ref{fig:R27_decompositions} can still be found.
+
+
+\begin{figure}[t] \centering
+  \begin{tikzpicture}
+  state/.style={circle, draw, minimum size=3cm}
+	\node (H1) at (0cm,.2cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P1) at (0cm,.2cm) {$R_7^{(2)}\!\!$};
+	\node (H2) at (-2cm,-1.5cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P2) at (-1.9cm,-1.5cm) {$f_{D_5}^{---}$};
+	\node (H3) at (2cm,-1.5cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P3) at (2cm,-1.5cm) {$f_{A_5}^{--}$};
+	\node (H4) at (0cm,-3cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P4) at (0cm,-3cm) {$f_{A_4}^{+-}$};
+	\node (H5) at (-3cm,-3.4cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P5) at (-2.9cm,-3.4cm) {$f_{A_3}^{--}$};
+	\node (H6) at (3cm,-3.4cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P6) at (3cm,-3.4cm) {$f_{A_3}^{+-}$};
+	\node (H7) at (0cm,-5.4cm) {\color{white} ${}^i_j F^i_j$};
+	\node (P7) at (0cm,-5.4cm) {$f_{A_2}^{--}$};
+	\draw[->] (H1) -- (H2);
+	\draw[->] (H1) -- (H3);
+	\draw[->] (H2) -- (H4);
+	\draw[->] (H3) -- (H4);
+	\draw[->] (H2) -- (H5);
+	\draw[->] (H3) -- (H6);
+	\draw[->] (H4) -- (H7);
+	\draw[->] (H5) -- (H7);
+	\draw[->] (H6) -- (H7);
+\end{tikzpicture}
+  \caption{The various functions into which the nonclassical part of $R^{(2)}_7$\! can be decomposed. Each function is labelled by the finite cluster algebra on which it is defined, as well as its signature under the automorphism group of this cluster algebra, in the conventions of~\cite{Golden:2018gtk}. {\color{red} REWRITE, also diagram code}}
+\label{fig:R27_decompositions}
+\end{figure}
+
+
+
+
+\subsection{Symbol Alphabets and Cluster Adjacency}
+
+More cluster-algebraic structure can be found in the symbol of the remainder function. In particular, the symbol alphabet of $R_n^{(2)}$\! has been shown to consist of just $\frac{3}{2} n (n - 5)^2$ cluster $\mathcal{A}$-coordinates drawn from $\Gr(4,n)$, implying that the remainder function only develops branch cuts where these cluster coordinates vanish or become infinite~\cite{Golden:2013xva}. It is worth highlighting that, while this observation has also been found to extend to higher loops in the case of $R_6$ and $R_7$~\cite{Caron-Huot:2020bkp,Prlina:2018ukf}, algebraic symbol letters are expected to appear in the remainder function at higher multiplicities. These letters cannot be cluster coordinates, since all cluster coordinates are rational. Even so, it is interesting to note that some of the algebraic letters that appear in planar $\mathcal{N}=4$ sYM theory have been seen to emerge from structures related to Grassmannian cluster algebras~\cite{Drummond:2019cxm,Arkani-Hamed:2019rds,Henke:2019hve,Drummond:2020kqg,Mago:2020kmp,He:2020uhb}. 
+
+
+Further structure can be uncovered by normalizing the amplitude in terms of the BDS-like ansatz~\cite{Alday:2009dv,Yang:2010as}. In this subtraction scheme, it has been observed that symbol letters only appear in adjacent entries when they also appear together in a cluster of $\Gr(4,n)$~\cite{Drummond:2017ssj}. This property, referred to as cluster adjacency, seems to encode the extended Steinmann relations~\cite{Caron-Huot:2018dsv,Caron-Huot:2019bsq}, which generalize the Steinmann relations to all sequential discontinuities~\cite{Steinmann,Steinmann2,Cahill:1973qp}. However, while cluster adjacency is known to imply the extended Steinmann relations~\cite{Golden:2019kks}, the converse has not yet been shown.
+
+
+Although the decomposition of the amplitude given in equation~\eqref{eq:remainder_def} obscures cluster adjacency, we continue to work with the remainder function for two reason. First, the BDS-like ansatz does not exist in eight-particle kinematics~\cite{Yang:2010as}. (Although it is possible to define a finite amplitude that respects cluster adjacency and the extended Steinmann relations for this number of particles, it requires giving up dual conformal invariance~\cite{Golden:2018gtk}.) Second, the remainder function is engineered to have smooth collinear limits, which we will see in section~\ref{sec:r28_and_r29} proves to be a more useful property in our analysis than cluster adjacency. 
+
+\subsection{Negative Cluster Coordinate Arguments}
+\label{sec:neg_cluster_coodinate_args}
+
+Cluster coordinates also play a special role in the functional form of $R_n^{(2)}$\!. This can be seen explicitly in the cases of $\smash{R_6^{(2)}}$\! and $\smash{R_7^{(2)}}$\!, which turn out to be expressible in terms of polylogarithms (in the sum notation) with negative $\x$-coordinates arguments~\cite{Golden:2013xva,Golden:2014xqf}. The same class of functions also suffices for expressing the nonclassical contribution to $R_n^{(2)}$\! at all multiplicity by virtue of the decomposition in~\eqref{eq:a2_decomp}.\footnote{While we have expressed the weight-one functions in $f^{--}_{A_2}$ as logarithms with positive cluster coordinate arguments, it is not hard to check that these functions can be rewritten in terms of $\Li_1$ functions with negative cluster coordinate arguments.} It is therefore natural to extend this expectation to the classical component of these functions, and to look for functional representations of $R_n^{(2)}$\! that involve only $f_{A_2}^{--}$ and classical polylogarithms with negative $\x$-coordinates arguments~\cite{Golden:2014xqf}.
+
+The choice of this class of functions has the added benefit that it makes certain properties of the amplitude manifest. In particular, the amplitude is expected to be real-valued in the positive region, which is defined by the inequalities $\langle i j k l \rangle > 0$ for all cyclically ordered $i$, $j$, $k$, and $l$. It is easy to see that the $\a$-coordinates in the initial seed~\eqref{eq:g4n-seed} will all be positive in this region, and that this positivity will be inherited by all further $\a$-coordinates generated by the mutation rule~\eqref{eq:a-coord-mutation}. It follows that all $\x$-coordinates are also positive in this region. As a result, the sum of $A_2$ functions appearing in decompositions of the form~\eqref{eq:a2_decomp} will be manifestly real-valued in the positive region, as $f^{--}_{A_2}(x_1 \to x_2)$ is itself manifestly smooth and real-valued for positive values of $x_1$ and $x_2$. A similar observation holds for the classical polylogarithms $\Li_k(-x)$, which are manifestly real-valued for positive values of $x$.
+ 
+It might seem like restricting our attention to this class of functions will not help in practice, since there are an infinite number of cluster $\x$-coordinates when $n>7$. However, we can first focus on the cluster coordinates that actually appear in the symbol of $R_n^{(2)}$\!. To construct these $\x$-coordinates (since the symbol of $R_n^{(2)}$\! is known in terms of $\a$-coordinates), we begin by listing all DCI cross ratios that can be built out of the $\a$-coordinates that appear in the symbol. We then use the empirical test proposed in~\cite{Golden:2013xva} to determine which of these cross ratios is a genuine $\x$-coordinate. Namely, we select the cross ratios $v$ that have the property that $1+v$ factorizes into a product of $\a$-coordinates, and numerically evaluate $v$, $-1-v$, and $-1-1/v$ at a random point in the positive region. In all known examples, only one of these values will be positive, and will correspond to an $\x$-coordinate. While there is no guarantee that this list of $\x$-coordinates will provide a sufficient set of polylogarithmic arguments for expressing $R_n^{(2)}$\! at function level, we will see in section~\ref{sec:r28_and_r29} that no further $\x$-coordinates are needed in the cases of $R_8^{(2)}$\! or $R_9^{(2)}$\!.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Subalgebra Constructibility of \pdfeq{R_8^{(2)}} and \pdfeq{R_9^{(2)}}}
+\label{sec:subalgebra_constructibility}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Motivated by the web of decompositions found in seven-particle kinematics~\cite{Golden:2018gtk}, we begin our study of $R_8^{(2)}$\! and $R_9^{(2)}$\! by exploring the subalgebra constructibility of their nonclassical components. That is, we investigate the ways in which $\smash{\delta_{2,2}\big(R_8^{(2)}\big)}$ and $\smash{\delta_{2,2}\big(R_9^{(2)}\big)}$ can be decomposed into polylogarithms evaluated on the subalgebras of $\Gr(4,8)$ and $\Gr(4,9)$. Decompositions of this type were first studied in~\cite{Golden:2014xqa}, where they were found to exist over the $A_2$ and $A_3$ subalgebras of $\Gr(4,n)$ in terms of the functions $f_{A_2}^{--}$ and $f_{A_3}^{--}$. Here, we investigate whether the eight- and nine-particle remainder functions are also constructible over other subalgebras, in terms of the functions that gave rise to nontrivial decompositions of the seven-particle remainder function.
+
+%Decompositions of this type were originally studied in~\cite{Golden:2014xqa}, where they were found to exist over both the $A_2$ and $A_3$ subalgebras of $\Gr(4,n)$ at all multiplicity. However, many further , motivating us to search for novel decompositions of the eight- and nine-particle remainder function. 
+%$\smash{\delta_{2,2}\big( R_n^{(2)}\big)}$
+
+Following~\cite{Golden:2014xqa,Golden:2018gtk}, we refer to the class of polylogarithms that appear in these decompositions of the two-loop remainder function as cluster polylogarithms. More precisely, we define
+\begin{quote}
+{\bf Cluster Polylogarithm}: A polylogarithmic function constitutes a cluster polylogarithm on the cluster algebra $\a$ if
+\vspace{-.2cm}
+ \begin{itemize}
+ \item[(i)] its symbol alphabet can be written entirely in terms of $\a$-coordinates of $\mathcal{A}$, 
+ \item[(ii)] its Lie cobracket can be expressed in terms of Bloch group elements whose arguments are all $\x$-coordinates of $\mathcal{A}$,
+ \item[(iii)] it is invariant under the automorphism group of $\mathcal{A}$, up to a sign.
+ \end{itemize}
+\end{quote}
+The last condition ensures that these functions are well-defined functions on the cluster algebra $\a$, which in particular requires that they return the same value (up to a sign) when evaluated on any of the clusters in $\a$ that share the same directed graph structure.  
+
+A complete classification of the nonclassical cluster polylogarithms that can be defined on the subalgebras of $\Gr(4,n)$ through rank five was carried out in~\cite{Golden:2018gtk}. In principle, this makes searching for a decomposition of $\smash{\delta_{2,2}\big(R_n^{(2)} \big)}$ over these lower-rank subalgebras easy. One merely needs to evaluate the cluster polylogarithms of the appropriate type on the subalgebras of $\Gr(4,n)$, and see if any linear combination of their $\delta_{2,2}$ cobracket components reproduces $\smash{\delta_{2,2}\big(R_n^{(2)} \big)}$. This procedure can be carried out on any combination of the subalgebras of $\Gr(4,n)$, but we here restrict our attention to decompositions that only involve a single type of subalgebra.
+
+Of couse, an exhaustive search for subalgebra decompositions of this type cannot be carried out when $n>7$, due to the infinite nature of the underlying cluster algebras. We circumvent this problem by restricting our attention to the subalgebras of $\Gr(4,n)$ that involve only cluster $\x$-coordinates that also appear in the symbol of $R_n^{(2)}$\!. This can be done (after generating the relevant set of $\x$-coordinates using the method described at the end of section \ref{sec:neg_cluster_coodinate_args}) with the help of the Sklyanin bracket~\cite{Sklyanin:1982tf,GSV}, which allows us compute the number of directed edges between any two cluster $\x$-coordinates when they appear in a cluster together (or alternately tells us that they don't appear together in a cluster). For instance, to search for rank-four subalgebras, we use the Sklyanin bracket to find all sets of four $\x$-coordinates (drawn from the symbol of $R_n^{(2)}$) that can appear together in a cluster of $\Gr(4,n)$. Since we also know how the four nodes associated with these coordinates are connected, we can determine what type of subalgebra they generate, and whether this subalgebra involves cluster coordinates beyond those appearing in the symbol of $R_n^{(2)}$\!.\footnote{While subalgebras involving $\x$-coordinates beyond those appearing in the symbol of $R_n^{(2)}$\! could still give rise to interesting decompositions, we have not found any such decompositions. Thus, we ignore this possibility in the present work.} For more details on how to compute the Sklyanin bracket between pairs of cluster coordinates, see~\cite{Vergu:2015svm,Golden:2019kks}. 
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ c |  c | c | c | c | c | c | c }      
+ \ & $E_6$ & $D_5$ & $A_5$ & $D_4$ & $A_4$ & $A_3$ & $A_2$  \\
+\hline
+$\Gr(4,8)$ & 0 & 0 & 56 & 24 & 496 & 1600 & 2240 \\ \hline
+$\Gr(4,9)$ & 0  & 0 & 135 & 45 & 1197 & 3936 & 5580 
+\end{tabular}
+\end{center} 
+\caption{The number of subalgebras of $\Gr(4,8)$ and $\Gr(4,9)$ of a given type that can be constructed out of the cluster $\x$-coordinates that appear in the symbols of $R_8^{(2)}$ and $R_9^{(2)}$.}
+\label{table:subalgebra_counts}
+\end{table}
+
+Using this procedure, we have generated all subalgebras of $\Gr(4,8)$ and $\Gr(4,9)$ through rank five (as well as all $E_6$ subalgebras) that can be constructed solely out of the $\x$-coordinates that appear in the symbols of $R_8^{(2)}$\! and $R_9^{(2)}$\!. We report the number of subalgebras of each type in Table~\ref{table:subalgebra_counts}. The most striking feature of this table is the nonexistence of any $E_6$ or $D_5$ subalgebras that are constructible out of these $\x$-coordinates. This immediately implies that there are no natural decompositions of $\smash{\delta_{2,2}\big(R_8^{(2)}\big)}$ or $\smash{\delta_{2,2}\big(R_9^{(2)}\big)}$ in terms of either $f_{D_5}^{---}$\! (which the seven-particle remainder can be decomposed into) or in terms of $\smash{\delta_{2,2}\big(R_7^{(2)}\big)}$ itself. However, this still leaves five functions that gave rise to valid decompositions of the seven-particle amplitude (as depicted in Figure~\ref{fig:R27_decompositions}), which can be investigated in eight- and nine-particle kinematics. As mentioned above, two of these functions ($f_{A_2}^{--}$ and $f_{A_3}^{--}$) have already been observed to work at higher $n$~\cite{Golden:2014xqa}. Thus, we are left with three functions ($f_{A_3}^{+-}$, $f_{A_4}^{+-}$, and $f_{A_5}^{--}$) whose utility we investigate for $n>7$.
+
+We first explore the subalgebra constructibility of the eight-particle remainder function. To do so, we construct three separate ans\"atze by evaluating the functions $f_{A_3}^{+-}$, $f_{A_4}^{+-}$, and $f_{A_5}^{--}$ on the $A_3$, $A_4$, and $A_5$ subalgebras of $\Gr(4,8)$ that were found using the methods described above. We then attempt to find $\smash{\delta_{2,2}\big( R_8^{(2)}\big)}$ in the span of the $\delta_{2,2}$ cobracket component of these functions. For instance, to look for a decomposition in terms of the function $f_{A_3}^{-+}$, we see if there exists a rational set of coefficients $c_{ijk}$ such that
+\begin{equation}
+\delta_{2,2}\big( R_8^{(2)} \big) = \!\! \sum_{(x_i \to x_j \to x_k) \subset \Gr(4,8)} \!\!\! c_{ijk} ~\delta_{2,2}\big( f_{A_3}^{--} (x_i \to x_j \to x_k)\big) \, ,
+\end{equation}
+where the sum is over all of the $A_3$ subalgebras of  $\Gr(4,8)$ reported in Table~\ref{table:subalgebra_counts}, and where each of these $A_3$ subalgebras is labelled by one of their constituent clusters $x_i \to x_j \to x_k$. Proceeding in this way, we find novel decompositions of the eight-particle remainder function in terms of both $\smash{f_{A_3}^{+-}}$ and $\smash{f_{A_5}^{--}}$, but no decomposition in terms of $\smash{f_{A_4}^{+-}}$.
+
+To describe these new $A_3$ and $A_5$ decompositions, let us first recall some facts about the automorphism group of the $A_n$ cluster algebra. This group is given by the dihedral group of order $2(3+n)$, whose generators can be chosen to be
+\begin{equation} \label{eq:def_An_cycle}
+  \sigma_{A_n}:\quad x_{k<n} \to \frac{x_{k+1}(1+x_{1,\ldots,k-1})}{1+x_{1,\ldots,k+1}},~~x_n\to\frac{1+x_{1,\ldots,n-1}}{\prod_{i=1}^n x_i} \, 
+\end{equation}
+and
+\begin{equation} \label{eq:def_An_flip}
+  \tau_{A_n}: \quad x_1 \to \frac{1}{x_n},~~x_2 \to \frac{1}{x_{n-1}},~\ldots~, \quad x_n\to\frac{1}{x_1} \, ,
+\end{equation}
+which have lengths $n+3$ and $2$, respectively. Having introduced these operators, we can now be more clear about the meaning of the notation for the $A_n$ functions we have thus far encountered; the superscripts $s_\sigma$ and $s_\tau$ in $f_{A_n}^{s_\sigma s_\tau}$ describe the overall sign picked up by this function under the action of $\sigma_{A_n}$ and $\tau_{A_n}$, respectively. We refer the reader to~\cite{Golden:2018gtk} for more details on this topic.
+
+The functions $f_{A_3}^{+-}$ and $f_{A_5}^{--}$ can be easily defined in terms of $f_{A_2}^{--}$ using the action of these automorphism generators. The first is given by 
+\begin{align}
+f_{A_3}^{+-}(x_1\to x_2\to x_3) &= \sum_{i=1}^6 \sigma_{A_3}^i\big(f_{A_2}^{--}(x_1\to x_2)\big),
+\end{align}
+where $\sigma_{A_3}^i$ denotes applying the operator $\sigma_{A_3}$ $i$ times. The decomposition of $\smash{\delta_{2,2}\big(R_8^{(2)}\big)}$ in terms of $f_{A_3}^{+-}$ turns out to be unique. Moreover, the $f_{A_3}^{+-}$ functions in this decomposition come in just the right linear combinations to combine into $f_{A_5}^{--}$ functions, namely the combinations
+\begin{equation}
+	f_{A_3\subset A_5}^{--} = - \frac{1}{8}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right) \, ,
+\end{equation}
+where we have used the notation
+\begin{equation}
+\sum_{A_5^{--}} \equiv \sum_{i=0}^7 \sum_{j=0}^1 (-1)^{i+j} \ \sigma_{A_5}^i \circ \tau_{A_5}^j \big(f \big)
+\end{equation}
+to denote the the totally antisymmetric sum over all dihedral images of the $A_5$ cluster algebra. Note that this is just one version of the $A_5$ function encountered in seven-particle kinematics, where a version that could be decomposed into $f_{A_4}^{+-}$ was also found. 
+
+{\color{red} is the $f_{A_3}^{--} $ decomposition unique?}
+
+In terms of $f_{A_3\subset A_5}^{--}$, we find that $R^{(2)}_8$ can be decomposed as
+\begin{align}\label{eq:r28A5}
+\!\!\!\!\!\!	\delta_{2,2} \big(R^{(2)}_8\big) &= \delta_{2,2} \bigg(\frac14 f_{A_3\subset A_5}^{--}\left(\tfrac{\langle 1238\rangle  \langle 1256\rangle }{\langle1235\rangle  \langle 1268\rangle }\! 
+    \to \! \tfrac{\langle 1236 \rangle \langle 2345 \rangle}{\langle 1234 \rangle \langle 2356 \rangle} \! 
+    \to \! \tfrac{\langle 1235 \rangle \langle 3456 \rangle}{\langle 1356 \rangle \langle 234 5\rangle} \! 
+    \to \! \tfrac{\langle 1567 \rangle \langle 2356 \rangle}{\langle 1256 \rangle \langle 3567 \rangle} \! 
+    \to \! \tfrac{\langle 1356 \rangle \langle 4567 \rangle}{\langle 1567 \rangle \langle 3456 \rangle}\right) \nonumber \\
+   &+ \frac12 f_{A_3\subset A_5}^{--}\left(\tfrac{\langle 1238 \rangle \langle 2345 \rangle}{\langle 1234 \rangle \langle 2358 \rangle} \! 
+    \to \! \tfrac{- \langle 1235 \rangle \langle 4568 \rangle}{\langle 5(18)(23)(46) \rangle} \! 
+    \to \!\tfrac{\langle 1568 \rangle \langle 2358 \rangle \langle 3456 \rangle}{\langle 1358 \rangle \langle 2356 \rangle \langle 4568 \rangle} \! 
+    \to \!\tfrac{\langle 5(18)(23)(46) \rangle}{- \langle 1258 \rangle \langle 3456 \rangle} \! 
+    \to \!\tfrac{\langle 1278 \rangle \langle 1358 \rangle}{\langle 1238 \rangle \langle 1578 \rangle}\right) \bigg) \nonumber \\
+   &\qquad \qquad +\text{ dihedral} + \text{conjugate}
+\end{align}
+The relative factor of two between these contributions stems from the fact that the $A_5$ subalgebra appearing in the first term only generates an eight-orbit under the action of the $\Gr(4,8)$ dihedral group (and thus gets counted twice), while the $A_5$ subalgebra in the second term forms a full sixteen-orbit. 
+
+
+\vspace{2cm}
+
+
+
+
+There are 56 good $A_5$s in $\Gr(4,8)$. They are generated by
+\begin{align}
+	&\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
+   1235\rangle  \langle 1268\rangle }\to \frac{\langle
+   1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
+    \langle 2356\rangle }\to \frac{\langle 1235\rangle 
+   \langle 3456\rangle }{\langle 1356\rangle  \langle
+   2345\rangle }\to \frac{\langle 1567\rangle  \langle
+   2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
+   }\to \frac{\langle 1356\rangle  \langle 4567\rangle
+   }{\langle 1567\rangle  \langle 3456\rangle }\\
+   &\frac{\langle 1238\rangle  \langle 2345\rangle
+   }{\langle 1234\rangle  \langle 2358\rangle
+   }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
+   }{\langle 5(18)(23)(46)\rangle }\to\frac{\langle
+   1568\rangle  \langle 2358\rangle  \langle 3456\rangle
+   }{\langle 1358\rangle  \langle 2356\rangle  \langle
+   4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
+   }{\langle 1258\rangle  \langle 3456\rangle
+   }\to\frac{\langle 1278\rangle  \langle 1358\rangle
+   }{\langle 1238\rangle  \langle 1578\rangle }\\
+   &\frac{\langle 1234\rangle  \langle 3456\rangle
+   }{\langle 1346\rangle  \langle 2345\rangle
+   }\to\frac{\langle 1348\rangle  \langle 2346\rangle
+   }{\langle 1234\rangle  \langle 3468\rangle
+   }\to-\frac{\langle 1346\rangle  \langle 5678\rangle
+   }{\langle 6(18)(34)(57)\rangle }\to-\frac{\langle
+   1678\rangle  \langle 3468\rangle  \langle 34(128)\cap
+   (567)\rangle }{\langle 1268\rangle  \langle
+   1348\rangle  \langle 3467\rangle  \langle 5678\rangle
+   }\to\frac{\langle 1278\rangle  \langle
+   6(18)(34)(57)\rangle }{\langle 1678\rangle  \langle
+   34(128)\cap (567)\rangle }\\
+   &\frac{\langle 1234\rangle  \langle 1278\rangle
+   }{\langle 1238\rangle  \langle 1247\rangle
+   }\to-\frac{\langle 1248\rangle  \langle 3457\rangle
+   }{\langle 4(12)(35)(78)\rangle }\to-\frac{\langle
+   1247\rangle  \langle 12(345)\cap (678)\rangle
+   }{\langle 1278\rangle  \langle 4(12)(35)(67)\rangle
+   }\to-\frac{\langle 4567\rangle  \langle
+   4(12)(35)(78)\rangle }{\langle 1245\rangle  \langle
+   3457\rangle  \langle 4678\rangle }\to-\frac{\langle
+   4(12)(35)(67)\rangle }{\langle 1234\rangle  \langle
+   4567\rangle }
+\end{align}
+The first $A_5$ lives in an eight-orbit of the $\Gr(4,8)$ dihedral+parity, while the other three live in sixteen-orbits. Also note that in the first $A_5$, 7 and 8 never appear together in a $\langle\rangle$, and so the $8\to7$ collinear limit is smooth for this $A_5$. The second $A_5$ also features a smooth collinear limit, as 
+\begin{equation}
+	\frac{\langle 1278\rangle  \langle 1358\rangle
+   }{\langle 1238\rangle  \langle 1578\rangle } \xrightarrow{8\to7} \frac{\langle 1267\rangle  \langle 1357\rangle
+   }{\langle 1237\rangle  \langle 1567\rangle }.
+\end{equation}
+Neither of the latter 2 $A_5$s behave smoothly in the collinear limit (and neither do any of their dihedral+parity images).
+
+
+%Note: there are no good $A_6$s in $\Gr(4,8)$.  
+%the $A_5$ function for $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Complete Polylogarithmic Representations of \pdfeq{R_8^{(2)}} and \pdfeq{R_9^{(2)}}}
+\label{sec:r28_and_r29}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we complete the construction of $R_8^{(2)}$\! and $R_9^{(2)}$\! as complete polylogarithmic functions, starting from the linear combinations of $f_{A_3}^{+-}$ functions that were found to reproduce their $\delta_{2,2}$ cobracket components in the last section. This is done by isolating the different functional components present in their symbols with the use of the projection operators described in section~\ref{sec:lie_cobracket}, and separately fitting these components to ans\"atze of classical polylogarithms with negative cluster coordinate arguments. The contributions proportional to $\zeta_2$ can also be determined using knowledge of the differentials of these functions~\cite{Golden:2013lha}. Finally, we determine the contribution proportional to $\zeta_4$ by evaluating each function in the collinear limit and comparing to lower-point results.
+
+%then express all remaining contributions to the differentials of these functions in terms of a basis of classical polylogarithms with negative cluster coordinate arguments. Both of these steps are carried out with the help of the cobracket and projection operators described in section~\ref{sec:lie_cobracket}, which allow us to fit the different functional components of these differentials separately, greatly reducing the computational load. Finally, we determine the integration constants by evaluating these functions in the collinear limit and comparing to lower-point results.
+
+%\subsection{Subalgebra Constructibility of the Nonclassical Contributions}
+
+\subsection{Classical Contributions}
+
+Using the list of
+
+\subsection{Collinear Limits}
+\label{sec:collinear_limits}
+
+We expect there to be a final contribution to $R_8^{(2)}$ and $R_9^{(2)}$ that is proportional to $\zeta_4$. Its value can be determined analytically by computing the difference between the collinear limit of our provisional functions and the remainder function involving one fewer leg, since
+\begin{equation}
+R_n \xrightarrow[]{p_i || p_{i+1}} R_{n-1} \, .
+\end{equation} 
+Thus, we first fix the $\zeta_4$ contribution to $R_8^{(2)}$\! by comparing its collinear limit to the known value of $R_7^{(2)}$\!~\cite{Golden:2014xqf}, after which we can similarly fix the $\zeta_4$ contribution to $R_9^{(2)}$\!. 
+
+
+Following~\cite{CaronHuot:2011ky}, we parametrize the $R_n^{(2)} \to R_{n-1}^{(2)}$ limit in terms of momentum twistors by
+\begin{equation} \label{eq:collinear_parametrization}
+Z_n \to Z_{n-1} - \epsilon (\alpha Z_1 + \beta Z_{n-2}) + \epsilon^2 Z_2 \, ,
+\end{equation}
+where $\epsilon \to 0$ and $\alpha$ and $\beta$ are finite and positive. This parametrization keeps us inside the positive region, and thus allows us to avoid crossing any branch cuts. Since the $(n{-}1)$-particle amplitude depends on three fewer kinematic degrees of freedom than the $n$-particle amplitude, all three parameters $\epsilon$, $\alpha$, and $\beta$ must drop out in the strict $\epsilon \to 0$ limit. This provides an important cross-check on the functional form of our answers.
+
+To take the collinear limit of our current remainder functions, we substitute the parametrization of $Z_n$ in~\eqref{eq:collinear_parametrization} into all $\x$-coordinates and send $\epsilon \to 0$. This gives rise to a number of polylogarithms with vanishing or divergent arguments. In the case of classical polylogarithms, these arguments can be dealt with using the fact that $\Li_k(0) = 0$, or using the expansions
+\begin{align}
+\Li_2(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0} - \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2  - \zeta_2 \, ,\\
+\Li_3(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  \frac{1}{6} \big(\log(\epsilon) - \log (x) \big)^3 + 
+\big(\log(\epsilon) - \log (x) \big) \zeta_2   \, ,\\
+\Li_4(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  -\frac{1}{24} \big(\log(\epsilon) - \log (x) \big)^4 - 
+  \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2 \zeta_2 - \frac{7}{4} \zeta_4  \, ,
+\end{align} 
+which are valid for positive $x$ and $\epsilon$. The only linear combinations of nonclassical polylogarithms that appear in our functions are $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$, as seen in the first line of~\eqref{def:a2-function}. This function vanishes when either of the arguments $x$ or $y$ goes to zero, even if the other argument diverges at the same rate. As it turns out, we never encounter instances of $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$ in which one of the arguments diverges while the other remains finite (or itself diverges), so we never need to expand these functions around infinity. 
+
+In order to see the dependence on $\epsilon$, $\alpha$, and $\beta$ drop out in this limit, we must take into account a large number of nontrivial polylogarithmic identities such as
+\begin{align}
+\Li_{2, 2}(-x, -1/x) - \Li_{1, 3}(-x, -1/x) &=  \Li_{2, 2}(-1/x, -x) - \Li_{1, 3}(-1/x, -x)  \nonumber \\
+&\quad  + 10 \Li_4(-x)  - \frac{1}{2} \Li_2(-x) \left( \log(x)^2 + 14 \zeta_2 \right)   \\ &\quad  - \frac{1}{6} \Li_1(- x) \log(x) \left( \log(x)^2 + 6 \zeta_2 \right) \, .   \nonumber
+\end{align}
+For this purpose, we find it convenient to evaluate all four-brackets on an explicit momentum twister parameterization, whereupon we can more express everything in a fibration basis~\cite{Brown:2009qja}.
+
+
+We find it most convenient to carry the required comparison with the use of explicit momentum twister parameterizations. At eight points, we use the parametrization
+\begin{equation} 
+Z_{8} = 
+\begingroup
+\setlength\arraycolsep{3pt}
+\begin{pmatrix} 
+1 & 0 & 0 & 0 \\
+1 + f_{1, 2, 3} & 1 & 0 & 0 \\
+f_{1} (1 + f_{2,3,4,5} + f_2 f_{4}) & 1 + f_{4, 5, 6} & 1 & 0 \\ 
+f_{1}f_{2}f_{4} (1 + f_{3,5,7}) & f_4 (1+ f_{5,6,7,8} + f_5 f_7) & 1+ f_{7,8,9} & 1 \\
+f_{1}f_{2}f_{3}f_{4}f_{5}f_{7} & f_{4}f_{5}f_{7}(1+f_{6,8}) & f_7(1+f_{8,9}) & 1 \\ 
+0 & f_{4}f_{5}f_{6}f_{7}f_{8} & f_{7}f_{8}(1+f_9) & 1 \\ 
+0 & 0 & f_{7}f_{8}f_{9} & 1 \\ 
+0 & 0 & 0 & 1
+\end{pmatrix}^T \! ,
+\endgroup 
+\end{equation}
+where we have adopted the compound notation 
+\begin{equation} \label{eq:compound_x_def}
+	f_{i_1,\ldots, i_k} \equiv \sum_{a=1}^k \prod_{b=1}^a f_{i_b} = f_{i_1}+f_{i_1}f_{i_2} + \ldots + f_{i_1}\cdots f_{i_k}\, .
+\end{equation}
+The $p_8 || p_7$ collinear limit of $Z_8$ is taken by sending $f_7, f_8, f_9 \to 0$, whereupon the first seven columns limit to   
+\begin{equation} 
+Z_{7} = 
+\begingroup
+\setlength\arraycolsep{3pt}
+\begin{pmatrix} 
+1 & 0 & 0 & 0 \\
+1 + f_{1, 2, 3} & 1 & 0 & 0 \\
+f_{1} (1 + f_{2,3,4,5} + f_2 f_{4}) & 1 + f_{4, 5, 6} & 1 & 0 \\ 
+f_{1}f_{2}f_{4} (1 + f_{3,5,7}) & f_4 (1+ f_{5,6,7,8} + f_5 f_7) & 1+ f_{7,8,9} & 1 \\
+f_{1}f_{2}f_{3}f_{4}f_{5}f_{7} & f_{4}f_{5}f_{7}(1+f_{6,8}) & f_7(1+f_{8,9}) & 1 \\ 
+0 & f_{4}f_{5}f_{6}f_{7}f_{8} & f_{7}f_{8}(1+f_9) & 1 \\ 
+0 & 0 & 0 & 1
+\end{pmatrix}^T \! .
+\endgroup 
+\end{equation}
+At nine points, we adopt the parametrization
+
+\centerline{
+  \begin{minipage}{1.25\textwidth}
+\begin{equation} 
+Z_{9} = 
+\begingroup
+\setlength\arraycolsep{3pt}
+\begin{pmatrix} 
+ 1 & 0 & 0 & 0 \\
+ 1 {+} f_{1, 2, 3, 12} & 1 & 0 & 0 \\
+ f_{1} (1 {+} f_{2,3,4,5} {+} f_2 (f_4 {+} f_3 f_{12} (1 {+} f_{4,5,6}))) & 1 {+} f_{4,5,6,11} & 1 & 0 \\ 
+ f_{1}f_{2}f_{4}(1 {+} f_{3,5,7} {+} f_{3}f_{12}(1 {+} f_5 f_7 {+} f_{5,6,7,8})  ) & f_{4}(1 {+} f_{5,6,7,8} {+} f_{5}(f_{7} {+} f_6 f_{11} (1 {+} f_{7,8,9}))) & 1 {+} f_{7,8,9,10} & 1 \\ 
+ f_{1}f_{2}f_{3}f_{4}f_{5}f_{7}(1 {+} f_{12,6,8}) & f_{4}f_{5}f_{7}(1 {+} f_{6,8} {+} f_{6}f_{11}(1{+}f_{8,9})) & f_{7}(1 {+} f_{8,9,10}) & 1 \\ 
+ f_{1}f_{2}f_{3}f_{4}f_{5}f_{6}f_{7}f_{8}f_{12} & f_{4}f_{5}f_{6}f_{7}f_{8}(1 {+} f_{11, 9}) & f_{7}f_{8}(1 {+} f_{9,10}) & 1 \\ 
+ 0 & f_{4}f_{5}f_{6}f_{7}f_{8}f_{9}f_{11} & f_{7}f_{8}f_{9}(1 {+} f_{10}) & 1  \\ 
+ 0 & 0 & f_{7}f_{8}f_{9}f_{10} & 1 \\  
+ 0 & 0 & 0 & 1
+\end{pmatrix}^T \!.
+\endgroup 
+\end{equation}
+  \end{minipage}
+}
+% 
+\ \\[.1cm]
+\noindent Similar to the eight-particle momentum-twistor matrix, the $p_9 || p_8$ collinear limit is taken by sending $f_{10}, f_{11}, f_{12} \to 0$, which sets the first eight columns of $Z_9$ to $Z_8$. Working in terms of these explicit parameterizations allows us to more easily reduce the collinear limit of $R_n^{(2)}$\! to the same basis of polylogarithms as $R_{n-1}^{(2)}$, via fibration~\cite{Brown:2009qja}. 
+
+[Paragraph on limits of specific polylogs]
+
+[cite hyperint/polylog tools]
+
+
+\section{scratch}
+
+
+
+We note that $A_n$ functions all fit in the basis
+\begin{gather}
+\left\{G_{\vec{\hspace{.0cm} w}}(x_1) \Big| w_i \in \left\{0, - 1, \frac{-1}{1 + x_2}, \frac{-1}{1 + x_{2,3}}, \dots , \frac{-1}{1 + x_{2,\dots,n}} \right\} \right\} \nonumber \\
+\left\{G_{\vec{\hspace{.0cm} w}}(x_2) \Big| w_i \in \left\{0, - 1, \frac{-1}{1 + x_3}, \dots , \frac{-1}{1 + x_{3,\dots,n}} \right\} \right\} \\
+\vdots \nonumber \\ 
+\left\{G_{\vec{\hspace{.0cm} w}}(x_n) \Big| w_i \in \left\{0, - 1 \right\} \right\} \nonumber
+\end{gather}
+in the notation introduced later...
+
+The $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit. 
+\begin{equation}\label{eq:r28A5}
+\begin{split}
+	&R^{(2)}_8 = \frac14 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
+   1235\rangle  \langle 1268\rangle }\to \frac{\langle
+   1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
+    \langle 2356\rangle }\to \frac{\langle 1235\rangle 
+   \langle 3456\rangle }{\langle 1356\rangle  \langle
+   2345\rangle }\to \frac{\langle 1567\rangle  \langle
+   2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
+   }\to \frac{\langle 1356\rangle  \langle 4567\rangle
+   }{\langle 1567\rangle  \langle 3456\rangle }\right)+\\
+   &\frac12 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 2345\rangle
+   }{\langle 1234\rangle  \langle 2358\rangle
+   }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
+   }{\langle 5(18)(23)(46)\rangle }\to\frac{\langle
+   1568\rangle  \langle 2358\rangle  \langle 3456\rangle
+   }{\langle 1358\rangle  \langle 2356\rangle  \langle
+   4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
+   }{\langle 1258\rangle  \langle 3456\rangle
+   }\to\frac{\langle 1278\rangle  \langle 1358\rangle
+   }{\langle 1238\rangle  \langle 1578\rangle }\right)\\
+   &+\text{ dihedral} + \text{conjugate}
+\end{split}
+\end{equation}
+Again the difference between the overall factors of the two terms is simply a result of symmetry. 
+
+Let me briefly describe the collinear limit for this representation. As discussed previously, the $A_5$s explicitly written in (\ref{eq:r28A5}) behave smoothly under the collinear limit, however not all of their dihedral+parity images do as well. In the case of the first $A_5$, which has 8 images under dihedral+parity, 4 of the $f_{A_5}$s vanish, while the remaining 3 are well-defined. For the second $A_5$, which has 16 images under dihedral+parity, 2 of the $f_{A_5}$s have ``bad'' collinear limits but they cancel off each other in the sum. Out of the remaining 14, 4 have good collinear limits and 10 vanish identically. Therefore, when we add up the contributions from both $A_5$s + their images, we end up with 7 terms -- these correspond to the 7 $A_5$s in $\Gr(4,7)$. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results in Special Kinematics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The eight-point amplitude is a function of twelve multiplicatively-independent cross-ratios
+\begin{align}
+u_i = u_{i,i+3}, \qquad v_i = u_{i,i+4} \, ,
+\end{align}
+where the $u_i$ variables form an eight-orbit and the $v_i$ variables form a four-orbit under the dihedral group. Note that $u_i = u_{i,i+3}$ and $v_i =  u_{i,i+4}$ in the notation of~\cite{Anastasiou:2009kna}. These cross-ratios are subject to a number of Gram determinant constraints, which leave only nine of them algebraically independent. 
+
+%\begin{align}
+%u_{ij}  = \frac{x_{ij+1}^2 x_{x+1 j}^2}{x_{ij}^2 x_{i+1j+1}^2}\, .
+%\end{align}
+
+
+We don't get any numeric checks from~\cite{Anastasiou:2009kna} because none of the points they consider in eight-particle kinematics satisfy the Gram determinant constraints (unless we can rewrite in terms of cross-ratios; maybe then we can check?).
+
+We would also like to compare to the two-dimensional regular octagon kinematics studied in~\cite{Alday:2009yn,Alday:2009ga}. However, it is far outside the positive region, and we haven't figured out the analytic continuations.
+
+Lance's three-parameter surface
+
+Plot on symmetric line?
+
+Numeric values on symmetric points
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The nonplanar two-loop MHV amplitudes have also been given in terms of a basis of just six Feynman integrals~\cite{Bourjaily:2019iqr,Bourjaily:2019gqu} using the techniques described in~\cite{Bourjaily:2017wjl,Bourjaily:2020qca}. It would be excellent to be evaluate these integrals and study the analytic properties of these amplitudes to all multiplicity. 
+
+
+As such, there is reason to hope that some more general combinatorial structure might encode the logarithmic branch cuts of this theory's amplitudes to all orders.  
+
+\iffalse
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Steinmann Relations in Eight-Particle Kinematics [may delete]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Dual-Conformal Remainder Functions in Eight-Particle Kinematics}
+
+\draftnote{Paragraph introducing the BDS ansatz}
+
+When the number of particles $n$ is not a multiple of four, a unique BDS-like ansatz can be defined that depends on just two-particle Mandelstam invariants. That is, there exists just a single decomposition of the BDS ansatz into
+\begin{equation}
+{\cal A}_n^{\text{BDS}}(\{\mand{i,\dots,i+j}\}) = {\cal A}_n^{\text{BDS-like}}(\{\mand{i,i+1}\}) \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4} Y_{n}(\{u_i\})  \right], \quad n\neq4K,
+\end{equation}
+such that the kinematic dependence of $A^{\text{BDS-like}}_{n}$ involves only two-particle Mandelstam invariants while $Y_{n}$ depends only on dual-conformal-invariant cross ratios~\cite{Yang:2010az}. %In particular, at one loop this relation becomes
+%\begin{equation}
+%A^{\text{BDS},(1)}_{n} = A^{\text{BDS-like},(1)}_{n}(\{\mand{i,i+1}\}) + Y_{n}(\{u_i\}), \quad n\neq4K,
+%\end{equation}
+When $n$ is a multiple of four, no decomposition of this type exists, and we are forced to consider multiple BDS-like ans\"atze if we want to transparently expose the full space of Steinmann relations between higher-particle Mandelstam invariants. 
+
+In eight-particle kinematics, there are still two natural BDS-like normalization choices we might consider. Namely, we can let our BDS-like ansatz depend on either three- or four-particle Mandelstam invariants in addition to two-particle invariants~\cite{Dixon:2016nkn}. In this spirit, let us define a pair of BDS-like ans\"atze, respectively satisfying
+\begin{align}
+{\cal A}_8^{\text{BDS}}(\{\mand{i,\dots,i+j}\}) &= {}^4 {\cal A}_8^{\text{BDS-like}}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2,i+3}\}) \exp \left[ -\frac{\Gamma_{\text{cusp}}}{4}\ {}^4 Y_{8}(\{u_i\})  \right], \label{bds_like_4} \\
+%{\cal A}^{\text{BDS},(1)}_{n} &= {}^3 {\cal A}^{\text{BDS-like},(1)}_{8}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2,i+3}\}) + {}^3 Y_{8}(\{u_i\}), \\
+{\cal A}_8^{\text{BDS}}(\{\mand{i,\dots,i+j}\}) &= {}^3 {\cal A}_8^{\text{BDS-like}}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2}\}) \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4}\ {}^3 Y_{8}(\{u_i\})  \right]. \label{bds_like_3}
+%{\cal A}^{\text{BDS},(1)}_{n} &= {}^4 {\cal A}^{\text{BDS-like},(1)}_{8}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2}\}) + {}^4 Y_{8}(\{u_i\}). 
+\end{align}
+The functions ${}^4 A^{\text{BDS-like}}_{8}$ and ${}^3 A^{\text{BDS-like}}_{8}$ are not uniquely fixed by these decomposition choices; each admits a family of Bose-symmetric (and a larger family of non-Bose-symmetric) solutions. However, any choice for ${}^4 A^{\text{BDS-like}}_{8}$ or ${}^3 A^{\text{BDS-like}}_{8}$ consistent with eqns.~\eqref{bds_like_4} or \eqref{bds_like_3} gives rise to a BDS-like normalized amplitude that manifestly exhibits a subset of the Steinmann relations. In particular, defining
+\begin{equation}
+{}^X {\cal E}_8 \equiv \frac{{\cal A}_8^{\text{MHV}}}{{}^X {\cal A}^{\text{BDS-like}}_{8}} = \exp\left[ R_8 - \frac{\Gamma_{\text{cusp}}}{4} \  {}^X Y_8 \right] \label{BDS_like_amplitude}
+\end{equation}
+for any label $X$, we expect that ${}^4 {\cal E}_8$ should satisfy Steinmann relations between all partially overlapping pairs of three-particle invariants, while ${}^3 {\cal E}_8$ should satisfy Steinmann relations between all partially overlapping pairs of four-particle invariants. That is, ${}^4 {\cal E}_8$ is expected to satisfy the relations
+\begin{equation}
+\begin{split}
+\text{Disc}_{\mand{j,j+1,j+2}}\left[\text{Disc}_{\mand{i,i+1,i+2}} \big({}^4 {\cal E}_8 \big) \right] &= 0, \quad  j \in \{ i \pm 2, i \pm 1 \}, \label{stein33}
+\end{split}
+\end{equation}
+while ${}^3 {\cal E}_8$ is expected to satisfy
+\begin{equation}
+\begin{split}
+\text{Disc}_{\mand{j,j+1,j+2,j+3}}\left[\text{Disc}_{\mand{i,i+1,i+2,i+3}} \big({}^3 {\cal E}_8 \big) \right] &= 0, \quad j \in \{ i \pm 3, i \pm 2, i \pm 1 \}.  \label{stein44}
+\end{split}
+\end{equation}
+Due to momentum conservation in eight-point kinematics, the six relations in~\eqref{stein44} corresponding to a given $i$ only result in three independent constraints; however, these relations will be independent for larger $n$.
+
+Although the functions ${}^4 Y_{8}$ and ${}^3 Y_{8}$ are not unique, their dilogarithmic part is completely determined by the decompositions~\eqref{bds_like_4} and~\eqref{bds_like_3}. They can be expressed as classical polylogarithms with negative arguments drawn from \begin{align}
+\mathfrak{X}_{i,8} &= \frac{\langle i,i+1,i+2,i+4 \rangle \langle i+1,i+3,i+4,i+5\rangle}{\langle i,i+1,i+4,i+5 \rangle \langle i+1,i+2,i+3,i+4 \rangle}, \\
+\mathfrak{X}_{i,4} &= \frac{\langle i,i+1,i+4,i+7 \rangle \langle i,i+3,i+4,i+5 \rangle}{\langle i,i+1,i+3,i+4 \rangle \langle i,i+4,i+5,i+7 \rangle},
+\end{align}
+where $\mathfrak{X}_{i,8}$ and $\mathfrak{X}_{i,4}$ are ${\cal X}$-coordinates in Gr(4,8) that respectively carve out an eight-orbit and a four-orbit of the dihedral group. In these variables the $\text{Li}_1$ parts of these functions can be diagonalized, giving rise to the Bose-symmetric representations
+\begin{align}
+{}^4 Y_8 &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac14 \text{Li}_1\left(- \mathfrak{X}_{i,4} \right)^2 \bigg], \\
+{}^3 Y_8 &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac12 \text{Li}_1\left(- \mathfrak{X}_{i,8} \right)^2 \bigg].
+\end{align}
+We emphasize that this is an aesthetically motivated choice; there may exist other more physically (or mathematically) inspired choices that endow ${}^4 {\cal E}_8$ or ${}^3 {\cal E}_8$ with additional desirable properties. Regardless, it can be checked that any realization of ${}^4 Y_8$ or ${}^3 Y_8$ that respects Bose symmetry gives rise to a BDS-like normalized amplitude that satisfies either~\eqref{stein33} or~\eqref{stein44}, while violating all other Steinmann relations (all at the level of the symbol). 
+
+If we want to recover more Steinmann relations, such as those holding between partially overlapping three- and four-particle invariants, we can instead define BDS-like ans\"atze that depend only on subsets of the three- or four-particle invariants. In particular, it proves possible to decompose the BDS ansatz into either
+\begin{align}
+{\cal A}_8^{\text{BDS}}(\{\mand{i,\dots,i+k}\}) &= {}^{{\{a,b\}}_4} {\cal A}_8^{\text{BDS-like}}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2,i+3} | i \in \{a,b\} \})  \label{bds_like_4q} \\ 
+&\hspace{5.6cm} \times \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4}\ {}^{{\{a,b\}}_4} Y_{8}(\{u_i\})  \right], \nonumber  \\
+{\cal A}_8^{\text{BDS}}(\{\mand{i,\dots,i+k}\}) &= {}^{{\{a,b\}}_3} {\cal A}_8^{\text{BDS-like}}(\{\mand{i,i+1}\}, \{\mand{i,i+1,i+2} | i \in \{a,b\} \})  \label{bds_like_3q} \\ 
+&\hspace{5.6cm} \times \exp \left[ - \frac{\Gamma_{\text{cusp}}}{4}\ {}^{{\{a,b\}}_3} Y_{8}(\{u_i\})  \right], \nonumber 
+\end{align}
+for any $\{a,b\}$ such that $b-a$ is odd.\footnote{The difference $b-a$ should be computed mod 8 in the case of ${}^{{\{a,b\}}_3} {\cal A}_8^{\text{BDS-like}}$ since $\mand{i+8,\dots,i+k+8} = \mand{i,\dots,i+k}$ in general, but should be computed mod 4 in the case of ${}^{{\{a,b\}}_4} {\cal A}_8^{\text{BDS-like}}$ since momentum conservation implies the stronger identity $\mand{i+4,i+5,i+6,i+7} = \mand{i,i+1,i+2,i+3}$ between four-particle invariants.} Any solution to~\eqref{bds_like_4q} defines a BDS-like normalized amplitude $\EfourJ$ that respects the Steinmann relations
+\begin{equation}
+\begin{rcases}
+\text{Disc}_{\mand{j,j+1,j+2}}\left[\text{Disc}_{\mand{i,i+1,i+2,i+3}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \hspace{.3cm} \\
+\text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{j,j+1,j+2}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \label{stein34}
+\end{rcases} \quad 
+\begin{gathered} i \notin \{a,b\}, \\ j \in \{i-2, i-1, i+2, i+3\}, \end{gathered}
+\end{equation}
+in addition to all the Steinmann relations satisfied by ${}^4 {\cal E}_8$ as given in eq.~\eqref{stein33}. Moreover, it will respect many of the Steinmann relations satisfied by ${}^3 {\cal E}_8$---namely, those that don't involve a discontinuity in either $\mand{a,a+1,a+2,a+3}$ or $\mand{b,b+1,b+2,b+3}$. Similarly, any solution to~\eqref{bds_like_3q} defines an amplitude $\EthreeJ$ that respects
+\begin{equation}
+\begin{rcases}
+\text{Disc}_{\mand{i,i+1,i+2}}\left[\text{Disc}_{\mand{j,j+1,j+2,j+3}} \big(\EthreeJ \big) \right] \! \! \! \! &= 0, \hspace{.3cm} \\
+\text{Disc}_{\mand{j,j+1,j+2,j+3}}\left[\text{Disc}_{\mand{i,i+1,i+2}} \big(\EthreeJ \big) \right] \! \! \! \! &= 0, \label{stein43}
+\end{rcases} \quad 
+\begin{gathered} i \notin \{a,b\}, \\ j \in \{i-3, i-2, i+1, i+2\}, \end{gathered}
+\end{equation}
+%\begin{equation}
+%\begin{rcases}
+%\text{Disc}_{\mand{i+2,i+3,i+4}}\left[\text{Disc}_{\mand{i,i+1,i+2,i+3}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \hspace{.3cm} \\
+%\text{Disc}_{\mand{i+3,i+4,i+5}}\left[\text{Disc}_{\mand{i,i+1,i+2,i+3}} \big(\EfourJ \big) \right] \! \! \! \! &= 0,  \\
+%\hspace{0.324cm} \text{Disc}_{\mand{i-1,i,i+1}}\left[\text{Disc}_{\mand{i,i+1,i+2,i+3}} \big(\EfourJ \big) \right] \! \! \! \! &= 0,  \\
+%\hspace{0.324cm} \text{Disc}_{\mand{i-2,i-1,i}}\left[\text{Disc}_{\mand{i,i+1,i+2,i+3}} \big(\EfourJ \big) \right] \! \! \! \! &= 0,  \\
+%\text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{i+2,i+3,i+4}} \big(\EfourJ \big) \right] \! \! \! \! &= 0,  \\
+%\text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{i+3,i+4,i+5}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \\
+%\hspace{0.324cm} \text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{i-1,i,i+1}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \\
+%\hspace{0.324cm} \text{Disc}_{\mand{i,i+1,i+2,i+3}}\left[\text{Disc}_{\mand{i-2,i-1,i}} \big(\EfourJ \big) \right] \! \! \! \! &= 0, \label{stein34}
+%\end{rcases} i \notin \{a,b\}
+%\end{equation}
+as well as all the Steinmann relations satisfied by ${}^3 {\cal E}_8$ and described in eq.~\eqref{stein44}, and all the relations specified in eq.~\eqref{stein33} that don't involve a discontinuity in either $\mand{a,a+1,a+2}$ or $\mand{b,b+1,b+2}$. Clearly it is not possible for BDS-like amplitudes of either type to be Bose-symmetric; however, it proves possible to construct solutions to~\eqref{bds_like_3q} such that $\EthreeJ$ respects the dihedral flip $s_{i,\dots,i+k} \rightarrow s_{9-i,\dots,9-i-k}$ when this mapping is oriented to map $\mand{a,a+1,a+2}$ and $\mand{b,b+1,b+2}$ between each other. We present specific realizations of ${}^{{\{1,2\}}_4} Y_{8}$ and ${}^{{\{7,8\}}_3} Y_{8}$ in appendix~\ref{appendix:bds_like}. As with the Bose-symmetric normalization choices, it can be checked that all possible realizations of ${}^{{\{a,b\}}_4} Y_{8}$ and ${}^{{\{a,b\}}_3} Y_{8}$ give rise to BDS-like amplitudes that obey and break the same Steinmann relations (for a given pair of indices $a$ and $b$). 
+
+
+
+\section{BDS-Like Conversions for Eight Particles} \label{appendix:bds_like}
+
+ \begin{align}
+{}^{{\{1,2\}}_4} Y_{8} &= {}^{4}Y_8 -
+\Big( \LiOneCalX{1}{4} + \LiOneCalX{4}{4} + \LiOneCalX{4}{8} + \LiOneCalX{8}{8} \Big)  \\
+&\hspace{3.4cm} \times \Big( \LiOneCalX{3}{4}+ \LiOneCalX{4}{4} + \LiOneCalX{3}{8} + \LiOneCalX{7}{8} \Big) \nonumber
+\end{align}
+
+ \begin{align}
+{}^{{\{7,8\}}_3} Y_{8} &= \sum_{i=1}^8 \bigg[ \text{Li}_2 \left( - \mathfrak{X}_{i,8} \right) + \frac12 \text{Li}_2 \left(- \mathfrak{X}_{i,4}  \right) + \frac14 \text{Li}_1\left(- \mathfrak{X}_{i,4} \right)^2 \bigg] \nonumber \\
+&\hspace{.4cm}- \bigg[ \frac 12\Big( \LiOneCalX{1}{4} + \LiOneCalX{3}{4} \Big) \Big( \LiOneCalX{2}{4} + \LiOneCalX{4}{4} \Big)  \nonumber \\
+&\hspace{1.2cm} + \LiOneCalX{1}{4}  \Big( \LiOneCalX{1}{8} + \LiOneCalX{4}{8} + \LiOneCalX{6}{8} + \LiOneCalX{7}{8} \Big) \nonumber \\ 
+&\hspace{1.2cm} + \LiOneCalX{2}{4}  \Big( \LiOneCalX{1}{8} + \LiOneCalX{4}{8} - \LiOneCalX{6}{8}  -  \LiOneCalX{3}{8} \Big) \\
+&\hspace{1.2cm} + \LiOneCalX{1}{8}  \Big( \LiOneCalX{4}{8} + \frac12  \LiOneCalX{1}{8} - \frac12 \LiOneCalX{3}{8} \Big) \nonumber \\
+&\hspace{1.2cm} + \LiOneCalX{5}{8}  \Big( \LiOneCalX{4}{8} - \frac12  \LiOneCalX{5}{8} + \frac12 \LiOneCalX{7}{8} \Big) \nonumber \\
+&\hspace{1.2cm} + \LiOneCalX{6}{8}  \Big( \LiOneCalX{4}{8} - \frac12  \LiOneCalX{2}{8} - \frac12 \LiOneCalX{6}{8} \Big)\nonumber \\
+&\hspace{1.2cm} - \LiOneCalX{2}{4} \LiOneCalX{3}{4} \bigg]_{\LiOneCalX{i}{j} + \LiOneBarCalX{i}{j}} \nonumber
+\end{align}
+where $\overline{\mathfrak{X}}_{i,j}$ is the image of the ${\cal X}$-coordinate $\mathfrak{X}_{i,j}$ under the dihedral flip that sends $Z_i \rightarrow Z_{9-i}$ (that is, the expression in the second square bracket is understood to be the sum of itself and this dihedral image). 
+
+
+The decompositions~\eqref{bds_like_3}, \eqref{bds_like_4}, and \eqref{bds_like_3q} do not uniquely determine ${}^{3} Y_{8}$, ${}^{4} Y_{8}$, or ${}^{3,j} Y_{8}$. In fact, there exists a 10-dimensional (3-dimensional) space of (Bose-symmetric) solutions for ${}^{3} Y_{8}$, a 36-dimensional (5-dimensional) space of (Bose-symmetric) solutions for ${}^{4} Y_{8}$, and a 3-dimensional space of solutions for ${}^{3,j} Y_{8}$. 
+ \begin{align}
+{}^{3,1}Y_8 &= {}^{3}Y_8 -
+\Big( \text{Li}_1(-\mathfrak{X}_{1, 4}) + \text{Li}_1(-\mathfrak{X}_{2, 4}) + \text{Li}_1(-\mathfrak{X}_{1, 8}) + \text{Li}_1(-\mathfrak{X}_{5, 8}) \Big)  \\
+&\hspace{3.4cm} \times \Big( \text{Li}_1(-\mathfrak{X}_{1, 4}) + \text{Li}_1(-\mathfrak{X}_{4, 4}) + \text{Li}_1(-\mathfrak{X}_{4, 8}) + \text{Li}_1(-\mathfrak{X}_{8, 8}) \Big) \nonumber
+\end{align}
+
+ \begin{align*}
+ &\ \hspace{1.4cm}- \log(s_{\scaleto{1234}{4.4pt}} s_{\scaleto{3456}{4.4pt}}) \log(s_{\scaleto{2345}{4.4pt}} s_{\scaleto{4567}{4.4pt}}) \nonumber
+ \end{align*}
+ 
+ \begin{align*}
+&\ \hspace{2.4cm}- \frac12 \log(\mand{i,i+1,i+2}) \log\left(\frac{\mand{i,i+1,i+2} \ \mand{i+1,i+2,i+3}^2}{\mand{i+4,i+5,i+6}}\right) \bigg] \nonumber
+ \end{align*}
+ 
+ To take full advantage of the Steinmann relations, it is convenient to work in terms of symbol letters that isolate different Mandelstam invariants. There are twelve independent dual conformally invariant cross ratios that can appear in these symbols
+\begin{align}
+u_1 &= \frac{\mand{12} \mand{4567}}{\mand{123} \mand{812}}, \quad \text{and cyclic (8-orbit)} \\
+u_9 &= \frac{\mand{123} \mand{567}}{\mand{1234} \mand{4567}}, \quad \text{and cyclic (4-orbit).}
+\end{align}
+It is not possible to isolate all three- and four-particle Mandelstam invariants simultaneously into twelve different symbol letters. (More than twelve symbol letters will appear in these amplitudes, but we here restrict our attention to the twelve that will appear in the first entry.) However, different choices of letters can be made such that either all the four-particle invariants, or all the three-particle invariants, are isolated.
+
+One choice that isolates the four-particle invariants is
+\begin{align}
+{}^4 d_1 &= u_2 \ u_6 = \frac{\mand{23} \ \mand{67} \ (\mand{1234})^2}{\mand{123} \ \mand{234} \ \mand{567} \ \mand{678}}, \quad \text{and cyclic (4-orbit)} \\
+{}^4 d_5 &= u_2/u_6 = \frac{\mand{23} \ \mand{567} \ \mand{678}}{\mand{67} \ \mand{123} \ \mand{234}}, \quad \text{and cyclic (4-orbit)} \\
+{}^4 d_9 &= u_1 \ u_2 \ u_5 \ u_6 \ u_9^2 = \frac{\mand{12} \ \mand{23} \ \mand{56} \ \mand{67}}{\mand{234} \ \mand{456} \ \mand{678} \ \mand{812}}, \quad \text{and cyclic (4-orbit)}.
+\end{align}
+In this alphabet ${}^4 d_1, {}^4 d_2, {}^4 d_3$, and ${}^4 d_4$ each contain a different four-particle Mandelstam invariant, while the other letters only involve two- and three-particle invariants. The extended Steinmann relations then tell us that ${}^4 d_1, {}^4 d_2, {}^4 d_3$, and ${}^4 d_4$ can never appear next to each other in the symbol of ${}^4 A^{\text{BDS-like}}_{8}$ (but each can still appear next to themselves).
+
+Similarly, we can isolate the three-particle invariants by choosing
+\begin{align}
+{}^3 d_1 &= \frac{u_1 \ u_2 \ u_4 \ u_7}{u_3 \ u_5 \ u_6 \ u_8 \ u_9^2} = \frac{\mand{12} \ \mand{23} \ \mand{45} \ \mand{78} \ (\mand{1234})^2 \ (\mand{4567})^2}{\mand{34} \ \mand{56} \ \mand{67} \ \mand{81} \ (\mand{123})^2}, \quad \text{and cyclic (8-orbit)} \\
+{}^3 d^4_9 &= u_1 \ u_5 \ u_9 \ u_{12} = \frac{\mand{12} \ \mand{56}}{\mand{1234} \ \mand{3456}}, \quad \text{and cyclic (4-orbit)},
+\end{align}
+in which case ${}^3 d_1$ through ${}^3 d_8$ each contain a different three-particle Mandelstam invariant, as well as four-particle Mandelstams that they don't partially overlap with. The remaining four letters only contain two- and four-particle invariants. In these letters, conditions~\eqref{stein34_5} and~\eqref{stein34_6} tell us that ${}^3 d_7, {}^3 d_8, {}^3 d_2$, and ${}^3 d_3$ can never appear next to ${}^3 d_1$ in the symbols of ${}^{3} {\cal E}_8$ or ${}^{3,j} {\cal E}_8$ (plus the cyclic images of this statement). Moreover, conditions~\eqref{stein34_1} through~\eqref{stein34_4} give us the additional restrictions that none of ${}^3 d_1, {}^3 d_5, {}^3 d_9$ and ${}^3 d_{10}$ can ever appear next to ${}^3 d_3, {}^3 d_4, {}^3 d_7,$ or ${}^3 d_8$ in the symbol of ${}^{3,1} {\cal E}_8$ (analogous relations hold for the other ${}^{3,j} {\cal E}_8$). These are the restrictions given by the Steinmann relations involving $\mand{1234}$ and one of $\mand{781}, \mand{812}, \mand{345}$, or $\mand{456}$. The other Steinmann relations between three- and four-particle invariants will not be respected by ${}^{3,1} {\cal E}_8$, since ${}^{3,j} {\cal A}^{\text{BDS-like}}_{8}$ depends on $\mand{2345}, \mand{3456},$ and $\mand{4567}$.
+\fi
+
+\bibliographystyle{JHEP}
+\bibliography{subalgebras}
+
+\end{document}
