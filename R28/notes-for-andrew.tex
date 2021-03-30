@@ -1,0 +1,175 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr} 
+
+\DeclareMathOperator{\B}{B}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\Lie}{Lie}
+
+\def\ket#1{\langle #1 \rangle}
+\def\a{\mathcal{A}}
+\def\x{\mathcal{X}}
+
+\makeindex
+\oddsidemargin -0.04cm \evensidemargin -0.04cm
+\topmargin -0.25cm \textwidth 16.59cm \textheight 20.5cm \headheight 15pt
+
+\begin{document}
+
+\thispagestyle{fancyplain}
+ 
+\fancyhf{}
+ 
+\cfoot{\fancyplain{}{\thepage}}
+
+\lhead{\textbf{Notes for Andrew} \hfill \today}
+
+\begin{itemize}
+	\item[Q1.] The eight-point A3 representation is unique and thus obviously groups together into A5 functions in a unique way — is this A5 function unique? or were there other options (if one forgot about the A3 functions)?
+	\item[A1.] I have a .nb (last edited 4/5/2018) that says that there is one and only one A5 representation of R28. I'm pretty sure that's right, but would want to re-do the calculation if my life depended on the answer.\\
+	
+	\item[Q2.] Find the formula for the A3 decomposition of R29.
+
+	\item[A2.] \begin{multline}
+	R^{(2)}_9 = \frac{1}{80} f_{A_3}^{+-}\left(\frac{\langle 1234\rangle  \langle
+   1256\rangle }{\langle 1236\rangle  \langle 1245\rangle
+   },\frac{\langle 1246\rangle  \langle 2345\rangle
+   }{\langle 1234\rangle  \langle 2456\rangle
+   },\frac{\langle 1245\rangle  \langle 2567\rangle 
+   \langle 3456\rangle }{\langle 1256\rangle  \langle
+   2345\rangle  \langle 4567\rangle }\right)\\+\frac{1}{80}
+   f_{A_3}^{+-}\left(\frac{\langle 1235\rangle  \langle 1267\rangle
+   }{\langle 1237\rangle  \langle 1256\rangle
+   },\frac{\langle 1257\rangle  \langle 2456\rangle
+   }{\langle 1245\rangle  \langle 2567\rangle
+   },\frac{\langle 1256\rangle  \langle 2678\rangle 
+   \langle 4567\rangle }{\langle 1267\rangle  \langle
+   2456\rangle  \langle 5678\rangle }\right)\\-\frac{1}{80}
+   f_{A_3}^{+-}\left(\frac{\langle 1245\rangle  \langle 1269\rangle
+   }{\langle 1249\rangle  \langle 1256\rangle
+   },\frac{\langle 1259\rangle  \langle 1267\rangle 
+   \langle 3456\rangle }{\langle 1269\rangle  \langle
+   5(12)(34)(67)\rangle },\frac{\langle 1256\rangle 
+   \langle 1345\rangle  \langle 4567\rangle }{\langle
+   1245\rangle  \langle 1567\rangle  \langle 3456\rangle
+   }\right)\\+\frac{1}{80} f_{A_3}^{+-}\left(\frac{\langle 1245\rangle
+    \langle 2567\rangle  \langle 3456\rangle }{\langle
+   1256\rangle  \langle 2345\rangle  \langle 4567\rangle
+   },\frac{\langle 1267\rangle  \langle 2456\rangle
+   }{\langle 1246\rangle  \langle 2567\rangle
+   },\frac{\langle 1234\rangle  \langle 1256\rangle
+   }{\langle 1236\rangle  \langle 1245\rangle
+   }\right)\\-\frac{1}{80} f_{A_3}^{+-}\left(\frac{\langle 1256\rangle
+    \langle 1345\rangle  \langle 4567\rangle }{\langle
+   1245\rangle  \langle 1567\rangle  \langle 3456\rangle
+   },\frac{\langle 1249\rangle  \langle
+   5(12)(34)(67)\rangle }{\langle 1234\rangle  \langle
+   1259\rangle  \langle 4567\rangle },\frac{\langle
+   1245\rangle  \langle 1269\rangle }{\langle 1249\rangle
+    \langle 1256\rangle }\right)\\+\frac{1}{80}
+   f_{A_3}^{+-}\left(\frac{\langle 1256\rangle  \langle 2678\rangle 
+   \langle 4567\rangle }{\langle 1267\rangle  \langle
+   2456\rangle  \langle 5678\rangle },\frac{\langle
+   1278\rangle  \langle 2567\rangle }{\langle 1257\rangle
+    \langle 2678\rangle },\frac{\langle 1235\rangle 
+   \langle 1267\rangle }{\langle 1237\rangle  \langle
+   1256\rangle }\right)\\+\frac{1}{80}
+   f_{A_3}^{+-}\left(-\frac{\langle 1249\rangle  \langle 1567\rangle
+    \langle 3467\rangle }{\langle 4567\rangle  \langle
+   1(29)(34)(67)\rangle },\frac{\langle 1234\rangle 
+   \langle 1269\rangle  \langle 1467\rangle }{\langle
+   1249\rangle  \langle 1267\rangle  \langle 1346\rangle
+   },-\frac{\langle 3456\rangle  \langle
+   1(29)(34)(67)\rangle }{\langle 1269\rangle  \langle
+   1345\rangle  \langle 3467\rangle }\right)\\-\frac{1}{80}
+   f_{A_3}^{+-}\left(-\frac{\langle 1249\rangle  \langle 1678\rangle
+    \langle 3467\rangle }{\langle 4678\rangle  \langle
+   1(29)(34)(67)\rangle },\frac{\langle 1234\rangle 
+   \langle 1279\rangle  \langle 1467\rangle }{\langle
+   1249\rangle  \langle 1267\rangle  \langle 1347\rangle
+   },-\frac{\langle 3457\rangle  \langle
+   1(29)(34)(67)\rangle }{\langle 1279\rangle  \langle
+   1345\rangle  \langle 3467\rangle
+   }\right)\\-\frac{1}{240} f_{A_3}^{+-}\left(-\frac{\langle
+   1249\rangle  \langle 1678\rangle  \langle 4578\rangle
+   }{\langle 4678\rangle  \langle 1(29)(45)(78)\rangle
+   },\frac{\langle 1245\rangle  \langle 1279\rangle 
+   \langle 1478\rangle }{\langle 1249\rangle  \langle
+   1278\rangle  \langle 1457\rangle },-\frac{\langle
+   3457\rangle  \langle 1(29)(45)(78)\rangle }{\langle
+   1279\rangle  \langle 1345\rangle  \langle 4578\rangle
+   }\right)\\+\frac{1}{80} f_{A_3}^{+-}\left(-\frac{\langle
+   1249\rangle  \langle 1789\rangle  \langle 4578\rangle
+   }{\langle 4789\rangle  \langle 1(29)(45)(78)\rangle
+   },\frac{\langle 1245\rangle  \langle 1289\rangle 
+   \langle 1478\rangle }{\langle 1249\rangle  \langle
+   1278\rangle  \langle 1458\rangle },-\frac{\langle
+   3458\rangle  \langle 1(29)(45)(78)\rangle }{\langle
+   1289\rangle  \langle 1345\rangle  \langle 4578\rangle
+   }\right)\\+\text{dihedral}+\text{parity}.
+	\end{multline}\pagebreak
+
+	\item[Q3.] Confirm that ``+ dihedral + parity'' should be implemented by summing over (i) all 8 cycles, where the indices of the brackets are incremented by 1, (ii) the dihedral flip, which sends the bracket entry i to 9-i, and (iii) parity
+
+	\item[A3.] Confirmed.\\
+
+	\item[Q4.] How does parity act on a generic bracket?
+
+	\item[A4.] The letters appearing in two-loop MHV amplitudes have the following action under parity:
+	\begin{align}
+	\begin{split}
+	&\hspace{-1cm}\ket{i\,\,i{+}1\,\,jk}\quad\to\quad\,\,\ket{i^+}\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}}\\
+	&\hspace{-1cm}\ket{i\,\,i{+}1\,\,\bar{j}\cap\bar{k}}\,\,\,\to\,\,\,\,\ket{j^{-}}\ket{j^{+}}\ket{k^{-}}\ket{k^{+}}\ket{i^{+}}\ket{i\,\,i{+}1\,\,jk}\\
+	&\hspace{-1cm}\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}\to\\&\qquad\qquad\qquad\ket{i^+}\ket{i^-}\ket{j^+}\ket{k^+}\ket{i(i{-}1\,\,i{+}1)(j\,\,j{+}1)(k\,\,k{+}1)}\\
+	&\hspace{-1cm}\ket{i(i{-}2\,\,i{-}1)(i{+}1\,\,i{+}2)(j\,\,j{+}1)}\to\\&\qquad\qquad\qquad\ket{i{-}1^-}\ket{i{-}1^+}\ket{i{+}1^-}\ket{i{+}1^+}\ket{j^+}\ket{j\,\,j{+}1\,\,i{-}1\,\,i{+}1}
+	\end{split}
+	\end{align}
+	where we have used the notational shorthand
+	\begin{align}
+	\begin{split}
+	\ket{i^{\pm}}&=\pm\ket{i-1\,\,i\,\,i+1\,\,i\pm2}\\
+	\bar{j}&=(j-1\,j\,j+1).
+	\end{split}
+	\end{align} \\
+
+	\item[Q5.] Paragraph or two on how to fit the classical component, specifically ansätze construction and size.
+
+	\item[A5.] The classical component was fit via the approach originally described in 1006.5703. For $\Li_k$, I found that having a basis invariant under dihedral+parity resulted in nicer representations, even if it was slightly overcomplete. There are few-to-no identities in $\Li_4$ or $\Li_3$ over the $\Gr(4,n\le9)$ $\x$-coordinates, so the complete list of ratios served as a fine basis basis for these cases. 
+
+	For $\Li_2$, I looked for the smallest dihedral+parity invariant collection of $\x$-coords that spanned $B_2$. I can't claim that what I found was *the* smallest such collection, but it was close enough. For $\Gr(4,8)$ this basis had 560 elements, (to span a $B_2$ of size 483), and for $\Gr(4,9)$ it had 1350 elements (to span a $B_2$ of size 1148). 
+
+	Note: the $\Li_2\Li_2$ terms can be fit to a special basis, see eq. 14 of 1411.3289, so I used this special basis for these terms instead of numbers quoted in the previous paragraph. 
+
+	For log, I just used $\a$-coords.\pagebreak 
+
+	The total number of free parameters for each step was (\#$\Gr(4,8),~\#\Gr(4,9)$):
+	\begin{itemize}
+		\item $\Li_4$: 1588, 3906 
+		\item $\Li_2\Li_2$: 3258, 12996 
+		\item $\Li_3\log$: (\# $\x$-coords)$\times$(\# $\a$-coords) = 184208, 878850
+		\item $\Li_2\log\log$: (size of $\Li_2$ basis)$\times$(\# $\a$-coords)$^2$ = 7535360, 68343750
+		\item $\log^4$: no ansätze here as by this point the symbol was fully symmetric and trivially upgraded to a full function
+	\end{itemize}
+
+	Note that for the $\Li_4$ and $\Li_2\Li_2$ ansätze, it was basically trivial to construct an explicitly dihedral+parity invariant version of the ansätze, so in practice that is what I did in order to cut down on parameters. (This wasn't practical or useful for the $\Li_3\log$ or $\Li_2\log\log$ terms). For $\Li_4$, the symmetric ansätze had 65, 134 parameters and $\Li_2\Li_2$ had 141, 464. 
+
+
+	\item[Q6.] Confirm 3176 good X-coordinates at eight points and 7812 at nine points
+
+	\item[A6.] Confirmed. Of course this counts both $x$ and $1/x$, which is a bit redundant. 
+
+	\item[Q7.] In the collinear limit, nonclassical divergent terms are always accompanied by vanishing arguments (such as $\Li_{2,2}(\epsilon, 1/\epsilon) - \Li_{1,3}(\epsilon, 1/\epsilon)$) — is this to be expected? Surprising?
+
+	\item[A7.] \ldots
+
+\end{itemize}
+
+
+
+\end{document}

@@ -218,6 +218,13 @@ More complicated DCI ratios can be formed out of (polynomials of) generic minors
 \begin{equation} \label{eq:four_bracket_def}
 \langle i j k l \rangle = \text{det}(Z_i Z_j Z_k Z_l) \, .
 \end{equation}
+For instance, the remainder function involves factors usually abbreviated as 
+\begin{align}
+\langle i (j k)( l m) (n o)\rangle &= 
+\langle i j l m \rangle \langle i k n o \rangle - \langle i j n o\rangle \langle i k l m \rangle \, , \label{eq:abbrev_1} \\
+\langle i j (k l m) \cap (n o p) \rangle &= 
+ \langle i k l m \rangle \langle j n o p \rangle - \langle j k l m \rangle \langle i n o p \rangle \, . \label{eq:abbrev_2}
+\end{align} 
 Redundancies between (polynomials and ratios of) these minors are captured by Pl\"ucker relations, such as
 \begin{equation}
   \label{eq:plucker-rel}
@@ -601,7 +608,7 @@ The last condition ensures that these functions are well-defined functions on th
 
 A complete classification of the nonclassical cluster polylogarithms that can be defined on the subalgebras of $\Gr(4,n)$ through rank five was carried out in~\cite{Golden:2018gtk}. In principle, this makes searching for a decomposition of $\smash{\delta_{2,2}\big(R_n^{(2)} \big)}$ over these lower-rank subalgebras easy. One merely needs to evaluate the cluster polylogarithms of the appropriate type on the subalgebras of $\Gr(4,n)$, and see if any linear combination of their $\delta_{2,2}$ cobracket components reproduces $\smash{\delta_{2,2}\big(R_n^{(2)} \big)}$. This procedure can be carried out on any combination of the subalgebras of $\Gr(4,n)$, but we here restrict our attention to decompositions that only involve a single type of subalgebra.
 
-Of couse, an exhaustive search for subalgebra decompositions of this type cannot be carried out when $n>7$, due to the infinite nature of the underlying cluster algebras. We circumvent this problem by restricting our attention to the subalgebras of $\Gr(4,n)$ that involve only cluster $\x$-coordinates that also appear in the symbol of $R_n^{(2)}$\!. This can be done (after generating the relevant set of $\x$-coordinates using the method described at the end of section \ref{sec:neg_cluster_coodinate_args}) with the help of the Sklyanin bracket~\cite{Sklyanin:1982tf,GSV}, which allows us compute the number of directed edges between any two cluster $\x$-coordinates when they appear in a cluster together (or alternately tells us that they don't appear together in a cluster). For instance, to search for rank-four subalgebras, we use the Sklyanin bracket to find all sets of four $\x$-coordinates (drawn from the symbol of $R_n^{(2)}$) that can appear together in a cluster of $\Gr(4,n)$. Since we also know how the four nodes associated with these coordinates are connected, we can determine what type of subalgebra they generate, and whether this subalgebra involves cluster coordinates beyond those appearing in the symbol of $R_n^{(2)}$\!.\footnote{While subalgebras involving $\x$-coordinates beyond those appearing in the symbol of $R_n^{(2)}$\! could still give rise to interesting decompositions, we have not found any such decompositions. Thus, we ignore this possibility in the present work.} For more details on how to compute the Sklyanin bracket between pairs of cluster coordinates, see~\cite{Vergu:2015svm,Golden:2019kks}. 
+Of couse, an exhaustive search for subalgebra decompositions of this type cannot be carried out when $n>7$, due to the infinite nature of the underlying cluster algebras. We circumvent this problem by restricting our attention to the subalgebras of $\Gr(4,n)$ that involve only cluster $\x$-coordinates that also appear in the symbol of $R_n^{(2)}$\!. Using the method described at the end of section \ref{sec:neg_cluster_coodinate_args}, we find there are 3176 and 7812 such $\x$-coordinates in the symbols of $R_8^{(2)}$\! and $R_9^{(2)}$\!, respectively. To generate all subalgebras that can be constructed out of these coordinates, we use the Sklyanin bracket~\cite{Sklyanin:1982tf,GSV}, which allows us compute the number of directed edges between any two cluster $\x$-coordinates when they appear in a cluster together (or alternately tells us that they don't appear together in a cluster). For instance, to search for rank-four subalgebras, we use the Sklyanin bracket to find all sets of four $\x$-coordinates that can appear together in a cluster of $\Gr(4,n)$. Since we also know how the four nodes associated with these coordinates are connected, we can determine what type of subalgebra they generate, and whether this subalgebra involves cluster coordinates beyond those appearing in the symbol of $R_n^{(2)}$\!.\footnote{While subalgebras involving $\x$-coordinates beyond those appearing in the symbol of $R_n^{(2)}$\! could still give rise to interesting decompositions, we have not found any such decompositions.} For more details on how to compute the Sklyanin bracket between pairs of cluster coordinates, see~\cite{Vergu:2015svm,Golden:2019kks}. 
 
 \begin{table}
 \begin{center}
@@ -616,7 +623,7 @@ $\Gr(4,9)$ & 0  & 0 & 135 & 45 & 1197 & 3936 & 5580
 \label{table:subalgebra_counts}
 \end{table}
 
-Using this procedure, we have generated all subalgebras of $\Gr(4,8)$ and $\Gr(4,9)$ through rank five (as well as all $E_6$ subalgebras) that can be constructed solely out of the $\x$-coordinates that appear in the symbols of $R_8^{(2)}$\! and $R_9^{(2)}$\!. We report the number of subalgebras of each type in Table~\ref{table:subalgebra_counts}. The most striking feature of this table is the nonexistence of any $E_6$ or $D_5$ subalgebras that are constructible out of these $\x$-coordinates. This immediately implies that there are no natural decompositions of $\smash{\delta_{2,2}\big(R_8^{(2)}\big)}$ or $\smash{\delta_{2,2}\big(R_9^{(2)}\big)}$ in terms of either $f_{D_5}^{---}$\! (which the seven-particle remainder can be decomposed into) or in terms of $\smash{\delta_{2,2}\big(R_7^{(2)}\big)}$ itself. However, this still leaves five functions that gave rise to valid decompositions of the seven-particle amplitude (as depicted in Figure~\ref{fig:R27_decompositions}), which can be investigated in eight- and nine-particle kinematics. As mentioned above, two of these functions ($f_{A_2}^{--}$ and $f_{A_3}^{--}$) have already been observed to work at higher $n$~\cite{Golden:2014xqa}. Thus, we are left with three functions ($f_{A_3}^{+-}$, $f_{A_4}^{+-}$, and $f_{A_5}^{--}$) whose utility we investigate for $n>7$.
+Using this procedure, we have generated all subalgebras of $\Gr(4,8)$ and $\Gr(4,9)$ through rank five, as well as all $E_6$ subalgebras, that can be constructed solely out of the $\x$-coordinates that appear in the symbols of $R_8^{(2)}$\! and $R_9^{(2)}$\!. We report the number of subalgebras of each type in Table~\ref{table:subalgebra_counts}. The most striking feature of this table is the nonexistence of any $E_6$ or $D_5$ subalgebras that are constructible out of these $\x$-coordinates. This immediately implies that there are no natural decompositions of $\smash{\delta_{2,2}\big(R_8^{(2)}\big)}$ or $\smash{\delta_{2,2}\big(R_9^{(2)}\big)}$ in terms of either $f_{D_5}^{---}$\! (which the seven-particle remainder can be decomposed into) or in terms of $\smash{\delta_{2,2}\big(R_7^{(2)}\big)}$ itself. However, this still leaves five functions that gave rise to valid decompositions of the seven-particle amplitude (as depicted in Figure~\ref{fig:R27_decompositions}), which can be investigated in eight- and nine-particle kinematics. As mentioned above, two of these functions ($f_{A_2}^{--}$ and $f_{A_3}^{--}$) have already been observed to work at higher $n$~\cite{Golden:2014xqa}. Thus, we are left with three functions ($f_{A_3}^{+-}$, $f_{A_4}^{+-}$, and $f_{A_5}^{--}$) whose utility we can still investigate for $n>7$. {\color{red} probably we should say something about why the existing decompositions are not satisfying}
 
 We first explore the subalgebra constructibility of the eight-particle remainder function. To do so, we construct three separate ans\"atze by evaluating the functions $f_{A_3}^{+-}$, $f_{A_4}^{+-}$, and $f_{A_5}^{--}$ on the $A_3$, $A_4$, and $A_5$ subalgebras of $\Gr(4,8)$ that were found using the methods described above. We then attempt to find $\smash{\delta_{2,2}\big( R_8^{(2)}\big)}$ in the span of the $\delta_{2,2}$ cobracket component of these functions. For instance, to look for a decomposition in terms of the function $f_{A_3}^{-+}$, we see if there exists a rational set of coefficients $c_{ijk}$ such that
 \begin{equation}
@@ -624,7 +631,7 @@ We first explore the subalgebra constructibility of the eight-particle remainder
 \end{equation}
 where the sum is over all of the $A_3$ subalgebras of  $\Gr(4,8)$ reported in Table~\ref{table:subalgebra_counts}, and where each of these $A_3$ subalgebras is labelled by one of their constituent clusters $x_i \to x_j \to x_k$. Proceeding in this way, we find novel decompositions of the eight-particle remainder function in terms of both $\smash{f_{A_3}^{+-}}$ and $\smash{f_{A_5}^{--}}$, but no decomposition in terms of $\smash{f_{A_4}^{+-}}$.
 
-To describe these new $A_3$ and $A_5$ decompositions, let us first recall some facts about the automorphism group of the $A_n$ cluster algebra. This group is given by the dihedral group of order $2(3+n)$, whose generators can be chosen to be
+To describe these new $A_3$ and $A_5$ decompositions, let us first recall some facts about the automorphism group of the $A_n$ cluster algebra. This group is given by the dihedral group of order $2(3{+}n)$, whose generators can be chosen to be
 \begin{equation} \label{eq:def_An_cycle}
   \sigma_{A_n}:\quad x_{k<n} \to \frac{x_{k+1}(1+x_{1,\ldots,k-1})}{1+x_{1,\ldots,k+1}},~~x_n\to\frac{1+x_{1,\ldots,n-1}}{\prod_{i=1}^n x_i} \, 
 \end{equation}
@@ -632,7 +639,7 @@ and
 \begin{equation} \label{eq:def_An_flip}
   \tau_{A_n}: \quad x_1 \to \frac{1}{x_n},~~x_2 \to \frac{1}{x_{n-1}},~\ldots~, \quad x_n\to\frac{1}{x_1} \, ,
 \end{equation}
-which have lengths $n+3$ and $2$, respectively. Having introduced these operators, we can now be more clear about the meaning of the notation for the $A_n$ functions we have thus far encountered; the superscripts $s_\sigma$ and $s_\tau$ in $f_{A_n}^{s_\sigma s_\tau}$ describe the overall sign picked up by this function under the action of $\sigma_{A_n}$ and $\tau_{A_n}$, respectively. We refer the reader to~\cite{Golden:2018gtk} for more details on this topic.
+which have lengths $n+3$ and $2$, respectively. Having introduced these operators, we can now be more clear about the meaning of the notation for the $A_n$ functions we have been employing; the superscripts $s_\sigma$ and $s_\tau$ in $f_{A_n}^{s_\sigma s_\tau}$ describe the overall sign picked up by this function under the action of $\sigma_{A_n}$ and $\tau_{A_n}$, respectively. We refer the reader to~\cite{Golden:2018gtk} for more details on this topic.
 
 The functions $f_{A_3}^{+-}$ and $f_{A_5}^{--}$ can be easily defined in terms of $f_{A_2}^{--}$ using the action of these automorphism generators. The first is given by 
 \begin{align}
@@ -640,35 +647,255 @@ f_{A_3}^{+-}(x_1\to x_2\to x_3) &= \sum_{i=1}^6 \sigma_{A_3}^i\big(f_{A_2}^{--}(
 \end{align}
 where $\sigma_{A_3}^i$ denotes applying the operator $\sigma_{A_3}$ $i$ times. The decomposition of $\smash{\delta_{2,2}\big(R_8^{(2)}\big)}$ in terms of $f_{A_3}^{+-}$ turns out to be unique. Moreover, the $f_{A_3}^{+-}$ functions in this decomposition come in just the right linear combinations to combine into $f_{A_5}^{--}$ functions, namely the combinations
 \begin{equation}
-	f_{A_3\subset A_5}^{--} = - \frac{1}{8}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right) \, ,
+	f_{A_3\subset A_5}^{--}\big( x_1\to x_2\to x_3 \to x_4  \to x_5 \big) = - \frac{1}{8}\sum_{A_5^{--}} f_{A_3}^{+-}\left(x_2\to x_3(1+x_4)\to \frac{x_4 x_5}{1+x_4}\right) \, ,
 \end{equation}
 where we have used the notation
 \begin{equation}
-\sum_{A_5^{--}} \equiv \sum_{i=0}^7 \sum_{j=0}^1 (-1)^{i+j} \ \sigma_{A_5}^i \circ \tau_{A_5}^j \big(f \big)
+\sum_{A_5^{--}} f  \equiv \sum_{i=0}^7 \sum_{j=0}^1 (-1)^{i+j} \ \sigma_{A_5}^i \circ \tau_{A_5}^j \big(f \big)
 \end{equation}
-to denote the the totally antisymmetric sum over all dihedral images of the $A_5$ cluster algebra. Note that this is just one version of the $A_5$ function encountered in seven-particle kinematics, where a version that could be decomposed into $f_{A_4}^{+-}$ was also found. 
+to denote the the totally antisymmetric sum over all dihedral images of the $A_5$ cluster algebra. Note that this is just one version of the $A_5$ function encountered in seven-particle kinematics; there, a variant that could be decomposed into $f_{A_4}^{+-}$ was also found. 
 
-{\color{red} is the $f_{A_3}^{--} $ decomposition unique?}
-
-In terms of $f_{A_3\subset A_5}^{--}$, we find that $R^{(2)}_8$ can be decomposed as
+In terms of the functions $f_{A_3\subset A_5}^{--}$, the nonclassical part of $R^{(2)}_8$ admits the unique decomposition 
 \begin{align}\label{eq:r28A5}
-\!\!\!\!\!\!	\delta_{2,2} \big(R^{(2)}_8\big) &= \delta_{2,2} \bigg(\frac14 f_{A_3\subset A_5}^{--}\left(\tfrac{\langle 1238\rangle  \langle 1256\rangle }{\langle1235\rangle  \langle 1268\rangle }\! 
+\delta_{2,2} \big(R^{(2)}_8\big) &= \frac{1}{2} \sum_{i = 0}^7 \sum_{j=0}^1 \sum_{k=0}^1 \ \sigma_{\Gr(4,8)}^i \circ \tau_{\Gr(4,8)}^j \circ {\mathcal{P}}_{\Gr(4,8)}^j   \Big(\delta_{2,2} \big(F_{A_5} \big)\Big) \, ,
+\end{align}
+where the sum ranges over all the dihedral and parity images of $F_{A_5}$ in $\Gr(4,8)$, and 
+\begin{align} \label{eq:F_A5}
+F_{A_5} &=  \frac12 f_{A_3\subset A_5}^{--} \! \left(\tfrac{\langle 1238\rangle  \langle 1256\rangle }{\langle1235\rangle  \langle 1268\rangle }\! 
     \to \! \tfrac{\langle 1236 \rangle \langle 2345 \rangle}{\langle 1234 \rangle \langle 2356 \rangle} \! 
     \to \! \tfrac{\langle 1235 \rangle \langle 3456 \rangle}{\langle 1356 \rangle \langle 234 5\rangle} \! 
     \to \! \tfrac{\langle 1567 \rangle \langle 2356 \rangle}{\langle 1256 \rangle \langle 3567 \rangle} \! 
-    \to \! \tfrac{\langle 1356 \rangle \langle 4567 \rangle}{\langle 1567 \rangle \langle 3456 \rangle}\right) \nonumber \\
-   &+ \frac12 f_{A_3\subset A_5}^{--}\left(\tfrac{\langle 1238 \rangle \langle 2345 \rangle}{\langle 1234 \rangle \langle 2358 \rangle} \! 
+    \to \! \tfrac{\langle 1356 \rangle \langle 4567 \rangle}{\langle 1567 \rangle \langle 3456 \rangle}\right)  \\
+   &\quad + f_{A_3\subset A_5}^{--}\! \left(\tfrac{\langle 1238 \rangle \langle 2345 \rangle}{\langle 1234 \rangle \langle 2358 \rangle} \! 
     \to \! \tfrac{- \langle 1235 \rangle \langle 4568 \rangle}{\langle 5(18)(23)(46) \rangle} \! 
     \to \!\tfrac{\langle 1568 \rangle \langle 2358 \rangle \langle 3456 \rangle}{\langle 1358 \rangle \langle 2356 \rangle \langle 4568 \rangle} \! 
     \to \!\tfrac{\langle 5(18)(23)(46) \rangle}{- \langle 1258 \rangle \langle 3456 \rangle} \! 
-    \to \!\tfrac{\langle 1278 \rangle \langle 1358 \rangle}{\langle 1238 \rangle \langle 1578 \rangle}\right) \bigg) \nonumber \\
-   &\qquad \qquad +\text{ dihedral} + \text{conjugate}
+    \to \!\tfrac{\langle 1278 \rangle \langle 1358 \rangle}{\langle 1238 \rangle \langle 1578 \rangle}\right)\, . \nonumber
 \end{align}
-The relative factor of two between these contributions stems from the fact that the $A_5$ subalgebra appearing in the first term only generates an eight-orbit under the action of the $\Gr(4,8)$ dihedral group (and thus gets counted twice), while the $A_5$ subalgebra in the second term forms a full sixteen-orbit. 
+In more detail, the generators of the dihedral group act on generic four-brackets as
+\begin{align} \label{eq:Gr_4n_dihedral_generators}
+  \sigma_{\Gr(4,n)} :\quad  \langle i j k l \rangle \ \ &\to \ \ \langle i{+}1 \,  j{+}1 \,  k{+}1 \,  l{+}1 \rangle \, , \\
+  \tau_{\Gr(4,n)} :\quad  \langle i j k l \rangle  \ \ &\to \ \  \langle n{-}i{+}1 \, n{-}j{+}1\, n{-}k{+}1 \, n{-}l{+}1 \rangle \, ,
+\end{align}
+while parity acts on the four-brackets that appear in the symbol as  
+\vspace{.7cm}
+\begin{align} \label{eq:Gr_4n_parity} \ \end{align}
+\vspace{-2.6cm}
+\begin{align} 
+  \mathcal{P}_{\Gr(4,n)} :  \begin{cases} 
+	\ket{i \, i{+}1 \, j \, k} \ \ \to\ \ \ket{\bar{i} \, i{+}2}\ket{i \, i{+}1 \, \bar{j}\cap\bar{k}} \\
+	\ket{i \, i{+}1 \, \bar{j}\cap\bar{k}} \ \ \to \ \ \ket{j{-}2 \, \bar{j}} \ket{\bar{j} \, j{+}2} \ket{k{-}2 \, \bar{k}} \ket{\bar{k} \, k{+}2} \ket{\bar{i} \, i{+}2}\ket{i \, i{+}1 \, j \, k} \\
+	\ket{i \, (i{-}1 \, i{+}1)(j \, j{+}1)(k \,k{+}1)} \\ 
+	\qquad \qquad \to \ \ \ket{\bar{i} \, i{+}2} \ket{i{-}2 \, \bar{i}} \ket{\bar{j} \, j{+}2} \ket{\bar{k} \, k{+}2} \ket{i \, (i{-}1 \, i{+}1)(j \, j{+}1)(k \, k{+}1)} \\
+	\ket{i \, (i{-}2 \, i{-}1)(i{+}1 \, i{+}2)(j \, j{+}1)} \\ 
+	\qquad \qquad \to \ \ \ket{\overline{i{-}2} \, i} \ket{i{-}2 \, \bar{i}} \ket{\bar{i} \, i{+}2} \ket{i \, \overline{i{+}2}} \ket{\bar{j} \, j{+}2} \ket{j \, j{+}1 \, i{-}1\, i{+}1}\, ,
+  \end{cases} \nonumber
+\end{align}
+where we have used the notation introduced in~\eqref{eq:abbrev_1} and~\eqref{eq:abbrev_2}, and $\bar{i}=(i{-}1\,i\,i{+}1)$. All four-bracket entries should be understood mod $n$. 
+
+The relative factor of two between the contributions in~\eqref{eq:F_A5} stems from the fact that the $A_5$ subalgebra appearing in the first term only generates an eight-orbit under the action of the $\Gr(4,8)$ dihedral group (and thus gets counted twice), while the $A_5$ subalgebra in the second term forms a full sixteen-orbit. {\color{red} more about the properties of these eight-particle decompositions} 
+
+It turns out that no decomposition of $\delta_{2,2} \big(R^{(2)}_9\big)$ into the $A_5$ subalgebras cataloged in Table~\ref{table:subalgebra_counts} exists. However, there again exists a unique decomposition in terms of the function $f_{A_3}^{+-}$. It is given by
+\begin{align}\label{eq:r29A3}
+\delta_{2,2} \big(R^{(2)}_9\big) &= \frac{1}{80} \sum_{i = 0}^8 \sum_{j=0}^1 \sum_{k=0}^1 \ \sigma_{\Gr(4,9)}^i \circ \tau_{\Gr(4,9)}^j \circ {\mathcal{P}}_{\Gr(4,9)}^j   \Big(\delta_{2,2} \big(F_{A_3} \big)\Big) \, ,
+\end{align}
+where the sum is over all dihedral and parity images of $F_{A_3}$ in $\Gr(4,9)$, and
+\begin{align}
+F_{A_3}  &= f_{A_3}^{+-} \left( \tfrac{\langle 1234 \rangle \langle 1256 \rangle}{\langle 1236 \rangle \langle 1245 \rangle} \! 
+    \to \! \tfrac{\langle 1246\rangle \langle 2345 \rangle}{\langle 1234 \rangle \langle 2456 \rangle} \! 
+    \to \! \tfrac{\langle 1245\rangle \langle 2567 \rangle \langle 3456 \rangle }{\langle 1256 \rangle \langle 2345 \rangle \langle 4567 \rangle} \right) \nonumber \\
+&\quad+ f_{A_3}^{+-} \left( \tfrac{\langle 1235 \rangle \langle 1267 \rangle}{\langle 1237 \rangle  \langle 1256 \rangle} \! 
+    \to \! \tfrac{\langle 1257 \rangle \langle 2456 \rangle}{\langle 1245 \rangle \langle 2567 \rangle} \! 
+    \to \! \tfrac{\langle 1256 \rangle \langle 2678 \rangle \langle 4567 \rangle}{\langle 1267 \rangle \langle 2456 \rangle \langle 5678 \rangle} \right) \nonumber \\
+&\quad- f_{A_3}^{+-} \left( \tfrac{\langle 1245 \rangle \langle 1269 \rangle}{\langle 1249 \rangle \langle 1256 \rangle} \! 
+    \to \! \tfrac{\langle 1259 \rangle \langle 1267 \rangle \langle 3456 \rangle}{\langle 1269 \rangle \langle 5(12)(34)(67) \rangle} \! 
+    \to \! \tfrac{\langle 1256 \rangle \langle 1345 \rangle \langle 4567 \rangle}{\langle 1245 \rangle \langle 1567 \rangle \langle 3456 \rangle} \right) \nonumber \\
+&\quad+ f_{A_3}^{+-} \left( \tfrac{\langle 1245 \rangle \langle 2567 \rangle \langle 3456 \rangle}{\langle 1256 \rangle \langle 2345 \rangle \langle 4567 \rangle} \! 
+    \to \! \tfrac{\langle 1267 \rangle  \langle 2456 \rangle}{\langle 1246 \rangle \langle 2567 \rangle} \! 
+    \to \! \tfrac{\langle 1234 \rangle  \langle 1256 \rangle}{\langle 1236 \rangle \langle 1245 \rangle} \right) \nonumber \\
+&\quad- f_{A_3}^{+-} \left(\tfrac{\langle 1256 \rangle \langle 1345 \rangle \langle 4567 \rangle}{\langle 1245 \rangle \langle 1567 \rangle \langle 3456 \rangle} \! 
+    \to \! \tfrac{\langle 1249 \rangle \langle 5(12)(34)(67)\rangle}{\langle 1234 \rangle \langle 1259 \rangle \langle 4567 \rangle} \! 
+    \to \! \tfrac{\langle 1245 \rangle \langle 1269 \rangle}{\langle 1249 \rangle \langle 1256 \rangle} \right) \\ 
+&\quad+ f_{A_3}^{+-} \left( \tfrac{\langle 1256 \rangle \langle 2678 \rangle \langle 4567 \rangle}{\langle 1267 \rangle \langle 2456 \rangle \langle 5678 \rangle} \! 
+    \to \! \tfrac{\langle 1278 \rangle \langle 2567 \rangle}{\langle 1257 \rangle \langle 2678 \rangle} \! 
+    \to \! \tfrac{\langle 1235 \rangle \langle 1267 \rangle}{\langle 1237 \rangle \langle 1256 \rangle} \right) \nonumber \\
+&\quad+ f_{A_3}^{+-} \left( \tfrac{ - \langle 1249 \rangle \langle 1567 \rangle \langle 3467 \rangle}{\langle 4567 \rangle \langle 1(29)(34)(67) \rangle} \! 
+    \to \! \tfrac{\langle 1234 \rangle \langle 1269 \rangle \langle 1467 \rangle}{\langle 1249 \rangle \langle 1267 \rangle \langle 1346 \rangle} \! 
+    \to \! \tfrac{\langle 3456 \rangle  \langle 1(29)(34)(67) \rangle}{ - \langle 1269 \rangle \langle 1345 \rangle \langle 3467 \rangle} \right) \nonumber \\
+&\quad- f_{A_3}^{+-} \left( \tfrac{ - \langle 1249 \rangle \langle 1678 \rangle \langle 3467 \rangle}{\langle 4678 \rangle \langle 1(29)(34)(67) \rangle} \! 
+    \to \! \tfrac{\langle 1234 \rangle \langle 1279 \rangle \langle 1467 \rangle}{\langle 1249 \rangle \langle 1267 \rangle \langle 1347 \rangle} \! 
+    \to \! \tfrac{\langle 3457 \rangle \langle 1(29)(34)(67) \rangle}{ - \langle 1279 \rangle \langle 1345 \rangle \langle 3467 \rangle} \right) \nonumber \\
+&\quad- \tfrac{1}{3} f_{A_3}^{+-} \left( \tfrac{ - \langle 1249 \rangle \langle 1678 \rangle \langle 4578 \rangle}{\langle 4678 \rangle \langle 1(29)(45)(78) \rangle} \! 
+    \to \! \tfrac{\langle 1245 \rangle \langle 1279 \rangle \langle 1478 \rangle}{\langle 1249 \rangle \langle 1278 \rangle \langle 1457 \rangle} \! 
+    \to \! \tfrac{\langle 3457 \rangle \langle 1(29)(45)(78) \rangle}{ - \langle 1279 \rangle \langle 1345 \rangle \langle 4578 \rangle} \right) \nonumber \\
+&\quad+ f_{A_3}^{+-} \left( \tfrac{ - \langle 1249 \rangle \langle 1789 \rangle \langle 4578 \rangle}{\langle 4789 \rangle \langle 1(29)(45)(78) \rangle} \! 
+    \to \! \tfrac{\langle 1245 \rangle \langle 1289 \rangle \langle 1478 \rangle}{\langle 1249 \rangle \langle 1278 \rangle \langle 1458 \rangle } \! 
+    \to \! \tfrac{\langle 3458 \rangle \langle 1(29)(45)(78) \rangle}{ - \langle 1289 \rangle \langle 1345 \rangle \langle 4578 \rangle} \right) \, .\nonumber
+\end{align}
+
+
 
 
 \vspace{2cm}
 
+- possible nice nonclassical limits explainable by good A5/A3 function limits?
+- 
+
+
+%Note: there are no good $A_6$s in $\Gr(4,8)$.  
+%the $A_5$ function for $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Complete Polylogarithmic Representations of \pdfeq{R_8^{(2)}} and \pdfeq{R_9^{(2)}}}
+\label{sec:r28_and_r29}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we complete the construction of $R_8^{(2)}$\! and $R_9^{(2)}$\! as complete polylogarithmic functions, starting from the linear combinations of $f_{A_3}^{+-}$ functions that were found to reproduce their $\delta_{2,2}$ cobracket components in the last section. This is done by isolating the different functional components present in their symbols with the use of the projection operators described in section~\ref{sec:lie_cobracket}, and separately fitting these components to ans\"atze of classical polylogarithms with negative cluster coordinate arguments. The contributions proportional to $\zeta_2$ can also be determined using knowledge of the differentials of these functions~\cite{Golden:2013lha}. Finally, we determine the contribution proportional to $\zeta_4$ by evaluating each function in the collinear limit and comparing to lower-point results.
+
+%then express all remaining contributions to the differentials of these functions in terms of a basis of classical polylogarithms with negative cluster coordinate arguments. Both of these steps are carried out with the help of the cobracket and projection operators described in section~\ref{sec:lie_cobracket}, which allow us to fit the different functional components of these differentials separately, greatly reducing the computational load. Finally, we determine the integration constants by evaluating these functions in the collinear limit and comparing to lower-point results.
+
+%\subsection{Subalgebra Constructibility of the Nonclassical Contributions}
+
+\subsection{Classical Contributions}
+
+The classical component was fit via the approach originally described in 1006.5703. For $\Li_k$, I found that having a basis invariant under dihedral+parity resulted in nicer representations, even if it was slightly overcomplete. There are few-to-no identities in $\Li_4$ or $\Li_3$ over the $\Gr(4,n\le9)$ $\x$-coordinates, so the complete list of ratios served as a fine basis basis for these cases. 
+
+	For $\Li_2$, I looked for the smallest dihedral+parity invariant collection of $\x$-coords that spanned $B_2$. I can't claim that what I found was *the* smallest such collection, but it was close enough. For $\Gr(4,8)$ this basis had 560 elements, (to span a $B_2$ of size 483), and for $\Gr(4,9)$ it had 1350 elements (to span a $B_2$ of size 1148). 
+
+	Note: the $\Li_2\Li_2$ terms can be fit to a special basis, see eq. 14 of 1411.3289, so I used this special basis for these terms instead of numbers quoted in the previous paragraph. 
+
+	For log, I just used $\a$-coords.\pagebreak 
+
+	The total number of free parameters for each step was (\#$\Gr(4,8),~\#\Gr(4,9)$):
+	\begin{itemize}
+		\item $\Li_4$: 1588, 3906 
+		\item $\Li_2\Li_2$: 3258, 12996 
+		\item $\Li_3\log$: (\# $\x$-coords)$\times$(\# $\a$-coords) = 184208, 878850
+		\item $\Li_2\log\log$: (size of $\Li_2$ basis)$\times$(\# $\a$-coords)$^2$ = 7535360, 68343750
+		\item $\log^4$: no ansätze here as by this point the symbol was fully symmetric and trivially upgraded to a full function
+	\end{itemize}
+
+	Note that for the $\Li_4$ and $\Li_2\Li_2$ ansätze, it was basically trivial to construct an explicitly dihedral+parity invariant version of the ansätze, so in practice that is what I did in order to cut down on parameters. (This wasn't practical or useful for the $\Li_3\log$ or $\Li_2\log\log$ terms). For $\Li_4$, the symmetric ansätze had 65, 134 parameters and $\Li_2\Li_2$ had 141, 464. 
+
+\subsection{Collinear Limits}
+\label{sec:collinear_limits}
+
+Finally, the functions $R_8^{(2)}$ and $R_9^{(2)}$ are expected to involve contributions proportional to $\zeta_4$. These contributions can be determined analytically by computing the difference between the collinear limit of each function and the remainder function involving one fewer leg, since the remainder function is smooth in collinear limits, 
+\begin{equation}
+R_n \xrightarrow[]{p_i || p_{i+1}} R_{n-1} \, .
+\end{equation} 
+Thus, we first fix the $\zeta_4$ contribution to $R_8^{(2)}$\! by comparing its collinear limit to the known value of $R_7^{(2)}$\!~\cite{Golden:2014xqf}, after which we can similarly fix the $\zeta_4$ contribution to $R_9^{(2)}$\!. 
+
+
+Following~\cite{CaronHuot:2011ky}, we parametrize the $R_n^{(2)} \to R_{n-1}^{(2)}$ limit in terms of momentum twistors by
+\begin{equation} \label{eq:collinear_parametrization}
+Z_n \to Z_{n-1} - \epsilon (\alpha Z_1 + \beta Z_{n-2}) + \epsilon^2 Z_2 \, ,
+\end{equation}
+where $\epsilon \to 0$ and $\alpha$ and $\beta$ are finite and positive. This parametrization keeps us inside the positive region, and thus allows us to avoid crossing any branch cuts. Since the $(n{-}1)$-particle amplitude depends on three fewer kinematic degrees of freedom than the $n$-particle amplitude, all three parameters $\epsilon$, $\alpha$, and $\beta$ must drop out in the strict $\epsilon \to 0$ limit. This provides an important cross-check on the functional form of our answers.
+
+To take the collinear limit of our current remainder functions, we substitute the parametrization of $Z_n$ in~\eqref{eq:collinear_parametrization} into all $\x$-coordinates and send $\epsilon \to 0$. This gives rise to a number of polylogarithms with vanishing or divergent arguments. In the case of classical polylogarithms, these arguments can be dealt with using the fact that $\Li_k(0) = 0$, or using the expansions
+\begin{align}
+\Li_2(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0} - \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2  - \zeta_2 \, ,\\
+\Li_3(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  \frac{1}{6} \big(\log(\epsilon) - \log (x) \big)^3 + 
+\big(\log(\epsilon) - \log (x) \big) \zeta_2   \, ,\\
+\Li_4(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  -\frac{1}{24} \big(\log(\epsilon) - \log (x) \big)^4 - 
+  \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2 \zeta_2 - \frac{7}{4} \zeta_4  \, ,
+\end{align} 
+which are valid for positive $x$ and $\epsilon$. The only linear combinations of nonclassical polylogarithms that appear in our functions are $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$, as seen in the first line of~\eqref{def:a2-function}. This function vanishes when either of the arguments $x$ or $y$ goes to zero, even if the other argument diverges at the same rate. As it turns out, we never encounter instances of $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$ in which one of the arguments diverges while the other remains finite (or itself diverges), so we never need to expand these functions around infinity. 
+
+In order to see the dependence on $\epsilon$, $\alpha$, and $\beta$ drop out in this limit, we must take into account a large number of nontrivial polylogarithmic identities such as
+\begin{align}
+\Li_{2, 2}(-x, -1/x) - \Li_{1, 3}(-x, -1/x) &=  \Li_{2, 2}(-1/x, -x) - \Li_{1, 3}(-1/x, -x)  \nonumber \\
+&\quad  + 10 \Li_4(-x)  - \frac{1}{2} \Li_2(-x) \left( \log(x)^2 + 14 \zeta_2 \right)   \\ &\quad  - \frac{1}{6} \Li_1(- x) \log(x) \left( \log(x)^2 + 6 \zeta_2 \right) \, .   \nonumber
+\end{align}
+For this purpose, we find it convenient to evaluate all four-brackets on an explicit momentum twister parameterization, whereupon we can more express everything in a fibration basis~\cite{Brown:2009qja}.
+
+
+We find it most convenient to carry the required comparison with the use of explicit momentum twister parameterizations. Working in terms of these explicit parameterizations allows us to more easily reduce the collinear limit of $R_n^{(2)}$\! to the same basis of polylogarithms as $R_{n-1}^{(2)}$, via fibration~\cite{Brown:2009qja}. 
+
+[Paragraph on limits of specific polylogs]
+
+[cite hyperint/polylog tools]
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results in Special Kinematics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The eight-point amplitude is a function of twelve multiplicatively-independent cross-ratios
+\begin{align}
+u_i = u_{i,i+3}, \qquad v_i = u_{i,i+4} \, ,
+\end{align}
+where the $u_i$ variables form an eight-orbit and the $v_i$ variables form a four-orbit under the dihedral group. Note that $u_i = u_{i,i+3}$ and $v_i =  u_{i,i+4}$ in the notation of~\cite{Anastasiou:2009kna}. These cross-ratios are subject to a number of Gram determinant constraints, which leave only nine of them algebraically independent. 
+
+%\begin{align}
+%u_{ij}  = \frac{x_{ij+1}^2 x_{x+1 j}^2}{x_{ij}^2 x_{i+1j+1}^2}\, .
+%\end{align}
+
+
+We don't get any numeric checks from~\cite{Anastasiou:2009kna} because none of the points they consider in eight-particle kinematics satisfy the Gram determinant constraints.
+
+It would also be interesting to compare to the two-dimensional regular octagon kinematics studied in~\cite{Alday:2009yn,Alday:2009ga}, but this is far outside the positive region.
+
+
+
+
+\begin{table}[!t]
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{| l || c | c | c | c |}
+\hline
+\ & $\langle i j k l \rangle \big|_{\text{sym}(9)}$ & $\langle i j k l \rangle \big|_{\text{sym}(8)}$ & $\langle i j k l \rangle \big|_{\text{sym}(7)}$ & $\langle i j k l \rangle \big|_{\text{sym}(6)}$ \\[.12cm]
+\hline\hline
+$R^{(2)}_6$  & $4.4955718025$ & $4.4596240384$ & $4.4070349650$ & $4.3566635946$  \\
+$R^{(2)}_7$  & $10.6344626298$ & $10.5308343238$  & $10.4368451968$ & \ \\
+$R^{(2)}_8$  & $17.5132409036$ & $17.3847911942$  & \  & \ \\
+$R^{(2)}_9$  & \ & \  & \  & \ \\
+\hline\hline
+\end{tabular}
+\caption{The $n$-point remainder function evaluated at the totally dihedral point $\langle i j k l \rangle \big|_{\text{sym}(m)}$ for $n \leq m \leq 9$.}
+\end{center}
+\end{table}
+
+
+In~\cite{Galashin:2017onl}, it was shown that the positive region for $n$-particle kinematics is homeomorphic to a ball centered at the dihedrally-symmetric point corresponding to
+\begin{align}
+\langle i j k l \rangle \big|_{\text{sym}(n)} &= \sin\left(\frac{(l - k) \pi}{n} \right) \sin\left(\frac{(l - j) \pi}{n} \right) \sin\left(\frac{(l - i) \pi}{n}\right) \nonumber \\
+&\qquad \times \sin\left(\frac{(k - j) \pi}{n}\right) \sin\left(\frac{(k - i) \pi}{n}\right) \sin\left(\frac{(j - i) \pi}{n}\right) \, .
+\end{align}
+We can evaluate 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The nonplanar two-loop MHV amplitudes have also been given in terms of a basis of just six Feynman integrals~\cite{Bourjaily:2019iqr,Bourjaily:2019gqu} using the techniques described in~\cite{Bourjaily:2017wjl,Bourjaily:2020qca}. It would be excellent to be evaluate these integrals and study the analytic properties of these amplitudes to all multiplicity. 
+
+
+As such, there is reason to hope that some more general combinatorial structure might encode the logarithmic branch cuts of this theory's amplitudes to all orders.  
+
+
+
+
+
+
+\section{scratch}
+
+
+
+We note that $A_n$ functions all fit in the basis
+\begin{gather}
+\left\{G_{\vec{\hspace{.0cm} w}}(x_1) \Big| w_i \in \left\{0, - 1, \frac{-1}{1 + x_2}, \frac{-1}{1 + x_{2,3}}, \dots , \frac{-1}{1 + x_{2,\dots,n}} \right\} \right\} \nonumber \\
+\left\{G_{\vec{\hspace{.0cm} w}}(x_2) \Big| w_i \in \left\{0, - 1, \frac{-1}{1 + x_3}, \dots , \frac{-1}{1 + x_{3,\dots,n}} \right\} \right\} \\
+\vdots \nonumber \\ 
+\left\{G_{\vec{\hspace{.0cm} w}}(x_n) \Big| w_i \in \left\{0, - 1 \right\} \right\} \nonumber
+\end{gather}
+in the notation introduced later...
 
 
 
@@ -726,60 +953,37 @@ The first $A_5$ lives in an eight-orbit of the $\Gr(4,8)$ dihedral+parity, while
 Neither of the latter 2 $A_5$s behave smoothly in the collinear limit (and neither do any of their dihedral+parity images).
 
 
-%Note: there are no good $A_6$s in $\Gr(4,8)$.  
-%the $A_5$ function for $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Complete Polylogarithmic Representations of \pdfeq{R_8^{(2)}} and \pdfeq{R_9^{(2)}}}
-\label{sec:r28_and_r29}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-In this section we complete the construction of $R_8^{(2)}$\! and $R_9^{(2)}$\! as complete polylogarithmic functions, starting from the linear combinations of $f_{A_3}^{+-}$ functions that were found to reproduce their $\delta_{2,2}$ cobracket components in the last section. This is done by isolating the different functional components present in their symbols with the use of the projection operators described in section~\ref{sec:lie_cobracket}, and separately fitting these components to ans\"atze of classical polylogarithms with negative cluster coordinate arguments. The contributions proportional to $\zeta_2$ can also be determined using knowledge of the differentials of these functions~\cite{Golden:2013lha}. Finally, we determine the contribution proportional to $\zeta_4$ by evaluating each function in the collinear limit and comparing to lower-point results.
-
-%then express all remaining contributions to the differentials of these functions in terms of a basis of classical polylogarithms with negative cluster coordinate arguments. Both of these steps are carried out with the help of the cobracket and projection operators described in section~\ref{sec:lie_cobracket}, which allow us to fit the different functional components of these differentials separately, greatly reducing the computational load. Finally, we determine the integration constants by evaluating these functions in the collinear limit and comparing to lower-point results.
-
-%\subsection{Subalgebra Constructibility of the Nonclassical Contributions}
-
-\subsection{Classical Contributions}
-
-Using the list of
-
-\subsection{Collinear Limits}
-\label{sec:collinear_limits}
-
-We expect there to be a final contribution to $R_8^{(2)}$ and $R_9^{(2)}$ that is proportional to $\zeta_4$. Its value can be determined analytically by computing the difference between the collinear limit of our provisional functions and the remainder function involving one fewer leg, since
-\begin{equation}
-R_n \xrightarrow[]{p_i || p_{i+1}} R_{n-1} \, .
-\end{equation} 
-Thus, we first fix the $\zeta_4$ contribution to $R_8^{(2)}$\! by comparing its collinear limit to the known value of $R_7^{(2)}$\!~\cite{Golden:2014xqf}, after which we can similarly fix the $\zeta_4$ contribution to $R_9^{(2)}$\!. 
-
-
-Following~\cite{CaronHuot:2011ky}, we parametrize the $R_n^{(2)} \to R_{n-1}^{(2)}$ limit in terms of momentum twistors by
-\begin{equation} \label{eq:collinear_parametrization}
-Z_n \to Z_{n-1} - \epsilon (\alpha Z_1 + \beta Z_{n-2}) + \epsilon^2 Z_2 \, ,
+The $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit. 
+\begin{equation}\label{eq:r28A5}
+\begin{split}
+	&R^{(2)}_8 = \frac14 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
+   1235\rangle  \langle 1268\rangle }\to \frac{\langle
+   1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
+    \langle 2356\rangle }\to \frac{\langle 1235\rangle 
+   \langle 3456\rangle }{\langle 1356\rangle  \langle
+   2345\rangle }\to \frac{\langle 1567\rangle  \langle
+   2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
+   }\to \frac{\langle 1356\rangle  \langle 4567\rangle
+   }{\langle 1567\rangle  \langle 3456\rangle }\right)+\\
+   &\frac12 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 2345\rangle
+   }{\langle 1234\rangle  \langle 2358\rangle
+   }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
+   }{\langle 5(18)(23)(46)\rangle }\to\frac{\langle
+   1568\rangle  \langle 2358\rangle  \langle 3456\rangle
+   }{\langle 1358\rangle  \langle 2356\rangle  \langle
+   4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
+   }{\langle 1258\rangle  \langle 3456\rangle
+   }\to\frac{\langle 1278\rangle  \langle 1358\rangle
+   }{\langle 1238\rangle  \langle 1578\rangle }\right)\\
+   &+\text{ dihedral} + \text{conjugate}
+\end{split}
 \end{equation}
-where $\epsilon \to 0$ and $\alpha$ and $\beta$ are finite and positive. This parametrization keeps us inside the positive region, and thus allows us to avoid crossing any branch cuts. Since the $(n{-}1)$-particle amplitude depends on three fewer kinematic degrees of freedom than the $n$-particle amplitude, all three parameters $\epsilon$, $\alpha$, and $\beta$ must drop out in the strict $\epsilon \to 0$ limit. This provides an important cross-check on the functional form of our answers.
+Again the difference between the overall factors of the two terms is simply a result of symmetry. 
 
-To take the collinear limit of our current remainder functions, we substitute the parametrization of $Z_n$ in~\eqref{eq:collinear_parametrization} into all $\x$-coordinates and send $\epsilon \to 0$. This gives rise to a number of polylogarithms with vanishing or divergent arguments. In the case of classical polylogarithms, these arguments can be dealt with using the fact that $\Li_k(0) = 0$, or using the expansions
-\begin{align}
-\Li_2(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0} - \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2  - \zeta_2 \, ,\\
-\Li_3(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  \frac{1}{6} \big(\log(\epsilon) - \log (x) \big)^3 + 
-\big(\log(\epsilon) - \log (x) \big) \zeta_2   \, ,\\
-\Li_4(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  -\frac{1}{24} \big(\log(\epsilon) - \log (x) \big)^4 - 
-  \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2 \zeta_2 - \frac{7}{4} \zeta_4  \, ,
-\end{align} 
-which are valid for positive $x$ and $\epsilon$. The only linear combinations of nonclassical polylogarithms that appear in our functions are $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$, as seen in the first line of~\eqref{def:a2-function}. This function vanishes when either of the arguments $x$ or $y$ goes to zero, even if the other argument diverges at the same rate. As it turns out, we never encounter instances of $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$ in which one of the arguments diverges while the other remains finite (or itself diverges), so we never need to expand these functions around infinity. 
-
-In order to see the dependence on $\epsilon$, $\alpha$, and $\beta$ drop out in this limit, we must take into account a large number of nontrivial polylogarithmic identities such as
-\begin{align}
-\Li_{2, 2}(-x, -1/x) - \Li_{1, 3}(-x, -1/x) &=  \Li_{2, 2}(-1/x, -x) - \Li_{1, 3}(-1/x, -x)  \nonumber \\
-&\quad  + 10 \Li_4(-x)  - \frac{1}{2} \Li_2(-x) \left( \log(x)^2 + 14 \zeta_2 \right)   \\ &\quad  - \frac{1}{6} \Li_1(- x) \log(x) \left( \log(x)^2 + 6 \zeta_2 \right) \, .   \nonumber
-\end{align}
-For this purpose, we find it convenient to evaluate all four-brackets on an explicit momentum twister parameterization, whereupon we can more express everything in a fibration basis~\cite{Brown:2009qja}.
+Let me briefly describe the collinear limit for this representation. As discussed previously, the $A_5$s explicitly written in (\ref{eq:r28A5}) behave smoothly under the collinear limit, however not all of their dihedral+parity images do as well. In the case of the first $A_5$, which has 8 images under dihedral+parity, 4 of the $f_{A_5}$s vanish, while the remaining 3 are well-defined. For the second $A_5$, which has 16 images under dihedral+parity, 2 of the $f_{A_5}$s have ``bad'' collinear limits but they cancel off each other in the sum. Out of the remaining 14, 4 have good collinear limits and 10 vanish identically. Therefore, when we add up the contributions from both $A_5$s + their images, we end up with 7 terms -- these correspond to the 7 $A_5$s in $\Gr(4,7)$. 
 
 
-We find it most convenient to carry the required comparison with the use of explicit momentum twister parameterizations. At eight points, we use the parametrization
+At eight points, we use the parametrization
 \begin{equation} 
 Z_{8} = 
 \begingroup
@@ -841,90 +1045,8 @@ Z_{9} =
 }
 % 
 \ \\[.1cm]
-\noindent Similar to the eight-particle momentum-twistor matrix, the $p_9 || p_8$ collinear limit is taken by sending $f_{10}, f_{11}, f_{12} \to 0$, which sets the first eight columns of $Z_9$ to $Z_8$. Working in terms of these explicit parameterizations allows us to more easily reduce the collinear limit of $R_n^{(2)}$\! to the same basis of polylogarithms as $R_{n-1}^{(2)}$, via fibration~\cite{Brown:2009qja}. 
+\noindent Similar to the eight-particle momentum-twistor matrix, the $p_9 || p_8$ collinear limit is taken by sending $f_{10}, f_{11}, f_{12} \to 0$, which sets the first eight columns of $Z_9$ to $Z_8$. 
 
-[Paragraph on limits of specific polylogs]
-
-[cite hyperint/polylog tools]
-
-
-\section{scratch}
-
-
-
-We note that $A_n$ functions all fit in the basis
-\begin{gather}
-\left\{G_{\vec{\hspace{.0cm} w}}(x_1) \Big| w_i \in \left\{0, - 1, \frac{-1}{1 + x_2}, \frac{-1}{1 + x_{2,3}}, \dots , \frac{-1}{1 + x_{2,\dots,n}} \right\} \right\} \nonumber \\
-\left\{G_{\vec{\hspace{.0cm} w}}(x_2) \Big| w_i \in \left\{0, - 1, \frac{-1}{1 + x_3}, \dots , \frac{-1}{1 + x_{3,\dots,n}} \right\} \right\} \\
-\vdots \nonumber \\ 
-\left\{G_{\vec{\hspace{.0cm} w}}(x_n) \Big| w_i \in \left\{0, - 1 \right\} \right\} \nonumber
-\end{gather}
-in the notation introduced later...
-
-The $A_5$ contribution to $R^{(2)}_8$ involves simply adding together the two $A_5$s in $\Gr(4,8)$ which behave smoothly in the collinear limit. 
-\begin{equation}\label{eq:r28A5}
-\begin{split}
-	&R^{(2)}_8 = \frac14 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 1256\rangle }{\langle
-   1235\rangle  \langle 1268\rangle }\to \frac{\langle
-   1236\rangle  \langle 2345\rangle }{\langle 1234\rangle
-    \langle 2356\rangle }\to \frac{\langle 1235\rangle 
-   \langle 3456\rangle }{\langle 1356\rangle  \langle
-   2345\rangle }\to \frac{\langle 1567\rangle  \langle
-   2356\rangle }{\langle 1256\rangle  \langle 3567\rangle
-   }\to \frac{\langle 1356\rangle  \langle 4567\rangle
-   }{\langle 1567\rangle  \langle 3456\rangle }\right)+\\
-   &\frac12 f_{A_5}\left(\frac{\langle 1238\rangle  \langle 2345\rangle
-   }{\langle 1234\rangle  \langle 2358\rangle
-   }\to-\frac{\langle 1235\rangle  \langle 4568\rangle
-   }{\langle 5(18)(23)(46)\rangle }\to\frac{\langle
-   1568\rangle  \langle 2358\rangle  \langle 3456\rangle
-   }{\langle 1358\rangle  \langle 2356\rangle  \langle
-   4568\rangle }\to-\frac{\langle 5(18)(23)(46)\rangle
-   }{\langle 1258\rangle  \langle 3456\rangle
-   }\to\frac{\langle 1278\rangle  \langle 1358\rangle
-   }{\langle 1238\rangle  \langle 1578\rangle }\right)\\
-   &+\text{ dihedral} + \text{conjugate}
-\end{split}
-\end{equation}
-Again the difference between the overall factors of the two terms is simply a result of symmetry. 
-
-Let me briefly describe the collinear limit for this representation. As discussed previously, the $A_5$s explicitly written in (\ref{eq:r28A5}) behave smoothly under the collinear limit, however not all of their dihedral+parity images do as well. In the case of the first $A_5$, which has 8 images under dihedral+parity, 4 of the $f_{A_5}$s vanish, while the remaining 3 are well-defined. For the second $A_5$, which has 16 images under dihedral+parity, 2 of the $f_{A_5}$s have ``bad'' collinear limits but they cancel off each other in the sum. Out of the remaining 14, 4 have good collinear limits and 10 vanish identically. Therefore, when we add up the contributions from both $A_5$s + their images, we end up with 7 terms -- these correspond to the 7 $A_5$s in $\Gr(4,7)$. 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Numerical Results in Special Kinematics}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The eight-point amplitude is a function of twelve multiplicatively-independent cross-ratios
-\begin{align}
-u_i = u_{i,i+3}, \qquad v_i = u_{i,i+4} \, ,
-\end{align}
-where the $u_i$ variables form an eight-orbit and the $v_i$ variables form a four-orbit under the dihedral group. Note that $u_i = u_{i,i+3}$ and $v_i =  u_{i,i+4}$ in the notation of~\cite{Anastasiou:2009kna}. These cross-ratios are subject to a number of Gram determinant constraints, which leave only nine of them algebraically independent. 
-
-%\begin{align}
-%u_{ij}  = \frac{x_{ij+1}^2 x_{x+1 j}^2}{x_{ij}^2 x_{i+1j+1}^2}\, .
-%\end{align}
-
-
-We don't get any numeric checks from~\cite{Anastasiou:2009kna} because none of the points they consider in eight-particle kinematics satisfy the Gram determinant constraints (unless we can rewrite in terms of cross-ratios; maybe then we can check?).
-
-We would also like to compare to the two-dimensional regular octagon kinematics studied in~\cite{Alday:2009yn,Alday:2009ga}. However, it is far outside the positive region, and we haven't figured out the analytic continuations.
-
-Lance's three-parameter surface
-
-Plot on symmetric line?
-
-Numeric values on symmetric points
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The nonplanar two-loop MHV amplitudes have also been given in terms of a basis of just six Feynman integrals~\cite{Bourjaily:2019iqr,Bourjaily:2019gqu} using the techniques described in~\cite{Bourjaily:2017wjl,Bourjaily:2020qca}. It would be excellent to be evaluate these integrals and study the analytic properties of these amplitudes to all multiplicity. 
-
-
-As such, there is reason to hope that some more general combinatorial structure might encode the logarithmic branch cuts of this theory's amplitudes to all orders.  
 
 \iffalse
 \newpage
