@@ -750,20 +750,20 @@ The classical component was fit via the approach originally described in 1006.57
 \subsection{Collinear Limits}
 \label{sec:collinear_limits}
 
-Finally, the functions $R_8^{(2)}$ and $R_9^{(2)}$ are expected to involve contributions proportional to $\zeta_4$. These contributions can be determined analytically by computing the difference between the collinear limit of each function and the remainder function involving one fewer leg, since the remainder function is smooth in collinear limits, 
+Finally, the functions $R_8^{(2)}$\! and $R_9^{(2)}$\! are expected to involve contributions proportional to $\zeta_4$. Since the remainder function is smooth in collinear limits, namely
 \begin{equation} \label{eq:remainder_smooth_collinear_limits}
-R_n \xrightarrow[]{p_i || p_{i+1}} R_{n-1} \, .
+R_n \xrightarrow[]{p_i || p_{i+1}} R_{n-1} \, ,
 \end{equation} 
-Thus, we first fix the $\zeta_4$ contribution to $R_8^{(2)}$\! by comparing its collinear limit to the known value of $R_7^{(2)}$\!~\cite{Golden:2014xqf}, after which we can similarly fix the $\zeta_4$ contribution to $R_9^{(2)}$\!. 
+these contributions can be determined analytically by computing the difference between the collinear limit of each of these functions and the remainder function involving one fewer leg. Thus, we first fix the $\zeta_4$ contribution to $R_8^{(2)}$\! by comparing its collinear limit to the known value of $R_7^{(2)}$\!~\cite{Golden:2014xqf}, after which we can similarly fix the $\zeta_4$ contribution to $R_9^{(2)}$\!. 
 
 
 Following~\cite{CaronHuot:2011ky}, we parametrize the $R_n^{(2)} \to R_{n-1}^{(2)}$ limit in terms of momentum twistors by
 \begin{equation} \label{eq:collinear_parametrization}
 Z_n \to Z_{n-1} - \epsilon (\alpha Z_1 + \beta Z_{n-2}) + \epsilon^2 Z_2 \, ,
 \end{equation}
-where $\epsilon \to 0$ and $\alpha$ and $\beta$ are finite and positive. This parametrization keeps us inside the positive region, and thus allows us to avoid crossing any branch cuts. Since the $(n{-}1)$-particle amplitude depends on three fewer kinematic degrees of freedom than the $n$-particle amplitude, all three parameters $\epsilon$, $\alpha$, and $\beta$ must drop out in the strict $\epsilon \to 0$ limit. This provides an important cross-check on the functional form of our answers.
+where $\epsilon \to 0$ and $\alpha$ and $\beta$ are finite and positive. This parametrization keeps us inside the positive region, and thus ensures we don't cross any branch cuts. Since the $(n{-}1)$-particle amplitude depends on three fewer kinematic degrees of freedom than the $n$-particle amplitude, all three parameters $\epsilon$, $\alpha$, and $\beta$ must drop out in the strict $\epsilon \to 0$ limit. This requirement provides an important cross-check on the functional form of our answers.
 
-To take the collinear limit of our current remainder functions, we substitute the parametrization of $Z_n$ in~\eqref{eq:collinear_parametrization} into all $\x$-coordinates and send $\epsilon \to 0$. This gives rise to a number of polylogarithms with vanishing or divergent arguments. In the case of classical polylogarithms, these arguments can be dealt with using the fact that $\Li_k(0) = 0$, or using the expansions
+To take the collinear limit of our current functions, we substitute the parametrization of $Z_n$ in~\eqref{eq:collinear_parametrization} into all $\x$-coordinates and send $\epsilon \to 0$. This gives rise to a number of polylogarithms with vanishing or divergent arguments. In the case of classical polylogarithms, these arguments can be dealt with using the fact that $\Li_k(0) = 0$, or using the expansions
 \begin{align}
 \Li_2(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0} - \frac{1}{2} \big(\log(\epsilon) - \log (x) \big)^2  - \zeta_2 \, ,\\
 \Li_3(-x/\epsilon) &\xrightarrow[]{\epsilon \to 0}  \frac{1}{6} \big(\log(\epsilon) - \log (x) \big)^3 + 
@@ -773,35 +773,28 @@ To take the collinear limit of our current remainder functions, we substitute th
 \end{align} 
 which are valid for positive $x$ and $\epsilon$. The only linear combinations of nonclassical polylogarithms that appear in our functions are $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$, as seen in the first line of~\eqref{def:a2-function}. This function vanishes when either of the arguments $x$ or $y$ goes to zero, even if the other argument diverges at the same rate. As it turns out, we never encounter instances of $\Li_{2, 2}(x, y) - \Li_{1, 3}(x, y)$ in which one of the arguments diverges while the other remains finite (or itself diverges), so we never need to expand these functions around infinity. 
 
-In order to see the dependence on $\epsilon$, $\alpha$, and $\beta$ drop out in this limit, we must take into account a large number of nontrivial polylogarithmic identities such as
+In order to see the dependence on $\epsilon$, $\alpha$, and $\beta$ drop out in this limit, we must take into account a large number of nontrivial polylogarithmic identities, such as
 \begin{align}
 \Li_{2, 2}(-x, -1/x) - \Li_{1, 3}(-x, -1/x) &=  \Li_{2, 2}(-1/x, -x) - \Li_{1, 3}(-1/x, -x)  \nonumber \\
 &\quad  + 10 \Li_4(-x)  - \frac{1}{2} \Li_2(-x) \left( \log(x)^2 + 14 \zeta_2 \right)   \\ &\quad  - \frac{1}{6} \Li_1(- x) \log(x) \left( \log(x)^2 + 6 \zeta_2 \right) \, .   \nonumber
 \end{align}
-For this purpose, we find it convenient to evaluate all four-brackets on an explicit momentum twister parameterization, whereupon we can more express everything in a fibration basis~\cite{Brown:2009qja}.
+Rather than find all such identities explicitly, we evaluate the four-brackets on an explicit momentum twister parameterization, which allows us to express everything in a fibration basis~\cite{Brown:2009qja}. (This can be done using publicly-available codes~\cite{Panzer:2014caa,Duhr:2019tlz}.) In addition to seeing the parameters $\epsilon$, $\alpha$, and $\beta$ drop out, this makes the comparison to the lower-point remainder function easier, since we can express both functions in the same fibration basis.
 
-
-We find it most convenient to carry the required comparison with the use of explicit momentum twister parameterizations. Working in terms of these explicit parameterizations allows us to more easily reduce the collinear limit of $R_n^{(2)}$\! to the same basis of polylogarithms as $R_{n-1}^{(2)}$, via fibration~\cite{Brown:2009qja}. 
-
-[Paragraph on limits of specific polylogs]
-
-[cite hyperint/polylog tools]
-
-
+Using this procedure, we have analytically determined the $\zeta_4$ contributions to both $R_8^{(2)}$\! and $R_9^{(2)}$\!. The corresponding coefficients of $\zeta_4$ can be found in the ancillary files, but aren't meaningful in isolation since they depend on the polylogarithmic representation we chose to represent the nonclassical and classical contributions to these amplitudes. This completes our determination of these amplitudes.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical Results and Cross-Checks}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-One of the benefits of having a polylogarithmic representation of the $n$-particle remainder function is that it makes it easier to get numerical results for the corresponding amplitude. Studying such numerics helps us better understand the behavior of these amplitudes, and in the present context also provides an important cross-check on our analytic determination of the $\zeta_4$ contributions to $R_8^{(2)}$\! and $R_9^{(2)}$\!. As we will see below, our new representations of the eight- and nine-particle remainder functions indeed limit to the correct numerical values along lines that approach collinear limits.
+One of the benefits of having a full polylogarithmic representation of the $n$-particle remainder function is that it makes it easier to get numerical results for the corresponding amplitude. Studying such numerics helps us better understand the behavior of these amplitudes, and in the present context also provides an important cross-check on our analytic determination of the $\zeta_4$ contributions to $R_8^{(2)}$\! and $R_9^{(2)}$\!. As we will see below, our new representations of the eight- and nine-particle remainder functions indeed limit to the correct numerical values along lines that approach collinear limits.
 
 We restrict our numerical explorations to the positive region, where our functional representations are manifestly real. In~\cite{Galashin:2017onl}, it was shown that this region is homeomorphic to a ball centered at the point corresponding to the four-bracket values
 \begin{align}
 \langle i j k l \rangle \big|_{\text{sym}(n)} &= \sin\left(\frac{(l - k) \pi}{n} \right) \sin\left(\frac{(l - j) \pi}{n} \right) \sin\left(\frac{(l - i) \pi}{n}\right) \nonumber \\
 &\qquad \times \sin\left(\frac{(k - j) \pi}{n}\right) \sin\left(\frac{(k - i) \pi}{n}\right) \sin\left(\frac{(j - i) \pi}{n}\right) \, . \label{eq:symmetric_point}
 \end{align}
-This point is dihedrally symmetric in $n$-particle kinematics. Drawing upon known representations for the two-loop six- and seven-particle remainder functions~\cite{DelDuca:2009au,DelDuca:2010zg,Goncharov:2010jf,Golden:2014xqf}, we have evaluated $R_n^{(2)}$ for all $n \leq n^\prime \leq 9$ on the four-bracket values $\langle i j k l \rangle \big|_{\text{sym}(n^\prime)}$; the results are presented in Table~\ref{table:symmetric_point_numerics}. While the  remainder function at this point does not evaluate to a linear combination of nice transcendental constants (such as multiple polylogarithms evaluated at sixth roots of unity), we can still use these numerical values to check that the $n$-particle remainder function limits to the correct lower-point values when $Z_n \to Z_{n-1}$. 
+This point is dihedrally symmetric in $n$-particle kinematics. Drawing upon known representations for the two-loop six- and seven-particle remainder functions~\cite{DelDuca:2009au,DelDuca:2010zg,Goncharov:2010jf,Golden:2014xqf}, we have evaluated $R_n^{(2)}$ for all $n \leq n^\prime \leq 9$ on the four-bracket values $\langle i j k l \rangle \big|_{\text{sym}(n^\prime)}$; the results are presented in Table~\ref{table:symmetric_point_numerics}. While the  remainder function does not in general evaluate to a linear combination of nice transcendental constants at these points (such as multiple polylogarithms evaluated at sixth roots of unity), we can still use these numerical values to check that the $n$-particle remainder function limits to the correct lower-point values when $Z_n \to Z_{n-1}$. 
 
 \begin{table}[!t]
 \begin{center}
@@ -835,7 +828,7 @@ More generally, the parametrization in~\eqref{eq:line_parametrization} can be us
 \begin{equation}
 \Big[ \langle i j k n \rangle = a\, \langle i j k \, n{-}1 \rangle - b\, \langle i  j  k 1 \rangle - c\, \langle i j k \, n{-}2 \rangle + d\, \langle i j k 2 \rangle \Big] 
 \end{equation}
-for $a$, $b$, $c$, and $d$ on the four-bracket values corresponding to the desired initial point in $n$-particle kinematics, instead of at the dihedrally-symmetric point. In this way, starting from any initial kinematic point, we can use the parametrization~\eqref{eq:line_parametrization} to iteratively take collinear limits until we approach a point in five-particle kinematics, where the remainder function will vanish. Note that we always apply the parametrization~\eqref{eq:line_parametrization} to the momentum twistor with the highest index $n$, so this prescription associates a unique line from every kinematic point (in arbitrarily high-point kinematics) down to five- (or lower-)point kinematics.
+for $a$, $b$, $c$, and $d$ on the four-bracket values corresponding to the desired initial point in $n$-particle kinematics, instead of at the dihedrally-symmetric point. In this way, starting from any initial kinematic point, we can use the parametrization~\eqref{eq:line_parametrization} to iteratively take collinear limits until we approach a point in five-particle kinematics, where the remainder function must vanish. Note that we always apply the parametrization~\eqref{eq:line_parametrization} to the momentum twistor with the highest index $n$, so this prescription associates a unique line from every kinematic point (in arbitrarily high-point kinematics) down to five- (or lower-)point kinematics.
 
 \begin{figure}[t]
 \captionsetup[subfigure]{labelformat=empty}
@@ -852,31 +845,7 @@ for $a$, $b$, $c$, and $d$ on the four-bracket values corresponding to the desir
 \end{center}
 \end{figure}
 
-We now consider in particular the lines this prescription associates with the dihedrally-symmetric points in six-, seven-, eight-, and nine-particle kinematics. The value of the remainder function along these lines is plotted in Figure~\ref{fig:symm_to_collinear_lines}. Since these lines are parametrized piecewise (with different segments corresponding to kinematics involving different numbers of particles), a kink naturally appears in each collinear limit. However, what is important to note is that the endpoints of these line segments limit to a common value, in accordance with~\eqref{eq:remainder_smooth_collinear_limits}; in particular, the values at which these line segments meet are precisely those reported in Table~\ref{table:symmetric_point_numerics}. For instance, the line associated with the totally symmetric point in nine-particle kinematics is shown on the bottom right of Figure~\ref{fig:symm_to_collinear_lines}. The rightmost segment of this line shows the value of $R_9^{(2)}$\! along the line~\eqref{eq:line_parametrization} when .\footnote{We have shifted the line segments appearing in Figures~\ref{fig:symm_to_collinear_lines} and~\ref{fig:random_point_to_collinear_lines} along the $x$ axis in order to emphasize that their endpoints appropriately limit to common values; for instance, the values of $R_9^{(2)}$\! corresponding to $0 < x \leq 1$ in~\eqref{eq:line_parametrization} are given in the range $3 < x \leq 4$ in these plots.} 
-
-parametrized by~\eqref{eq:line_parametrization}, which  $R_8^{(2)}$\!, respectively, when evaluated on the four-bracket values $\langle i j k l \rangle \big|_{\text{sym}(9)}$. The 
-
-, we see that $R_6^{(2)}$ approaches zero... 
-
-In Figure~\ref{fig:symm_to_collinear_lines}, we see that the remainder function monotonically decreases as one approaches successive collinear limits along the lines parametrized by~\eqref{eq:line_parametrization}. (It is worth noting, however, that the remainder function is not at a local maximum at these dihedrally-symmetric points.) The line segments that appear in Figure~\ref{fig:symm_to_collinear_lines} all also take approximately the same shape. This can be contrasted with Figure~\ref{fig:random_point_to_collinear_lines}, where we have plotted the remainder function on the line starting at a randomly chosen point in nine-particle kinematics, given by the momentum twistor matrix
-\begin{equation}
-\left(
-\begin{array}{ccccccccc}
- 1 & \frac{57}{16} & \frac{53773}{1024} & \frac{8965489}{94208} & \frac{4259781}{94208} & \frac{123975}{23552} & 0 & 0 & 0 \\
- 0 & 1 & \frac{30377}{32} & \frac{43566331}{20608} & \frac{24024151}{20608} & \frac{978025}{5152} & \frac{13775}{644} & 0 & 0 \\
- 0 & 0 & 1 & \frac{16043}{7140} & \frac{8903}{7140} & \frac{377}{1785} & \frac{1276}{41055} & \frac{58}{8211} & 0 \\
- 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 \\
-\end{array}
-\right).
-\end{equation}
-We see there that\dots
-
-The fact that the line segments plotted in Figures~\ref{fig:symm_to_collinear_lines} and~\ref{fig:random_point_to_collinear_lines} all join at common endpoints provides an important numerical cross-check on our representations of $R_8^{(2)}$\! and $R_9^{(2)}$\!. As an additional check, we have evaluated $R_8^{(2)}$\! in one of the `triple-scaling' limits considered by~\cite{Lance_correspondance}, and have found exact (analytic) agreement with their independently-computed expression on this (singular) codimension-six surface. These corroborating checks give us high confidence in our results.
-
-It would also have been interesting to compare to the numerical results for the eight-particle amplitude given in~\cite{Anastasiou:2009kna,Brandhuber:2009da} and~\cite{Alday:2009yn,Alday:2009ga}, but the points considered in these papers are harder for us to access with our representation of $R_8^{(2)}$ (since they are not in the positive region, or are off the support of Gram determinant constraints). 
-
-check out ~\cite{DelDuca:2010zp,Heslop:2010kq,Gaiotto:2010fk}
-
+We now focus on the lines this prescription associates with the dihedrally-symmetric points in six-, seven-, eight-, and nine-particle kinematics. The value of the remainder function along these lines is plotted in Figure~\ref{fig:symm_to_collinear_lines}. Since these lines are parametrized piecewise (with different segments corresponding to kinematics involving different numbers of particles), a kink naturally appears each time the parametrization~\eqref{eq:line_parametrization} approaches a collinear limit. However, what is important is that the endpoints of the line segments in adjacent kinematic regions limit to a common value, in accordance with~\eqref{eq:remainder_smooth_collinear_limits}.\footnote{We have shifted the line segments appearing in Figures~\ref{fig:symm_to_collinear_lines} and~\ref{fig:random_point_to_collinear_lines} along the $x$ axis in order to emphasize that their endpoints appropriately limit to common values; for instance, the values of $R_9^{(2)}$\! corresponding to $0 < x \leq 1$ in~\eqref{eq:line_parametrization} are given in the range $3 < x \leq 4$ in these plots.} In particular, the values at which these line segments meet are precisely those reported in Table~\ref{table:symmetric_point_numerics}. For instance, the line associated with the totally symmetric point in nine-particle kinematics is shown on the bottom right of Figure~\ref{fig:symm_to_collinear_lines}. The rightmost point on this line depicts the value of $R_9^{(2)}$\! when evaluated on $\langle i j k l \rangle \big|_{\text{sym}(9)}$, while the kinks one encounters as one moves to the left occur at the values of $R_8^{(2)}$\!, $R_7^{(2)}$\!, and $R_6^{(2)}$\! evaluated on the same four-bracket values. Finally, the remainder function vanishes at the leftmost point on this line, which corresponds to a point in five-particle kinematics. The fact that each of the line segments in this plot (and the other plots) limits to the correct value of the lower-point remainder function provides a nontrivial check on our determination of $R_8^{(2)}$\! and $R_9^{(2)}$\!.  
 
 \begin{figure}[t]
 \captionsetup[subfigure]{labelformat=empty}
@@ -888,10 +857,29 @@ check out ~\cite{DelDuca:2010zp,Heslop:2010kq,Gaiotto:2010fk}
   \begin{subfigure}[t]{0.1\textwidth} \vspace{-5cm}
     \includegraphics[width=\textwidth]{symmetric_lines_label.pdf}
   \end{subfigure}
-    \caption{The remainder function evaluated at a random point in ... ~\eqref{eq:line_parametrization}.}
+    \caption{The remainder function evaluated on the line associated with the randomly chosen kinematic point given by the momentum twistor matrix in~\eqref{eq:random_kinematic_point}. mention ~\eqref{eq:line_parametrization}.}
     \label{fig:random_point_to_collinear_lines}
 \end{center}
 \end{figure}
+
+In Figure~\ref{fig:symm_to_collinear_lines}, we see that the remainder function decreases monotonically as one moves away from the dihedrally-symmetric points given in~\eqref{eq:symmetric_point} along the lines parametrized by~\eqref{eq:line_parametrization}.\footnote{We note, however, that the remainder function is not at a local maximum at these dihedrally-symmetric points~\eqref{eq:symmetric_point}.} Moreover, the line segments appearing in this figure all take approximately the same shape. This can be contrasted with Figure~\ref{fig:random_point_to_collinear_lines}, where we have plotted the remainder function on the line starting at a randomly chosen point in nine-particle kinematics, given by the momentum twistor matrix
+\begin{equation} \label{eq:random_kinematic_point}
+\left(
+\begin{array}{ccccccccc}
+ 1 & \frac{57}{16} & \frac{53773}{1024} & \frac{8965489}{94208} & \frac{4259781}{94208} & \frac{123975}{23552} & 0 & 0 & 0 \\
+ 0 & 1 & \frac{30377}{32} & \frac{43566331}{20608} & \frac{24024151}{20608} & \frac{978025}{5152} & \frac{13775}{644} & 0 & 0 \\
+ 0 & 0 & 1 & \frac{16043}{7140} & \frac{8903}{7140} & \frac{377}{1785} & \frac{1276}{41055} & \frac{58}{8211} & 0 \\
+ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 \\
+\end{array}
+\right).
+\end{equation}
+We see there that, while the endpoints of adjacent line segments appropriately limit to common values, the remainder function exhibits more erratic behavior in general. However, the value of the remainder function still increases, on average, as one moves to higher $n$. It would be interesting to know if this is a generic feature of these amplitudes, or even of lines iteratively parametrized via~\eqref{eq:line_parametrization}.
+
+As an additional additional cross-check of our eight-particle function, we have evaluated our functional representation of $R_8^{(2)}$\! in one of the `triple-scaling' limits considered by~\cite{Lance_correspondance}, and have found exact (analytic) agreement with their (independently-computed) expression on this (singular) codimension-six surface. This check, in combination with the numerical checks presented above, give us high confidence in our results.\footnote{It would also have been interesting to compare to the numerical results for the eight-particle amplitude given in~\cite{Anastasiou:2009kna,Brandhuber:2009da} and~\cite{Alday:2009yn,Alday:2009ga}, but the points considered in these papers are harder for us to access with our representation of $R_8^{(2)}$ (since they are not in the positive region, or are off the support of Gram determinant constraints). 
+
+check out ~\cite{DelDuca:2010zp,Heslop:2010kq,Gaiotto:2010fk}}
+
+
 
 
 
